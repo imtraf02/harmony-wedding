@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
       avatar      : data.avatar || null,
       service     : data.service || 'photography',
       wedding_year: data.wedding_year || new Date().getFullYear(),
-      is_active   : 1,
+      is_active   : true,
       sort_order  : 0,
     });
 
