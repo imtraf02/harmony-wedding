@@ -1,72 +1,109 @@
 import { getAllTestimonials } from '@/lib/queries/testimonials';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { PlusIcon, StarIcon, QuoteIcon } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 export default async function AdminTestimonialsList() {
   const items = getAllTestimonials();
 
   return (
-    <div className="space-y-12">
-      <header className="flex justify-between items-end">
-        <div>
-          <h1 className="text-4xl font-cormorant text-foreground mb-2">Quản lý Đánh giá</h1>
-          <p className="text-muted-foreground text-sm">Lời chúc và phản hồi từ các cặp đôi.</p>
+    <div className="space-y-16 font-jost">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div className="space-y-2">
+          <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Đánh giá khách hàng</h1>
+          <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Quản lý phản hồi và cảm nhận từ các cặp đôi</p>
         </div>
-        <Link 
-          href="/admin/testimonials/new" 
-          className="bg-gold text-white px-8 py-3 rounded-full text-sm font-semibold hover:opacity-90 transition-all shadow-lg shadow-gold/20"
+        <Button 
+          render={<Link href="/admin/testimonials/new" />}
+          nativeButton={false} 
+          className="bg-obsidian text-ivory px-10 py-7 rounded-none text-[11px] uppercase tracking-[0.2em] font-medium hover:bg-gold transition-all duration-500 shadow-luxury"
         >
-          + Thêm mới
-        </Link>
+          <PlusIcon className="size-4 mr-2" /> Thêm đánh giá
+        </Button>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {items.map((t) => (
-          <div key={t.id} className="bg-card border border-border rounded-[2rem] p-8 hover:shadow-xl transition-all group">
-            <div className="flex items-center gap-4 mb-6">
-              {t.avatar ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={t.avatar} alt={t.couple_name} className="w-12 h-12 rounded-full object-cover border border-zinc-100" />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center text-xl">👤</div>
+      <div className="bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr className="bg-whisper border-b border-black/5">
+                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Cặp đôi</th>
+                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Nội dung</th>
+                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Dịch vụ & Năm</th>
+                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Trạng thái</th>
+                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash text-right">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-black/5">
+              {items.map((item) => (
+                <tr key={item.id} className="group hover:bg-whisper transition-colors animate-fade-in-up-luxury">
+                  <td className="px-8 py-8 align-top">
+                    <div className="flex items-center gap-4">
+                      <div className="size-10 bg-gold-dim rounded-none border border-gold/10 flex items-center justify-center text-gold font-cormorant text-xl shadow-gold-sm">
+                        {item.couple_name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-medium text-obsidian">{item.couple_name}</p>
+                        <div className="flex gap-0.5 mt-1">
+                          {[...Array(5)].map((_, i) => (
+                            <StarIcon key={i} className={cn("size-2.5", i < (item.rating || 5) ? "fill-gold text-gold" : "text-mist")} />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-8 py-8 align-top max-w-md">
+                    <div className="flex gap-3">
+                      <QuoteIcon className="size-3 text-gold/30 shrink-0 mt-1" />
+                      <p className="text-smoke font-light leading-relaxed line-clamp-3 italic">"{item.content}"</p>
+                    </div>
+                  </td>
+                  <td className="px-8 py-8 align-top">
+                    <div className="space-y-1">
+                      <p className="text-[10px] uppercase tracking-widest text-obsidian font-medium">{item.service}</p>
+                      <p className="text-[11px] text-smoke font-light">{item.wedding_year}</p>
+                    </div>
+                  </td>
+                  <td className="px-8 py-8 align-top">
+                    <Badge variant="outline" className={cn(
+                      "rounded-none border-0 px-0 text-[9px] uppercase tracking-[0.15em] font-bold",
+                      item.is_active ? "text-gold" : "text-ash"
+                    )}>
+                      &bull; {item.is_active ? 'Hiển thị' : 'Ẩn'}
+                    </Badge>
+                  </td>
+                  <td className="px-8 py-8 align-top text-right">
+                    <div className="flex justify-end gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <button className="text-[10px] font-bold uppercase tracking-widest text-ash hover:text-gold transition-colors">Sửa</button>
+                      <button className="text-[10px] font-bold uppercase tracking-widest text-ash hover:text-red-500 transition-colors">Xóa</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+              {items.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="px-8 py-32 text-center">
+                    <div className="flex flex-col items-center gap-6 text-smoke">
+                      <p className="italic font-light tracking-wide text-lg">Chưa có đánh giá nào được ghi nhận.</p>
+                      <Button 
+                        variant="link"
+                        render={<Link href="/admin/testimonials/new" />} 
+                        nativeButton={false}
+                        className="text-gold font-medium uppercase tracking-[0.2em] text-[11px] hover:no-underline hover:opacity-70 transition-all"
+                      >
+                        Thêm đánh giá đầu tiên ngay ↗
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
               )}
-              <div>
-                <h3 className="font-semibold text-foreground">{t.couple_name}</h3>
-                <p className="text-[10px] uppercase tracking-widest text-gold font-bold">{t.service} · {t.wedding_year}</p>
-              </div>
-              <div className="ml-auto text-gold text-xs">
-                {'★'.repeat(t.rating)}
-                {'☆'.repeat(5 - t.rating)}
-              </div>
-            </div>
-            
-            <blockquote className="text-sm italic text-zinc-600 font-light leading-relaxed mb-8">
-              &ldquo;{t.content}&rdquo;
-            </blockquote>
-
-            <div className="flex items-center justify-between border-t border-border pt-6">
-              <div className="flex gap-4">
-                <button className="text-xs font-semibold text-zinc-500 hover:text-gold transition-colors">Sửa</button>
-                <button className="text-xs font-semibold text-zinc-500 hover:text-destructive transition-colors">Xóa</button>
-              </div>
-              <span className={`text-[10px] font-bold uppercase tracking-widest ${t.is_active ? 'text-green-500' : 'text-zinc-400'}`}>
-                {t.is_active ? '● Đang hiển thị' : '○ Đang ẩn'}
-              </span>
-            </div>
-          </div>
-        ))}
-
-        {items.length === 0 && (
-          <div className="col-span-full py-32 text-center bg-card border border-dashed border-border rounded-[3rem]">
-            <p className="text-muted-foreground italic mb-6 text-lg">Chưa có đánh giá nào.</p>
-            <Link 
-              href="/admin/testimonials/new" 
-              className="text-gold font-semibold hover:underline"
-            >
-              Thêm đánh giá đầu tiên ngay →
-            </Link>
-          </div>
-        )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 }
+

@@ -23,10 +23,23 @@ const config: NextConfig = {
     deviceSizes     : [640, 750, 1080, 1920],
     imageSizes      : [64, 128, 256, 384],
     minimumCacheTTL : 86400,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+    ],
   },
 
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    serverActions: {
+      bodySizeLimit: '50mb',
+    },
   },
 };
 

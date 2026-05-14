@@ -33,39 +33,60 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* ── Luxury palette exposed to Tailwind ── */
   --color-gold: var(--gold);
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
   --color-gold-foreground: var(--gold-foreground);
+  --color-gold-muted: var(--gold-muted);
+  --color-gold-dim: var(--gold-dim);
+
+  --color-champagne: var(--champagne);
+  --color-champagne-dark: var(--champagne-dark);
+  --color-ivory: var(--ivory);
+  --color-ivory-warm: var(--ivory-warm);
+  --color-cream: var(--cream);
+
+  --color-obsidian: var(--obsidian);
+  --color-obsidian-soft: var(--obsidian-soft);
+  --color-charcoal: var(--charcoal);
+  --color-smoke: var(--smoke);
+  --color-ash: var(--ash);
+  --color-mist: var(--mist);
+  --color-whisper: var(--whisper);
+
   --color-sage: var(--sage);
+  --color-sage-50: var(--sage-50);
+  --color-sage-100: var(--sage-100);
+  --color-sage-200: var(--sage-200);
+  --color-sage-300: var(--sage-300);
+  --color-sage-400: var(--sage-400);
+  --color-sage-500: var(--sage-500);
 
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-blush: var(--blush);
+  --color-blush-50: var(--blush-50);
+  --color-blush-100: var(--blush-100);
+  --color-blush-200: var(--blush-200);
+  --color-blush-300: var(--blush-300);
+  --color-blush-400: var(--blush-400);
 
-  --font-cormorant: var(--font-cormorant);
-  --font-dm-sans: var(--font-dm-sans);
+  --color-luxury-bg: var(--luxury-bg);
+  --color-luxury-surface: var(--luxury-surface);
+  --color-luxury-surface-2: var(--luxury-surface-2);
+  --color-luxury-border: var(--luxury-border);
+  --color-luxury-text: var(--luxury-text);
+  --color-luxury-text-muted: var(--luxury-text-muted);
+  --color-luxury-text-dim: var(--luxury-text-dim);
+  --color-luxury-accent: var(--luxury-accent);
 
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes bounce-subtle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-
-  --animate-fade-in: fade-in 1s ease-out forwards;
-  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
-  --animate-bounce-subtle: bounce-subtle 2s infinite ease-in-out;
-  --font-heading: var(--font-sans);
-  --font-sans: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -79,73 +100,66 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --font-cormorant: var(--font-cormorant);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-jost: var(--font-jost);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounce-subtle {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+  --animate-bounce-subtle: bounce-subtle 2s infinite ease-in-out;
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
 }
 
-@layer base {
-  :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.985 0 0);
-
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-
-    --radius: 0.625rem;
-
-    /* Custom Branding Colors */
-    --gold: oklch(0.65 0.12 75);
-    --gold-foreground: oklch(0.985 0 0);
-    --sage: oklch(0.48 0.03 150);
-  }
-
-  body {
-    @apply font-dm-sans antialiased selection:bg-gold/30 bg-background text-foreground;
-    color-scheme: light;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-cormorant font-medium tracking-tight;
-  }
-  * {
-    @apply border-border outline-ring/50;
-  }
-  html {
-    @apply font-sans;
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
+/* ================================================================
+   CSS CUSTOM PROPERTIES — Design Tokens
+   ================================================================ */
 
 :root {
+  /* ── Base shadcn tokens ── */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -161,15 +175,18 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+
   --chart-1: oklch(0.879 0.169 91.605);
   --chart-2: oklch(0.769 0.188 70.08);
   --chart-3: oklch(0.666 0.179 58.318);
   --chart-4: oklch(0.555 0.163 48.998);
   --chart-5: oklch(0.473 0.137 46.201);
-  --radius: 0.625rem;
+
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.666 0.179 58.318);
@@ -178,38 +195,505 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* ================================================================
+     LUXURY DESIGN TOKENS
+     Style: Tinh tế · Cao cấp · Editorial
+     ================================================================ */
+
+  /* ── Gold Palette ── */
+  --gold-50: oklch(0.980 0.018 88);
+  --gold-100: oklch(0.955 0.038 86);
+  --gold-200: oklch(0.908 0.075 80);
+  --gold-300: oklch(0.858 0.112 74);
+  --gold-400: oklch(0.800 0.145 68);
+  --gold-500: oklch(0.730 0.160 62);
+  /* chính: warm gold */
+  --gold-600: oklch(0.648 0.148 57);
+  --gold-700: oklch(0.552 0.128 52);
+  --gold-800: oklch(0.440 0.098 50);
+  --gold-900: oklch(0.318 0.068 48);
+
+  --gold: var(--gold-500);
+  --gold-foreground: oklch(0.987 0.010 90);
+  --gold-muted: var(--gold-200);
+  --gold-dim: oklch(0.730 0.160 62 / 0.12);
+  /* overlay nhẹ */
+
+  /* ── Champagne / Ivory ── */
+  --champagne: oklch(0.972 0.018 88);
+  --champagne-dark: oklch(0.940 0.028 84);
+  --ivory: oklch(0.985 0.010 90);
+  --ivory-warm: oklch(0.975 0.022 80);
+  --cream: oklch(0.960 0.020 85);
+
+  /* ── Obsidian / Deep Neutrals ── */
+  --obsidian: oklch(0.108 0.008 260);
+  --obsidian-soft: oklch(0.148 0.008 260);
+  --charcoal: oklch(0.210 0.006 260);
+  --smoke: oklch(0.350 0.006 260);
+  --ash: oklch(0.620 0.004 260);
+  --mist: oklch(0.880 0.004 260);
+  --whisper: oklch(0.960 0.002 260);
+
+  /* ── Sage / Accent xanh rêu tinh tế ── */
+  --sage-50: oklch(0.968 0.018 148);
+  --sage-100: oklch(0.928 0.036 148);
+  --sage-200: oklch(0.858 0.062 148);
+  --sage-300: oklch(0.768 0.082 148);
+  --sage-400: oklch(0.660 0.092 148);
+  --sage-500: oklch(0.548 0.098 148);
+  --sage: var(--sage-400);
+
+  /* ── Blush / Rose Gold ── */
+  --blush-50: oklch(0.978 0.018 14);
+  --blush-100: oklch(0.945 0.038 14);
+  --blush-200: oklch(0.900 0.068 14);
+  --blush-300: oklch(0.845 0.098 14);
+  --blush-400: oklch(0.775 0.118 14);
+  --blush: var(--blush-300);
+
+  /* ── Semantic — Light Mode ── */
+  --luxury-bg: var(--ivory);
+  --luxury-surface: var(--champagne);
+  --luxury-surface-2: var(--cream);
+  --luxury-border: oklch(0.850 0.020 82);
+  --luxury-border-fine: oklch(0.900 0.012 82);
+  --luxury-text: var(--obsidian);
+  --luxury-text-muted: var(--smoke);
+  --luxury-text-dim: var(--ash);
+  --luxury-accent: var(--gold-500);
+  --luxury-accent-soft: var(--gold-dim);
+
+  /* ── Typography Scale ── */
+  --text-display: clamp(3.2rem, 7vw, 6.4rem);
+  --text-headline: clamp(2.0rem, 4vw, 3.6rem);
+  --text-title: clamp(1.4rem, 2.5vw, 2.0rem);
+  --text-subtitle: clamp(1.1rem, 1.8vw, 1.4rem);
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+  --text-label: 0.6875rem;
+
+  --tracking-display: -0.04em;
+  --tracking-headline: -0.025em;
+  --tracking-title: -0.015em;
+  --tracking-body: 0em;
+  --tracking-wide: 0.08em;
+  --tracking-widest: 0.18em;
+  /* dùng cho label uppercase */
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-relaxed: 1.7;
+  --leading-loose: 2.0;
+
+  /* ── Spacing Rhythm ── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+  --space-4xl: 12rem;
+
+  /* ── Shadows — tinh tế, không harsh ── */
+  --shadow-xs: 0 1px 2px oklch(0.1 0 0 / 0.04);
+  --shadow-sm: 0 2px 8px oklch(0.1 0 0 / 0.06);
+  --shadow-md: 0 4px 20px oklch(0.1 0 0 / 0.08);
+  --shadow-lg: 0 8px 40px oklch(0.1 0 0 / 0.10);
+  --shadow-xl: 0 16px 64px oklch(0.1 0 0 / 0.12);
+  --shadow-2xl: 0 32px 80px oklch(0.1 0 0 / 0.16);
+
+  --shadow-gold-sm: 0 2px 12px var(--gold-dim);
+  --shadow-gold-md: 0 6px 32px oklch(0.730 0.160 62 / 0.20);
+  --shadow-gold-lg: 0 12px 48px oklch(0.730 0.160 62 / 0.25);
+
+  --shadow-inset: inset 0 1px 0 oklch(1 0 0 / 0.60);
+
+  /* ── Border Radius ── */
+  --rounded-none: 0;
+  --rounded-xs: 0.1875rem;
+  --rounded-sm: 0.375rem;
+  --rounded-md: 0.75rem;
+  --rounded-lg: 1.25rem;
+  --rounded-xl: 2rem;
+  --rounded-full: 9999px;
+
+  /* ── Transitions ── */
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-luxury: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-fast: 120ms;
+  --duration-base: 250ms;
+  --duration-slow: 420ms;
+  --duration-slower: 680ms;
+  --duration-scene: 1000ms;
+
+  /* ── Glass / Frosted ── */
+  --glass-bg: oklch(1 0 0 / 0.72);
+  --glass-border: oklch(1 0 0 / 0.40);
+  --glass-blur: blur(18px) saturate(160%);
+
+  --glass-gold-bg: oklch(0.730 0.160 62 / 0.08);
+  --glass-gold-border: oklch(0.730 0.160 62 / 0.30);
+
+  /* ── Gradient Presets ── */
+  --gradient-gold:
+    linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 50%, var(--gold-700) 100%);
+  --gradient-gold-subtle:
+    linear-gradient(135deg, var(--gold-100) 0%, var(--champagne) 100%);
+  --gradient-champagne:
+    linear-gradient(180deg, var(--ivory) 0%, var(--champagne-dark) 100%);
+  --gradient-obsidian:
+    linear-gradient(135deg, var(--obsidian) 0%, var(--charcoal) 100%);
+  --gradient-shimmer:
+    linear-gradient(90deg,
+      transparent 0%,
+      oklch(1 0 0 / 0.15) 40%,
+      oklch(1 0 0 / 0.35) 50%,
+      oklch(1 0 0 / 0.15) 60%,
+      transparent 100%);
+
+  /* ── Divider Lines ── */
+  --divider-hairline: 1px solid var(--luxury-border-fine);
+  --divider-gold: 1px solid oklch(0.730 0.160 62 / 0.35);
+  --divider-double: 3px double var(--luxury-border);
+
+  /* ── Z-index Scale ── */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 200;
+  --z-sticky: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
 }
 
+/* ── Dark Mode — Luxury Dark ── */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.473 0.137 46.201);
-  --primary-foreground: oklch(0.987 0.022 95.277);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.879 0.169 91.605);
-  --chart-2: oklch(0.769 0.188 70.08);
-  --chart-3: oklch(0.666 0.179 58.318);
-  --chart-4: oklch(0.555 0.163 48.998);
-  --chart-5: oklch(0.473 0.137 46.201);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.769 0.188 70.08);
-  --sidebar-primary-foreground: oklch(0.279 0.077 45.635);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --luxury-bg: var(--obsidian);
+  --luxury-surface: var(--obsidian-soft);
+  --luxury-surface-2: var(--charcoal);
+  --luxury-border: oklch(0.280 0.010 260);
+  --luxury-border-fine: oklch(0.240 0.008 260);
+  --luxury-text: var(--ivory);
+  --luxury-text-muted: var(--ash);
+  --luxury-text-dim: var(--smoke);
+  --luxury-accent: var(--gold-400);
+  --luxury-accent-soft: oklch(0.800 0.145 68 / 0.12);
+
+  --glass-bg: oklch(0.148 0.008 260 / 0.80);
+  --glass-border: oklch(1 0 0 / 0.08);
+}
+
+/* ================================================================
+   BASE LAYER
+   ================================================================ */
+
+@layer base {
+  :root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --radius: 0.625rem;
+  }
+
+  body {
+    @apply font-dm-sans antialiased bg-background text-foreground;
+    selection-color: var(--gold-dim);
+    color-scheme: light;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-cormorant font-medium tracking-tight;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ================================================================
+   UTILITY CLASSES — dùng trực tiếp với className hoặc @apply
+   ================================================================ */
+
+@layer utilities {
+
+  /* ── Scrollbar ── */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ── Typography Utilities ── */
+  .text-display {
+    font-size: var(--text-display);
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-tight);
+  }
+
+  .text-headline {
+    font-size: var(--text-headline);
+    letter-spacing: var(--tracking-headline);
+    line-height: var(--leading-snug);
+  }
+
+  .text-title-luxury {
+    font-size: var(--text-title);
+    letter-spacing: var(--tracking-title);
+    line-height: var(--leading-snug);
+  }
+
+  .text-label-luxury {
+    font-size: var(--text-label);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .text-caption-luxury {
+    font-size: var(--text-caption);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-relaxed);
+    color: var(--luxury-text-muted);
+  }
+
+  /* ── Gold Text (gradient clip) ── */
+  .text-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gold-subtle {
+    background: var(--gradient-gold-subtle);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Glass Cards ── */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+
+  .glass-gold {
+    background: var(--glass-gold-bg);
+    border: 1px solid var(--glass-gold-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+
+  /* ── Shimmer (skeleton / highlight) ── */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-shimmer);
+    background-size: 200% 100%;
+    animation: shimmer-sweep 2.2s infinite var(--ease-luxury);
+  }
+
+  /* ── Dividers ── */
+  .divider-gold {
+    border: none;
+    border-top: var(--divider-gold);
+  }
+
+  .divider-hairline {
+    border: none;
+    border-top: var(--divider-hairline);
+  }
+
+  .divider-double {
+    border: none;
+    border-top: var(--divider-double);
+  }
+
+  /* ── Shadows ── */
+  .shadow-luxury {
+    box-shadow: var(--shadow-lg), var(--shadow-inset);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold-md);
+  }
+
+  .shadow-gold-lg {
+    box-shadow: var(--shadow-gold-lg);
+  }
+
+  .shadow-gold-sm {
+    box-shadow: var(--shadow-gold-sm);
+  }
+
+  /* ── Hover Lift ── */
+  .hover-lift {
+    transition:
+      transform var(--duration-slow) var(--ease-luxury),
+      box-shadow var(--duration-slow) var(--ease-luxury);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .hover-lift-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-gold-lg);
+  }
+
+  /* ── Gold Border Glow ── */
+  .border-gold {
+    border: 1px solid oklch(0.730 0.160 62 / 0.35);
+  }
+
+  .ring-gold {
+    box-shadow: 0 0 0 2px var(--gold-dim), 0 0 0 4px oklch(0.730 0.160 62 / 0.08);
+  }
+
+  /* ── Gradient Backgrounds ── */
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .bg-gradient-gold-subtle {
+    background: var(--gradient-gold-subtle);
+  }
+
+  .bg-gradient-champagne {
+    background: var(--gradient-champagne);
+  }
+
+  .bg-gradient-obsidian {
+    background: var(--gradient-obsidian);
+  }
+
+  /* ── Luxury Surface ── */
+  .bg-luxury {
+    background-color: var(--luxury-bg);
+  }
+
+  .bg-luxury-surface {
+    background-color: var(--luxury-surface);
+  }
+
+  .text-luxury {
+    color: var(--luxury-text);
+  }
+
+  .text-luxury-muted {
+    color: var(--luxury-text-muted);
+  }
+
+  .text-luxury-dim {
+    color: var(--luxury-text-dim);
+  }
+
+  /* ── Fade In Up with blur — stagger với style="--delay:150ms" ── */
+  .animate-fade-in-up-luxury {
+    opacity: 0;
+    animation: fade-in-up-luxury var(--duration-scene) var(--ease-luxury) var(--delay, 0ms) forwards;
+  }
+
+  /* ── Gold Pulse ── */
+  .animate-gold-pulse {
+    animation: gold-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+/* ================================================================
+   KEYFRAMES
+   ================================================================ */
+
+@keyframes shimmer-sweep {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in-up-luxury {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes gold-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes float-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }

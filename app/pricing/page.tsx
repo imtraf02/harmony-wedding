@@ -1,7 +1,7 @@
 import { buildMetadata } from '@/lib/metadata';
-import { Breadcrumb }    from '@/components/shared/Breadcrumb';
-import { SectionTitle }  from '@/components/shared/SectionTitle';
-import { CtaBanner }     from '@/components/home/CtaBanner';
+import { Breadcrumb }    from '@/components/shared/breadcrumb';
+import { SectionTitle }  from '@/components/shared/section-title';
+import { CtaBanner }     from '@/components/home/cta-banner';
 
 export const metadata = buildMetadata({
   title      : 'Báo giá dịch vụ | Gói chụp ảnh & Quay phim cưới',

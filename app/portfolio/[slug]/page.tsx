@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation';
 import { getPortfolioBySlug } from '@/lib/queries/portfolio';
 import { buildMetadata }      from '@/lib/metadata';
-import { Breadcrumb }         from '@/components/shared/Breadcrumb';
-import { SectionTitle }       from '@/components/shared/SectionTitle';
-import { OptimizedImage }     from '@/components/shared/OptimizedImage';
-import { VideoEmbed }         from '@/components/shared/VideoEmbed';
-import { CtaBanner }          from '@/components/home/CtaBanner';
-import { PortfolioAlbum }     from '@/components/portfolio/PortfolioAlbum';
+import { Breadcrumb }         from '@/components/shared/breadcrumb';
+import { SectionTitle }       from '@/components/shared/section-title';
+import { OptimizedImage }     from '@/components/shared/optimized-image';
+import { VideoEmbed }         from '@/components/shared/video-embed';
+import { CtaBanner }          from '@/components/home/cta-banner';
+import { PortfolioAlbum }     from '@/components/portfolio/portfolio-album';
 
 interface PortfolioDetailPageProps {
   params: Promise<{ slug: string }>;

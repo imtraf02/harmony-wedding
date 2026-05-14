@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, DM_Sans, Geist } from 'next/font/google';
-import { SiteShell } from '@/components/layout/SiteShell';
+import { Cormorant_Garamond, DM_Sans, Geist, Jost } from 'next/font/google';
+import { SiteShell } from '@/components/layout/site-shell';
 import './globals.css';
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -8,7 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
+  subsets: ['latin', 'vietnamese'],
   weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
@@ -19,6 +19,13 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-jost',
   display: 'swap',
 });
 
@@ -42,8 +49,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" className={cn(cormorant.variable, dmSans.variable, "font-sans", geist.variable)}>
-      <body className="bg-background text-foreground antialiased">
+    <html lang="vi" className={cn(cormorant.variable, dmSans.variable, jost.variable, "font-sans", geist.variable)}>
+      <body className="bg-luxury text-obsidian antialiased selection:bg-gold-dim selection:text-gold">
         <TooltipProvider>
           <SiteShell>
             {children}

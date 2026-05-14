@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { JsonLd, breadcrumbSchema } from '@/components/shared/JsonLd';
+import { JsonLd, breadcrumbSchema } from '@/components/shared/json-ld';
 
 interface BreadcrumbItem {
   name: string;
@@ -16,7 +16,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <>
       <JsonLd data={breadcrumbSchema(allItems)} />
-      <nav aria-label="Breadcrumb" className="breadcrumb">
+      <nav aria-label="breadcrumb" className="breadcrumb">
         <ol className="breadcrumb-list">
           {allItems.map((item, i) => (
             <li key={item.path} className="breadcrumb-item">

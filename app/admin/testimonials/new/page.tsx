@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -23,11 +23,11 @@ export default function NewTestimonialPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    couple_name : '',
-    content     : '',
-    rating      : 5,
-    avatar      : '',
-    service     : 'photography',
+    couple_name: '',
+    content: '',
+    rating: 5,
+    avatar: '',
+    service: 'photography',
     wedding_year: new Date().getFullYear(),
   });
 
@@ -37,9 +37,9 @@ export default function NewTestimonialPage() {
 
     try {
       const res = await fetch('/api/admin/testimonials', {
-        method : 'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify(form),
+        body: JSON.stringify(form),
       });
 
       if (res.ok) {
@@ -100,11 +100,13 @@ export default function NewTestimonialPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {SERVICE_ITEMS.filter(i => i.value !== null).map(item => (
-                        <SelectItem key={item.value} value={item.value!}>
-                          {item.label}
-                        </SelectItem>
-                      ))}
+                      <SelectGroup>
+                        {SERVICE_ITEMS.filter(i => i.value !== null).map(item => (
+                          <SelectItem key={item.value} value={item.value!}>
+                            {item.label}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
                     </SelectContent>
                   </Select>
                 </Field>

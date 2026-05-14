@@ -1,11 +1,11 @@
 import { getFeaturedPortfolios } from '@/lib/queries/portfolio';
 import { getActiveTestimonials } from '@/lib/queries/testimonials';
-import { HeroVideo }           from '@/components/home/HeroVideo';
-import { ServiceCards }        from '@/components/home/ServiceCards';
-import { FeaturedPortfolio }   from '@/components/home/FeaturedPortfolio';
-import { Testimonials }        from '@/components/home/Testimonials';
-import { CtaBanner }           from '@/components/home/CtaBanner';
-import { JsonLd, localBusinessSchema } from '@/components/shared/JsonLd';
+import { HeroVideo }           from '@/components/home/hero-video';
+import { ServiceCards }        from '@/components/home/service-cards';
+import { FeaturedPortfolio }   from '@/components/home/featured-portfolio';
+import { Testimonials }        from '@/components/home/testimonials';
+import { CtaBanner }           from '@/components/home/cta-banner';
+import { JsonLd, localBusinessSchema } from '@/components/shared/json-ld';
 
 export default async function Home() {
   // Fetch data for the homepage
