@@ -74,7 +74,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       <SidebarMenuItem key={item.href}>
                         <SidebarMenuButton 
                           render={<Link href={item.href} />}
-                          nativeButton={false}
                           isActive={active}
                           tooltip={item.label}
                           className={active ? "bg-gold text-white hover:bg-gold/90 hover:text-white shadow-lg shadow-gold/20" : "text-zinc-600 hover:bg-zinc-100"}

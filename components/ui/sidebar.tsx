@@ -498,7 +498,6 @@ const sidebarMenuButtonVariants = cva(
 
 function SidebarMenuButton({
   render,
-  nativeButton,
   isActive = false,
   variant = "default",
   size = "default",
@@ -520,7 +519,6 @@ function SidebarMenuButton({
       props
     ),
     render: !tooltip ? render : <TooltipTrigger render={render} />,
-    nativeButton,
     state: {
       slot: "sidebar-menu-button",
       sidebar: "menu-button",

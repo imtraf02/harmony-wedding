@@ -31,7 +31,6 @@ export default async function AdminDashboard() {
             <Button 
               variant="link" 
               render={<Link href="/admin/contacts" />} 
-              nativeButton={false}
               className="text-xs font-semibold text-gold uppercase tracking-widest p-0"
             >
               Xem tất cả
