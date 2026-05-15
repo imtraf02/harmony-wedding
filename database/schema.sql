@@ -87,3 +87,16 @@ CREATE TABLE IF NOT EXISTS admins (
   password   TEXT    NOT NULL,
   created_at TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
 );
+
+CREATE TABLE IF NOT EXISTS hero_slides (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  src         TEXT    NOT NULL,
+  title       TEXT,
+  subtitle    TEXT,
+  description TEXT,
+  cta_label   TEXT,
+  cta_href    TEXT,
+  sort_order  INTEGER NOT NULL DEFAULT 0,
+  is_active   INTEGER NOT NULL DEFAULT 1,
+  created_at  TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
+);
