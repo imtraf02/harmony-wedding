@@ -14,14 +14,11 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Cấu hình Server Actions (Top-level theo chuẩn Next.js 15/16)
-  // @ts-ignore - Bỏ qua nếu IDE của bạn chưa cập nhật bộ gõ NextConfig mới nhất
-  serverActions: {
-    bodySizeLimit: '100mb',
-  },
-
   experimental: {
     optimizePackageImports: ['lucide-react'],
+    serverActions: {
+      bodySizeLimit: '100mb',
+    },
   },
 
   async redirects() {
