@@ -1,6 +1,5 @@
 import type { NextConfig } from 'next'
 
-
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
@@ -16,9 +15,12 @@ const nextConfig: NextConfig = {
 
   experimental: {
     optimizePackageImports: ['lucide-react'],
+
     serverActions: {
       bodySizeLimit: '100mb',
     },
+
+    middlewareClientMaxBodySize: 100 * 1024 * 1024,
   },
 
   async redirects() {
@@ -28,8 +30,8 @@ const nextConfig: NextConfig = {
       { source: '/services/photo', destination: '/services/photography', permanent: true },
       { source: '/location', destination: '/studios', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
-    ];
+    ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
