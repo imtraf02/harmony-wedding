@@ -11,4 +11,4 @@ export const SERVICE_TYPES       = ['photography', 'videography', 'wedding-film'
 export const CONTACT_STATUSES    = ['new', 'contacted', 'booked', 'completed', 'cancelled'] as const;
 
 export const UPLOAD_MAX_MB = Number(process.env.UPLOAD_MAX_MB ?? 10);
-export const UPLOAD_DIR    = process.env.UPLOAD_DIR ?? 'public/uploads';
+export const UPLOAD_DIR    = process.env.UPLOAD_DIR ?? '/var/lib/wedding/uploads';

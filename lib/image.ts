@@ -2,8 +2,8 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs/promises';
 import crypto from 'crypto';
+import { UPLOAD_DIR } from './constants';
 
-const UPLOAD_DIR = process.env.UPLOAD_DIR ?? 'public/uploads';
 
 export interface UploadResult {
   url         : string;   // /uploads/portfolio/abc123.webp
@@ -24,8 +24,7 @@ export async function processImage(
   maxWidth: number = 1920,
 ): Promise<UploadResult> {
   const id      = crypto.randomBytes(8).toString('hex');
-  const relDir  = `${UPLOAD_DIR}/${category}`;
-  const absDir  = path.join(process.cwd(), relDir);
+  const absDir  = path.isAbsolute(UPLOAD_DIR) ? path.join(UPLOAD_DIR, category) : path.join(process.cwd(), UPLOAD_DIR, category);
   const filename = `${id}.webp`;
   const absPath  = path.join(absDir, filename);
 

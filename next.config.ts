@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   images: {
-    unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: '**' },
       { protocol: 'http', hostname: '**' },

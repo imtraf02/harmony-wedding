@@ -293,7 +293,7 @@ server {
 
     # Uploaded media — served by Nginx, no Node.js involved
     location /uploads/ {
-        alias  /var/www/wedding/public/uploads/;
+        alias  /var/lib/wedding/uploads/;
         expires 7d;
         add_header Cache-Control "public, must-revalidate";
         location ~* \.(php|sh|py|rb|exe)$ { deny all; }
@@ -463,7 +463,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_KEY=
 
 # ── Upload ─────────────────────────────────────────────────────
 UPLOAD_MAX_MB=10
-UPLOAD_DIR=public/uploads
+UPLOAD_DIR=/var/lib/wedding/uploads
 
 # ── Analytics (optional) ───────────────────────────────────────
 NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX
@@ -1070,7 +1070,7 @@ DATE=$(date +%Y-%m-%d_%H%M%S)
 mkdir -p "$BACKUP_DIR"
 
 sqlite3 /var/www/wedding/database/wedding.db ".backup '$BACKUP_DIR/wedding_$DATE.db'"
-tar -czf "$BACKUP_DIR/uploads_$DATE.tar.gz" -C /var/www/wedding/public uploads/
+tar -czf "$BACKUP_DIR/uploads_$DATE.tar.gz" -C /var/lib/wedding uploads/
 
 ls -t "$BACKUP_DIR"/*.db     | tail -n +31 | xargs -r rm --
 ls -t "$BACKUP_DIR"/*.tar.gz | tail -n +31 | xargs -r rm --

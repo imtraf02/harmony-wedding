@@ -21,8 +21,9 @@ if [ -f "$PROJECT_DIR/database/wedding.db" ]; then
 fi
 
 # 2. Sao lưu thư mục ảnh uploads
-if [ -d "$PROJECT_DIR/public/uploads" ]; then
-    tar -czf "$BACKUP_DIR/uploads_$DATE.tar.gz" -C "$PROJECT_DIR/public" uploads/
+UPLOAD_PATH="/var/lib/wedding/uploads"
+if [ -d "$UPLOAD_PATH" ]; then
+    tar -czf "$BACKUP_DIR/uploads_$DATE.tar.gz" -C "$(dirname "$UPLOAD_PATH")" "$(basename "$UPLOAD_PATH")"
     echo "[$DATE]  - Uploads backed up: uploads_$DATE.tar.gz"
 fi
 
