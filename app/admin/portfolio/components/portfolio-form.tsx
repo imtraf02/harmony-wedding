@@ -186,7 +186,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
             <FileUpload
               accept="image/*"
               maxFiles={1}
-              maxSize={4 * 1024 * 1024}
+              maxSize={20 * 1024 * 1024}
               value={coverFiles}
               onValueChange={setCoverFiles}
               onFileReject={onFileReject}
@@ -200,7 +200,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">Tải ảnh bìa lên</p>
-                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 4MB</p>
+                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 20MB</p>
                   </div>
                   <FileUploadTrigger render={<Button variant="outline" size="sm" className="mt-2 rounded-none border-black/5 text-[9px] uppercase tracking-widest font-bold px-6" />}>Chọn tệp</FileUploadTrigger>
                 </div>
@@ -255,7 +255,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
             <FileUpload
               accept="image/*"
               maxFiles={20}
-              maxSize={8 * 1024 * 1024}
+              maxSize={100 * 1024 * 1024}
               value={galleryFiles}
               onValueChange={setGalleryFiles}
               onFileReject={onFileReject}

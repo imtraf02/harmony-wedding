@@ -91,7 +91,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
             <FileUpload
               accept="image/*"
               maxFiles={1}
-              maxSize={4 * 1024 * 1024}
+              maxSize={20 * 1024 * 1024}
               value={files}
               onValueChange={setFiles}
               onFileReject={onFileReject}
@@ -107,7 +107,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
                     <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">
                       Hoặc tải ảnh lên
                     </p>
-                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 4MB</p>
+                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 20MB</p>
                   </div>
                   <FileUploadTrigger
                     render={

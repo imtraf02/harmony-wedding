@@ -7,7 +7,7 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 
-const DB_PATH     = path.join(process.cwd(), 'database', 'wedding.db');
+const DB_PATH = path.join(process.cwd(), 'database', 'wedding.db');
 const SCHEMA_PATH = path.join(process.cwd(), 'database', 'schema.sql');
 
 function init() {
@@ -16,7 +16,7 @@ function init() {
     fs.mkdirSync(dbDir, { recursive: true });
   }
 
-  const db     = new Database(DB_PATH);
+  const db = new Database(DB_PATH);
   const schema = fs.readFileSync(SCHEMA_PATH, 'utf8');
 
   db.pragma('journal_mode = WAL');

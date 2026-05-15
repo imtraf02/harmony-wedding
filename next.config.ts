@@ -19,6 +19,7 @@ const config: NextConfig = {
   },
 
   images: {
+    unoptimized     : true,
     formats         : ['image/webp'],
     deviceSizes     : [640, 750, 1080, 1920],
     imageSizes      : [64, 128, 256, 384],
@@ -38,7 +39,7 @@ const config: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
     serverActions: {
-      bodySizeLimit: '50mb',
+      bodySizeLimit: '100mb',
     },
   },
 };

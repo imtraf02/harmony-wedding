@@ -170,7 +170,7 @@ export function HeroForm({ initialData }: HeroFormProps) {
               <FileUpload
                 accept="image/*"
                 maxFiles={1}
-                maxSize={4 * 1024 * 1024}
+                maxSize={20 * 1024 * 1024}
                 value={files}
                 onValueChange={setFiles}
                 onFileReject={onFileReject}
@@ -182,7 +182,7 @@ export function HeroForm({ initialData }: HeroFormProps) {
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">Tải ảnh slide lên</p>
-                      <p className="text-[10px] text-mist mt-1 uppercase">Tối đa 4MB</p>
+                      <p className="text-[10px] text-mist mt-1 uppercase">Tối đa 20MB</p>
                     </div>
                     <FileUploadTrigger render={<Button variant="outline" size="sm" className="mt-2 rounded-none border-black/5 text-[9px] uppercase tracking-widest font-bold px-6" />}>Chọn tệp</FileUploadTrigger>
                   </div>
