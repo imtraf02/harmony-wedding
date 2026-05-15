@@ -1,49 +1,38 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from 'next'
 
-const config: NextConfig = {
-  compress        : true,
-  poweredByHeader : false,
-  reactStrictMode : true,
 
-  // Silence the "webpack config with no turbopack config" warning
-  turbopack: {},
-
-  async redirects() {
-    return [
-      { source: '/gallery',        destination: '/portfolio',            permanent: true },
-      { source: '/services/video', destination: '/services/videography', permanent: true },
-      { source: '/services/photo', destination: '/services/photography', permanent: true },
-      { source: '/location',       destination: '/studios',              permanent: true },
-      { source: '/contact-us',     destination: '/contact',              permanent: true },
-    ];
-  },
+const nextConfig: NextConfig = {
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 
   images: {
-    unoptimized     : true,
-    formats         : ['image/webp'],
-    deviceSizes     : [640, 750, 1080, 1920],
-    imageSizes      : [64, 128, 256, 384],
-    minimumCacheTTL : 86400,
+    unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
     ],
   },
 
-  // @ts-ignore
+  // Cấu hình Server Actions (Top-level theo chuẩn Next.js 15/16)
+  // @ts-ignore - Bỏ qua nếu IDE của bạn chưa cập nhật bộ gõ NextConfig mới nhất
   serverActions: {
     bodySizeLimit: '100mb',
   },
-  
+
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
+
+  async redirects() {
+    return [
+      { source: '/gallery', destination: '/portfolio', permanent: true },
+      { source: '/services/video', destination: '/services/videography', permanent: true },
+      { source: '/services/photo', destination: '/services/photography', permanent: true },
+      { source: '/location', destination: '/studios', permanent: true },
+      { source: '/contact-us', destination: '/contact', permanent: true },
+    ];
+  },
 };
 
-export default config;
+export default nextConfig;
