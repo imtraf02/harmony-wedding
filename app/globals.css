@@ -109,9 +109,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --font-cormorant: var(--font-cormorant);
-  --font-dm-sans: var(--font-dm-sans);
-  --font-jost: var(--font-jost);
+  --font-roboto: var(--font-roboto);
 
   @keyframes fade-in {
     from {
@@ -201,31 +199,30 @@
      Style: Tinh tế · Cao cấp · Editorial
      ================================================================ */
 
-  /* ── Gold Palette ── */
-  --gold-50: oklch(0.980 0.018 88);
-  --gold-100: oklch(0.955 0.038 86);
-  --gold-200: oklch(0.908 0.075 80);
-  --gold-300: oklch(0.858 0.112 74);
-  --gold-400: oklch(0.800 0.145 68);
-  --gold-500: oklch(0.730 0.160 62);
-  /* chính: warm gold */
-  --gold-600: oklch(0.648 0.148 57);
-  --gold-700: oklch(0.552 0.128 52);
-  --gold-800: oklch(0.440 0.098 50);
-  --gold-900: oklch(0.318 0.068 48);
+  /* ── Black/White Palette (Replaced Gold) ── */
+  --gold-50: #fcfcfc;
+  --gold-100: #f5f5f5;
+  --gold-200: #e5e5e5;
+  --gold-300: #d4d4d4;
+  --gold-400: #a3a3a3;
+  --gold-500: #1a1a1a; /* Pure Blackish */
+  --gold-600: #171717;
+  --gold-700: #0a0a0a;
+  --gold-800: #050505;
+  --gold-900: #000000;
 
   --gold: var(--gold-500);
-  --gold-foreground: oklch(0.987 0.010 90);
-  --gold-muted: var(--gold-200);
-  --gold-dim: oklch(0.730 0.160 62 / 0.12);
+  --gold-foreground: #ffffff;
+  --gold-muted: #a3a3a3;
+  --gold-dim: rgba(0, 0, 0, 0.08);
   /* overlay nhẹ */
 
-  /* ── Champagne / Ivory ── */
-  --champagne: oklch(0.972 0.018 88);
-  --champagne-dark: oklch(0.940 0.028 84);
-  --ivory: oklch(0.985 0.010 90);
-  --ivory-warm: oklch(0.975 0.022 80);
-  --cream: oklch(0.960 0.020 85);
+  /* ── Neutral Neutrals ── */
+  --champagne: oklch(0.98 0 0);
+  --champagne-dark: oklch(0.96 0 0);
+  --ivory: oklch(1 0 0);
+  --ivory-warm: oklch(0.99 0 0);
+  --cream: oklch(0.985 0 0);
 
   /* ── Obsidian / Deep Neutrals ── */
   --obsidian: oklch(0.108 0.008 260);
@@ -263,7 +260,7 @@
   --luxury-text-muted: var(--smoke);
   --luxury-text-dim: var(--ash);
   --luxury-accent: var(--gold-500);
-  --luxury-accent-soft: var(--gold-dim);
+  --luxury-accent-soft: oklch(0.108 0 0 / 0.05);
 
   /* ── Typography Scale ── */
   --text-display: clamp(3.2rem, 7vw, 6.4rem);
@@ -307,9 +304,9 @@
   --shadow-xl: 0 16px 64px oklch(0.1 0 0 / 0.12);
   --shadow-2xl: 0 32px 80px oklch(0.1 0 0 / 0.16);
 
-  --shadow-gold-sm: 0 2px 12px var(--gold-dim);
-  --shadow-gold-md: 0 6px 32px oklch(0.730 0.160 62 / 0.20);
-  --shadow-gold-lg: 0 12px 48px oklch(0.730 0.160 62 / 0.25);
+  --shadow-gold-sm: 0 2px 12px oklch(0.1 0 0 / 0.05);
+  --shadow-gold-md: 0 6px 32px oklch(0.1 0 0 / 0.10);
+  --shadow-gold-lg: 0 12px 48px oklch(0.1 0 0 / 0.15);
 
   --shadow-inset: inset 0 1px 0 oklch(1 0 0 / 0.60);
 
@@ -338,14 +335,14 @@
   --glass-border: oklch(1 0 0 / 0.40);
   --glass-blur: blur(18px) saturate(160%);
 
-  --glass-gold-bg: oklch(0.730 0.160 62 / 0.08);
-  --glass-gold-border: oklch(0.730 0.160 62 / 0.30);
+  --glass-gold-bg: oklch(0 0 0 / 0.03);
+  --glass-gold-border: oklch(0 0 0 / 0.15);
 
   /* ── Gradient Presets ── */
   --gradient-gold:
-    linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 50%, var(--gold-700) 100%);
+    linear-gradient(135deg, oklch(0.4 0 0) 0%, oklch(0.1 0 0) 100%);
   --gradient-gold-subtle:
-    linear-gradient(135deg, var(--gold-100) 0%, var(--champagne) 100%);
+    linear-gradient(135deg, oklch(0.9 0 0) 0%, oklch(1 0 0) 100%);
   --gradient-champagne:
     linear-gradient(180deg, var(--ivory) 0%, var(--champagne-dark) 100%);
   --gradient-obsidian:
@@ -360,7 +357,7 @@
 
   /* ── Divider Lines ── */
   --divider-hairline: 1px solid var(--luxury-border-fine);
-  --divider-gold: 1px solid oklch(0.730 0.160 62 / 0.35);
+  --divider-gold: 1px solid oklch(0 0 0 / 0.1);
   --divider-double: 3px double var(--luxury-border);
 
   /* ── Z-index Scale ── */
@@ -420,9 +417,13 @@
   }
 
   body {
-    @apply font-dm-sans antialiased bg-background text-foreground;
-    selection-color: var(--gold-dim);
+    @apply font-sans antialiased bg-background text-foreground;
+    selection-color: oklch(0.1 0 0 / 0.1);
     color-scheme: light;
+  }
+
+  em, i {
+    font-style: normal;
   }
 
   h1,
@@ -431,7 +432,7 @@
   h4,
   h5,
   h6 {
-    @apply font-cormorant font-medium tracking-tight;
+    @apply font-sans font-medium tracking-tight;
   }
 
   * {

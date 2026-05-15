@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPortfolioBySlug } from '@/lib/queries/portfolio';
 import { buildMetadata }      from '@/lib/metadata';
-import { Breadcrumb }         from '@/components/shared/breadcrumb';
 import { SectionTitle }       from '@/components/shared/section-title';
 import { OptimizedImage }     from '@/components/shared/optimized-image';
 import { VideoEmbed }         from '@/components/shared/video-embed';
@@ -48,12 +47,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   return (
     <div className="pt-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Breadcrumb 
-          items={[
-            { name: 'Portfolio', path: '/portfolio' },
-            { name: portfolio.title, path: `/portfolio/${slug}` }
-          ]} 
-        />
+
 
         <section className="mt-12">
           <SectionTitle
@@ -63,20 +57,24 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           />
 
           {/* Hero Image / Video */}
-          <div className="relative aspect-[21/9] w-full rounded-3xl overflow-hidden mb-16 shadow-2xl">
+          <div className="flex justify-center w-full mb-16">
             {portfolio.video_url ? (
-              <VideoEmbed 
-                url={portfolio.video_url} 
-                thumbnail={portfolio.cover_image} 
-                title={portfolio.title} 
-              />
+              <div className="w-full aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl">
+                <VideoEmbed 
+                  url={portfolio.video_url} 
+                  thumbnail={portfolio.cover_image} 
+                  title={portfolio.title} 
+                />
+              </div>
             ) : (
-              <OptimizedImage
-                src={portfolio.cover_image}
-                alt={portfolio.title}
-                fill
-                priority
-              />
+              <div className="rounded-3xl overflow-hidden shadow-2xl bg-whisper">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={portfolio.cover_image}
+                  alt={portfolio.title}
+                  className="w-auto max-w-full h-auto max-h-[85vh] object-contain"
+                />
+              </div>
             )}
           </div>
 

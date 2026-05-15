@@ -21,25 +21,25 @@ export function CtaBanner() {
         <p className="text-label-luxury text-gold mb-8">
           Bạn đã sẵn sàng?
         </p>
-        <h2 className="text-display font-cormorant font-light text-obsidian mb-10 leading-tight">
+        <h2 className="text-display font-sans font-light text-obsidian mb-10 leading-tight">
           Hãy cùng chúng tôi tạo nên<br />
-          <em className="italic font-light text-gold">Những điều tuyệt vời</em>
+          <em className=" font-light text-gold">Những điều tuyệt vời</em>
         </h2>
-        <p className="text-smoke font-light max-w-xl mx-auto mb-14 italic leading-relaxed">
+        <p className="text-smoke font-light max-w-xl mx-auto mb-14  leading-relaxed">
           Ngày cưới của bạn xứng đáng được lưu giữ trọn vẹn từng cảm xúc.<br />
           Hãy liên hệ với chúng tôi để được tư vấn miễn phí.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link 
             href="/contact" 
-            className="inline-flex items-center justify-center bg-gold text-obsidian px-12 py-5 text-[11px] font-bold uppercase tracking-[0.25em] hover:bg-obsidian hover:text-ivory transition-all duration-500 shadow-luxury rounded-none" 
+            className="inline-flex items-center justify-center bg-obsidian text-white px-12 py-5 text-[11px] font-bold uppercase tracking-[0.25em] hover:bg-ash hover:text-obsidian transition-all duration-500 shadow-luxury rounded-none" 
             id="cta-banner-contact"
           >
             Đăng ký tư vấn miễn phí
           </Link>
           <Link 
             href="/pricing" 
-            className="inline-flex items-center justify-center border border-black/10 text-ash px-12 py-5 text-[11px] font-bold uppercase tracking-[0.25em] hover:bg-white hover:border-gold/30 transition-all duration-500 rounded-none" 
+            className="inline-flex items-center justify-center border border-black/10 text-ash px-12 py-5 text-[11px] font-bold uppercase tracking-[0.25em] hover:bg-obsidian hover:text-white transition-all duration-500 rounded-none" 
             id="cta-banner-pricing"
           >
             Xem bảng giá

@@ -2,17 +2,19 @@ import { getPortfolios } from '@/lib/queries/portfolio';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { DeleteButton } from './components/delete-button';
-import { PlusIcon, ExternalLinkIcon } from 'lucide-react';
+import { PlusIcon, PencilIcon } from 'lucide-react';
 
 export default async function AdminPortfolioList() {
   const items = getPortfolios();
 
   return (
-    <div className="space-y-16 font-jost">
+    <div className="space-y-16 font-sans">
+      {/* ── Header ── */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div className="space-y-2">
-          <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Danh sách Portfolio</h1>
+          <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Danh sách Portfolio</h1>
           <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Quản lý các bộ sưu tập hình ảnh và video</p>
         </div>
         <Button 
@@ -24,81 +26,93 @@ export default async function AdminPortfolioList() {
         </Button>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {items.map((item) => (
-          <div key={item.id} className="group flex flex-col gap-6 animate-fade-in-up-luxury">
-            <div className="relative aspect-[4/5] bg-whisper overflow-hidden shadow-sm group-hover:shadow-luxury transition-all duration-500">
+      {/* ── Grid preview ── */}
+      {items.length > 0 ? (
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          {items.map((item) => (
+            <div 
+              key={item.id} 
+              className="group relative aspect-[3/4] bg-whisper overflow-hidden shadow-sm hover:shadow-luxury transition-all duration-500 animate-fade-in-up-luxury"
+            >
+              {/* Image */}
               {item.cover_image ? (
                 <Image 
                   src={item.cover_image} 
                   alt={item.title} 
                   fill 
-                  className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0" 
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0" 
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-mist font-light uppercase tracking-widest text-[10px]">
-                  No Image Provided
+                  No Image
                 </div>
               )}
               
-              {/* Badge Overlays */}
-              <div className="absolute top-6 left-6 flex flex-col gap-2">
+              {/* Status badges */}
+              <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
                 {item.is_featured && (
-                  <span className="bg-gold text-ivory text-[8px] uppercase tracking-[0.25em] px-3 py-1 font-bold shadow-gold-sm">Featured</span>
+                  <Badge className="rounded-none text-[7px] uppercase tracking-[0.2em] px-2 py-0.5 font-bold border-0 bg-gold/90 text-ivory">
+                    Featured
+                  </Badge>
                 )}
-                <span className="bg-obsidian/40 backdrop-blur-md text-ivory text-[8px] uppercase tracking-[0.25em] px-3 py-1 font-bold border border-white/10">
+                <Badge className="rounded-none text-[7px] uppercase tracking-[0.15em] px-2 py-0.5 font-bold border-0 bg-obsidian/30 backdrop-blur-sm text-white">
                   {item.style}
-                </span>
+                </Badge>
+                <Badge className="rounded-none text-[7px] uppercase tracking-[0.15em] px-2 py-0.5 font-bold border-0 bg-obsidian/30 backdrop-blur-sm text-white">
+                  #{item.sort_order}
+                </Badge>
               </div>
 
-              {/* Action Overlay */}
-              <div className="absolute inset-0 bg-obsidian/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
-                <Button 
-                  variant="outline" 
-                  render={<Link href={`/admin/portfolio/edit/${item.id}`} />} 
-                  nativeButton={false} 
-                  className="bg-ivory/90 border-0 text-obsidian rounded-none h-12 w-12 p-0 hover:bg-gold hover:text-ivory transition-all duration-500 shadow-luxury"
-                >
-                  <PenLineIcon className="size-4" />
-                </Button>
-                <div className="bg-ivory/90 border-0 text-obsidian rounded-none h-12 w-12 p-0 hover:bg-red-500 hover:text-ivory transition-all duration-500 flex items-center justify-center cursor-pointer shadow-luxury">
-                  <DeleteButton id={item.id} />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+
+              {/* Label + actions */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-gold mb-1 truncate">
+                  {item.title}
+                </p>
+                <p className="text-[9px] text-white/80 font-light leading-snug uppercase tracking-widest truncate">
+                  {item.location_type}
+                </p>
+                <div className="flex items-center gap-2 mt-3">
+                  <Link 
+                    href={`/admin/portfolio/edit/${item.id}`} 
+                    className="flex items-center justify-center size-8 bg-white/20 hover:bg-gold transition-colors duration-300 backdrop-blur-sm"
+                  >
+                    <PencilIcon className="size-3.5 text-white" />
+                  </Link>
+                  <div className="flex items-center justify-center size-8 bg-white/20 hover:bg-red-500 transition-colors duration-300 backdrop-blur-sm">
+                    <DeleteButton id={item.id} />
+                  </div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      ) : (
+        <div className="py-40 text-center border border-dashed border-black/10">
+          <p className="text-smoke font-light text-xl tracking-wide mb-8">
+            Chưa có Portfolio nào trong thư viện.
+          </p>
+          <Button 
+            variant="link"
+            render={<Link href="/admin/portfolio/new" />} 
+            nativeButton={false}
+            className="text-gold font-medium uppercase tracking-[0.2em] text-[11px] hover:no-underline hover:opacity-70 transition-all"
+          >
+            Tạo dự án đầu tiên ↗
+          </Button>
+        </div>
+      )}
 
-            <div className="space-y-3 px-2">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-2xl font-cormorant font-light text-obsidian group-hover:text-gold transition-colors duration-500">{item.title}</h3>
-                  <p className="text-[10px] text-smoke uppercase tracking-[0.2em] font-medium">{item.location_type || 'General'}</p>
-                </div>
-                <Link href={`/portfolio/${item.slug}`} target="_blank" className="text-mist hover:text-gold transition-colors p-1">
-                  <ExternalLinkIcon className="size-4 stroke-[1.2px]" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {items.length === 0 && (
-          <div className="col-span-full py-40 text-center border border-dashed border-black/10">
-            <p className="text-smoke font-light italic mb-8 text-xl tracking-wide">Chưa có Portfolio nào trong thư viện.</p>
-            <Button 
-              variant="link"
-              render={<Link href="/admin/portfolio/new" />} 
-              nativeButton={false}
-              className="text-gold font-medium uppercase tracking-[0.2em] text-[11px] hover:no-underline hover:opacity-70 transition-all"
-            >
-              Tạo dự án đầu tiên ↗
-            </Button>
-          </div>
-        )}
-      </div>
+      {/* ── Stats footer ── */}
+      {items.length > 0 && (
+        <div className="flex items-center gap-8 pt-4 border-t border-black/5 text-[10px] uppercase tracking-[0.15em] text-smoke font-medium">
+          <span>Tổng: {items.length} bộ sưu tập</span>
+          <span className="text-gold">· Tiêu biểu (Featured): {items.filter(i => i.is_featured).length}</span>
+        </div>
+      )}
     </div>
   );
 }
-
-
-import { PenLineIcon } from 'lucide-react';
-

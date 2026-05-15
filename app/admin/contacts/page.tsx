@@ -19,9 +19,9 @@ export default async function AdminContactsPage() {
   const contacts = db.prepare('SELECT * FROM contacts ORDER BY created_at DESC').all() as any[];
 
   return (
-    <div className="space-y-16 font-jost">
+    <div className="space-y-16 font-sans">
       <header className="space-y-2">
-        <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Yêu cầu liên hệ</h1>
+        <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Yêu cầu liên hệ</h1>
         <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Theo dõi và quản lý các yêu cầu tư vấn từ khách hàng</p>
       </header>
 
@@ -64,7 +64,7 @@ export default async function AdminContactsPage() {
                       <Badge variant="outline" className="rounded-none border-gold-dim text-gold text-[9px] uppercase tracking-widest bg-gold-dim font-bold">
                         {c.service}
                       </Badge>
-                      <p className="text-[12px] text-smoke font-light leading-relaxed italic line-clamp-3">
+                      <p className="text-[12px] text-smoke font-light leading-relaxed  line-clamp-3">
                         {c.message ? `"${c.message}"` : '— No message —'}
                       </p>
                     </div>
@@ -103,7 +103,7 @@ export default async function AdminContactsPage() {
               ))}
               {contacts.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="px-8 py-32 text-center text-smoke italic font-light tracking-wide">
+                  <td colSpan={4} className="px-8 py-32 text-center text-smoke  font-light tracking-wide">
                     Hệ thống chưa ghi nhận yêu cầu liên hệ nào.
                   </td>
                 </tr>

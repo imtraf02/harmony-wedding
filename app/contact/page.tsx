@@ -5,7 +5,7 @@ import {
   PHONE,
   ZALO_ID,
   FACEBOOK_URL,
-  INSTAGRAM_URL,
+  TIKTOK_URL,
 } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
@@ -59,7 +59,7 @@ function InfoItem({
 /* ─── SVG icons ───────────────────────────────── */
 const PhoneIcon = () => (
   <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -70,11 +70,9 @@ const PinIcon = () => (
   </svg>
 );
 
-const InstagramIcon = () => (
-  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+const TikTokIcon = () => (
+  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.8.2-.82.41-1.4 1.25-1.55 2.15-.09.76-.04 1.54.21 2.27.35.85 1.07 1.54 1.92 1.87.74.29 1.55.32 2.33.12.82-.2 1.57-.69 2.05-1.38.31-.47.46-1.01.5-1.57.02-2.31.01-4.62.01-6.93 0-3.95-.02-7.9 0-11.85z" />
   </svg>
 );
 
@@ -104,11 +102,11 @@ export default function ContactPage() {
           >
             <p className="text-label-luxury text-gold mb-5">Liên hệ</p>
             <h1
-              className="font-cormorant font-light text-obsidian leading-[1.05] tracking-tight mb-8"
+              className="font-sans font-light text-obsidian leading-[1.05] tracking-tight mb-8"
               style={{ fontSize: 'clamp(2.6rem, 5.5vw, 5.2rem)' }}
             >
               Bắt đầu{' '}
-              <em style={{ fontStyle: 'italic' }} className="text-gold-600">
+              <em className="text-gold-600 not-italic">
                 câu chuyện của bạn
               </em>
             </h1>
@@ -144,7 +142,7 @@ export default function ContactPage() {
                 <InfoItem icon={<PhoneIcon />} label="Điện thoại & Zalo" delay={100}>
                   <a
                     href={`tel:${PHONE}`}
-                    className="block text-xl font-cormorant text-obsidian hover:text-gold transition-colors duration-300"
+                    className="block text-xl font-sans text-obsidian hover:text-gold transition-colors duration-300"
                   >
                     {PHONE}
                   </a>
@@ -156,13 +154,13 @@ export default function ContactPage() {
                 </InfoItem>
 
                 <InfoItem icon={<PinIcon />} label="Địa chỉ studio" delay={180}>
-                  <p className="text-xl font-cormorant text-obsidian">
+                  <p className="text-xl font-sans text-obsidian">
                     123 Wedding Street, Quận 1
                   </p>
                   <p className="text-sm text-smoke mt-1">TP. Hồ Chí Minh, Việt Nam</p>
                 </InfoItem>
 
-                <InfoItem icon={<InstagramIcon />} label="Mạng xã hội" delay={260}>
+                <InfoItem icon={<TikTokIcon />} label="Mạng xã hội" delay={260}>
                   <div className="flex items-center gap-5 mt-1">
                     <a
                       href={FACEBOOK_URL}
@@ -175,13 +173,13 @@ export default function ContactPage() {
                     </a>
                     <span aria-hidden="true" className="w-px h-3 bg-luxury-border" />
                     <a
-                      href={INSTAGRAM_URL}
+                      href={TIKTOK_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center gap-2 text-sm text-smoke hover:text-gold transition-colors duration-300"
                     >
                       <span className="w-0 h-px bg-gold-400 group-hover:w-4 transition-all duration-300" />
-                      Instagram
+                      TikTok
                     </a>
                   </div>
                 </InfoItem>
@@ -210,7 +208,7 @@ export default function ContactPage() {
                       <span
                         className={cn(
                           'text-sm font-light tabular-nums',
-                          special ? 'italic text-gold-600' : 'text-obsidian',
+                          special ? 'text-gold-600' : 'text-obsidian',
                         )}
                       >
                         {time}
@@ -249,7 +247,7 @@ export default function ContactPage() {
                 {/* form header */}
                 <div className="px-8 sm:px-12 pt-10 pb-8 border-b border-luxury-border-fine">
                   <p className="text-label-luxury text-gold mb-3">Gửi yêu cầu</p>
-                  <h2 className="text-2xl font-cormorant font-light text-obsidian">
+                  <h2 className="text-2xl font-sans font-light text-obsidian">
                     Bắt đầu cuộc trò chuyện
                   </h2>
                 </div>

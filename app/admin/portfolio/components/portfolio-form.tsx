@@ -4,6 +4,7 @@ import { useTransition, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
@@ -31,6 +32,15 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
   const [isPending, startTransition] = useTransition();
   const [coverFiles, setCoverFiles] = useState<File[]>([]);
   const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
+  const [coverImageText, setCoverImageText] = useState(initialData?.cover_image || '');
+  const [imagesText, setImagesText] = useState(initialData?.images?.join(',\n') || '');
+
+  const parsedImages = imagesText.split(/,|\n/).map(s => s.trim()).filter(Boolean);
+
+  const removeImage = (urlToRemove: string) => {
+    const newUrls = parsedImages.filter(url => url !== urlToRemove);
+    setImagesText(newUrls.join(',\n'));
+  };
 
   const onFileReject = useCallback((file: File, message: string) => {
     toast.error(message, {
@@ -42,9 +52,15 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    // Manual append files if needed (standard input should handle it if 'name' is correct)
-    // But FileUpload uses a hidden input, so we should ensure the files are there.
-    // Actually FileUpload updates the hidden input's 'files' property.
+    if (coverFiles.length > 0) {
+      formData.set('cover_image_file', coverFiles[0]);
+    }
+    
+    // Clear and manually append multiple gallery files
+    formData.delete('images_files');
+    galleryFiles.forEach((file) => {
+      formData.append('images_files', file);
+    });
 
     startTransition(() => {
       if (initialData) {
@@ -56,7 +72,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-12 font-jost">
+    <form onSubmit={handleSubmit} className="space-y-12 font-sans">
       <FieldGroup className="space-y-10">
         <div className="grid md:grid-cols-2 gap-12">
           <Field>
@@ -119,6 +135,22 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
               </SelectContent>
             </Select>
           </Field>
+          
+          <Field>
+            <FieldLabel className="text-label-luxury text-ash mb-3 block">Tỷ lệ ảnh (Orientation)</FieldLabel>
+            <Select name="orientation" defaultValue={initialData?.orientation || 'portrait'}>
+              <SelectTrigger className="h-12 w-full bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian focus:ring-0 focus:border-gold transition-all">
+                <SelectValue placeholder="Chọn tỷ lệ hiển thị" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-black/5 shadow-luxury">
+                <SelectGroup>
+                  <SelectItem value="portrait" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Portrait (Dọc - 3/4)</SelectItem>
+                  <SelectItem value="landscape" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Landscape (Ngang - 4/3)</SelectItem>
+                  <SelectItem value="square" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Square (Vuông - 1/1)</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </Field>
         </div>
 
         <Field>
@@ -127,11 +159,29 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
             <Input
               id="cover_image"
               name="cover_image"
-              type="url"
-              defaultValue={initialData?.cover_image}
+              type="text"
+              value={coverImageText}
+              onChange={(e) => setCoverImageText(e.target.value)}
               className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all"
               placeholder="Nhập link ảnh bìa (https://...)"
             />
+            {coverImageText && coverFiles.length === 0 && (
+              <div className="relative mt-4 flex items-center gap-4">
+                <div className="size-20 relative border border-black/5 bg-whisper group">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={coverImageText} alt="Current cover" className="object-cover w-full h-full" />
+                  <button
+                    type="button"
+                    onClick={() => setCoverImageText('')}
+                    className="absolute -top-2 -right-2 size-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                    title="Xóa ảnh bìa"
+                  >
+                    <X className="size-3" />
+                  </button>
+                </div>
+                <span className="text-[10px] text-mist uppercase tracking-widest">Ảnh bìa đã lưu</span>
+              </div>
+            )}
 
             <FileUpload
               accept="image/*"
@@ -171,14 +221,36 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         <Field>
           <FieldLabel className="text-label-luxury text-ash mb-3 block">Bộ sưu tập hình ảnh</FieldLabel>
           <div className="space-y-6">
-            <Input
+            <Textarea
               id="images"
               name="images"
-              type="text"
-              defaultValue={initialData?.images?.join(', ')}
-              className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all"
-              placeholder="Các link ảnh cách nhau bằng dấu phẩy (,)"
+              value={imagesText}
+              onChange={(e) => setImagesText(e.target.value)}
+              className="min-h-[120px] bg-transparent border border-black/5 rounded-none p-4 text-[11px] text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all resize-y"
+              placeholder="Nhập các link ảnh. Mỗi link hoặc các link cách nhau bằng dấu phẩy (,)..."
             />
+            
+            {parsedImages.length > 0 && galleryFiles.length === 0 && (
+              <div className="mt-4 space-y-3">
+                <span className="text-[10px] text-mist uppercase tracking-widest">Bộ sưu tập đã lưu ({parsedImages.length} ảnh):</span>
+                <div className="flex flex-wrap gap-4">
+                  {parsedImages.map((img, i) => (
+                    <div key={i} className="size-16 relative border border-black/5 bg-whisper group">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img} alt={`Gallery image ${i}`} className="object-cover w-full h-full" />
+                      <button
+                        type="button"
+                        onClick={() => removeImage(img)}
+                        className="absolute -top-2 -right-2 size-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                        title="Xóa ảnh này"
+                      >
+                        <X className="size-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <FileUpload
               accept="image/*"

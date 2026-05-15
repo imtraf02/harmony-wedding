@@ -10,9 +10,9 @@ export default async function AdminDashboard() {
   const recent = getRecentContacts(5);
 
   return (
-    <div className="space-y-16 font-jost">
+    <div className="space-y-16 font-sans">
       <header className="space-y-2">
-        <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Tổng quan hệ thống</h1>
+        <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Tổng quan hệ thống</h1>
         <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Chào mừng trở lại, Harmony Admin</p>
       </header>
 
@@ -28,7 +28,7 @@ export default async function AdminDashboard() {
       <div className="grid lg:grid-cols-3 gap-12 items-start">
         <div className="lg:col-span-2 space-y-8">
           <div className="flex items-end justify-between border-b border-black/5 pb-4">
-            <h2 className="text-headline font-cormorant font-light text-obsidian">Liên hệ gần đây</h2>
+            <h2 className="text-headline font-sans font-light text-obsidian">Liên hệ gần đây</h2>
             <Button
               variant="link"
               render={<Link href="/admin/contacts" />}
@@ -79,7 +79,7 @@ export default async function AdminDashboard() {
                   ))}
                   {recent.length === 0 && (
                     <tr>
-                      <td colSpan={4} className="px-8 py-16 text-center text-smoke italic font-light tracking-wide">
+                      <td colSpan={4} className="px-8 py-16 text-center text-smoke  font-light tracking-wide">
                         Hệ thống hiện chưa ghi nhận liên hệ mới.
                       </td>
                     </tr>
@@ -93,7 +93,7 @@ export default async function AdminDashboard() {
         {/* Quick Actions Sidebar */}
         <div className="space-y-8">
           <div className="border-b border-black/5 pb-4">
-            <h2 className="text-headline font-cormorant font-light text-obsidian">Hành động</h2>
+            <h2 className="text-headline font-sans font-light text-obsidian">Hành động</h2>
           </div>
           <div className="flex flex-col border-t border-black/5">
             <QuickAction href="/admin/portfolio/new" label="Thêm Portfolio mới" icon={PlusIcon} />
@@ -115,7 +115,7 @@ function StatCard({ title, value, href, trend }: any) {
             <p className="text-[9px] uppercase tracking-[0.25em] font-bold text-ash group-hover:text-gold transition-colors">{title}</p>
             {trend && <span className="text-[9px] font-bold uppercase text-gold bg-gold-dim px-2 py-0.5 tracking-tighter">{trend}</span>}
           </div>
-          <p className="text-display font-cormorant font-light text-obsidian group-hover:translate-x-1 transition-transform duration-500">{value}</p>
+          <p className="text-display font-sans font-light text-obsidian group-hover:translate-x-1 transition-transform duration-500">{value}</p>
         </CardContent>
       </Card>
     </Link>

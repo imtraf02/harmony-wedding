@@ -3,6 +3,8 @@
 import { useTransition } from 'react';
 import { deletePortfolioAction } from '../actions';
 
+import { Trash2Icon } from 'lucide-react';
+
 export function DeleteButton({ id }: { id: number }) {
   const [isPending, startTransition] = useTransition();
 
@@ -18,9 +20,10 @@ export function DeleteButton({ id }: { id: number }) {
     <button 
       onClick={handleDelete}
       disabled={isPending}
-      className="text-xs font-semibold text-zinc-500 hover:text-destructive transition-colors disabled:opacity-50"
+      className="p-2 text-mist hover:text-red-500 transition-colors disabled:opacity-40"
+      title="Xóa"
     >
-      {isPending ? 'Đang xóa...' : 'Xóa'}
+      <Trash2Icon className="size-4" />
     </button>
   );
 }

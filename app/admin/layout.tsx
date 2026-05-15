@@ -18,13 +18,15 @@ import {
   SidebarGroupLabel,
   SidebarGroupContent
 } from '@/components/ui/sidebar';
-import { LayoutDashboardIcon, ImageIcon, MailIcon, StarIcon, HomeIcon, LogOutIcon } from 'lucide-react';
+import { LayoutDashboardIcon, ImageIcon, MailIcon, StarIcon, HomeIcon, LogOutIcon, PresentationIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { cn } from "@/lib/utils";
 
 const MENU_ITEMS = [
   { label: 'Tổng quan', href: '/admin/dashboard', icon: LayoutDashboardIcon },
+  { label: 'Slide Hero', href: '/admin/hero', icon: PresentationIcon },
   { label: 'Portfolio', href: '/admin/portfolio', icon: ImageIcon },
+  { label: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
   { label: 'Liên hệ', href: '/admin/contacts', icon: MailIcon },
   { label: 'Đánh giá', href: '/admin/testimonials', icon: StarIcon },
   { label: 'Studio', href: '/admin/studios', icon: HomeIcon },
@@ -47,13 +49,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full bg-luxury font-jost">
+      <div className="flex min-h-screen w-full bg-luxury">
         <Sidebar variant="sidebar" collapsible="icon" className="border-r border-black/5 bg-sidebar text-sidebar-foreground">
           <SidebarHeader className="p-8 pb-4">
             <Link href="/admin/dashboard" className="flex flex-col gap-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-gold text-sm animate-gold-pulse">◆</span>
-                <span className="text-xl font-cormorant font-light tracking-[0.2em] uppercase truncate text-sidebar-foreground">
+                <span className="text-xl font-sans font-light tracking-[0.2em] uppercase truncate text-sidebar-foreground">
                   HARMONY
                 </span>
               </div>

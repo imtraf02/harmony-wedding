@@ -9,10 +9,10 @@ export default async function AdminTestimonialsList() {
   const items = getAllTestimonials();
 
   return (
-    <div className="space-y-16 font-jost">
+    <div className="space-y-16 font-sans">
       <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div className="space-y-2">
-          <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Đánh giá khách hàng</h1>
+          <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Đánh giá khách hàng</h1>
           <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Quản lý phản hồi và cảm nhận từ các cặp đôi</p>
         </div>
         <Button 
@@ -41,7 +41,7 @@ export default async function AdminTestimonialsList() {
                 <tr key={item.id} className="group hover:bg-whisper transition-colors animate-fade-in-up-luxury">
                   <td className="px-8 py-8 align-top">
                     <div className="flex items-center gap-4">
-                      <div className="size-10 bg-gold-dim rounded-none border border-gold/10 flex items-center justify-center text-gold font-cormorant text-xl shadow-gold-sm">
+                      <div className="size-10 bg-gold-dim rounded-none border border-gold/10 flex items-center justify-center text-gold font-sans text-xl shadow-gold-sm">
                         {item.couple_name.charAt(0)}
                       </div>
                       <div>
@@ -57,7 +57,7 @@ export default async function AdminTestimonialsList() {
                   <td className="px-8 py-8 align-top max-w-md">
                     <div className="flex gap-3">
                       <QuoteIcon className="size-3 text-gold/30 shrink-0 mt-1" />
-                      <p className="text-smoke font-light leading-relaxed line-clamp-3 italic">"{item.content}"</p>
+                      <p className="text-smoke font-light leading-relaxed line-clamp-3 ">"{item.content}"</p>
                     </div>
                   </td>
                   <td className="px-8 py-8 align-top">
@@ -86,7 +86,7 @@ export default async function AdminTestimonialsList() {
                 <tr>
                   <td colSpan={5} className="px-8 py-32 text-center">
                     <div className="flex flex-col items-center gap-6 text-smoke">
-                      <p className="italic font-light tracking-wide text-lg">Chưa có đánh giá nào được ghi nhận.</p>
+                      <p className=" font-light tracking-wide text-lg">Chưa có đánh giá nào được ghi nhận.</p>
                       <Button 
                         variant="link"
                         render={<Link href="/admin/testimonials/new" />} 

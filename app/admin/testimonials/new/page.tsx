@@ -62,7 +62,7 @@ export default function NewTestimonialPage() {
           ←
         </Button>
         <div>
-          <h1 className="text-4xl font-cormorant text-foreground mb-2">Thêm Đánh giá mới</h1>
+          <h1 className="text-4xl font-sans text-foreground mb-2">Thêm Đánh giá mới</h1>
           <p className="text-muted-foreground text-sm">Chia sẻ cảm nhận từ các cặp đôi về dịch vụ của bạn.</p>
         </div>
       </header>

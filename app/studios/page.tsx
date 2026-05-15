@@ -1,5 +1,4 @@
 import { buildMetadata } from '@/lib/metadata';
-import { Breadcrumb }    from '@/components/shared/breadcrumb';
 import { SectionTitle }  from '@/components/shared/section-title';
 import { CtaBanner }     from '@/components/home/cta-banner';
 
@@ -13,7 +12,7 @@ export default function StudiosPage() {
   return (
     <div className="pt-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Breadcrumb items={[{ name: 'Studio', path: '/studios' }]} />
+
 
         <section className="mt-12 mb-24">
           <SectionTitle
@@ -23,7 +22,7 @@ export default function StudiosPage() {
           />
           
           <div className="text-center py-24 bg-card rounded-3xl border border-border">
-            <p className="text-muted-foreground italic">Nội dung chi tiết về các cơ sở đang được cập nhật...</p>
+            <p className="text-muted-foreground">Nội dung chi tiết về các cơ sở đang được cập nhật...</p>
           </div>
         </section>
       </div>

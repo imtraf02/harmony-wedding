@@ -53,8 +53,8 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
         </span>
       </div>
 
-      {/* grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      {/* masonry layout */}
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-5">
         {images.map((img, i) => (
           <button
             key={img}
@@ -62,37 +62,25 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
             aria-label={`Xem ảnh ${i + 1} — ${title}`}
             onClick={() => setLightboxIndex(i)}
             className={cn(
-              'relative group overflow-hidden',
+              'relative group overflow-hidden w-full block mb-4 sm:mb-5',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50',
-              // first image is featured — spans 2 columns on lg
-              i === 0 && 'sm:col-span-2 lg:col-span-2',
-              // animate in with stagger
               'animate-fade-in-up-luxury',
             )}
             style={{ '--delay': `${Math.min(i, 9) * 60}ms` } as React.CSSProperties}
           >
-            {/* aspect ratio wrapper */}
-            <div
-              className={cn(
-                'relative overflow-hidden',
-                i === 0 ? 'aspect-[16/10] sm:aspect-[16/9]' : 'aspect-square',
-              )}
-            >
+            {/* wrapper without fixed aspect ratio */}
+            <div className="relative overflow-hidden w-full h-full bg-whisper">
               <Image
                 src={img}
                 alt={`${title} — ảnh ${i + 1}`}
-                fill
+                width={800}
+                height={800}
                 loading={i < 6 ? 'eager' : 'lazy'}
-                sizes={
-                  i === 0
-                    ? '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw'
-                    : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                }
-                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={cn(
-                  'transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]',
+                  'w-full h-auto object-cover',
+                  'transition-transform duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]',
                   'scale-100 group-hover:scale-105',
-                  'grayscale-[15%] group-hover:grayscale-0',
                 )}
               />
 

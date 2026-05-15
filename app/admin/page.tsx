@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-obsidian flex flex-col items-center justify-center p-6 font-jost overflow-hidden relative">
+    <div className="min-h-screen bg-obsidian flex flex-col items-center justify-center p-6 font-sans overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-gold/5 blur-[120px] rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-gold/5 blur-[120px] rounded-full" />
@@ -53,7 +53,7 @@ export default function AdminLoginPage() {
             <span className="text-gold text-lg animate-gold-pulse">◆</span>
             <span className="w-8 h-px bg-gold/30" />
           </div>
-          <h1 className="text-5xl font-cormorant font-light text-ivory tracking-tight">Harmony Studio</h1>
+          <h1 className="text-5xl font-sans font-light text-ivory tracking-tight">Harmony Studio</h1>
           <p className="text-gold-muted text-[10px] tracking-[0.3em] uppercase font-medium">Cổng quản trị nội dung</p>
         </div>
 

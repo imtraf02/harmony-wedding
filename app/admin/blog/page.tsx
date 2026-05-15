@@ -7,7 +7,7 @@ export default function AdminBlogPage() {
     <div className="space-y-12 font-sans">
       <header className="flex justify-between items-end">
         <div>
-          <h1 className="text-4xl font-cormorant text-foreground mb-2">Quản lý Blog</h1>
+          <h1 className="text-4xl font-sans text-foreground mb-2">Quản lý Blog</h1>
           <p className="text-muted-foreground text-sm">Viết và chia sẻ cẩm nang, mẹo chuẩn bị đám cưới.</p>
         </div>
         <Button 
@@ -20,7 +20,7 @@ export default function AdminBlogPage() {
       </header>
 
       <div className="col-span-full py-32 text-center bg-card border border-dashed border-border rounded-[3rem]">
-        <p className="text-muted-foreground italic mb-6 text-lg">Chưa có dữ liệu. Tính năng đang được phát triển.</p>
+        <p className="text-muted-foreground  mb-6 text-lg">Chưa có dữ liệu. Tính năng đang được phát triển.</p>
       </div>
     </div>
   );

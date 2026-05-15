@@ -1,3 +1,13 @@
+export interface GalleryItem {
+  id         : number;
+  src        : string;
+  alt        : string;
+  label      : string | null;
+  sort_order : number;
+  is_active  : boolean;
+  created_at : string;
+}
+
 export interface Portfolio {
   id            : number;
   slug          : string;
@@ -9,6 +19,7 @@ export interface Portfolio {
   images        : string[];
   video_url     : string | null;
   is_featured   : boolean;
+  orientation   : 'portrait' | 'landscape' | 'square';
   sort_order    : number;
   created_at    : string;
   updated_at    : string;

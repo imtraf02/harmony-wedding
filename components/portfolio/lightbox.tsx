@@ -123,7 +123,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
           aria-live="polite"
           className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/40"
         >
-          <span className="text-gold-300 font-cormorant text-base font-normal">
+          <span className="text-gold-300 font-sans text-base font-normal">
             {String(current + 1).padStart(2, '0')}
           </span>
           <span className="mx-2 text-white/20">/</span>

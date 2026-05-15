@@ -28,7 +28,7 @@ export const localBusinessSchema = {
   },
   sameAs: [
     process.env.NEXT_PUBLIC_FACEBOOK_URL,
-    process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+    process.env.NEXT_PUBLIC_TIKTOK_URL,
   ].filter(Boolean),
 };
 

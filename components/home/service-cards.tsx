@@ -1,179 +1,280 @@
 'use client';
 
+import { useState, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 
-const SERVICES = [
-  // ... (rest of the services array remains the same)
-  {
-    slug: 'photography',
-    title: 'Chụp ảnh cưới',
-    description: 'Phong cách phóng sự, ánh sáng tự nhiên giúp lưu giữ trọn vẹn những cảm xúc chân thật nhất.',
-    number: '01',
-    icon: 'camera',
-    href: '/services/photography',
-  },
-  {
-    slug: 'videography',
-    title: 'Quay phim cưới',
-    description: 'Những thước phim 4K điện ảnh kết hợp flycam, kể lại câu chuyện tình yêu của bạn một cách sống động.',
-    number: '02',
-    icon: 'video',
-    href: '/services/videography',
-  },
-  {
-    slug: 'wedding-film',
-    title: 'Phóng sự cưới',
-    description: 'Trải nghiệm phim tài liệu trọn vẹn — từ hậu trường đến những thước phim dài đầy ý nghĩa.',
-    number: '03',
-    icon: 'film',
-    href: '/services/wedding-film',
-  },
-];
+export interface Service {
+  src: string;
+  alt: string;
+  index?: string;
+  title: string;
+  description: string;
+  highlights?: string[];
+  href?: string;
+  ctaLabel?: string;
+}
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+interface ServiceCardsProps {
+  services: Service[];
+  title?: string;
+  subtitle?: string;
+}
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
-};
-
-export function ServiceCards() {
+// ── Card ──────────────────────────────────────────────────────────────────────
+function ServiceCard({
+  service,
+  isActive,
+  onClick,
+}: {
+  service: Service;
+  isActive: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <section className="py-24 md:py-40 bg-luxury" aria-label="Dịch vụ của chúng tôi">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div
+      className={cn(
+        // Width: cố định trên mobile, tự stretch trên md+
+        'flex-shrink-0 w-[78vw] max-w-[300px] md:w-auto md:max-w-none',
+        'min-h-[520px] snap-start relative',
+        'bg-white rounded-[32px] overflow-hidden transition-all duration-700',
+        'flex flex-col cursor-pointer',
+        'border-[8px] border-white ring-1 ring-black/[0.03]',
+        isActive
+          ? 'shadow-[0_30px_70px_rgba(0,0,0,0.10)] scale-[1.03] z-10'
+          : 'shadow-[0_10px_40px_rgba(0,0,0,0.04)] opacity-90 scale-100'
+      )}
+      onClick={onClick}
+    >
+      {/* Image */}
+      <div className="relative w-full h-[240px] overflow-hidden flex-shrink-0">
+        <Image
+          src={service.src}
+          alt={service.alt}
+          fill
+          className={cn(
+            'object-cover transition-transform duration-1000',
+            isActive ? 'scale-110' : 'scale-100'
+          )}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-full h-24 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 35%, rgba(255,255,255,0.15) 70%, transparent 100%)',
+          }}
+        />
+      </div>
 
-        {/* Section header */}
-        <motion.div 
-          className="space-y-4 mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      {/* Body */}
+      <div className="flex-1 bg-white p-7 pt-4 pb-10 flex flex-col gap-4">
+        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-obsidian/30">
+          {service.index}
+        </span>
+
+        <h3 className="font-serif italic text-[1.6rem] md:text-[1.8rem] font-light text-obsidian leading-[1.1] tracking-tighter">
+          {service.title}
+        </h3>
+
+        <p className="text-[13px] text-ash font-light leading-[1.6] line-clamp-3">
+          {service.description}
+        </p>
+
+        <div className="h-px bg-obsidian/10 w-16 my-1" />
+
+        <div
+          className={cn(
+            'flex flex-col gap-3 overflow-hidden transition-all duration-500',
+            isActive ? 'max-h-48 opacity-100 mt-3' : 'max-h-0 opacity-0'
+          )}
         >
-          <p className="text-label-luxury text-gold">
-            Dịch vụ của chúng tôi
-          </p>
-          <h2 className="text-display font-cormorant font-light text-obsidian">
-            Kể lại câu chuyện <em className="italic">của riêng bạn</em>
-          </h2>
-          <p className="text-smoke font-light leading-relaxed max-w-[520px]">
-            Dù bạn cần chụp ảnh, quay phim hay một trải nghiệm trọn gói —
-            chúng tôi luôn có những giải pháp phù hợp nhất.
-          </p>
-        </motion.div>
-
-        {/* Grid */}
-        <motion.div 
-          className="grid md:grid-cols-3 divider-hairline border-black/5"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {SERVICES.map((service, index) => (
-            <motion.div key={service.slug} variants={itemVariants}>
-              <Link
-                href={service.href}
-                id={`service-card-${service.slug}`}
-                className={cn(
-                  "group relative flex flex-col bg-luxury-surface h-full p-12 transition-all duration-700 hover:bg-white hover:shadow-luxury",
-                  index !== 0 && "md:border-l border-black/5"
-                )}
-              >
-                {/* Top accent line */}
-                <span
-                  aria-hidden="true"
-                  className="
-                    absolute inset-x-0 top-0 h-0.5
-                    bg-gold scale-x-0 transition-transform duration-700 group-hover:scale-x-100
-                  "
-                />
-
-                {/* Số thứ tự */}
-                <span className="font-cormorant text-xs tracking-[0.3em] text-gold/40 mb-10 block">
-                  {service.number}
-                </span>
-
-                {/* Icon khung vuông */}
-                <div
-                  className="w-14 h-14 mb-8 flex items-center justify-center border border-gold/20 group-hover:border-gold transition-colors duration-500 shadow-gold-sm"
-                  aria-hidden="true"
-                >
-                  <svg
-                    width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor"
-                    strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"
-                    className="text-gold"
-                  >
-                    {service.icon === 'camera' && (
-                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-                    )}
-                    {service.icon === 'video' && (
-                      <>
-                        <polygon points="23 7 16 12 23 17 23 7" />
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                      </>
-                    )}
-                    {service.icon === 'film' && (
-                      <>
-                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
-                        <line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" />
-                        <line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" />
-                        <line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" />
-                        <line x1="17" y1="7" x2="22" y2="7" />
-                      </>
-                    )}
-                  </svg>
-                </div>
-
-                {/* Tiêu đề */}
-                <h3 className="text-headline font-cormorant font-normal text-obsidian mb-6">
-                  {service.title.split(' ').slice(0, -1).join(' ')}{' '}
-                  <em className="italic font-light">{service.title.split(' ').at(-1)}</em>
-                </h3>
-
-                <p className="text-smoke text-sm font-light leading-relaxed mb-10 flex-1">
-                  {service.description}
-                </p>
-
-                {/* CTA */}
-                <span
-                  className="
-                    inline-flex items-center gap-3 text-[10px] font-bold
-                    tracking-[0.2em] uppercase text-gold
-                    transition-all duration-500
-                    group-hover:gap-5 group-hover:text-obsidian
-                  "
-                >
-                  Khám phá
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="transition-transform duration-500 group-hover:translate-x-1">
-                    <path d="M5 12h14M12 5l7 7-7 7"
-                      stroke="currentColor" strokeWidth="1.2"
-                      strokeLinecap="round" strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </Link>
-            </motion.div>
+          {service.highlights?.map((h, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <span className="w-5 h-px bg-obsidian/15 flex-shrink-0" />
+              <span className="text-[11.5px] text-ash/80 font-light tracking-wide">{h}</span>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="mt-auto pt-8">
+          <Link
+            href={service.href ?? '/pricing'}
+            className="flex items-center gap-5 group/btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span
+              className={cn(
+                'text-[10px] font-bold uppercase tracking-[0.3em] text-obsidian relative',
+                'after:absolute after:-bottom-1.5 after:left-0 after:h-px after:bg-obsidian after:transition-all after:duration-500',
+                isActive ? 'after:w-full' : 'after:w-0'
+              )}
+            >
+              {service.ctaLabel ?? 'Khám phá gói'}
+            </span>
+            <div
+              className={cn(
+                'size-10 rounded-full border flex items-center justify-center transition-all duration-500',
+                isActive
+                  ? 'bg-obsidian border-obsidian text-white'
+                  : 'border-obsidian/10 text-obsidian'
+              )}
+            >
+              →
+            </div>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+export function ServiceCards({
+  services,
+  subtitle = 'Dịch vụ của chúng tôi',
+}: ServiceCardsProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Side padding (px) for the scroll area on mobile — controls how much card
+  // is visible on the edges so it never feels glued to the screen.
+  const SIDE_PAD = 24; // px — matches the spacer divs below
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const { scrollLeft, children } = scrollRef.current;
+    // Find card width from the first real card (index 1 because of leading spacer)
+    const firstCard = children[1] as HTMLElement | undefined;
+    if (!firstCard) return;
+    const cardWidth = firstCard.offsetWidth + 16; // gap-4 = 16px
+    const index = Math.round(scrollLeft / cardWidth);
+    if (index !== activeIndex && index >= 0 && index < services.length) {
+      setActiveIndex(index);
+    }
+  };
+
+  const scrollTo = (idx: number) => {
+    if (!scrollRef.current) return;
+    const firstCard = scrollRef.current.children[1] as HTMLElement | undefined;
+    if (!firstCard) return;
+    const cardWidth = firstCard.offsetWidth + 16;
+    scrollRef.current.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+    setActiveIndex(idx);
+  };
+
+  return (
+    <section className="relative py-28 md:py-48 bg-white overflow-hidden">
+      <div className="max-w-[1600px] mx-auto">
+
+        {/* ── Header ── */}
+        <div className="mb-16 md:mb-24 px-6 sm:px-16 lg:px-32 xl:px-48">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="w-12 h-px bg-obsidian" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-obsidian/50">
+              {subtitle}
+            </span>
+          </div>
+          <h2 className="font-serif italic text-6xl md:text-9xl font-light text-obsidian leading-[0.85] tracking-tighter">
+            Dịch vụ<br className="md:hidden" /> cao cấp
+          </h2>
+        </div>
+
+        {/* ── Mobile: horizontal scroll ── */}
+        <div className="md:hidden">
+          {/*
+            scroll-padding-left ensures the snapped card aligns to the
+            same offset as the leading spacer, so it never hugs the edge.
+          */}
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scrollbar-none"
+            style={{ scrollPaddingLeft: SIDE_PAD }}
+          >
+            {/* Leading spacer — gives breathing room from left edge */}
+            <div className="flex-shrink-0" style={{ width: SIDE_PAD }} aria-hidden />
+
+            {services.map((service, i) => (
+              <ServiceCard
+                key={i}
+                service={service}
+                isActive={activeIndex === i}
+                onClick={() => setActiveIndex(i)}
+              />
+            ))}
+
+            {/* Trailing spacer — so last card doesn't snap flush to right edge */}
+            <div className="flex-shrink-0" style={{ width: SIDE_PAD }} aria-hidden />
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-3.5 mt-8 pb-4">
+            {services.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(i)}
+                aria-label={`Dịch vụ ${i + 1}`}
+                className={cn(
+                  'h-1.5 rounded-full transition-all duration-300',
+                  activeIndex === i ? 'w-12 bg-obsidian' : 'w-2.5 bg-obsidian/10'
+                )}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Desktop: 3-column grid ── */}
+        <div className="hidden md:grid grid-cols-3 gap-8 px-32 lg:px-48 items-stretch">
+          {services.map((service, i) => (
+            <ServiceCard
+              key={i}
+              service={service}
+              isActive={activeIndex === i}
+              onClick={() => setActiveIndex(i)}
+            />
+          ))}
+        </div>
+
+        {/* ── List summary ── */}
+        <div className="px-6 sm:px-16 lg:px-32 xl:px-48 mt-20">
+          <div className="flex items-center gap-5 mb-12">
+            <span className="w-16 h-px bg-obsidian/10" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-ash/40">
+              Bảng giá chi tiết
+            </span>
+          </div>
+          <div className="flex flex-col border-b border-black/5">
+            {services.map((service, i) => (
+              <Link
+                key={i}
+                href={service.href ?? '/pricing'}
+                className="group flex items-center gap-6 md:gap-8 py-8 md:py-10 border-t border-black/5 transition-all hover:bg-ash/[0.01]"
+              >
+                <div className="size-14 md:size-16 rounded-[20px] bg-ash/5 border border-black/5 flex items-center justify-center text-2xl md:text-3xl text-obsidian group-hover:bg-obsidian group-hover:text-white transition-all duration-700 flex-shrink-0">
+                  {i === 0 ? '📷' : i === 1 ? '💍' : '🎬'}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[18px] md:text-[22px] font-medium text-obsidian tracking-tighter truncate">
+                    {service.title}
+                  </div>
+                  <div className="text-[13px] md:text-[14px] text-ash/50 font-light mt-1.5">
+                    {i === 0 ? 'Từ 15,000,000 ₫' : i === 1 ? 'Từ 8,500,000 ₫' : 'Từ 1,700,000 ₫'}
+                  </div>
+                </div>
+                <div className="size-11 md:size-12 rounded-full border border-obsidian/10 flex items-center justify-center text-xl text-obsidian group-hover:bg-obsidian group-hover:text-white transition-all duration-500 flex-shrink-0">
+                  →
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Deco */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.015]">
+        <div className="absolute top-[10%] right-[-10%] w-[50vw] aspect-square border border-obsidian rounded-full" />
       </div>
     </section>
   );

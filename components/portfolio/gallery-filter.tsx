@@ -74,8 +74,8 @@ function FilterGroup({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-      <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-ash shrink-0 sm:w-24 sm:text-right">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3 sm:gap-6">
+      <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-ash shrink-0 text-center">
         {label}
       </span>
       {/* hairline */}
@@ -83,7 +83,7 @@ function FilterGroup({
         aria-hidden="true"
         className="hidden sm:block h-4 w-px bg-gradient-to-b from-transparent via-luxury-border to-transparent"
       />
-      <div className="flex flex-wrap gap-2">{children}</div>
+      <div className="flex flex-wrap justify-center gap-2">{children}</div>
     </div>
   );
 }
@@ -106,15 +106,15 @@ export function GalleryFilter() {
     <div
       role="search"
       aria-label="Lọc portfolio"
-      className="mb-20"
+      className="mb-8 md:mb-20"
     >
       {/* top gold hairline */}
       <div
         aria-hidden="true"
-        className="h-px w-full bg-gradient-to-r from-transparent via-gold-300 to-transparent mb-10 opacity-60"
+        className="h-px w-full bg-gradient-to-r from-transparent via-gold-300 to-transparent mb-4 md:mb-10 opacity-60"
       />
 
-      <div className="flex flex-col gap-5 items-start sm:items-center">
+      <div className="flex flex-col gap-3 items-center">
         {/* Phong cách */}
         <FilterGroup label="Phong cách">
           <FilterPill
@@ -171,7 +171,7 @@ export function GalleryFilter() {
       {/* bottom gold hairline */}
       <div
         aria-hidden="true"
-        className="h-px w-full bg-gradient-to-r from-transparent via-gold-300 to-transparent mt-10 opacity-60"
+        className="h-px w-full bg-gradient-to-r from-transparent via-gold-300 to-transparent mt-4 md:mt-10 opacity-60"
       />
     </div>
   );

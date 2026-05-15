@@ -75,13 +75,13 @@ export default async function PortfolioPage({ searchParams }: PortfolioPageProps
     <div className="min-h-screen bg-luxury">
 
       {/* ── Hero section ── */}
-      <section className="pt-40 pb-0">
+      <section className="pt-24 md:pt-40 pb-0">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
 
           {/* decorative top rule */}
           <div
             aria-hidden="true"
-            className="flex items-center gap-6 mb-16 animate-fade-in-up-luxury"
+            className="flex items-center gap-6 mb-6 md:mb-16 animate-fade-in-up-luxury"
             style={{ '--delay': '0ms' } as React.CSSProperties}
           >
             <span className="flex-1 h-px bg-gradient-to-r from-transparent to-luxury-border" />
@@ -93,20 +93,19 @@ export default async function PortfolioPage({ searchParams }: PortfolioPageProps
             <span className="flex-1 h-px bg-gradient-to-l from-transparent to-luxury-border" />
           </div>
 
-          {/* heading block */}
           <div
-            className="mb-20 max-w-3xl animate-fade-in-up-luxury"
+            className="mb-8 md:mb-20 max-w-3xl mx-auto text-center animate-fade-in-up-luxury"
             style={{ '--delay': '80ms' } as React.CSSProperties}
           >
             <p className="text-label-luxury text-gold mb-5">
               Bộ sưu tập
             </p>
 
-            <h1 className="font-cormorant font-light text-obsidian leading-[1.05] tracking-tight mb-8"
+            <h1 className="font-sans font-light text-obsidian leading-[1.05] tracking-tight mb-8"
               style={{ fontSize: 'clamp(2.6rem, 5.5vw, 5.2rem)' }}
             >
               Những khoảnh khắc{' '}
-              <em className="italic text-gold-600 not-italic" style={{ fontStyle: 'italic' }}>
+              <em className="text-gold-600 not-italic">
                 được ghi lại
               </em>
             </h1>

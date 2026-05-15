@@ -62,7 +62,7 @@ export function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-cormorant mb-2 text-foreground">Cảm ơn bạn!</h3>
+        <h3 className="text-2xl font-sans mb-2 text-foreground">Cảm ơn bạn!</h3>
         <p className="text-muted-foreground font-light">Chúng tôi đã nhận được thông tin và sẽ liên hệ lại với bạn trong vòng 24 giờ.</p>
       </div>
     );

@@ -27,7 +27,7 @@ function EmptyState() {
       <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-ash text-center">
         Không tìm thấy album
       </p>
-      <p className="text-sm font-cormorant font-light italic text-mist text-center max-w-xs">
+      <p className="text-sm font-sans font-light  text-mist text-center max-w-xs">
         Thử điều chỉnh bộ lọc để khám phá thêm những khoảnh khắc khác.
       </p>
       <div aria-hidden="true" className="flex items-center gap-4 w-48">
@@ -68,12 +68,7 @@ export function MasonryGallery({ items }: MasonryGalleryProps) {
               priority={i < 6}
               loading={i < 6 ? 'eager' : 'lazy'}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              style={{ objectFit: 'cover' }}
-              className={cn(
-                'transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]',
-                'grayscale group-hover:grayscale-0',
-                'scale-100 group-hover:scale-105',
-              )}
+              className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] scale-100 group-hover:scale-105"
             />
 
             {/* overlay gradient */}
@@ -108,7 +103,7 @@ export function MasonryGallery({ items }: MasonryGalleryProps) {
               </div>
 
               {/* title */}
-              <h3 className="text-xl sm:text-2xl font-cormorant font-light text-ivory leading-snug">
+              <h3 className="text-xl sm:text-2xl font-sans font-light text-ivory leading-snug">
                 {item.title}
               </h3>
 

@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from 'lucide-react';
 
 export default function NewPortfolioPage() {
   return (
-    <div className="space-y-16 font-jost animate-fade-in-up-luxury">
+    <div className="space-y-16 font-sans animate-fade-in-up-luxury">
       <header className="flex flex-col gap-6">
         <Button 
           variant="ghost" 
@@ -16,13 +16,13 @@ export default function NewPortfolioPage() {
           <ArrowLeftIcon className="size-3 mr-2 transition-transform group-hover:-translate-x-1" /> Quay lại danh sách
         </Button>
         <div className="space-y-2">
-          <h1 className="text-display font-cormorant font-light text-obsidian tracking-tight">Thêm Portfolio mới</h1>
+          <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Thêm Portfolio mới</h1>
           <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Khởi tạo một bộ sưu tập mới cho Studio</p>
         </div>
       </header>
 
-      <div className="max-w-4xl">
-        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-10 md:p-16">
+      <div className="max-w-4xl w-full">
+        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 md:p-16">
           <PortfolioForm />
         </div>
       </div>
