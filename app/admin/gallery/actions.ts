@@ -11,27 +11,31 @@ import {
 } from '@/lib/queries/gallery';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { UPLOAD_DIR } from '@/lib/constants';
 
-async function saveFile(file: File): Promise<string> {
-  const bytes  = await file.arrayBuffer();
+// Resolve upload dir: use UPLOAD_DIR env (absolute) or fall back to process.cwd()
+const UPLOAD_BASE = path.isAbsolute(UPLOAD_DIR)
+  ? UPLOAD_DIR
+  : path.join(process.cwd(), UPLOAD_DIR);
+
+async function saveFile(file: File, prefix = 'gallery'): Promise<string> {
+  const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
   const suffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-  const ext    = path.extname(file.name) || '.jpg';
-  const name   = `gallery-${suffix}${ext}`;
-  const dir    = path.join(process.cwd(), 'public', 'uploads');
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, name), buffer);
+  const ext = path.extname(file.name) || '.jpg';
+  const name = `${prefix}-${suffix}${ext}`;
+  await fs.mkdir(UPLOAD_BASE, { recursive: true });
+  await fs.writeFile(path.join(UPLOAD_BASE, name), buffer);
   return `/uploads/${name}`;
 }
 
 async function deleteFileIfUploaded(url: string | null | undefined) {
   if (!url || !url.startsWith('/uploads/')) return;
   try {
-    const filename = path.basename(url);
-    const filepath = path.join(process.cwd(), 'public', 'uploads', filename);
-    await fs.unlink(filepath);
-  } catch (error) {
-    console.error('Failed to delete file:', url, error);
+    const relative = url.replace(/^\/uploads\//, '');
+    await fs.unlink(path.join(UPLOAD_BASE, relative));
+  } catch (error: any) {
+    if (error.code !== 'ENOENT') console.error('Failed to delete file:', url, error);
   }
 }
 
@@ -47,10 +51,10 @@ export async function createGalleryItemAction(formData: FormData) {
 
   createGalleryItem({
     src,
-    alt       : (formData.get('alt') as string) || '',
-    label     : (formData.get('label') as string) || null,
+    alt: (formData.get('alt') as string) || '',
+    label: (formData.get('label') as string) || null,
     sort_order: Number(formData.get('sort_order') || 0),
-    is_active : formData.get('is_active') === 'on',
+    is_active: formData.get('is_active') === 'on',
   });
 
   revalidatePath('/admin/gallery');
@@ -60,7 +64,7 @@ export async function createGalleryItemAction(formData: FormData) {
 
 export async function updateGalleryItemAction(id: number, formData: FormData) {
   const oldItem = getGalleryItemById(id);
-  
+
   let src = (formData.get('src') as string) || '';
 
   const file = formData.get('src_file') as File | null;
@@ -75,10 +79,10 @@ export async function updateGalleryItemAction(id: number, formData: FormData) {
 
   updateGalleryItem(id, {
     ...(src ? { src } : {}),
-    alt       : (formData.get('alt') as string) || '',
-    label     : (formData.get('label') as string) || null,
+    alt: (formData.get('alt') as string) || '',
+    label: (formData.get('label') as string) || null,
     sort_order: Number(formData.get('sort_order') || 0),
-    is_active : formData.get('is_active') === 'on',
+    is_active: formData.get('is_active') === 'on',
   });
 
   revalidatePath('/admin/gallery');
@@ -88,13 +92,13 @@ export async function updateGalleryItemAction(id: number, formData: FormData) {
 
 export async function deleteGalleryItemAction(id: number) {
   const oldItem = getGalleryItemById(id);
-  
+
   deleteGalleryItem(id);
-  
+
   if (oldItem) {
     await deleteFileIfUploaded(oldItem.src);
   }
-  
+
   revalidatePath('/admin/gallery');
   revalidatePath('/');
 }

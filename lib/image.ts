@@ -6,10 +6,10 @@ import { UPLOAD_DIR } from './constants';
 
 
 export interface UploadResult {
-  url         : string;   // /uploads/portfolio/abc123.webp
-  blurDataUrl : string;   // base64 8×8 blur placeholder
-  width       : number;
-  height      : number;
+  url: string;   // /uploads/portfolio/abc123.webp
+  blurDataUrl: string;   // base64 8×8 blur placeholder
+  width: number;
+  height: number;
 }
 
 /**
@@ -19,18 +19,18 @@ export interface UploadResult {
  * @param maxWidth Max width in pixels (default 1920)
  */
 export async function processImage(
-  buffer  : Buffer,
+  buffer: Buffer,
   category: string,
   maxWidth: number = 1920,
 ): Promise<UploadResult> {
-  const id      = crypto.randomBytes(8).toString('hex');
-  const absDir  = path.isAbsolute(UPLOAD_DIR) ? path.join(UPLOAD_DIR, category) : path.join(process.cwd(), UPLOAD_DIR, category);
+  const id = crypto.randomBytes(8).toString('hex');
+  const absDir = path.isAbsolute(UPLOAD_DIR) ? path.join(UPLOAD_DIR, category) : path.join(process.cwd(), UPLOAD_DIR, category);
   const filename = `${id}.webp`;
-  const absPath  = path.join(absDir, filename);
+  const absPath = path.join(absDir, filename);
 
   await fs.mkdir(absDir, { recursive: true });
 
-  const image    = sharp(buffer);
+  const image = sharp(buffer);
   const metadata = await image.metadata();
 
   // Resize only if wider than maxWidth
@@ -50,9 +50,9 @@ export async function processImage(
   const blurDataUrl = `data:image/webp;base64,${blurBuffer.toString('base64')}`;
 
   return {
-    url        : `/uploads/${category}/${filename}`,
+    url: `/uploads/${category}/${filename}`,
     blurDataUrl,
-    width      : finalMeta.width  ?? 0,
-    height     : finalMeta.height ?? 0,
+    width: finalMeta.width ?? 0,
+    height: finalMeta.height ?? 0,
   };
 }
