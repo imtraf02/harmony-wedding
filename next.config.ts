@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import path from 'path'
 
 const nextConfig: NextConfig = {
   compress: true,
@@ -10,6 +11,10 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**' },
       { protocol: 'http', hostname: '**' },
     ],
+    // Disable optimization for user-uploaded images — Nginx already serves
+    // them with caching. /_next/image cannot fetch from localhost:3000/uploads/
+    // when those files live outside public/ (e.g. /var/lib/wedding/uploads/).
+    unoptimized: process.env.UPLOAD_DIR ? path.isAbsolute(process.env.UPLOAD_DIR ?? '') : false,
   },
 
   experimental: {
