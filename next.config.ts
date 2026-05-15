@@ -36,11 +36,13 @@ const config: NextConfig = {
     ],
   },
 
+  // @ts-ignore
+  serverActions: {
+    bodySizeLimit: '100mb',
+  },
+  
   experimental: {
     optimizePackageImports: ['lucide-react'],
-    serverActions: {
-      bodySizeLimit: '100mb',
-    },
   },
 };
 
