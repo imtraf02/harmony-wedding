@@ -26,19 +26,13 @@ function init() {
   const statements = schema
     .split(';')
     .map(s => s.trim())
-    .filter(s => s.length > 0 && !s.startsWith('--'));
+    .filter(s => s.length > 0 && !s.startsWith('--') && !s.toUpperCase().startsWith('PRAGMA'));
+
+  console.log(`🎬 Running ${statements.length} schema statements...`);
 
   const tx = db.transaction(() => {
     for (const stmt of statements) {
-      try {
-        db.prepare(stmt).run();
-      } catch (err) {
-        // PRAGMA statements return data, not run-able; ignore those errors
-        if (!(err as Error).message.includes('not an error')) {
-          console.warn(`Warning on statement: ${stmt.slice(0, 60)}...`);
-          console.warn((err as Error).message);
-        }
-      }
+      db.prepare(stmt).run();
     }
   });
 
