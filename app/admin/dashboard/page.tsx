@@ -20,7 +20,7 @@ export default async function AdminDashboard() {
       </header>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-8">
         <StatCard title="Portfolio" value={stats.portfolioCount} href="/admin/portfolio" />
         <StatCard title="Liên hệ mới" value={stats.newContactCount} href="/admin/contacts" trend="Mới" />
         <StatCard title="Đánh giá" value={stats.testimonialCount} href="/admin/testimonials" />

@@ -28,6 +28,7 @@ const MENU_ITEMS = [
   { label: 'Slide Hero', href: '/admin/hero', icon: PresentationIcon },
   { label: 'Portfolio', href: '/admin/portfolio', icon: ImageIcon },
   { label: 'Gallery', href: '/admin/gallery', icon: ImageIcon },
+  { label: 'Blog', href: '/admin/blog', icon: PresentationIcon },
   { label: 'Liên hệ', href: '/admin/contacts', icon: MailIcon },
   { label: 'Đánh giá', href: '/admin/testimonials', icon: StarIcon },
   { label: 'Studio', href: '/admin/studios', icon: HomeIcon },
