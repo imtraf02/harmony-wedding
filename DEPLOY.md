@@ -63,6 +63,7 @@ Tài liệu này hướng dẫn cách đưa dự án **Harmony Wedding** từ Gi
         "PORT=3000"
         "DATABASE_PATH=/var/lib/wedding/wedding.db"
         "UPLOAD_DIR=/var/lib/wedding/uploads"
+        "VIDEO_UPLOAD_MAX_MB=500"
       ];
     };
   };
@@ -111,6 +112,7 @@ nano .env
 ```env
 DATABASE_PATH=/var/lib/wedding/wedding.db
 UPLOAD_DIR=/var/lib/wedding/uploads
+VIDEO_UPLOAD_MAX_MB=500
 ```
 
 ### Bước 4: Cài đặt và Build

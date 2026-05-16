@@ -23,10 +23,10 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
 
     serverActions: {
-      bodySizeLimit: "100mb",
+      bodySizeLimit: "500mb",
     },
 
-    proxyClientMaxBodySize: 100 * 1024 * 1024,
+    proxyClientMaxBodySize: 500 * 1024 * 1024,
   },
 
   async redirects() {

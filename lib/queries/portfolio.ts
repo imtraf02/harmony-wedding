@@ -99,3 +99,16 @@ export function updatePortfolio(
 export function deletePortfolio(id: number): void {
   getDb().prepare("DELETE FROM portfolios WHERE id = ?").run(id);
 }
+
+export function reorderPortfolios(orderedIds: number[]): void {
+  const db = getDb();
+  const stmt = db.prepare(
+    "UPDATE portfolios SET sort_order = @order WHERE id = @id",
+  );
+  const tx = db.transaction((ids: number[]) => {
+    ids.forEach((id, index) => {
+      stmt.run({ id, order: index });
+    });
+  });
+  tx(orderedIds);
+}

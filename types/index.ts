@@ -25,6 +25,27 @@ export interface Portfolio {
   updated_at: string;
 }
 
+export interface PostProduction {
+  id: number;
+  slug: string;
+  title: string;
+  description: string | null;
+  category:
+    | "reels"
+    | "highlight-film"
+    | "color-grading"
+    | "skin-retouch"
+    | "cinematic-edit";
+  video_url: string;
+  poster_image: string | null;
+  orientation: "vertical" | "horizontal" | "square";
+  is_featured: boolean;
+  is_active: boolean;
+  sort_order: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Studio {
   id: number;
   slug: string;

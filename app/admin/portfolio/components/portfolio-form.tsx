@@ -1,10 +1,10 @@
 "use client";
 
-import { ImageIcon, PlusIcon, X } from "lucide-react";
+import { FileVideoIcon, ImageIcon, PlusIcon, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
-import { uploadImageAction } from "@/app/actions/upload";
+import { uploadImageAction, uploadVideoAction } from "@/app/actions/upload";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
@@ -54,15 +54,21 @@ const orientationItems = [
   { label: "Vuông - 1/1", value: "square" },
 ];
 
+const VIDEO_MAX_SIZE = 500 * 1024 * 1024;
+
 export function PortfolioForm({ initialData }: PortfolioFormProps) {
   const [isPending, setIsPending] = useState(false);
   const [coverFiles, setCoverFiles] = useState<File[]>([]);
   const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
+  const [videoFiles, setVideoFiles] = useState<File[]>([]);
   const [coverImageText, setCoverImageText] = useState(
     initialData?.cover_image || "",
   );
   const [imagesText, setImagesText] = useState(
     initialData?.images?.join(",\n") || "",
+  );
+  const [videoUrlText, setVideoUrlText] = useState(
+    initialData?.video_url || "",
   );
 
   const parsedImages = imagesText
@@ -94,8 +100,8 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         const fd = new FormData();
         fd.append("file", coverFiles[0]);
         const res = await uploadImageAction(fd, "portfolio");
-        if (res.success) {
-          newCover = res.url!;
+        if (res.success && res.url) {
+          newCover = res.url;
         } else {
           toast.error(`Lỗi tải ảnh bìa: ${res.message}`);
           setIsPending(false);
@@ -109,8 +115,8 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         const fd = new FormData();
         fd.append("file", file);
         const res = await uploadImageAction(fd, "portfolio");
-        if (res.success) {
-          newGalleryUrls.push(res.url!);
+        if (res.success && res.url) {
+          newGalleryUrls.push(res.url);
         } else {
           toast.error(`Lỗi tải ảnh "${file.name}": ${res.message}`);
         }
@@ -120,12 +126,29 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
       formData.delete("images_files");
       formData.delete("cover_image_file");
 
+      let newVideoUrl = videoUrlText;
+      if (videoFiles.length > 0) {
+        const fd = new FormData();
+        fd.append("file", videoFiles[0]);
+        const res = await uploadVideoAction(fd, "portfolio");
+        if (res.success && res.url) {
+          newVideoUrl = res.url;
+        } else {
+          toast.error(`Lỗi tải video: ${res.message}`);
+          setIsPending(false);
+          return;
+        }
+      }
+
+      formData.delete("video_file");
+
       if (newCover) {
         formData.set("cover_image", newCover);
       }
 
       const allImages = [...parsedImages, ...newGalleryUrls];
       formData.set("images", allImages.join(","));
+      formData.set("video_url", newVideoUrl);
 
       if (initialData) {
         await updatePortfolioAction(initialData.id, formData);
@@ -481,16 +504,129 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
               htmlFor="video_url"
               className="mb-3 block text-ash text-label-luxury"
             >
-              Link Video (YouTube/Vimeo)
+              Video
             </FieldLabel>
-            <Input
-              id="video_url"
-              name="video_url"
-              type="url"
-              defaultValue={initialData?.video_url || ""}
-              className="h-12 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all placeholder:text-mist focus:border-obsidian focus:ring-0"
-              placeholder="https://..."
-            />
+            <div className="flex flex-col gap-6">
+              <Input
+                id="video_url"
+                name="video_url"
+                type="text"
+                value={videoUrlText}
+                onChange={(e) => setVideoUrlText(e.target.value)}
+                className="h-12 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all placeholder:text-mist focus:border-obsidian focus:ring-0"
+                placeholder="https://youtube.com/... hoặc /uploads/..."
+              />
+
+              {videoUrlText && videoFiles.length === 0 && (
+                <div className="relative overflow-hidden border border-black/5 bg-whisper">
+                  {videoUrlText.startsWith("/uploads/") ? (
+                    // biome-ignore lint/a11y/useMediaCaption: admin previews do not collect caption tracks.
+                    <video
+                      src={videoUrlText}
+                      controls
+                      preload="metadata"
+                      className="aspect-video w-full bg-black object-contain"
+                    >
+                      Trình duyệt không hỗ trợ phát video.
+                    </video>
+                  ) : (
+                    <div className="flex min-h-24 items-center justify-between gap-4 p-4">
+                      <div className="min-w-0">
+                        <p className="font-bold text-[10px] text-obsidian uppercase tracking-widest">
+                          Link video đã lưu
+                        </p>
+                        <p className="truncate text-[11px] text-mist">
+                          {videoUrlText}
+                        </p>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setVideoUrlText("")}
+                        className="shrink-0 text-mist hover:text-red-500"
+                        title="Xóa video"
+                      >
+                        <X className="size-4" />
+                      </Button>
+                    </div>
+                  )}
+                  {videoUrlText.startsWith("/uploads/") && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setVideoUrlText("")}
+                      className="absolute top-2 right-2 bg-white/90 text-mist hover:text-red-500"
+                      title="Xóa video"
+                    >
+                      <X className="size-4" />
+                    </Button>
+                  )}
+                </div>
+              )}
+
+              <FileUpload
+                accept="video/mp4,video/webm,video/ogg,video/quicktime,video/x-m4v"
+                maxFiles={1}
+                maxSize={VIDEO_MAX_SIZE}
+                value={videoFiles}
+                onValueChange={setVideoFiles}
+                onFileReject={onFileReject}
+                name="video_file"
+                className="w-full"
+              >
+                <FileUploadDropzone className="group border-black/5 border-dashed bg-luxury-surface py-10 transition-all duration-500 hover:border-obsidian/30 hover:bg-white">
+                  <div className="flex flex-col items-center gap-4 text-center">
+                    <div className="rounded-none border border-black/5 bg-white p-4 shadow-sm transition-colors group-hover:border-obsidian/20">
+                      <FileVideoIcon className="size-6 text-ash transition-colors group-hover:text-obsidian" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-[11px] text-obsidian uppercase tracking-widest">
+                        Tải video lên
+                      </p>
+                      <p className="mt-1 text-[10px] text-mist">
+                        MP4, WebM, OGG, MOV tối đa 500MB
+                      </p>
+                    </div>
+                    <FileUploadTrigger
+                      render={
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="mt-2 rounded-none border-black/5 px-6 font-bold text-[9px] uppercase tracking-widest"
+                        />
+                      }
+                    >
+                      Chọn video
+                    </FileUploadTrigger>
+                  </div>
+                </FileUploadDropzone>
+                <FileUploadList className="mt-4">
+                  {videoFiles.map((file, index) => (
+                    <FileUploadItem
+                      key={index}
+                      value={file}
+                      className="rounded-none border-black/5 bg-white"
+                    >
+                      <FileUploadItemPreview />
+                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <FileUploadItemDelete
+                        render={
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="size-8 text-mist hover:text-red-500"
+                          />
+                        }
+                      >
+                        <X className="size-4" />
+                      </FileUploadItemDelete>
+                    </FileUploadItem>
+                  ))}
+                </FileUploadList>
+              </FileUpload>
+            </div>
           </Field>
 
           <Field>

@@ -108,3 +108,16 @@ export function upsertStudio(data: Omit<Studio, "id">): void {
 export function deleteStudio(id: number): void {
   getDb().prepare("DELETE FROM studios WHERE id = ?").run(id);
 }
+
+export function reorderStudios(orderedIds: number[]): void {
+  const db = getDb();
+  const stmt = db.prepare(
+    "UPDATE studios SET sort_order = @order WHERE id = @id",
+  );
+  const tx = db.transaction((ids: number[]) => {
+    ids.forEach((id, index) => {
+      stmt.run({ id, order: index });
+    });
+  });
+  tx(orderedIds);
+}

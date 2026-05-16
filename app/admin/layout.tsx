@@ -9,6 +9,7 @@ import {
   PresentationIcon,
   SparklesIcon,
   StarIcon,
+  VideoIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -35,6 +36,7 @@ const MENU_ITEMS = [
   { label: "Slide Hero", href: "/admin/hero", icon: PresentationIcon },
   { label: "Dịch vụ", href: "/admin/services", icon: SparklesIcon },
   { label: "Portfolio", href: "/admin/portfolio", icon: ImageIcon },
+  { label: "Hậu kỳ", href: "/admin/post-production", icon: VideoIcon },
   { label: "Gallery", href: "/admin/gallery", icon: ImageIcon },
   { label: "Blog", href: "/admin/blog", icon: PresentationIcon },
   { label: "Liên hệ", href: "/admin/contacts", icon: MailIcon },

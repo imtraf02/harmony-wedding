@@ -8,6 +8,7 @@ import { type SessionData, sessionOptions } from "@/lib/auth";
 import {
   createService,
   deleteService,
+  reorderServices,
   updateService,
 } from "@/lib/queries/services";
 import type { Service } from "@/types";
@@ -94,6 +95,14 @@ export async function updateServiceAction(id: number, formData: FormData) {
 export async function deleteServiceAction(id: number) {
   await requireAdmin();
   deleteService(id);
+
+  revalidatePath("/admin/services");
+  revalidatePath("/services");
+}
+
+export async function reorderServicesAction(orderedIds: number[]) {
+  await requireAdmin();
+  reorderServices(orderedIds);
 
   revalidatePath("/admin/services");
   revalidatePath("/services");

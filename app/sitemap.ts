@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, priority: 1.0, changeFrequency: "weekly" },
     { url: `${base}/portfolio`, priority: 0.9, changeFrequency: "weekly" },
+    {
+      url: `${base}/post-production`,
+      priority: 0.85,
+      changeFrequency: "weekly",
+    },
     { url: `${base}/services`, priority: 0.9, changeFrequency: "monthly" },
     {
       url: `${base}/services/photography`,

@@ -1,9 +1,11 @@
 import { PencilIcon, PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SortableAdminGrid } from "@/components/admin/sortable-admin-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getAllGalleryItems } from "@/lib/queries/gallery";
+import { reorderGalleryItemsAction } from "./actions";
 import { DeleteGalleryButton } from "./components/delete-button";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +36,11 @@ export default async function AdminGalleryPage() {
 
       {/* ── Grid preview ── */}
       {items.length > 0 ? (
-        <div className="grid 3xl:grid-cols-5 grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <SortableAdminGrid
+          ids={items.map((item) => item.id)}
+          onReorder={reorderGalleryItemsAction}
+          className="grid 3xl:grid-cols-5 grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+        >
           {items.map((item) => (
             <div
               key={item.id}
@@ -93,7 +99,7 @@ export default async function AdminGalleryPage() {
               </div>
             </div>
           ))}
-        </div>
+        </SortableAdminGrid>
       ) : (
         <div className="border border-black/10 border-dashed py-40 text-center">
           <p className="mb-8 font-light text-smoke text-xl tracking-wide">

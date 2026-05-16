@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { navLinks } from "@/data/navigation";
 import { EMAIL, PHONE, STUDIO_ADDRESS, STUDIO_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -40,10 +40,10 @@ function _GrayLine({ className }: { className?: string }) {
    Desktop Dropdown
 ───────────────────────────────────────────── */
 function DesktopDropdown({
-  children,
+  items,
   open,
 }: {
-  children: NavChild[];
+  items: NavChild[];
   open: boolean;
 }) {
   return (
@@ -65,7 +65,7 @@ function DesktopDropdown({
       <div className="h-px w-full bg-linear-to-r from-transparent via-ash/40 to-transparent opacity-70" />
 
       <ul className="py-2">
-        {children.map((child, i) => (
+        {items.map((child, i) => (
           <li key={child.href}>
             <Link
               href={child.href}
@@ -76,8 +76,7 @@ function DesktopDropdown({
                 "text-smoke hover:text-obsidian",
                 "transition-colors duration-300",
                 "hover:bg-champagne",
-                i !== children.length - 1 &&
-                  "border-luxury-border-fine border-b",
+                i !== items.length - 1 && "border-luxury-border-fine border-b",
               )}
             >
               <span className="h-px w-0 shrink-0 bg-ash/50 transition-all duration-300 group-hover:w-3" />
@@ -102,19 +101,25 @@ function MobileMenu({
   onClose: () => void;
   links: NavLink[];
 }) {
-  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const expandableLinks = useMemo(
+    () =>
+      links.filter((link) => link.children?.length).map((link) => link.href),
+    [links],
+  );
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      setExpandedItems(expandableLinks);
     } else {
       document.body.style.overflow = "";
-      setExpandedItem(null);
+      setExpandedItems([]);
     }
     return () => {
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, expandableLinks]);
 
   return (
     <>
@@ -151,6 +156,7 @@ function MobileMenu({
             {STUDIO_NAME}
           </Link>
           <button
+            type="button"
             onClick={onClose}
             aria-label="Close menu"
             className="flex size-10 items-center justify-center rounded-full text-ash transition-colors duration-300 hover:bg-black/5 hover:text-obsidian"
@@ -180,42 +186,71 @@ function MobileMenu({
                 key={link.href}
                 className="group border-black/5 border-b last:border-0"
               >
-                <div className="flex items-center justify-between py-2">
+                <div className="flex items-center justify-between">
                   <div className="flex items-baseline gap-4">
                     <span className="font-bold font-sans text-[10px] text-ash/40 tracking-tighter">
                       {(i + 1).toString().padStart(2, "0")}
                     </span>
-                    <Link
-                      href={link.href}
-                      onClick={link.children ? undefined : onClose}
-                      className={cn(
-                        "font-light font-sans text-3xl text-obsidian tracking-tight sm:text-4xl",
-                        "transition-all duration-500 hover:text-charcoal",
-                        "block animate-fade-in-up-luxury py-2",
-                      )}
-                      style={
-                        {
-                          "--delay": `${i * 80 + 100}ms`,
-                        } as React.CSSProperties
-                      }
-                    >
-                      {link.label}
-                    </Link>
+                    {link.children ? (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedItems((items) =>
+                            items.includes(link.href)
+                              ? items.filter((href) => href !== link.href)
+                              : [...items, link.href],
+                          )
+                        }
+                        className={cn(
+                          "block animate-fade-in-up-luxury py-2 text-left",
+                          "font-light font-sans text-obsidian text-xl uppercase tracking-[0.12em] sm:text-2xl",
+                          "transition-all duration-500 hover:text-charcoal",
+                        )}
+                        style={
+                          {
+                            "--delay": `${i * 80 + 100}ms`,
+                          } as React.CSSProperties
+                        }
+                        aria-expanded={expandedItems.includes(link.href)}
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={onClose}
+                        className={cn(
+                          "font-light font-sans text-obsidian text-xl tracking-tight sm:text-2xl",
+                          "transition-all duration-500 hover:text-charcoal",
+                          "block animate-fade-in-up-luxury py-2",
+                        )}
+                        style={
+                          {
+                            "--delay": `${i * 80 + 100}ms`,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </div>
 
                   {link.children && (
                     <button
+                      type="button"
                       onClick={() =>
-                        setExpandedItem((v) =>
-                          v === link.href ? null : link.href,
+                        setExpandedItems((items) =>
+                          items.includes(link.href)
+                            ? items.filter((href) => href !== link.href)
+                            : [...items, link.href],
                         )
                       }
-                      aria-expanded={expandedItem === link.href}
+                      aria-expanded={expandedItems.includes(link.href)}
                       aria-label={`Expand ${link.label}`}
                       className={cn(
                         "flex size-12 items-center justify-center rounded-full text-ash transition-all duration-500",
-                        expandedItem === link.href
-                          ? "rotate-180 bg-black/5 text-obsidian"
+                        expandedItems.includes(link.href)
+                          ? "rotate-180 text-obsidian"
                           : "hover:bg-black/5",
                       )}
                     >
@@ -240,12 +275,12 @@ function MobileMenu({
                   <div
                     className={cn(
                       "1, 0.3, 1)] overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,",
-                      expandedItem === link.href
+                      expandedItems.includes(link.href)
                         ? "mb-6 max-h-[500px] opacity-100"
                         : "max-h-0 opacity-0",
                     )}
                   >
-                    <ul className="space-y-4 pt-2 pl-9">
+                    <ul className="space-y-3 pt-2 pl-9">
                       {link.children.map((child, j) => (
                         <li
                           key={child.href}
@@ -259,7 +294,7 @@ function MobileMenu({
                           <Link
                             href={child.href}
                             onClick={onClose}
-                            className="flex items-center gap-4 font-bold font-sans text-[11px] text-smoke uppercase tracking-[0.25em] transition-colors duration-300 hover:text-obsidian"
+                            className="flex items-center gap-4 py-1.5 font-light font-sans text-smoke text-xl tracking-tight transition-colors duration-300 hover:text-obsidian sm:text-2xl"
                           >
                             <span className="h-px w-4 bg-ash/30" />
                             {child.label}
@@ -422,6 +457,7 @@ export function Header() {
 
               {/* Hamburger — right */}
               <button
+                type="button"
                 className={cn(
                   "relative flex flex-col items-center justify-center",
                   "h-10 w-10",
@@ -542,7 +578,7 @@ export function Header() {
 
                     {link.children && (
                       <DesktopDropdown
-                        children={link.children}
+                        items={link.children}
                         open={activeDropdown === link.href}
                       />
                     )}

@@ -41,4 +41,7 @@ export const CONTACT_STATUSES = [
 ] as const;
 
 export const UPLOAD_MAX_MB = Number(process.env.UPLOAD_MAX_MB ?? 10);
+export const VIDEO_UPLOAD_MAX_MB = Number(
+  process.env.VIDEO_UPLOAD_MAX_MB ?? 500,
+);
 export const UPLOAD_DIR = process.env.UPLOAD_DIR ?? "/var/lib/wedding/uploads";

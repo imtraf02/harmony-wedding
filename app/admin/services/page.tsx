@@ -1,9 +1,11 @@
 import { ImageIcon, PencilIcon, PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SortableAdminGrid } from "@/components/admin/sortable-admin-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getAllServicesAdmin } from "@/lib/queries/services";
+import { reorderServicesAction } from "./actions";
 import { DeleteServiceButton } from "./components/delete-button";
 
 export const dynamic = "force-dynamic";
@@ -32,7 +34,11 @@ export default function AdminServicesPage() {
       </header>
 
       {services.length > 0 ? (
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <SortableAdminGrid
+          ids={services.map((service) => service.id)}
+          onReorder={reorderServicesAction}
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
           {services.map((service) => (
             <article
               key={service.id}
@@ -97,7 +103,7 @@ export default function AdminServicesPage() {
               </div>
             </article>
           ))}
-        </div>
+        </SortableAdminGrid>
       ) : (
         <div className="border border-black/10 border-dashed py-40 text-center">
           <p className="mb-8 font-light text-smoke text-xl tracking-wide">

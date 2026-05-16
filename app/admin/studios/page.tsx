@@ -1,9 +1,11 @@
 import { MapPinIcon, PencilIcon, PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SortableAdminGrid } from "@/components/admin/sortable-admin-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getAllStudiosAdmin } from "@/lib/queries/studios";
+import { reorderStudiosAction } from "./actions";
 import { DeleteStudioButton } from "./components/delete-button";
 
 const typeLabels = {
@@ -38,7 +40,11 @@ export default function AdminStudiosPage() {
       </header>
 
       {studios.length > 0 ? (
-        <div className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <SortableAdminGrid
+          ids={studios.map((studio) => studio.id)}
+          onReorder={reorderStudiosAction}
+          className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+        >
           {studios.map((studio) => {
             const image = studio.images[0] || "/img/prewedding.jpg";
 
@@ -106,7 +112,7 @@ export default function AdminStudiosPage() {
               </article>
             );
           })}
-        </div>
+        </SortableAdminGrid>
       ) : (
         <div className="border border-black/10 border-dashed py-40 text-center">
           <p className="mb-8 font-light text-smoke text-xl tracking-wide">

@@ -87,7 +87,9 @@ export function reorderGalleryItems(orderedIds: number[]): void {
     "UPDATE gallery_items SET sort_order = @order WHERE id = @id",
   );
   const tx = db.transaction((ids: number[]) => {
-    ids.forEach((id, index) => stmt.run({ id, order: index }));
+    ids.forEach((id, index) => {
+      stmt.run({ id, order: index });
+    });
   });
   tx(orderedIds);
 }

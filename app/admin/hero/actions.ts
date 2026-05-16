@@ -9,6 +9,7 @@ import {
   createHeroSlide,
   deleteHeroSlide,
   getHeroSlideById,
+  reorderHeroSlides,
   updateHeroSlide,
 } from "@/lib/queries/hero";
 
@@ -108,6 +109,12 @@ export async function deleteHeroSlideAction(id: number) {
     await deleteFileIfUploaded(oldItem.src);
   }
 
+  revalidatePath("/admin/hero");
+  revalidatePath("/");
+}
+
+export async function reorderHeroSlidesAction(orderedIds: number[]) {
+  reorderHeroSlides(orderedIds);
   revalidatePath("/admin/hero");
   revalidatePath("/");
 }

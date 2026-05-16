@@ -66,6 +66,11 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
     setCurrent((i) => (i + 1) % images.length);
   }, [images.length]);
 
+  const handleClose = useCallback(() => {
+    setIsVisible(false);
+    setTimeout(onClose, 300);
+  }, [onClose]);
+
   /* clear anim direction after transition */
   useEffect(() => {
     if (!animDir) return;
@@ -88,12 +93,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
       window.removeEventListener("keydown", handler);
       document.body.style.overflow = "";
     };
-  }, [prev, next, handleClose]); // eslint-disable-line
-
-  const handleClose = () => {
-    setIsVisible(false);
-    setTimeout(onClose, 300);
-  };
+  }, [prev, next, handleClose]);
 
   /* touch swipe */
   const handleTouchStart = (e: React.TouchEvent) => {

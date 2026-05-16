@@ -81,3 +81,16 @@ export function deleteHeroSlide(id: number) {
   const db = getDb();
   return db.prepare("DELETE FROM hero_slides WHERE id = ?").run(id);
 }
+
+export function reorderHeroSlides(orderedIds: number[]): void {
+  const db = getDb();
+  const stmt = db.prepare(
+    "UPDATE hero_slides SET sort_order = @order WHERE id = @id",
+  );
+  const tx = db.transaction((ids: number[]) => {
+    ids.forEach((id, index) => {
+      stmt.run({ id, order: index });
+    });
+  });
+  tx(orderedIds);
+}

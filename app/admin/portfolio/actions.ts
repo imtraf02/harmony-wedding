@@ -4,11 +4,12 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { UPLOAD_DIR } from "@/lib/constants";
+import { UPLOAD_DIR, VIDEO_UPLOAD_MAX_MB } from "@/lib/constants";
 import {
   createPortfolio,
   deletePortfolio,
   getPortfolios,
+  reorderPortfolios,
   updatePortfolio,
 } from "@/lib/queries/portfolio";
 import type { Portfolio } from "@/types";
@@ -17,6 +18,8 @@ import type { Portfolio } from "@/types";
 const UPLOAD_BASE = path.isAbsolute(UPLOAD_DIR)
   ? UPLOAD_DIR
   : path.join(process.cwd(), UPLOAD_DIR);
+
+const VIDEO_EXTENSIONS = new Set([".mp4", ".webm", ".ogg", ".mov", ".m4v"]);
 
 async function saveFile(file: File, prefix = "portfolio"): Promise<string> {
   const bytes = await file.arrayBuffer();
@@ -34,15 +37,45 @@ async function saveFile(file: File, prefix = "portfolio"): Promise<string> {
   return `/uploads/${filename}`;
 }
 
+async function saveVideoFile(
+  file: File,
+  prefix = "portfolio",
+): Promise<string> {
+  const ext = path.extname(file.name).toLowerCase();
+  if (!file.type.startsWith("video/") || !VIDEO_EXTENSIONS.has(ext)) {
+    throw new Error("Chỉ hỗ trợ video MP4, WebM, OGG, MOV hoặc M4V");
+  }
+
+  if (file.size > VIDEO_UPLOAD_MAX_MB * 1024 * 1024) {
+    throw new Error(`Video tối đa ${VIDEO_UPLOAD_MAX_MB}MB`);
+  }
+
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+
+  const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+  const filename = `${prefix}-video-${uniqueSuffix}${ext}`;
+
+  await fs.mkdir(path.join(UPLOAD_BASE, "portfolio", "videos"), {
+    recursive: true,
+  });
+
+  const filepath = path.join(UPLOAD_BASE, "portfolio", "videos", filename);
+  await fs.writeFile(filepath, buffer);
+
+  return `/uploads/portfolio/videos/${filename}`;
+}
+
 async function deleteFileIfUploaded(url: string | null | undefined) {
   if (!url?.startsWith("/uploads/")) return;
   try {
     const relative = url.replace(/^\/uploads\//, "");
     const filepath = path.join(UPLOAD_BASE, relative);
     await fs.unlink(filepath);
-  } catch (error: any) {
-    if (error.code !== "ENOENT")
-      console.error("Failed to delete file:", url, error);
+  } catch (error) {
+    const code =
+      error instanceof Error && "code" in error ? error.code : undefined;
+    if (code !== "ENOENT") console.error("Failed to delete file:", url, error);
   }
 }
 
@@ -70,6 +103,12 @@ export async function createPortfolioAction(formData: FormData) {
   }
   const images = [...existingImages, ...uploadedImages];
 
+  let video_url = (formData.get("video_url") as string) || null;
+  const videoFile = formData.get("video_file") as File | null;
+  if (videoFile && videoFile.size > 0) {
+    video_url = await saveVideoFile(videoFile);
+  }
+
   const data = {
     slug: formData.get("slug") as string,
     title: formData.get("title") as string,
@@ -85,7 +124,7 @@ export async function createPortfolioAction(formData: FormData) {
     studio_slug: (formData.get("studio_slug") as string) || null,
     cover_image,
     images,
-    video_url: (formData.get("video_url") as string) || null,
+    video_url,
     is_featured: formData.get("is_featured") === "on",
     orientation:
       (formData.get("orientation") as Portfolio["orientation"]) || "portrait",
@@ -124,6 +163,12 @@ export async function updatePortfolioAction(id: number, formData: FormData) {
   }
   const images = [...existingImages, ...uploadedImages];
 
+  let video_url = (formData.get("video_url") as string) || null;
+  const videoFile = formData.get("video_file") as File | null;
+  if (videoFile && videoFile.size > 0) {
+    video_url = await saveVideoFile(videoFile);
+  }
+
   // Cleanup old files
   if (oldPortfolio) {
     if (oldPortfolio.cover_image !== cover_image) {
@@ -134,6 +179,9 @@ export async function updatePortfolioAction(id: number, formData: FormData) {
     );
     for (const img of deletedImages) {
       await deleteFileIfUploaded(img);
+    }
+    if (oldPortfolio.video_url !== video_url) {
+      await deleteFileIfUploaded(oldPortfolio.video_url);
     }
   }
 
@@ -152,7 +200,7 @@ export async function updatePortfolioAction(id: number, formData: FormData) {
     studio_slug: (formData.get("studio_slug") as string) || null,
     cover_image,
     images,
-    video_url: (formData.get("video_url") as string) || null,
+    video_url,
     is_featured: formData.get("is_featured") === "on",
     orientation:
       (formData.get("orientation") as Portfolio["orientation"]) || "portrait",
@@ -173,11 +221,18 @@ export async function deletePortfolioAction(id: number) {
 
   if (oldPortfolio) {
     await deleteFileIfUploaded(oldPortfolio.cover_image);
+    await deleteFileIfUploaded(oldPortfolio.video_url);
     for (const img of oldPortfolio.images) {
       await deleteFileIfUploaded(img);
     }
   }
 
+  revalidatePath("/admin/portfolio");
+  revalidatePath("/portfolio");
+}
+
+export async function reorderPortfoliosAction(orderedIds: number[]) {
+  reorderPortfolios(orderedIds);
   revalidatePath("/admin/portfolio");
   revalidatePath("/portfolio");
 }

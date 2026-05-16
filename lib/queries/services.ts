@@ -243,3 +243,17 @@ export function deleteService(id: number): void {
   ensureServicesTable();
   getDb().prepare("DELETE FROM services WHERE id = ?").run(id);
 }
+
+export function reorderServices(orderedIds: number[]): void {
+  ensureServicesTable();
+  const db = getDb();
+  const stmt = db.prepare(
+    "UPDATE services SET sort_order = @order WHERE id = @id",
+  );
+  const tx = db.transaction((ids: number[]) => {
+    ids.forEach((id, index) => {
+      stmt.run({ id, order: index });
+    });
+  });
+  tx(orderedIds);
+}

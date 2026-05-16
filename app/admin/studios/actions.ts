@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import {
   createStudio,
   deleteStudio,
+  reorderStudios,
   updateStudio,
 } from "@/lib/queries/studios";
 import type { Studio } from "@/types";
@@ -69,6 +70,13 @@ export async function updateStudioAction(id: number, formData: FormData) {
 
 export async function deleteStudioAction(id: number) {
   deleteStudio(id);
+
+  revalidatePath("/admin/studios");
+  revalidatePath("/studios");
+}
+
+export async function reorderStudiosAction(orderedIds: number[]) {
+  reorderStudios(orderedIds);
 
   revalidatePath("/admin/studios");
   revalidatePath("/studios");

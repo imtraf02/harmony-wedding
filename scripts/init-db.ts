@@ -162,6 +162,26 @@ function runSchema(db: Database.Database) {
 
 function runMigrations(db: Database.Database) {
   db.exec(`
+    CREATE TABLE IF NOT EXISTS post_productions (
+      id            INTEGER PRIMARY KEY AUTOINCREMENT,
+      slug          TEXT    UNIQUE NOT NULL,
+      title         TEXT    NOT NULL,
+      description   TEXT,
+      category      TEXT    NOT NULL DEFAULT 'reels'
+                            CHECK(category IN ('reels','highlight-film','color-grading','skin-retouch','cinematic-edit')),
+      video_url     TEXT    NOT NULL,
+      poster_image  TEXT,
+      orientation   TEXT    NOT NULL DEFAULT 'vertical'
+                            CHECK(orientation IN ('vertical','horizontal','square')),
+      is_featured   INTEGER NOT NULL DEFAULT 0,
+      is_active     INTEGER NOT NULL DEFAULT 1,
+      sort_order    INTEGER NOT NULL DEFAULT 0,
+      created_at    TEXT    NOT NULL DEFAULT (datetime('now','localtime')),
+      updated_at    TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
+    );
+    CREATE INDEX IF NOT EXISTS idx_post_productions_active ON post_productions(is_active, sort_order);
+    CREATE INDEX IF NOT EXISTS idx_post_productions_category ON post_productions(category);
+
     CREATE TABLE IF NOT EXISTS gallery_items (
       id         INTEGER PRIMARY KEY AUTOINCREMENT,
       src        TEXT    NOT NULL,

@@ -1,9 +1,11 @@
 import { Edit3Icon, PlusIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SortableAdminGrid } from "@/components/admin/sortable-admin-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getAllHeroSlides } from "@/lib/queries/hero";
+import { reorderHeroSlidesAction } from "./actions";
 import { DeleteHeroButton } from "./components/delete-button";
 
 export const dynamic = "force-dynamic";
@@ -37,7 +39,11 @@ export default function HeroAdminPage() {
         </Link>
       </header>
 
-      <div className="grid 3xl:grid-cols-5 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <SortableAdminGrid
+        ids={slides.map((slide) => slide.id)}
+        onReorder={reorderHeroSlidesAction}
+        className="grid 3xl:grid-cols-5 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+      >
         {slides.map((slide) => (
           <div
             key={slide.id}
@@ -109,21 +115,21 @@ export default function HeroAdminPage() {
             </div>
           </div>
         ))}
+      </SortableAdminGrid>
 
-        {slides.length === 0 && (
-          <div className="col-span-full flex flex-center flex-col items-center justify-center border-2 border-black/5 border-dashed py-32 text-center">
-            <p className="text-ash text-xs uppercase tracking-widest">
-              Chưa có slide nào
-            </p>
-            <Link
-              href="/admin/hero/new"
-              className="mt-4 font-bold text-[11px] text-obsidian uppercase tracking-widest hover:underline"
-            >
-              Tạo slide đầu tiên →
-            </Link>
-          </div>
-        )}
-      </div>
+      {slides.length === 0 && (
+        <div className="flex flex-center flex-col items-center justify-center border-2 border-black/5 border-dashed py-32 text-center">
+          <p className="text-ash text-xs uppercase tracking-widest">
+            Chưa có slide nào
+          </p>
+          <Link
+            href="/admin/hero/new"
+            className="mt-4 font-bold text-[11px] text-obsidian uppercase tracking-widest hover:underline"
+          >
+            Tạo slide đầu tiên →
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

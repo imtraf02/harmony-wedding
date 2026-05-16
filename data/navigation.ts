@@ -15,11 +15,17 @@ export const navLinks: NavLink[] = [
       { label: "Phóng sự cưới", href: "/services/wedding-film" },
     ],
   },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Studio", href: "/studios" },
+  {
+    label: "Khám phá",
+    href: "/portfolio",
+    children: [
+      { label: "Portfolio", href: "/portfolio" },
+      { label: "Hậu kỳ", href: "/post-production" },
+      { label: "Studio", href: "/studios" },
+      { label: "Blog", href: "/blog" },
+    ],
+  },
   { label: "Bảng giá", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
-  { label: "Liên hệ", href: "/contact" },
 ];
 
 export const footerLinks = [
@@ -35,6 +41,7 @@ export const footerLinks = [
     heading: "Khám phá",
     links: [
       { label: "Portfolio", href: "/portfolio" },
+      { label: "Hậu kỳ quay chụp", href: "/post-production" },
       { label: "Hệ thống Studio", href: "/studios" },
       { label: "Báo giá chi tiết", href: "/pricing" },
       { label: "Tin tức & Kinh nghiệm", href: "/blog" },
