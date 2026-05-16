@@ -4,6 +4,7 @@ export const PHONE       = process.env.NEXT_PUBLIC_PHONE        ?? '+84901234567
 export const ZALO_ID     = process.env.NEXT_PUBLIC_ZALO_ID      ?? '0901234567';
 export const FACEBOOK_URL   = process.env.NEXT_PUBLIC_FACEBOOK_URL   ?? 'https://facebook.com';
 export const TIKTOK_URL     = process.env.NEXT_PUBLIC_TIKTOK_URL     ?? 'https://tiktok.com';
+export const STUDIO_ADDRESS = process.env.NEXT_PUBLIC_STUDIO_ADDRESS ?? '45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai';
 
 export const PORTFOLIO_STYLES    = ['vintage', 'modern', 'fineart', 'romantic'] as const;
 export const LOCATION_TYPES      = ['studio', 'outdoor', 'destination'] as const;

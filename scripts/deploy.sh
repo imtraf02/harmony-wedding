@@ -28,8 +28,6 @@ pnpm install
 echo "🗄️ Đang kiểm tra và cập nhật Database..."
 # Lệnh init-db sẽ tạo bảng nếu chưa có (idempotent)
 pnpm tsx scripts/init-db.ts
-# Chạy migration bổ sung nếu cần
-pnpm tsx scripts/migrate-gallery.ts
 
 # 4. Build ứng dụng
 echo "🏗️ Đang build ứng dụng Next.js..."

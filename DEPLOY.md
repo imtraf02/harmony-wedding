@@ -151,7 +151,6 @@ cd /var/www/wedding
 git pull
 pnpm install
 pnpm tsx scripts/init-db.ts
-pnpm tsx scripts/migrate-gallery.ts
 pnpm build
 exit
 systemctl restart harmony-wedding

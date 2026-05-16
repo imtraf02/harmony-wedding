@@ -14,12 +14,25 @@ CREATE TABLE IF NOT EXISTS portfolios (
   images        TEXT    NOT NULL DEFAULT '[]',
   video_url     TEXT,
   is_featured   INTEGER NOT NULL DEFAULT 0,
+  orientation   TEXT    NOT NULL DEFAULT 'portrait'
+                        CHECK(orientation IN ('portrait','landscape','square')),
   sort_order    INTEGER NOT NULL DEFAULT 0,
   created_at    TEXT    NOT NULL DEFAULT (datetime('now','localtime')),
   updated_at    TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
 );
 CREATE INDEX IF NOT EXISTS idx_portfolios_style    ON portfolios(style);
 CREATE INDEX IF NOT EXISTS idx_portfolios_featured ON portfolios(is_featured);
+
+CREATE TABLE IF NOT EXISTS gallery_items (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  src        TEXT    NOT NULL,
+  alt        TEXT    NOT NULL DEFAULT '',
+  label      TEXT,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  is_active  INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
+);
+CREATE INDEX IF NOT EXISTS idx_gallery_items_active ON gallery_items(is_active, sort_order);
 
 CREATE TABLE IF NOT EXISTS studios (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,

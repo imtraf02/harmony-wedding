@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { footerLinks } from '@/data/navigation';
-import { STUDIO_NAME, PHONE, FACEBOOK_URL, TIKTOK_URL, ZALO_ID } from '@/lib/constants';
+import { STUDIO_NAME, PHONE, FACEBOOK_URL, TIKTOK_URL, ZALO_ID, STUDIO_ADDRESS } from '@/lib/constants';
 
 /* ─────────────────────────────────────────────────────────────
    Art Deco Luxury Editorial Footer
@@ -194,6 +194,12 @@ export function Footer() {
               Lưu giữ khoảnh khắc vượt thời gian — từ cái nhìn đầu tiên đến vũ điệu cuối cùng.
             </p>
 
+            {/* Address */}
+            <div className="flex items-center gap-3 text-[12px] text-ivory/60 font-light italic">
+              <GoldDiamond />
+              <address className="not-italic">{STUDIO_ADDRESS}</address>
+            </div>
+
             {/* Social row */}
             <div className="flex items-center justify-center gap-2 mt-2 md:justify-start">
               {socialLinks.map((s) => (
@@ -263,6 +269,17 @@ export function Footer() {
                 </li>
                 <li>
                   <a
+                    href={GOOGLE_MAP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
+                  >
+                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
+                    <span className="truncate max-w-[200px]">{STUDIO_ADDRESS}</span>
+                  </a>
+                </li>
+                <li>
+                  <a
                     href={`https://zalo.me/${ZALO_ID}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -270,17 +287,6 @@ export function Footer() {
                   >
                     <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                     Zalo Chat
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={GOOGLE_MAP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
-                  >
-                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
-                    Google Map
                   </a>
                 </li>
                 <li>
