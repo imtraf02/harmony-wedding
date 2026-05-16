@@ -1,4 +1,4 @@
-import { FACEBOOK_URL, PHONE, SITE_URL, STUDIO_NAME, TIKTOK_URL } from '@/lib/constants';
+import { FACEBOOK_URL, PHONE, SITE_URL, STUDIO_NAME, TIKTOK_URL, ADDRESS_STREET, ADDRESS_LOCALITY, ADDRESS_REGION } from '@/lib/constants';
 
 export function JsonLd({ data }: { data: object }) {
   return (
@@ -31,9 +31,9 @@ export const localBusinessSchema = {
   ],
   address: {
     '@type'        : 'PostalAddress',
-    streetAddress  : '45 Đường Cuối Chợ Đông Hoà',
-    addressLocality: 'Trảng Bom',
-    addressRegion  : 'Đồng Nai',
+    streetAddress  : ADDRESS_STREET,
+    addressLocality: ADDRESS_LOCALITY,
+    addressRegion  : ADDRESS_REGION,
     addressCountry : 'VN',
   },
   sameAs: [FACEBOOK_URL, TIKTOK_URL].filter(Boolean),

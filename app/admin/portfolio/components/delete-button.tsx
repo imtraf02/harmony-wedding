@@ -23,7 +23,7 @@ export function DeleteButton({ id }: { id: number }) {
       className="p-2 text-mist hover:text-red-500 transition-colors disabled:opacity-40"
       title="Xóa"
     >
-      <Trash2Icon className="size-4" />
+      <Trash2Icon className="size-5 text-white" />
     </button>
   );
 }

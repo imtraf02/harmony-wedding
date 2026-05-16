@@ -30,7 +30,7 @@ export default async function AdminPortfolioList() {
 
       {/* ── Grid preview ── */}
       {items.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-6 md:gap-8">
           {items.map((item) => (
             <div 
               key={item.id} 
@@ -77,15 +77,15 @@ export default async function AdminPortfolioList() {
                 <p className="text-[9px] text-white/80 font-light leading-snug uppercase tracking-widest truncate">
                   {item.location_type}
                 </p>
-                <div className="flex items-center gap-2 mt-3">
+                <div className="flex items-center gap-2 mt-4">
                   <Link
                     href={`/admin/portfolio/edit/${item.id}`}
-                    className="flex items-center justify-center size-8 bg-white/25 hover:bg-gold transition-colors duration-300 backdrop-blur-sm"
+                    className="flex items-center justify-center size-10 bg-white/20 hover:bg-gold transition-all duration-300 backdrop-blur-md border border-white/20 shadow-lg"
                     aria-label={`Sửa ${item.title}`}
                   >
-                    <PencilIcon className="size-3.5 text-white" />
+                    <PencilIcon className="size-4 text-white" />
                   </Link>
-                  <div className="flex items-center justify-center size-8 bg-white/20 hover:bg-red-500 transition-colors duration-300 backdrop-blur-sm">
+                  <div className="flex items-center justify-center size-10 bg-white/20 hover:bg-red-500 transition-all duration-300 backdrop-blur-md border border-white/20 shadow-lg">
                     <DeleteButton id={item.id} />
                   </div>
                 </div>

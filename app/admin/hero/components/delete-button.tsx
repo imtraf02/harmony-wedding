@@ -23,9 +23,9 @@ export function DeleteHeroButton({ id }: DeleteHeroButtonProps) {
           startTransition(() => deleteHeroSlideAction(id));
         }
       }}
-      className="size-10 bg-white/10 backdrop-blur-md text-white hover:bg-red-500 hover:text-white transition-all rounded-none border border-white/20"
+      className="size-12 bg-white/10 backdrop-blur-xl text-white hover:bg-red-500 hover:text-white transition-all rounded-none border border-white/20 shadow-xl"
     >
-      {isPending ? <Spinner className="size-4" /> : <Trash2Icon className="size-4" />}
+      {isPending ? <Spinner className="size-5" /> : <Trash2Icon className="size-5" />}
     </Button>
   );
 }

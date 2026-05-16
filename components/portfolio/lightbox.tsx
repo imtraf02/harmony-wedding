@@ -185,7 +185,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
               onClick={e => { e.stopPropagation(); prev(); }}
               className={cn(
                 'absolute left-4 sm:left-6 top-1/2 -translate-y-1/2',
-                'group flex items-center justify-center',
+                'group hidden sm:flex items-center justify-center',
                 'w-11 h-16 sm:w-12 sm:h-20',
                 'border border-white/15 bg-obsidian/50 backdrop-blur-sm',
                 'text-white/60 hover:text-white hover:border-gold-400/50 hover:bg-obsidian/80',
@@ -204,7 +204,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
               onClick={e => { e.stopPropagation(); next(); }}
               className={cn(
                 'absolute right-4 sm:right-6 top-1/2 -translate-y-1/2',
-                'group flex items-center justify-center',
+                'group hidden sm:flex items-center justify-center',
                 'w-11 h-16 sm:w-12 sm:h-20',
                 'border border-white/15 bg-obsidian/50 backdrop-blur-sm',
                 'text-white/60 hover:text-white hover:border-gold-400/50 hover:bg-obsidian/80',

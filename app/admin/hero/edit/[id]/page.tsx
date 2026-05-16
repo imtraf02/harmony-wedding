@@ -17,7 +17,7 @@ export default async function EditHeroPage({ params }: EditHeroPageProps) {
   if (!slide) notFound();
 
   return (
-    <div className="p-6 sm:p-10 md:p-16 space-y-12 bg-ivory min-h-screen flex flex-col items-center">
+    <div className="space-y-12 bg-ivory min-h-screen flex flex-col items-center">
       <header className="w-full flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
         <div>
           <Link href="/admin/hero" className="inline-flex items-center gap-2 text-ash hover:text-gold transition-colors mb-6 group">

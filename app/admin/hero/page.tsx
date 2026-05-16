@@ -12,7 +12,7 @@ export default function HeroAdminPage() {
   const slides = getAllHeroSlides();
 
   return (
-    <div className="p-6 sm:p-10 md:p-16 space-y-12 bg-ivory min-h-screen">
+    <div className="space-y-12 bg-ivory min-h-screen">
       <header className="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <div className="flex items-center gap-3 mb-4">
@@ -35,21 +35,21 @@ export default function HeroAdminPage() {
         </Link>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-8">
         {slides.map((slide) => (
           <div key={slide.id} className="group relative bg-white border border-black/5 overflow-hidden shadow-sm hover:shadow-luxury transition-all duration-700">
             {/* Aspect wrapper */}
-            <div className="relative aspect-[16/10] overflow-hidden">
+            <div className="relative aspect-[3/4] overflow-hidden">
               <Image
                 src={slide.src}
                 alt={slide.title || ''}
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              
+
               {/* Overlays */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              
+
               {/* Badges */}
               <div className="absolute top-4 left-4 flex gap-2">
                 <Badge className={slide.is_active ? "bg-green-500/80 backdrop-blur-md" : "bg-red-500/80 backdrop-blur-md"}>
@@ -61,10 +61,10 @@ export default function HeroAdminPage() {
               </div>
 
               {/* Actions */}
-              <div className="absolute top-4 right-4 flex gap-2 translate-x-0 opacity-100 transition-all duration-500 md:translate-x-10 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100">
+              <div className="absolute top-6 right-6 flex flex-col gap-3 translate-x-0 opacity-100 transition-all duration-700 md:translate-x-12 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 z-30">
                 <Link href={`/admin/hero/edit/${slide.id}`}>
-                  <Button variant="ghost" size="icon" className="size-10 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-obsidian transition-all rounded-none border border-white/20">
-                    <Edit3Icon className="size-4" />
+                  <Button variant="ghost" size="icon" className="size-12 bg-white/10 backdrop-blur-xl text-white hover:bg-gold hover:text-white transition-all rounded-none border border-white/20 shadow-xl">
+                    <Edit3Icon className="size-5" />
                   </Button>
                 </Link>
                 <DeleteHeroButton id={slide.id} />
@@ -76,14 +76,14 @@ export default function HeroAdminPage() {
                 <h3 className="text-xl text-white font-sans font-light leading-snug">{slide.title}</h3>
               </div>
             </div>
-            
+
             <div className="p-4 bg-white border-t border-black/5 flex items-center justify-between">
               <span className="text-[10px] text-ash uppercase tracking-widest">{slide.cta_label || 'Không có nút'}</span>
               <span className="text-[10px] text-mist truncate max-w-[150px]">{slide.cta_href}</span>
             </div>
           </div>
         ))}
-        
+
         {slides.length === 0 && (
           <div className="col-span-full py-32 border-2 border-dashed border-black/5 flex flex-center items-center justify-center flex-col text-center">
             <p className="text-ash uppercase tracking-widest text-xs">Chưa có slide nào</p>
