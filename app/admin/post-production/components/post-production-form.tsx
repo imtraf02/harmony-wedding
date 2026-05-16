@@ -4,7 +4,7 @@ import { FileVideoIcon, ImageIcon, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
-import { uploadImageAction, uploadVideoAction } from "@/app/actions/upload";
+import { uploadImageAction } from "@/app/actions/upload";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/select";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import { uploadVideoFile } from "@/lib/upload-video-client";
 import type { PostProduction } from "@/types";
 import {
   createPostProductionAction,
@@ -76,9 +77,7 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
 
       let finalVideoUrl = videoUrlText;
       if (videoFiles.length > 0) {
-        const videoData = new FormData();
-        videoData.append("file", videoFiles[0]);
-        const result = await uploadVideoAction(videoData, "post-production");
+        const result = await uploadVideoFile(videoFiles[0], "post-production");
 
         if (result.success && result.url) {
           finalVideoUrl = result.url;

@@ -4,7 +4,7 @@ import { FileVideoIcon, ImageIcon, PlusIcon, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
-import { uploadImageAction, uploadVideoAction } from "@/app/actions/upload";
+import { uploadImageAction } from "@/app/actions/upload";
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/select";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
+import { uploadVideoFile } from "@/lib/upload-video-client";
 import type { Portfolio } from "@/types";
 import { createPortfolioAction, updatePortfolioAction } from "../actions";
 
@@ -128,9 +129,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
 
       let newVideoUrl = videoUrlText;
       if (videoFiles.length > 0) {
-        const fd = new FormData();
-        fd.append("file", videoFiles[0]);
-        const res = await uploadVideoAction(fd, "portfolio");
+        const res = await uploadVideoFile(videoFiles[0], "portfolio");
         if (res.success && res.url) {
           newVideoUrl = res.url;
         } else {
