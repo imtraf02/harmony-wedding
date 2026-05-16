@@ -7,9 +7,14 @@ set -e
 
 # Đường dẫn dự án
 PROJECT_DIR="/var/www/wedding"
+export DATABASE_PATH="${DATABASE_PATH:-/var/lib/wedding/wedding.db}"
+export UPLOAD_DIR="${UPLOAD_DIR:-/var/lib/wedding/uploads}"
 cd "$PROJECT_DIR"
 
 echo "🚀 Bắt đầu quá trình triển khai: $(date)"
+echo "🗄️ Database path: $DATABASE_PATH"
+
+mkdir -p "$(dirname "$DATABASE_PATH")" "$UPLOAD_DIR"
 
 # 1. Lấy mã nguồn mới nhất
 echo "📦 Đang lấy code mới từ GitHub..."

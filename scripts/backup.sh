@@ -7,6 +7,7 @@ set -e
 
 PROJECT_DIR="/var/www/wedding"
 BACKUP_DIR="/var/backups/wedding"
+DATABASE_PATH="${DATABASE_PATH:-/var/lib/wedding/wedding.db}"
 DATE=$(date +%Y-%m-%d_%H%M%S)
 
 # Tạo thư mục backup nếu chưa có
@@ -15,8 +16,8 @@ mkdir -p "$BACKUP_DIR"
 echo "[$DATE] 🔄 Bắt đầu sao lưu..."
 
 # 1. Sao lưu Database SQLite (Dùng lệnh .backup của sqlite3 để an toàn khi đang có kết nối)
-if [ -f "$PROJECT_DIR/database/wedding.db" ]; then
-    sqlite3 "$PROJECT_DIR/database/wedding.db" ".backup '$BACKUP_DIR/wedding_$DATE.db'"
+if [ -f "$DATABASE_PATH" ]; then
+    sqlite3 "$DATABASE_PATH" ".backup '$BACKUP_DIR/wedding_$DATE.db'"
     echo "[$DATE]  - Database backed up: wedding_$DATE.db"
 fi
 

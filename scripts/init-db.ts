@@ -6,8 +6,9 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import { getDatabasePath } from '../lib/db-path';
 
-const DB_PATH = path.join(process.cwd(), 'database', 'wedding.db');
+const DB_PATH = getDatabasePath();
 const SCHEMA_PATH = path.join(process.cwd(), 'database', 'schema.sql');
 
 function init() {

@@ -57,7 +57,13 @@ Tài liệu này hướng dẫn cách đưa dự án **Harmony Wedding** từ Gi
       WorkingDirectory = "/var/www/wedding";
       User = "wedding-user";
       Restart = "always";
-      Environment = "NODE_ENV=production PORT=3000";
+      StateDirectory = "wedding";
+      Environment = [
+        "NODE_ENV=production"
+        "PORT=3000"
+        "DATABASE_PATH=/var/lib/wedding/wedding.db"
+        "UPLOAD_DIR=/var/lib/wedding/uploads"
+      ];
     };
   };
 
@@ -76,7 +82,9 @@ Thực hiện các bước sau với quyền `root` trên server:
 ### Bước 1: Chuẩn bị thư mục
 ```bash
 mkdir -p /var/www/wedding
+mkdir -p /var/lib/wedding/uploads
 chown -R wedding-user:wedding-group /var/www/wedding
+chown -R wedding-user:wedding-group /var/lib/wedding
 ```
 
 ### Bước 2: Clone Code
@@ -91,6 +99,13 @@ git clone https://github.com/imtraf02/harmony-wedding.git .
 cp .env.example .env
 # Sửa file .env bằng nano hoặc vim để điền các thông tin bí mật
 nano .env
+```
+
+Đặt database ngoài thư mục source để `git pull` không đụng vào dữ liệu runtime:
+
+```env
+DATABASE_PATH=/var/lib/wedding/wedding.db
+UPLOAD_DIR=/var/lib/wedding/uploads
 ```
 
 ### Bước 4: Cài đặt và Build
@@ -135,6 +150,8 @@ sudo -u wedding-user -s
 cd /var/www/wedding
 git pull
 pnpm install
+pnpm tsx scripts/init-db.ts
+pnpm tsx scripts/migrate-gallery.ts
 pnpm build
 exit
 systemctl restart harmony-wedding
