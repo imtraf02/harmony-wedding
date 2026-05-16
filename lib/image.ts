@@ -1,13 +1,12 @@
-import sharp from 'sharp';
-import path from 'path';
-import fs from 'fs/promises';
-import crypto from 'crypto';
-import { UPLOAD_DIR } from './constants';
-
+import crypto from "node:crypto";
+import fs from "node:fs/promises";
+import path from "node:path";
+import sharp from "sharp";
+import { UPLOAD_DIR } from "./constants";
 
 export interface UploadResult {
-  url: string;   // /uploads/portfolio/abc123.webp
-  blurDataUrl: string;   // base64 8×8 blur placeholder
+  url: string; // /uploads/portfolio/abc123.webp
+  blurDataUrl: string; // base64 8×8 blur placeholder
   width: number;
   height: number;
 }
@@ -23,8 +22,10 @@ export async function processImage(
   category: string,
   maxWidth: number = 1920,
 ): Promise<UploadResult> {
-  const id = crypto.randomBytes(8).toString('hex');
-  const absDir = path.isAbsolute(UPLOAD_DIR) ? path.join(UPLOAD_DIR, category) : path.join(process.cwd(), UPLOAD_DIR, category);
+  const id = crypto.randomBytes(8).toString("hex");
+  const absDir = path.isAbsolute(UPLOAD_DIR)
+    ? path.join(UPLOAD_DIR, category)
+    : path.join(process.cwd(), UPLOAD_DIR, category);
   const filename = `${id}.webp`;
   const absPath = path.join(absDir, filename);
 
@@ -34,20 +35,24 @@ export async function processImage(
   const metadata = await image.metadata();
 
   // Resize only if wider than maxWidth
-  const pipeline = metadata.width && metadata.width > maxWidth
-    ? image.resize(maxWidth, undefined, { withoutEnlargement: true })
-    : image;
+  const pipeline =
+    metadata.width && metadata.width > maxWidth
+      ? image.resize(maxWidth, undefined, { withoutEnlargement: true })
+      : image;
 
   const [finalMeta] = await Promise.all([
-    pipeline.webp({ quality: 82 }).toFile(absPath).then(info => info),
+    pipeline
+      .webp({ quality: 82 })
+      .toFile(absPath)
+      .then((info) => info),
   ]);
 
   // 8×8 blur placeholder
   const blurBuffer = await sharp(buffer)
-    .resize(8, 8, { fit: 'cover' })
+    .resize(8, 8, { fit: "cover" })
     .webp({ quality: 20 })
     .toBuffer();
-  const blurDataUrl = `data:image/webp;base64,${blurBuffer.toString('base64')}`;
+  const blurDataUrl = `data:image/webp;base64,${blurBuffer.toString("base64")}`;
 
   return {
     url: `/uploads/${category}/${filename}`,

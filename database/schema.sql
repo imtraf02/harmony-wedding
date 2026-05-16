@@ -51,6 +51,24 @@ CREATE TABLE IF NOT EXISTS studios (
   sort_order    INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE IF NOT EXISTS services (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  slug         TEXT    UNIQUE NOT NULL,
+  title        TEXT    NOT NULL,
+  subtitle     TEXT    NOT NULL DEFAULT '',
+  description  TEXT    NOT NULL DEFAULT '',
+  features     TEXT    NOT NULL DEFAULT '[]',
+  hero_image   TEXT    NOT NULL DEFAULT '',
+  demo_images  TEXT    NOT NULL DEFAULT '[]',
+  detail_href  TEXT    NOT NULL DEFAULT '',
+  pricing_href TEXT    NOT NULL DEFAULT '/pricing',
+  is_active    INTEGER NOT NULL DEFAULT 1,
+  sort_order   INTEGER NOT NULL DEFAULT 0,
+  created_at   TEXT    NOT NULL DEFAULT (datetime('now','localtime')),
+  updated_at   TEXT    NOT NULL DEFAULT (datetime('now','localtime'))
+);
+CREATE INDEX IF NOT EXISTS idx_services_active ON services(is_active, sort_order);
+
 CREATE TABLE IF NOT EXISTS posts (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   slug         TEXT    UNIQUE NOT NULL,

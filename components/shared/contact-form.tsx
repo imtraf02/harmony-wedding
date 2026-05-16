@@ -1,53 +1,64 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { submitContact } from '@/app/actions/contact';
-import { Button } from '@/components/ui/button';
-import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import { submitContact } from "@/app/actions/contact";
+import { Button } from "@/components/ui/button";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 interface FormState {
   name: string;
   phone: string;
   email: string;
-  service: 'photography' | 'videography' | 'wedding-film' | 'combo';
+  service: "photography" | "videography" | "wedding-film" | "combo";
   weddingDate: string;
   guestCount: string;
   message: string;
 }
 
 const INITIAL: FormState = {
-  name: '',
-  phone: '',
-  email: '',
-  service: 'photography',
-  weddingDate: '',
-  guestCount: '',
-  message: '',
+  name: "",
+  phone: "",
+  email: "",
+  service: "photography",
+  weddingDate: "",
+  guestCount: "",
+  message: "",
 };
 
 const serviceItems = [
-  { label: 'Chụp ảnh cưới', value: 'photography' },
-  { label: 'Quay phim cưới', value: 'videography' },
-  { label: 'Phóng sự cưới', value: 'wedding-film' },
-  { label: 'Gói Combo (Ảnh + Phim)', value: 'combo' },
+  { label: "Chụp ảnh cưới", value: "photography" },
+  { label: "Quay phim cưới", value: "videography" },
+  { label: "Phóng sự cưới", value: "wedding-film" },
+  { label: "Gói Combo (Ảnh + Phim)", value: "combo" },
 ];
 
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errMsg, setErrMsg] = useState('');
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [errMsg, setErrMsg] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setStatus('loading');
-    setErrMsg('');
+    setStatus("loading");
+    setErrMsg("");
 
     try {
       const res = await submitContact({
@@ -56,33 +67,38 @@ export function ContactForm() {
       });
 
       if (res.success) {
-        setStatus('success');
+        setStatus("success");
         setForm(INITIAL);
       } else {
-        setStatus('error');
-        setErrMsg(res.message ?? 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
+        setStatus("error");
+        setErrMsg(res.message ?? "Đã có lỗi xảy ra. Vui lòng thử lại sau.");
       }
     } catch {
-      setStatus('error');
-      setErrMsg('Lỗi kết nối. Vui lòng kiểm tra lại mạng.');
+      setStatus("error");
+      setErrMsg("Lỗi kết nối. Vui lòng kiểm tra lại mạng.");
     }
   };
 
-  if (status === 'success') {
+  if (status === "success") {
     return (
-      <div className="flex min-h-[420px] flex-col items-center justify-center text-center" role="status">
-        <div className="mb-8 flex h-16 min-w-16 items-center justify-center rounded-none border border-gold/30 bg-gold-dim px-5 text-[10px] font-bold uppercase tracking-[0.28em] text-gold">
+      <div
+        className="flex min-h-[420px] flex-col items-center justify-center text-center"
+        role="status"
+      >
+        <div className="mb-8 flex h-16 min-w-16 items-center justify-center rounded-none border border-obsidian/30 bg-obsidian-dim px-5 font-bold text-[10px] text-obsidian uppercase tracking-[0.28em]">
           Đã gửi
         </div>
-        <h3 className="text-3xl font-sans font-light text-obsidian">Cảm ơn bạn</h3>
-        <p className="mt-4 max-w-md text-smoke font-light leading-relaxed">
+        <h3 className="font-light font-sans text-3xl text-obsidian">
+          Cảm ơn bạn
+        </h3>
+        <p className="mt-4 max-w-md font-light text-smoke leading-relaxed">
           Chúng tôi đã nhận được thông tin và sẽ liên hệ lại trong vòng 24 giờ.
         </p>
         <Button
           type="button"
           variant="outline"
-          onClick={() => setStatus('idle')}
-          className="mt-10 rounded-none border-black/10 px-8 py-6 text-[10px] font-bold uppercase tracking-[0.25em]"
+          onClick={() => setStatus("idle")}
+          className="mt-10 rounded-none border-black/10 px-8 py-6 font-bold text-[10px] uppercase tracking-[0.25em]"
         >
           Gửi yêu cầu khác
         </Button>
@@ -95,7 +111,10 @@ export function ContactForm() {
       <FieldGroup className="gap-8">
         <div className="grid gap-8 md:grid-cols-2">
           <Field>
-            <FieldLabel htmlFor="cf-name" className="text-label-luxury text-ash">
+            <FieldLabel
+              htmlFor="cf-name"
+              className="text-ash text-label-luxury"
+            >
               Họ và tên *
             </FieldLabel>
             <Input
@@ -107,14 +126,17 @@ export function ContactForm() {
               maxLength={100}
               value={form.name}
               onChange={handleChange}
-              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="Nguyễn Văn An"
               autoComplete="name"
             />
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="cf-phone" className="text-label-luxury text-ash">
+            <FieldLabel
+              htmlFor="cf-phone"
+              className="text-ash text-label-luxury"
+            >
               Số điện thoại *
             </FieldLabel>
             <Input
@@ -124,7 +146,7 @@ export function ContactForm() {
               required
               value={form.phone}
               onChange={handleChange}
-              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="0901 234 567"
               autoComplete="tel"
             />
@@ -133,7 +155,10 @@ export function ContactForm() {
 
         <div className="grid gap-8 md:grid-cols-2">
           <Field>
-            <FieldLabel htmlFor="cf-email" className="text-label-luxury text-ash">
+            <FieldLabel
+              htmlFor="cf-email"
+              className="text-ash text-label-luxury"
+            >
               Địa chỉ Email
             </FieldLabel>
             <Input
@@ -142,28 +167,37 @@ export function ContactForm() {
               type="email"
               value={form.email}
               onChange={handleChange}
-              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="email@vidu.com"
               autoComplete="email"
             />
           </Field>
 
           <Field>
-            <FieldLabel className="text-label-luxury text-ash">
+            <FieldLabel className="text-ash text-label-luxury">
               Dịch vụ quan tâm *
             </FieldLabel>
             <Select
               items={serviceItems}
               value={form.service}
-              onValueChange={(value) => setForm((prev) => ({ ...prev, service: value as FormState['service'] }))}
+              onValueChange={(value) =>
+                setForm((prev) => ({
+                  ...prev,
+                  service: value as FormState["service"],
+                }))
+              }
             >
-              <SelectTrigger className="h-12 w-full rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian focus:border-gold focus:ring-0">
+              <SelectTrigger className="h-12 w-full rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian focus:border-obsidian focus:ring-0">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-none border-black/5 shadow-luxury">
                 <SelectGroup>
                   {serviceItems.map((item) => (
-                    <SelectItem key={item.value} value={item.value} className="rounded-none py-3 focus:bg-gold-dim focus:text-gold">
+                    <SelectItem
+                      key={item.value}
+                      value={item.value}
+                      className="rounded-none py-3 focus:bg-obsidian-dim focus:text-obsidian"
+                    >
                       {item.label}
                     </SelectItem>
                   ))}
@@ -175,7 +209,10 @@ export function ContactForm() {
 
         <div className="grid gap-8 md:grid-cols-2">
           <Field>
-            <FieldLabel htmlFor="cf-date" className="text-label-luxury text-ash">
+            <FieldLabel
+              htmlFor="cf-date"
+              className="text-ash text-label-luxury"
+            >
               Ngày cưới dự kiến
             </FieldLabel>
             <Input
@@ -184,12 +221,15 @@ export function ContactForm() {
               type="date"
               value={form.weddingDate}
               onChange={handleChange}
-              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian focus:border-gold focus:ring-0"
+              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian focus:border-obsidian focus:ring-0"
             />
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="cf-guests" className="text-label-luxury text-ash">
+            <FieldLabel
+              htmlFor="cf-guests"
+              className="text-ash text-label-luxury"
+            >
               Số lượng khách
             </FieldLabel>
             <Input
@@ -200,14 +240,17 @@ export function ContactForm() {
               max="2000"
               value={form.guestCount}
               onChange={handleChange}
-              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="150"
             />
           </Field>
         </div>
 
         <Field>
-          <FieldLabel htmlFor="cf-message" className="text-label-luxury text-ash">
+          <FieldLabel
+            htmlFor="cf-message"
+            className="text-ash text-label-luxury"
+          >
             Lời nhắn của bạn
           </FieldLabel>
           <Textarea
@@ -217,23 +260,26 @@ export function ContactForm() {
             maxLength={1000}
             value={form.message}
             onChange={handleChange}
-            className="min-h-36 resize-y rounded-none border-black/10 bg-transparent p-4 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+            className="min-h-36 resize-y rounded-none border-black/10 bg-transparent p-4 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
             placeholder="Hãy kể cho chúng tôi về kế hoạch của bạn..."
           />
         </Field>
 
-        {status === 'error' && (
-          <p className="text-sm text-destructive" role="alert">
+        {status === "error" && (
+          <p className="text-destructive text-sm" role="alert">
             {errMsg}
           </p>
         )}
 
         <Button
           type="submit"
-          disabled={status === 'loading'}
-          className="mt-4 w-full rounded-none bg-obsidian py-8 text-[11px] font-medium uppercase tracking-[0.28em] text-ivory shadow-luxury transition-all duration-500 hover:bg-gold"
+          disabled={status === "loading"}
+          className="group/btn relative mt-4 w-full overflow-hidden rounded-none bg-obsidian py-8 font-medium text-[11px] text-white uppercase tracking-[0.28em] shadow-luxury transition-all duration-500 hover:text-obsidian"
         >
-          {status === 'loading' ? 'Đang gửi...' : 'Gửi thông tin'}
+          <span className="absolute inset-0 origin-left scale-x-0 bg-white transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover/btn:scale-x-100" />
+          <span className="relative z-10">
+            {status === "loading" ? "Đang gửi..." : "Gửi thông tin"}
+          </span>
         </Button>
       </FieldGroup>
     </form>

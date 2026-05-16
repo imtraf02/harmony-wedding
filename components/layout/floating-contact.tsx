@@ -1,8 +1,8 @@
-'use client';
-import { PHONE, ZALO_ID, FACEBOOK_URL } from '@/lib/constants';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { Phone, MessageCircle } from 'lucide-react';
-import { useRef } from 'react';
+"use client";
+import { MessageCircle, Phone } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { useRef } from "react";
+import { FACEBOOK_URL, PHONE, ZALO_ID } from "@/lib/constants";
 
 /* ═══════════════════════════════════════════════════════════════════
    iOS 26 / visionOS  —  AUTHENTIC LIQUID GLASS
@@ -63,24 +63,24 @@ function ZaloGlassIcon() {
 // The single shared glass shadow — no colour tint, pure iOS
 const GLASS_SHADOW = [
   // specular rim — the #1 signature of iOS liquid glass
-  'inset 0 1.5px 0 rgba(255,255,255,0.98)',
+  "inset 0 1.5px 0 rgba(255,255,255,0.98)",
   // left micro-specular
-  'inset 1px 0 0 rgba(255,255,255,0.45)',
+  "inset 1px 0 0 rgba(255,255,255,0.45)",
   // bottom inner shadow — creates the concave lens depth
-  'inset 0 -1px 0 rgba(0,0,0,0.07)',
+  "inset 0 -1px 0 rgba(0,0,0,0.07)",
   // main float shadow
-  '0 8px 40px rgba(0,0,0,0.13)',
+  "0 8px 40px rgba(0,0,0,0.13)",
   // tight close shadow
-  '0 2px 6px rgba(0,0,0,0.07)',
-].join(', ');
+  "0 2px 6px rgba(0,0,0,0.07)",
+].join(", ");
 
 const GLASS_SHADOW_HOVER = [
-  'inset 0 1.5px 0 rgba(255,255,255,0.98)',
-  'inset 1px 0 0 rgba(255,255,255,0.55)',
-  'inset 0 -1px 0 rgba(0,0,0,0.05)',
-  '0 12px 48px rgba(0,0,0,0.17)',
-  '0 4px 10px rgba(0,0,0,0.09)',
-].join(', ');
+  "inset 0 1.5px 0 rgba(255,255,255,0.98)",
+  "inset 1px 0 0 rgba(255,255,255,0.55)",
+  "inset 0 -1px 0 rgba(0,0,0,0.05)",
+  "0 12px 48px rgba(0,0,0,0.17)",
+  "0 4px 10px rgba(0,0,0,0.09)",
+].join(", ");
 
 function LiquidOrb({
   href,
@@ -101,8 +101,8 @@ function LiquidOrb({
   const sx = useSpring(rawX, { stiffness: 160, damping: 24 });
   const sy = useSpring(rawY, { stiffness: 160, damping: 24 });
   // caustic smear tracks pointer but stays subtle on light glass
-  const smX = useTransform(sx, [0, 1], ['-42%', '42%']);
-  const smY = useTransform(sy, [0, 1], ['-42%', '42%']);
+  const smX = useTransform(sx, [0, 1], ["-42%", "42%"]);
+  const smY = useTransform(sy, [0, 1], ["-42%", "42%"]);
 
   const onMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
     const r = ref.current?.getBoundingClientRect();
@@ -110,7 +110,10 @@ function LiquidOrb({
     rawX.set((e.clientX - r.left) / r.width);
     rawY.set((e.clientY - r.top) / r.height);
   };
-  const onLeave = () => { rawX.set(0.35); rawY.set(0.28); };
+  const onLeave = () => {
+    rawX.set(0.35);
+    rawY.set(0.28);
+  };
 
   return (
     <motion.a
@@ -126,17 +129,17 @@ function LiquidOrb({
       transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ scale: 1.1, x: -4 }}
       whileTap={{ scale: 0.88 }}
-      className="group relative size-12 md:size-[54px] flex items-center justify-center rounded-full"
+      className="group relative flex size-12 items-center justify-center rounded-full md:size-[54px]"
       style={{
         // ① BLUR PLATE + TINT FILL
-        background: 'rgba(255, 255, 255, 0.38)',
-        backdropFilter: 'blur(40px) saturate(200%) brightness(1.06)',
-        WebkitBackdropFilter: 'blur(40px) saturate(200%) brightness(1.06)',
+        background: "rgba(255, 255, 255, 0.38)",
+        backdropFilter: "blur(40px) saturate(200%) brightness(1.06)",
+        WebkitBackdropFilter: "blur(40px) saturate(200%) brightness(1.06)",
         // ② BORDER — bright white, not transparent
-        border: '1px solid rgba(255,255,255,0.72)',
+        border: "1px solid rgba(255,255,255,0.72)",
         // ③ SPECULAR + SHADOW stack
         boxShadow: GLASS_SHADOW,
-        transition: 'box-shadow .35s ease',
+        transition: "box-shadow .35s ease",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.boxShadow = GLASS_SHADOW_HOVER;
@@ -150,7 +153,7 @@ function LiquidOrb({
         className="pointer-events-none absolute inset-0 rounded-full"
         style={{
           background:
-            'linear-gradient(175deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.0) 45%, rgba(0,0,0,0.04) 100%)',
+            "linear-gradient(175deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.0) 45%, rgba(0,0,0,0.04) 100%)",
         }}
       />
 
@@ -159,7 +162,7 @@ function LiquidOrb({
         className="pointer-events-none absolute inset-0 rounded-full"
         style={{
           background:
-            'radial-gradient(circle at 38% 28%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.12) 45%, transparent 72%)',
+            "radial-gradient(circle at 38% 28%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.12) 45%, transparent 72%)",
           x: smX,
           y: smY,
           opacity: 0.65,
@@ -167,8 +170,9 @@ function LiquidOrb({
       />
 
       {/* Subtle hover brightening */}
-      <div className="pointer-events-none absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: 'rgba(255,255,255,0.12)' }}
+      <div
+        className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: "rgba(255,255,255,0.12)" }}
       />
 
       {/* ⑥ ICON — dark on light glass */}
@@ -178,21 +182,18 @@ function LiquidOrb({
 
       {/* TOOLTIP — same iOS glass construction */}
       <span
-        className="pointer-events-none absolute right-full mr-3 px-3 py-1.5 rounded-2xl
-          text-[10px] font-semibold uppercase tracking-[0.16em] whitespace-nowrap
-          opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0
-          transition-all duration-[400ms]"
+        className="pointer-events-none absolute right-full mr-3 -translate-x-2 whitespace-nowrap rounded-2xl px-3 py-1.5 font-semibold text-[10px] uppercase tracking-[0.16em] opacity-0 transition-all duration-[400ms] group-hover:translate-x-0 group-hover:opacity-100"
         style={{
-          background: 'rgba(255,255,255,0.40)',
-          backdropFilter: 'blur(32px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(32px) saturate(180%)',
-          border: '1px solid rgba(255,255,255,0.72)',
-          color: 'rgba(0,0,0,0.65)',
+          background: "rgba(255,255,255,0.40)",
+          backdropFilter: "blur(32px) saturate(180%)",
+          WebkitBackdropFilter: "blur(32px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,0.72)",
+          color: "rgba(0,0,0,0.65)",
           boxShadow: [
-            'inset 0 1.5px 0 rgba(255,255,255,0.95)',
-            '0 4px 20px rgba(0,0,0,0.10)',
-            '0 1px 4px rgba(0,0,0,0.06)',
-          ].join(', '),
+            "inset 0 1.5px 0 rgba(255,255,255,0.95)",
+            "0 4px 20px rgba(0,0,0,0.10)",
+            "0 1px 4px rgba(0,0,0,0.06)",
+          ].join(", "),
         }}
       >
         {label}
@@ -201,16 +202,16 @@ function LiquidOrb({
       {/* PULSE — for primary CTA, uses glass-white ring */}
       {isPrimary && (
         <>
-          <span className="absolute inset-0 rounded-full border border-black/10 animate-ping" />
+          <span className="absolute inset-0 animate-ping rounded-full border border-black/10" />
           <span
-            className="absolute inset-[-6px] rounded-full border border-black/05 animate-ping"
-            style={{ animationDelay: '0.5s' }}
+            className="absolute inset-[-6px] animate-ping rounded-full border border-black/05"
+            style={{ animationDelay: "0.5s" }}
           />
         </>
       )}
 
       {/* TAP RIPPLE */}
-      <span className="absolute inset-0 rounded-full bg-black/06 scale-0 group-active:scale-100 group-active:opacity-0 transition-all duration-500" />
+      <span className="absolute inset-0 scale-0 rounded-full bg-black/06 transition-all duration-500 group-active:scale-100 group-active:opacity-0" />
     </motion.a>
   );
 }
@@ -218,41 +219,47 @@ function LiquidOrb({
 export function FloatingContact() {
   const items = [
     {
-      id: 'messenger',
+      id: "messenger",
       icon: (
         <MessageCircle
           className="size-5"
           strokeWidth={1.8}
-          style={{ color: 'rgba(0,0,0,0.72)', filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.6))' }}
+          style={{
+            color: "rgba(0,0,0,0.72)",
+            filter: "drop-shadow(0 1px 1px rgba(255,255,255,0.6))",
+          }}
         />
       ),
       href: FACEBOOK_URL,
-      label: 'Messenger',
+      label: "Messenger",
       isPrimary: true,
     },
     {
-      id: 'phone',
+      id: "phone",
       icon: (
         <Phone
           className="size-5"
           strokeWidth={1.8}
-          style={{ color: 'rgba(0,0,0,0.72)', filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.6))' }}
+          style={{
+            color: "rgba(0,0,0,0.72)",
+            filter: "drop-shadow(0 1px 1px rgba(255,255,255,0.6))",
+          }}
         />
       ),
       href: `tel:${PHONE}`,
-      label: 'Gọi ngay',
+      label: "Gọi ngay",
     },
     {
-      id: 'zalo',
+      id: "zalo",
       icon: <ZaloGlassIcon />,
       href: `https://zalo.me/${ZALO_ID}`,
-      label: 'Zalo',
-    }
+      label: "Zalo",
+    },
   ];
 
   return (
     <div
-      className="fixed bottom-8 right-6 md:bottom-12 md:right-10 z-[70] flex flex-col gap-3"
+      className="fixed right-6 bottom-8 z-[70] flex flex-col gap-3 md:right-10 md:bottom-12"
       aria-label="Liên hệ nhanh"
     >
       {items.map((item, idx) => (

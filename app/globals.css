@@ -35,22 +35,22 @@
   --color-ring: var(--ring);
 
   /* ── Luxury palette exposed to Tailwind ── */
-  --color-gold: var(--gold);
-  --color-gold-50: var(--gold-50);
-  --color-gold-200: var(--gold-200);
-  --color-gold-300: var(--gold-300);
-  --color-gold-400: var(--gold-400);
-  --color-gold-500: var(--gold-500);
-  --color-gold-600: var(--gold-600);
-  --color-gold-foreground: var(--gold-foreground);
-  --color-gold-muted: var(--gold-muted);
-  --color-gold-dim: var(--gold-dim);
+  --color-obsidian: var(--obsidian);
+  --color-obsidian-50: var(--obsidian-50);
+  --color-obsidian-200: var(--obsidian-200);
+  --color-obsidian-300: var(--obsidian-300);
+  --color-obsidian-400: var(--obsidian-400);
+  --color-obsidian-500: var(--obsidian-500);
+  --color-obsidian-600: var(--obsidian-600);
+  --color-obsidian-foreground: var(--obsidian-foreground);
+  --color-obsidian-muted: var(--obsidian-muted);
+  --color-obsidian-dim: var(--obsidian-dim);
 
   --color-champagne: var(--champagne);
   --color-champagne-dark: var(--champagne-dark);
   --color-ivory: var(--ivory);
 
-  --color-obsidian: var(--obsidian);
+  --color-obsidian-original: var(--obsidian-original);
   --color-obsidian-soft: var(--obsidian-soft);
   --color-charcoal: var(--charcoal);
   --color-smoke: var(--smoke);
@@ -113,7 +113,6 @@
   }
 
   @keyframes bounce-subtle {
-
     0%,
     100% {
       transform: translateY(0);
@@ -143,84 +142,84 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.555 0.163 48.998);
-  --primary-foreground: oklch(0.987 0.022 95.277);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --destructive: oklch(0.2 0 0);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(0.1 0 0);
   --radius: 0.625rem;
 
-  --chart-1: oklch(0.879 0.169 91.605);
-  --chart-2: oklch(0.769 0.188 70.08);
-  --chart-3: oklch(0.666 0.179 58.318);
-  --chart-4: oklch(0.555 0.163 48.998);
-  --chart-5: oklch(0.473 0.137 46.201);
+  --chart-1: oklch(0.4 0 0);
+  --chart-2: oklch(0.3 0 0);
+  --chart-3: oklch(0.2 0 0);
+  --chart-4: oklch(0.15 0 0);
+  --chart-5: oklch(0.1 0 0);
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.666 0.179 58.318);
-  --sidebar-primary-foreground: oklch(0.987 0.022 95.277);
+  --sidebar-primary: oklch(0.2 0 0);
+  --sidebar-primary-foreground: oklch(0.987 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.1 0 0);
 
   /* ================================================================
      LUXURY DESIGN TOKENS
      Style: Tinh tế · Cao cấp · Editorial
      ================================================================ */
 
-  /* ── Black/White Palette (Replaced Gold) ── */
-  --gold-50: #fcfcfc;
-  --gold-200: #e5e5e5;
-  --gold-300: #d4d4d4;
-  --gold-400: #a3a3a3;
-  --gold-500: #1a1a1a;
-  /* Pure Blackish */
-  --gold-600: #171717;
+  /* ── Black/White Palette (Strict Grayscale) ── */
+  --obsidian-50: oklch(0.99 0 0);
+  --obsidian-200: oklch(0.92 0 0);
+  --obsidian-300: oklch(0.86 0 0);
+  --obsidian-400: oklch(0.55 0 0);
+  --obsidian-500: oklch(0 0 0);
+  /* Pure Black */
+  --obsidian-600: oklch(0 0 0);
 
-  --gold: var(--gold-500);
-  --gold-foreground: #ffffff;
-  --gold-muted: #a3a3a3;
-  --gold-dim: rgba(0, 0, 0, 0.08);
+  --obsidian: var(--obsidian-500);
+  --obsidian-foreground: oklch(1 0 0);
+  --obsidian-muted: oklch(0.55 0 0);
+  --obsidian-dim: oklch(0 0 0 / 0.05);
   /* overlay nhẹ */
 
   /* ── Neutral Neutrals ── */
-  --champagne: oklch(0.98 0 0);
-  --champagne-dark: oklch(0.96 0 0);
+  --champagne: oklch(1 0 0);
+  --champagne-dark: oklch(0.97 0 0);
   --ivory: oklch(1 0 0);
 
   /* ── Obsidian / Deep Neutrals ── */
-  --obsidian: oklch(0.108 0.008 260);
-  --obsidian-soft: oklch(0.148 0.008 260);
-  --charcoal: oklch(0.210 0.006 260);
-  --smoke: oklch(0.350 0.006 260);
-  --ash: oklch(0.620 0.004 260);
-  --mist: oklch(0.880 0.004 260);
-  --whisper: oklch(0.960 0.002 260);
+  --obsidian-original: oklch(0 0 0);
+  --obsidian-soft: oklch(0.18 0 0);
+  --charcoal: oklch(0.25 0 0);
+  --smoke: oklch(0.35 0 0);
+  --ash: oklch(0.55 0 0);
+  --mist: oklch(0.7 0 0);
+  --whisper: oklch(0.92 0 0);
 
   /* ── Semantic — Light Mode ── */
   --luxury-bg: var(--ivory);
   --luxury-surface: var(--champagne);
-  --luxury-border: oklch(0.850 0.020 82);
-  --luxury-border-fine: oklch(0.900 0.012 82);
+  --luxury-border: oklch(0.92 0 0);
+  --luxury-border-fine: oklch(0.97 0 0);
   --luxury-text: var(--obsidian);
   --luxury-text-muted: var(--smoke);
   --luxury-text-dim: var(--ash);
-  --luxury-accent: var(--gold-500);
+  --luxury-accent: var(--obsidian-500);
 
   /* ── Typography Scale ── */
   --text-display: clamp(3.2rem, 7vw, 6.4rem);
-  --text-headline: clamp(2.0rem, 4vw, 3.6rem);
-  --text-title: clamp(1.4rem, 2.5vw, 2.0rem);
+  --text-headline: clamp(2rem, 4vw, 3.6rem);
+  --text-title: clamp(1.4rem, 2.5vw, 2rem);
   --text-subtitle: clamp(1.1rem, 1.8vw, 1.4rem);
   --text-body: 1rem;
   --text-caption: 0.8125rem;
@@ -237,7 +236,7 @@
   --leading-tight: 1.1;
   --leading-snug: 1.3;
   --leading-relaxed: 1.7;
-  --leading-loose: 2.0;
+  --leading-loose: 2;
 
   /* ── Spacing Rhythm ── */
   --space-3xs: 0.25rem;
@@ -252,18 +251,18 @@
   --space-4xl: 12rem;
 
   /* ── Shadows — tinh tế, không harsh ── */
-  --shadow-xs: 0 1px 2px oklch(0.1 0 0 / 0.04);
-  --shadow-sm: 0 2px 8px oklch(0.1 0 0 / 0.06);
-  --shadow-md: 0 4px 20px oklch(0.1 0 0 / 0.08);
-  --shadow-lg: 0 8px 40px oklch(0.1 0 0 / 0.10);
-  --shadow-xl: 0 16px 64px oklch(0.1 0 0 / 0.12);
-  --shadow-2xl: 0 32px 80px oklch(0.1 0 0 / 0.16);
+  --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
+  --shadow-sm: 0 2px 8px oklch(0 0 0 / 0.06);
+  --shadow-md: 0 4px 20px oklch(0 0 0 / 0.08);
+  --shadow-lg: 0 8px 40px oklch(0 0 0 / 0.1);
+  --shadow-xl: 0 16px 64px oklch(0 0 0 / 0.12);
+  --shadow-2xl: 0 32px 80px oklch(0 0 0 / 0.16);
 
-  --shadow-gold-sm: 0 2px 12px oklch(0.1 0 0 / 0.05);
-  --shadow-gold-md: 0 6px 32px oklch(0.1 0 0 / 0.10);
-  --shadow-gold-lg: 0 12px 48px oklch(0.1 0 0 / 0.15);
+  --shadow-obsidian-sm: 0 2px 12px oklch(0 0 0 / 0.05);
+  --shadow-obsidian-md: 0 6px 32px oklch(0 0 0 / 0.1);
+  --shadow-obsidian-lg: 0 12px 48px oklch(0 0 0 / 0.15);
 
-  --shadow-inset: inset 0 1px 0 oklch(1 0 0 / 0.60);
+  --shadow-inset: inset 0 1px 0 oklch(1 0 0 / 0.6);
 
   /* ── Border Radius ── */
   --rounded-none: 0;
@@ -287,32 +286,45 @@
 
   /* ── Glass / Frosted ── */
   --glass-bg: oklch(1 0 0 / 0.72);
-  --glass-border: oklch(1 0 0 / 0.40);
+  --glass-border: oklch(1 0 0 / 0.4);
   --glass-blur: blur(18px) saturate(160%);
 
-  --glass-gold-bg: oklch(0 0 0 / 0.03);
-  --glass-gold-border: oklch(0 0 0 / 0.15);
+  --glass-obsidian-bg: oklch(0 0 0 / 0.03);
+  --glass-obsidian-border: oklch(0 0 0 / 0.15);
 
-  /* ── Gradient Presets ── */
-  --gradient-gold:
-    linear-gradient(135deg, oklch(0.4 0 0) 0%, oklch(0.1 0 0) 100%);
-  --gradient-gold-subtle:
-    linear-gradient(135deg, oklch(0.9 0 0) 0%, oklch(1 0 0) 100%);
-  --gradient-champagne:
-    linear-gradient(180deg, var(--ivory) 0%, var(--champagne-dark) 100%);
-  --gradient-obsidian:
-    linear-gradient(135deg, var(--obsidian) 0%, var(--charcoal) 100%);
-  --gradient-shimmer:
-    linear-gradient(90deg,
-      transparent 0%,
-      oklch(1 0 0 / 0.15) 40%,
-      oklch(1 0 0 / 0.35) 50%,
-      oklch(1 0 0 / 0.15) 60%,
-      transparent 100%);
+  /* ── Gradient Presets (Grayscale) ── */
+  --gradient-obsidian: linear-gradient(
+    135deg,
+    oklch(0.35 0 0) 0%,
+    oklch(0 0 0) 100%
+  );
+  --gradient-obsidian-subtle: linear-gradient(
+    135deg,
+    oklch(0.7 0 0) 0%,
+    oklch(1 0 0) 100%
+  );
+  --gradient-champagne: linear-gradient(
+    180deg,
+    oklch(1 0 0) 0%,
+    oklch(0.97 0 0) 100%
+  );
+  --gradient-obsidian-dark: linear-gradient(
+    135deg,
+    oklch(0 0 0) 0%,
+    oklch(0.25 0 0) 100%
+  );
+  --gradient-shimmer: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0 0 0 / 0.05) 40%,
+    oklch(0 0 0 / 0.1) 50%,
+    oklch(0 0 0 / 0.05) 60%,
+    transparent 100%
+  );
 
   /* ── Divider Lines ── */
   --divider-hairline: 1px solid var(--luxury-border-fine);
-  --divider-gold: 1px solid oklch(0 0 0 / 0.1);
+  --divider-obsidian: 1px solid oklch(0 0 0 / 0.1);
   --divider-double: 3px double var(--luxury-border);
 
   /* ── Z-index Scale ── */
@@ -331,14 +343,14 @@
   --luxury-bg: var(--obsidian);
   --luxury-surface: var(--obsidian-soft);
   --luxury-surface-2: var(--charcoal);
-  --luxury-border: oklch(0.280 0.010 260);
-  --luxury-border-fine: oklch(0.240 0.008 260);
+  --luxury-border: oklch(0.25 0 0);
+  --luxury-border-fine: oklch(0.18 0 0);
   --luxury-text: var(--ivory);
   --luxury-text-muted: var(--ash);
   --luxury-text-dim: var(--smoke);
-  --luxury-accent: var(--gold-400);
+  --luxury-accent: var(--obsidian-400);
 
-  --glass-bg: oklch(0.148 0.008 260 / 0.80);
+  --glass-bg: oklch(0.18 0 0 / 0.8);
   --glass-border: oklch(1 0 0 / 0.08);
 }
 
@@ -354,25 +366,25 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
+    --primary: oklch(0 0 0);
+    --primary-foreground: oklch(1 0 0);
     --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
+    --secondary-foreground: oklch(0 0 0);
     --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
+    --muted-foreground: oklch(0.55 0 0);
     --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.577 0.245 27.325);
-    --destructive-foreground: oklch(0.985 0 0);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --accent-foreground: oklch(0 0 0);
+    --destructive: oklch(0.2 0 0);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.92 0 0);
+    --input: oklch(0.92 0 0);
+    --ring: oklch(0 0 0);
     --radius: 0.625rem;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    selection-color: oklch(0.1 0 0 / 0.1);
+    selection-color: oklch(0 0 0 / 0.1);
     color-scheme: light;
   }
 
@@ -415,7 +427,6 @@
    ================================================================ */
 
 @layer utilities {
-
   /* ── Scrollbar ── */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -439,8 +450,6 @@
     line-height: var(--leading-snug);
   }
 
-
-
   .text-label-luxury {
     font-size: var(--text-label);
     letter-spacing: var(--tracking-widest);
@@ -455,19 +464,13 @@
     color: var(--luxury-text-muted);
   }
 
-  /* ── Gold Text (gradient clip) ── */
-  .text-gold {
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* ── Obsidian Text (Solid Black/White) ── */
+  .text-obsidian {
+    color: var(--obsidian);
   }
 
-  .text-gold-subtle {
-    background: var(--gradient-gold-subtle);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .text-obsidian-subtle {
+    color: var(--smoke);
   }
 
   /* ── Glass Cards ── */
@@ -477,8 +480,6 @@
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
   }
-
-
 
   /* ── Shimmer (skeleton / highlight) ── */
   .shimmer {
@@ -497,7 +498,6 @@
 
   /* ── Dividers ── */
 
-
   .divider-hairline {
     border: none;
     border-top: var(--divider-hairline);
@@ -507,12 +507,12 @@
     box-shadow: var(--shadow-lg), var(--shadow-inset);
   }
 
-  .shadow-gold-lg {
-    box-shadow: var(--shadow-gold-lg);
+  .shadow-obsidian-lg {
+    box-shadow: var(--shadow-obsidian-lg);
   }
 
-  .shadow-gold-sm {
-    box-shadow: var(--shadow-gold-sm);
+  .shadow-obsidian-sm {
+    box-shadow: var(--shadow-obsidian-sm);
   }
 
   /* ── Hover Lift ── */
@@ -527,10 +527,9 @@
     box-shadow: var(--shadow-xl);
   }
 
-
-  /* ── Gold Border Glow ── */
-  .border-gold {
-    border: 1px solid oklch(0.730 0.160 62 / 0.35);
+  /* ── Obsidian Border Glow ── */
+  .border-obsidian {
+    border: 1px solid oklch(0 0 0 / 0.1);
   }
 
   /* ── Luxury Surface ── */
@@ -545,12 +544,13 @@
   /* ── Fade In Up with blur — stagger với style="--delay:150ms" ── */
   .animate-fade-in-up-luxury {
     opacity: 0;
-    animation: fade-in-up-luxury var(--duration-scene) var(--ease-luxury) var(--delay, 0ms) forwards;
+    animation: fade-in-up-luxury var(--duration-scene) var(--ease-luxury)
+      var(--delay, 0ms) forwards;
   }
 
-  /* ── Gold Pulse ── */
-  .animate-gold-pulse {
-    animation: gold-pulse 2.4s ease-in-out infinite;
+  /* ── Obsidian Pulse ── */
+  .animate-obsidian-pulse {
+    animation: obsidian-pulse 2.4s ease-in-out infinite;
   }
 }
 
@@ -582,20 +582,18 @@
   }
 }
 
-@keyframes gold-pulse {
-
+@keyframes obsidian-pulse {
   0%,
   100% {
     opacity: 1;
   }
 
   50% {
-    opacity: 0.55;
+    opacity: 0.35;
   }
 }
 
 @keyframes float-subtle {
-
   0%,
   100% {
     transform: translateY(0px);

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useCallback, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { cn } from "@/lib/utils";
 
 interface LightboxProps {
   images: string[];
@@ -29,12 +29,12 @@ function LightboxBtn({
       aria-label={label}
       onClick={onClick}
       className={cn(
-        'group flex items-center justify-center',
-        'w-11 h-11',
-        'border border-white/20 bg-obsidian/40 backdrop-blur-sm',
-        'text-white/70 hover:text-white hover:border-gold-400/60 hover:bg-obsidian/70',
-        'transition-all duration-300',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50',
+        "group flex items-center justify-center",
+        "h-11 w-11",
+        "border border-white/20 bg-obsidian/40 backdrop-blur-sm",
+        "text-white/70 hover:border-obsidian-400/60 hover:bg-obsidian/70 hover:text-white",
+        "transition-all duration-300",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-obsidian/50",
         className,
       )}
     >
@@ -46,7 +46,7 @@ function LightboxBtn({
 /* ─── Lightbox ─────────────────────────────────── */
 export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
   const [current, setCurrent] = useState(initialIndex);
-  const [animDir, setAnimDir] = useState<'left' | 'right' | null>(null);
+  const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const touchStartX = useRef(0);
@@ -57,13 +57,13 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
   }, []);
 
   const prev = useCallback(() => {
-    setAnimDir('right');
-    setCurrent(i => (i - 1 + images.length) % images.length);
+    setAnimDir("right");
+    setCurrent((i) => (i - 1 + images.length) % images.length);
   }, [images.length]);
 
   const next = useCallback(() => {
-    setAnimDir('left');
-    setCurrent(i => (i + 1) % images.length);
+    setAnimDir("left");
+    setCurrent((i) => (i + 1) % images.length);
   }, [images.length]);
 
   /* clear anim direction after transition */
@@ -71,22 +71,24 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
     if (!animDir) return;
     const t = setTimeout(() => setAnimDir(null), 400);
     return () => clearTimeout(t);
-  }, [animDir, current]);
+  }, [animDir]);
 
   /* keyboard + scroll lock */
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { handleClose(); }
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
+      if (e.key === "Escape") {
+        handleClose();
+      }
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
     };
-    window.addEventListener('keydown', handler);
-    document.body.style.overflow = 'hidden';
+    window.addEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
     return () => {
-      window.removeEventListener('keydown', handler);
-      document.body.style.overflow = '';
+      window.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
     };
-  }, [onClose, prev, next]); // eslint-disable-line
+  }, [prev, next, handleClose]); // eslint-disable-line
 
   const handleClose = () => {
     setIsVisible(false);
@@ -108,40 +110,52 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
       aria-modal="true"
       aria-label="Image viewer"
       className={cn(
-        'fixed inset-0 z-[200] flex flex-col',
-        'bg-obsidian/96 backdrop-blur-md',
-        'transition-opacity duration-300',
-        isVisible ? 'opacity-100' : 'opacity-0',
+        "fixed inset-0 z-[200] flex flex-col",
+        "bg-obsidian/96 backdrop-blur-md",
+        "transition-opacity duration-300",
+        isVisible ? "opacity-100" : "opacity-0",
       )}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       {/* ── Top bar ── */}
-      <div className="flex items-center justify-between px-6 sm:px-10 py-5 shrink-0 border-b border-white/8">
+      <div className="flex shrink-0 items-center justify-between border-white/8 border-b px-6 py-5 sm:px-10">
         {/* counter */}
         <div
           aria-live="polite"
-          className="text-[9px] font-bold uppercase tracking-[0.28em] text-white/40"
+          className="font-bold text-[9px] text-white/40 uppercase tracking-[0.28em]"
         >
-          <span className="text-gold-300 font-sans text-base font-normal">
-            {String(current + 1).padStart(2, '0')}
+          <span className="font-normal font-sans text-base text-obsidian-300">
+            {String(current + 1).padStart(2, "0")}
           </span>
           <span className="mx-2 text-white/20">/</span>
-          <span>{String(images.length).padStart(2, '0')}</span>
+          <span>{String(images.length).padStart(2, "0")}</span>
         </div>
 
-        {/* gold hairline */}
+        {/* obsidian hairline */}
         <div
           aria-hidden="true"
-          className="hidden sm:block h-px flex-1 mx-8 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+          className="mx-8 hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent sm:block"
         />
 
         {/* close */}
         <LightboxBtn
-          onClick={e => { e.stopPropagation(); handleClose(); }}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClose();
+          }}
           label="Đóng"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </LightboxBtn>
@@ -149,19 +163,19 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
 
       {/* ── Image area ── */}
       <div
-        className="relative flex-1 flex items-center justify-center px-4 sm:px-20 py-6 overflow-hidden"
+        className="relative flex flex-1 items-center justify-center overflow-hidden px-4 py-6 sm:px-20"
         onClick={handleClose}
       >
         {/* image container */}
         <div
           className={cn(
-            'relative w-full h-full',
-            'transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]',
-            animDir === 'left' && '-translate-x-4 opacity-80',
-            animDir === 'right' && 'translate-x-4 opacity-80',
-            !animDir && 'translate-x-0 opacity-100',
+            "relative h-full w-full",
+            "transition-all duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+            animDir === "left" && "-translate-x-4 opacity-80",
+            animDir === "right" && "translate-x-4 opacity-80",
+            !animDir && "translate-x-0 opacity-100",
           )}
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           <Image
             key={current}
@@ -170,7 +184,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'contain' }}
+            style={{ objectFit: "contain" }}
             className="select-none"
           />
         </div>
@@ -182,18 +196,30 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
               id="lightbox-prev"
               type="button"
               aria-label="Ảnh trước"
-              onClick={e => { e.stopPropagation(); prev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
               className={cn(
-                'absolute left-4 sm:left-6 top-1/2 -translate-y-1/2',
-                'group hidden sm:flex items-center justify-center',
-                'w-11 h-16 sm:w-12 sm:h-20',
-                'border border-white/15 bg-obsidian/50 backdrop-blur-sm',
-                'text-white/60 hover:text-white hover:border-gold-400/50 hover:bg-obsidian/80',
-                'transition-all duration-300',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50',
+                "absolute top-1/2 left-4 -translate-y-1/2 sm:left-6",
+                "group hidden items-center justify-center sm:flex",
+                "h-16 w-11 sm:h-20 sm:w-12",
+                "border border-white/15 bg-obsidian/50 backdrop-blur-sm",
+                "text-white/60 hover:border-obsidian-400/50 hover:bg-obsidian/80 hover:text-white",
+                "transition-all duration-300",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-obsidian/50",
               )}
             >
-              <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+              <svg
+                width="12"
+                height="20"
+                viewBox="0 0 12 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
                 <path d="M10 2L2 10l8 8" />
               </svg>
             </button>
@@ -201,18 +227,30 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
               id="lightbox-next"
               type="button"
               aria-label="Ảnh tiếp"
-              onClick={e => { e.stopPropagation(); next(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
               className={cn(
-                'absolute right-4 sm:right-6 top-1/2 -translate-y-1/2',
-                'group hidden sm:flex items-center justify-center',
-                'w-11 h-16 sm:w-12 sm:h-20',
-                'border border-white/15 bg-obsidian/50 backdrop-blur-sm',
-                'text-white/60 hover:text-white hover:border-gold-400/50 hover:bg-obsidian/80',
-                'transition-all duration-300',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50',
+                "absolute top-1/2 right-4 -translate-y-1/2 sm:right-6",
+                "group hidden items-center justify-center sm:flex",
+                "h-16 w-11 sm:h-20 sm:w-12",
+                "border border-white/15 bg-obsidian/50 backdrop-blur-sm",
+                "text-white/60 hover:border-obsidian-400/50 hover:bg-obsidian/80 hover:text-white",
+                "transition-all duration-300",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-obsidian/50",
               )}
             >
-              <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+              <svg
+                width="12"
+                height="20"
+                viewBox="0 0 12 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
                 <path d="M2 2l8 8-8 8" />
               </svg>
             </button>
@@ -222,8 +260,8 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
 
       {/* ── Thumbnail strip ── */}
       {images.length > 1 && (
-        <div className="shrink-0 border-t border-white/8 px-6 sm:px-10 py-4">
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide justify-center">
+        <div className="shrink-0 border-white/8 border-t px-6 py-4 sm:px-10">
+          <div className="scrollbar-hide flex items-center justify-center gap-2 overflow-x-auto">
             {images.map((src, i) => (
               <button
                 key={src}
@@ -231,15 +269,15 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
                 aria-label={`Xem ảnh ${i + 1}`}
                 aria-current={i === current}
                 onClick={() => {
-                  setAnimDir(i > current ? 'left' : 'right');
+                  setAnimDir(i > current ? "left" : "right");
                   setCurrent(i);
                 }}
                 className={cn(
-                  'relative shrink-0 w-12 h-12 sm:w-14 sm:h-14 overflow-hidden',
-                  'border transition-all duration-300',
+                  "relative h-12 w-12 shrink-0 overflow-hidden sm:h-14 sm:w-14",
+                  "border transition-all duration-300",
                   i === current
-                    ? 'border-gold-400 opacity-100 scale-105'
-                    : 'border-white/15 opacity-40 hover:opacity-70 hover:border-white/40',
+                    ? "scale-105 border-obsidian-400 opacity-100"
+                    : "border-white/15 opacity-40 hover:border-white/40 hover:opacity-70",
                 )}
               >
                 <Image
@@ -247,7 +285,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
                   alt={`Thumbnail ${i + 1}`}
                   fill
                   sizes="56px"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: "cover" }}
                 />
               </button>
             ))}

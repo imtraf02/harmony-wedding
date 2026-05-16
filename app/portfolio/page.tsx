@@ -1,15 +1,16 @@
-import { Suspense } from 'react';
-import { getPortfolios } from '@/lib/queries/portfolio';
-import { buildMetadata } from '@/lib/metadata';
-import { GalleryFilter } from '@/components/portfolio/gallery-filter';
-import { MasonryGallery } from '@/components/portfolio/masonry-gallery';
-import { CtaBanner } from '@/components/home/cta-banner';
+import { Suspense } from "react";
+import { CtaBanner } from "@/components/home/cta-banner";
+import { GalleryFilter } from "@/components/portfolio/gallery-filter";
+import { MasonryGallery } from "@/components/portfolio/masonry-gallery";
+import { buildMetadata } from "@/lib/metadata";
+import { getPortfolios } from "@/lib/queries/portfolio";
 
 /* ─── Metadata ─────────────────────────────────── */
 export const metadata = buildMetadata({
-  title: 'Portfolio | Những câu chuyện tình yêu qua ống kính',
-  description: 'Khám phá bộ sưu tập những khoảnh khắc cưới vượt thời gian. Lọc theo phong cách (Cổ điển, Hiện đại, Nghệ thuật) hoặc địa điểm.',
-  path: '/portfolio',
+  title: "Portfolio | Những câu chuyện tình yêu qua ống kính",
+  description:
+    "Khám phá bộ sưu tập những khoảnh khắc cưới vượt thời gian. Lọc theo phong cách (Cổ điển, Hiện đại, Nghệ thuật) hoặc địa điểm.",
+  path: "/portfolio",
 });
 
 /* ─── Skeletons ─────────────────────────────────── */
@@ -17,7 +18,7 @@ function FilterSkeleton() {
   return (
     <div className="mb-20 space-y-5" aria-hidden="true">
       <div className="h-px w-full bg-luxury-border-fine" />
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex flex-wrap justify-center gap-3">
         {[80, 96, 88, 72, 80].map((w, i) => (
           <div
             key={i}
@@ -34,21 +35,21 @@ function FilterSkeleton() {
 function GallerySkeleton() {
   return (
     <div
-      className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5"
+      className="columns-1 gap-5 space-y-5 sm:columns-2 lg:columns-3"
       aria-hidden="true"
       aria-label="Đang tải..."
     >
       {[
-        'aspect-[3/4]',
-        'aspect-[3/5]',
-        'aspect-[3/4]',
-        'aspect-[4/5]',
-        'aspect-[3/4]',
-        'aspect-[3/5]',
+        "aspect-[3/4]",
+        "aspect-[3/5]",
+        "aspect-[3/4]",
+        "aspect-[4/5]",
+        "aspect-[3/4]",
+        "aspect-[3/5]",
       ].map((aspect, i) => (
         <div
           key={i}
-          className={`${aspect} bg-black/5 animate-pulse break-inside-avoid`}
+          className={`${aspect} animate-pulse break-inside-avoid bg-black/5`}
         />
       ))}
     </div>
@@ -63,7 +64,9 @@ interface PortfolioPageProps {
   }>;
 }
 
-export default async function PortfolioPage({ searchParams }: PortfolioPageProps) {
+export default async function PortfolioPage({
+  searchParams,
+}: PortfolioPageProps) {
   const { style, location } = await searchParams;
 
   const items = getPortfolios({
@@ -73,48 +76,44 @@ export default async function PortfolioPage({ searchParams }: PortfolioPageProps
 
   return (
     <div className="min-h-screen bg-luxury">
-
       {/* ── Hero section ── */}
-      <section className="pt-24 md:pt-40 pb-0">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-
+      <section className="pt-24 pb-0 md:pt-40">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           {/* decorative top rule */}
           <div
             aria-hidden="true"
-            className="flex items-center gap-6 mb-6 md:mb-16 animate-fade-in-up-luxury"
-            style={{ '--delay': '0ms' } as React.CSSProperties}
+            className="mb-6 flex animate-fade-in-up-luxury items-center gap-6 md:mb-16"
+            style={{ "--delay": "0ms" } as React.CSSProperties}
           >
-            <span className="flex-1 h-px bg-gradient-to-r from-transparent to-luxury-border" />
-            <span className="w-1.5 h-1.5 border border-gold-400 rotate-45 block shrink-0" />
-            <span className="text-[8px] font-bold uppercase tracking-[0.32em] text-mist shrink-0">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-luxury-border" />
+            <span className="block h-1.5 w-1.5 shrink-0 rotate-45 border border-obsidian-400" />
+            <span className="shrink-0 font-bold text-[8px] text-mist uppercase tracking-[0.32em]">
               Portfolio
             </span>
-            <span className="w-1.5 h-1.5 border border-gold-400 rotate-45 block shrink-0" />
-            <span className="flex-1 h-px bg-gradient-to-l from-transparent to-luxury-border" />
+            <span className="block h-1.5 w-1.5 shrink-0 rotate-45 border border-obsidian-400" />
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-luxury-border" />
           </div>
 
           <div
-            className="mb-8 md:mb-20 max-w-3xl mx-auto text-center animate-fade-in-up-luxury"
-            style={{ '--delay': '80ms' } as React.CSSProperties}
+            className="mx-auto mb-8 max-w-3xl animate-fade-in-up-luxury text-center md:mb-20"
+            style={{ "--delay": "80ms" } as React.CSSProperties}
           >
-            <p className="text-label-luxury text-gold mb-5">
-              Bộ sưu tập
-            </p>
+            <p className="mb-5 text-label-luxury text-obsidian">Bộ sưu tập</p>
 
-            <h1 className="font-sans font-light text-obsidian leading-[1.05] tracking-tight mb-8"
-              style={{ fontSize: 'clamp(2.6rem, 5.5vw, 5.2rem)' }}
+            <h1
+              className="mb-8 font-light font-sans text-obsidian leading-[1.05] tracking-tight"
+              style={{ fontSize: "clamp(2.6rem, 5.5vw, 5.2rem)" }}
             >
-              Những khoảnh khắc{' '}
-              <em className="text-gold-600 not-italic">
-                được ghi lại
-              </em>
+              Những khoảnh khắc{" "}
+              <em className="text-obsidian-600 not-italic">được ghi lại</em>
             </h1>
 
-            <p className="text-smoke font-light leading-relaxed max-w-xl"
-              style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)' }}
+            <p
+              className="max-w-xl font-light text-smoke leading-relaxed"
+              style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)" }}
             >
-              Mỗi đám cưới là một câu chuyện độc nhất. Hãy duyệt qua portfolio để tìm thấy
-              phong cách phù hợp nhất với bạn.
+              Mỗi đám cưới là một câu chuyện độc nhất. Hãy duyệt qua portfolio
+              để tìm thấy phong cách phù hợp nhất với bạn.
             </p>
           </div>
 
@@ -127,7 +126,6 @@ export default async function PortfolioPage({ searchParams }: PortfolioPageProps
           <Suspense fallback={<GallerySkeleton />}>
             <MasonryGallery items={items} />
           </Suspense>
-
         </div>
       </section>
 
@@ -135,7 +133,6 @@ export default async function PortfolioPage({ searchParams }: PortfolioPageProps
       <div className="mt-40">
         <CtaBanner />
       </div>
-
     </div>
   );
 }

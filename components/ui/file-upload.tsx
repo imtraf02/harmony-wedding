@@ -1,5 +1,7 @@
 "use client";
 
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import {
   FileArchiveIcon,
   FileAudioIcon,
@@ -10,11 +12,9 @@ import {
   FileVideoIcon,
 } from "lucide-react";
 import * as React from "react";
-import { mergeProps } from "@base-ui/react/merge-props";
-import { useRender } from "@base-ui/react/use-render";
-import { cn } from "@/lib/utils";
 import { useAsRef } from "@/hooks/use-as-ref";
 import { useLazyRef } from "@/hooks/use-lazy-ref";
+import { cn } from "@/lib/utils";
 
 const ROOT_NAME = "FileUpload";
 const DROPZONE_NAME = "FileUploadDropzone";
@@ -1338,7 +1338,8 @@ function FileUploadItemProgress(props: FileUploadItemProgressProps) {
   }
 }
 
-interface FileUploadItemDeleteProps extends useRender.ComponentProps<"button"> {}
+interface FileUploadItemDeleteProps
+  extends useRender.ComponentProps<"button"> {}
 
 function FileUploadItemDelete(props: FileUploadItemDeleteProps) {
   const { render, onClick: onClickProp, ...deleteProps } = props;

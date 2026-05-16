@@ -1,35 +1,45 @@
-import { getFeaturedPortfolios } from '@/lib/queries/portfolio';
-import { getActiveGalleryItems } from '@/lib/queries/gallery';
-import { getActiveTestimonials } from '@/lib/queries/testimonials';
-import { getHeroSlides } from '@/lib/queries/hero';
-import { HeroImages } from '@/components/home/hero-images';
-import { ServiceCards } from '@/components/home/service-cards';
-import { Testimonials } from '@/components/home/testimonials';
-import { CtaBanner } from '@/components/home/cta-banner';
-import { JsonLd, localBusinessSchema, websiteSchema } from '@/components/shared/json-ld';
-import { GalleryScroll } from '@/components/home/galleryscroll';
-import { FeaturedWorks, type FeaturedWork } from '@/components/home/featured-work';
-import type { Testimonial as TestimonialComponent } from '@/components/home/testimonials';
-
-
+import { CtaBanner } from "@/components/home/cta-banner";
+import {
+  type FeaturedWork,
+  FeaturedWorks,
+} from "@/components/home/featured-work";
+import { GalleryScroll } from "@/components/home/galleryscroll";
+import { HeroImages } from "@/components/home/hero-images";
+import {
+  type Service as ServiceCardItem,
+  ServiceCards,
+} from "@/components/home/service-cards";
+import type { Testimonial as TestimonialComponent } from "@/components/home/testimonials";
+import { Testimonials } from "@/components/home/testimonials";
+import {
+  JsonLd,
+  localBusinessSchema,
+  websiteSchema,
+} from "@/components/shared/json-ld";
+import { getActiveGalleryItems } from "@/lib/queries/gallery";
+import { getHeroSlides } from "@/lib/queries/hero";
+import { getFeaturedPortfolios } from "@/lib/queries/portfolio";
+import { getActiveServices } from "@/lib/queries/services";
+import { getActiveTestimonials } from "@/lib/queries/testimonials";
 
 // ─── Style → category label map ───────────────────────────────────────────────
 const STYLE_LABEL: Record<string, string> = {
-  vintage: 'Vintage',
-  modern: 'Modern',
-  fineart: 'Fine Art',
-  romantic: 'Romantic',
+  vintage: "Vintage",
+  modern: "Modern",
+  fineart: "Fine Art",
+  romantic: "Romantic",
 };
 
 export default async function Home() {
-
   // Fetch DB data in parallel
-  const [dbPortfolios, dbTestimonials, dbGallery, dbHero] = await Promise.all([
-    getFeaturedPortfolios(12),
-    getActiveTestimonials(10),
-    getActiveGalleryItems(20),
-    getHeroSlides(),
-  ]);
+  const [dbPortfolios, dbTestimonials, dbGallery, dbHero, dbServices] =
+    await Promise.all([
+      getFeaturedPortfolios(12),
+      getActiveTestimonials(10),
+      getActiveGalleryItems(20),
+      getHeroSlides(),
+      getActiveServices(),
+    ]);
 
   // ── Map DB rows → component shapes ────────────────────────────────────────
 
@@ -60,14 +70,30 @@ export default async function Home() {
     src: t.avatar ?? undefined,
   }));
 
-  const heroItems = dbHero.map(slide => ({
+  const heroItems = dbHero.map((slide) => ({
     src: slide.src,
-    alt: slide.title || 'Harmony Hero',
+    alt: slide.title || "Harmony Hero",
     tag: slide.subtitle || undefined,
-    title: slide.title || '',
-    description: slide.description || '',
+    title: slide.title || "",
+    description: slide.description || "",
     cta_label: slide.cta_label || undefined,
     cta_href: slide.cta_href || undefined,
+  }));
+
+  const serviceItems: ServiceCardItem[] = dbServices.map((service, index) => ({
+    index: String(index + 1).padStart(2, "0"),
+    src: service.hero_image,
+    images:
+      service.demo_images.length > 0
+        ? service.demo_images
+        : [service.hero_image],
+    alt: service.title,
+    title: service.title,
+    description: service.description,
+    highlights: service.features,
+    href: service.detail_href || "/services",
+    ctaLabel: "Xem chi tiết",
+    meta: service.subtitle || undefined,
   }));
 
   return (
@@ -82,7 +108,6 @@ export default async function Home() {
         items={galleryItems}
       />
 
-
       <FeaturedWorks
         title="Tác phẩm tiêu biểu"
         subtitle="Portfolio"
@@ -90,41 +115,11 @@ export default async function Home() {
         works={featuredWorks}
       />
 
-
       <ServiceCards
         title="Dịch vụ chụp ảnh"
         subtitle="Chúng tôi cung cấp"
-        services={[
-          {
-            index: '01',
-            src: '/img/wedding.jpg',
-            alt: 'Gói Ngày Cưới',
-            title: 'Gói Ngày Cưới',
-            description: 'Trọn gói từ trang phục, makeup đến chụp ảnh phóng sự. Có các gói Diamond, Ruby, Signature...',
-            highlights: ['Trọn gói 1 ngày / 2 ngày', 'Combo tiết kiệm chỉ từ 4.9tr', 'Thợ chụp/quay lẻ linh hoạt'],
-            href: '/services',
-          },
-          {
-            index: '02',
-            src: '/img/prewedding.jpg',
-            alt: 'Album Pre-wedding',
-            title: 'Album Pre-wedding',
-            description: 'Chụp ảnh trước đám cưới tại Studio, Phim trường hoặc các tour ngoại cảnh đi xa chuyên nghiệp.',
-            highlights: ['Studio Concept độc quyền', 'Ngoại cảnh Đà Lạt, Vĩnh Hy...', 'Album photobook cao cấp'],
-            href: '/services',
-          },
-          {
-            index: '03',
-            src: '/img/cinematic.jpg',
-            alt: 'Dịch vụ Thuê lẻ',
-            title: 'Dịch vụ Thuê lẻ',
-            description: 'Thuê lẻ Váy cưới, Vest, Áo dài, Makeup cô dâu/sui gia và các dịch vụ in ấn rửa ảnh.',
-            highlights: ['Thuê Hỷ Phục cặp', 'Makeup tận nơi', 'In ảnh ép gỗ, photobook'],
-            href: '/pricing',
-          },
-        ]}
+        services={serviceItems}
       />
-
 
       <Testimonials
         title="Phản hồi từ các cặp đôi"

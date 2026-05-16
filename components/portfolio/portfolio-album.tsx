@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import { Lightbox } from './lightbox';
+import Image from "next/image";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Lightbox } from "./lightbox";
 
 interface PortfolioAlbumProps {
   images: string[];
@@ -38,23 +38,22 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
 
   return (
     <div className="mt-20">
-
       {/* section label */}
-      <div className="flex items-center gap-5 mb-12">
-        <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-ash">
+      <div className="mb-12 flex items-center gap-5">
+        <span className="font-bold text-[9px] text-ash uppercase tracking-[0.28em]">
           Bộ ảnh
         </span>
         <div
           aria-hidden="true"
-          className="flex-1 h-px bg-gradient-to-r from-luxury-border to-transparent"
+          className="h-px flex-1 bg-gradient-to-r from-luxury-border to-transparent"
         />
-        <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-ash tabular-nums">
-          {String(images.length).padStart(2, '0')} ảnh
+        <span className="font-bold text-[9px] text-ash uppercase tabular-nums tracking-[0.28em]">
+          {String(images.length).padStart(2, "0")} ảnh
         </span>
       </div>
 
       {/* masonry layout */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-5">
+      <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3">
         {images.map((img, i) => (
           <button
             key={img}
@@ -62,25 +61,27 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
             aria-label={`Xem ảnh ${i + 1} — ${title}`}
             onClick={() => setLightboxIndex(i)}
             className={cn(
-              'relative group overflow-hidden w-full block mb-4 sm:mb-5',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50',
-              'animate-fade-in-up-luxury',
+              "group relative mb-4 block w-full overflow-hidden sm:mb-5",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-obsidian/50",
+              "animate-fade-in-up-luxury",
             )}
-            style={{ '--delay': `${Math.min(i, 9) * 60}ms` } as React.CSSProperties}
+            style={
+              { "--delay": `${Math.min(i, 9) * 60}ms` } as React.CSSProperties
+            }
           >
             {/* wrapper without fixed aspect ratio */}
-            <div className="relative overflow-hidden w-full h-full bg-whisper">
+            <div className="relative h-full w-full overflow-hidden bg-whisper">
               <Image
                 src={img}
                 alt={`${title} — ảnh ${i + 1}`}
                 width={800}
                 height={800}
-                loading={i < 6 ? 'eager' : 'lazy'}
+                loading={i < 6 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className={cn(
-                  'w-full h-auto object-cover',
-                  'transition-transform duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]',
-                  'scale-100 group-hover:scale-105',
+                  "h-auto w-full object-cover",
+                  "transition-transform duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]",
+                  "scale-100 group-hover:scale-105",
                 )}
               />
 
@@ -88,20 +89,20 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
               <div
                 aria-hidden="true"
                 className={cn(
-                  'absolute inset-0 flex items-center justify-center',
-                  'bg-obsidian/30',
-                  'opacity-0 group-hover:opacity-100',
-                  'transition-opacity duration-400',
+                  "absolute inset-0 flex items-center justify-center",
+                  "bg-obsidian/30",
+                  "opacity-0 group-hover:opacity-100",
+                  "transition-opacity duration-400",
                 )}
               >
                 {/* zoom icon ring */}
                 <div
                   className={cn(
-                    'flex items-center justify-center',
-                    'w-10 h-10 border border-white/50',
-                    'text-white/90',
-                    'scale-75 group-hover:scale-100',
-                    'transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]',
+                    "flex items-center justify-center",
+                    "h-10 w-10 border border-white/50",
+                    "text-white/90",
+                    "scale-75 group-hover:scale-100",
+                    "transition-transform duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
                   )}
                 >
                   <ZoomIcon />
@@ -112,20 +113,20 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
               <div
                 aria-hidden="true"
                 className={cn(
-                  'absolute bottom-3 right-3',
-                  'text-[8px] font-bold uppercase tracking-[0.22em]',
-                  'text-white/50',
-                  'opacity-0 group-hover:opacity-100 transition-opacity duration-300',
+                  "absolute right-3 bottom-3",
+                  "font-bold text-[8px] uppercase tracking-[0.22em]",
+                  "text-white/50",
+                  "opacity-0 transition-opacity duration-300 group-hover:opacity-100",
                 )}
               >
-                {String(i + 1).padStart(2, '0')}
+                {String(i + 1).padStart(2, "0")}
               </div>
             </div>
 
-            {/* gold border sweep on hover */}
+            {/* obsidian border sweep on hover */}
             <div
               aria-hidden="true"
-              className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-gradient-to-r from-gold-400 to-gold-600 group-hover:w-full transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+              className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-gradient-to-r from-obsidian-400 to-obsidian-600 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:w-full"
             />
           </button>
         ))}

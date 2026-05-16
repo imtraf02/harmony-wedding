@@ -1,15 +1,15 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 interface OptimizedImageProps {
-  src        : string;
-  alt        : string;
-  width?     : number;
-  height?    : number;
-  fill?      : boolean;
-  priority?  : boolean;
-  className? : string;
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  fill?: boolean;
+  priority?: boolean;
+  className?: string;
   blurDataURL?: string;
-  sizes?     : string;
+  sizes?: string;
 }
 
 export function OptimizedImage({
@@ -17,13 +17,13 @@ export function OptimizedImage({
   alt,
   width,
   height,
-  fill     = false,
+  fill = false,
   priority = false,
   className,
   blurDataURL,
   sizes,
 }: OptimizedImageProps) {
-  const placeholder = blurDataURL ? 'blur' : 'empty';
+  const placeholder = blurDataURL ? "blur" : "empty";
 
   if (fill) {
     return (
@@ -35,8 +35,8 @@ export function OptimizedImage({
         className={className}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
-        sizes={sizes ?? '100vw'}
-        style={{ objectFit: 'cover' }}
+        sizes={sizes ?? "100vw"}
+        style={{ objectFit: "cover" }}
       />
     );
   }

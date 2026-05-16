@@ -1,70 +1,87 @@
-import { getDb } from '@/lib/db';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { UserIcon, MailIcon, PhoneIcon, CalendarIcon } from 'lucide-react';
-import { revalidatePath } from 'next/cache';
-import type { Contact } from '@/types';
+import { CalendarIcon, MailIcon, PhoneIcon, UserIcon } from "lucide-react";
+import { revalidatePath } from "next/cache";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { getDb } from "@/lib/db";
+import type { Contact } from "@/types";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 async function updateContactStatus(formData: FormData) {
-  'use server';
-  const id = Number(formData.get('id'));
-  const status = formData.get('status') as string;
+  "use server";
+  const id = Number(formData.get("id"));
+  const status = formData.get("status") as string;
   const db = getDb();
-  db.prepare('UPDATE contacts SET status = ? WHERE id = ?').run(status, id);
-  revalidatePath('/admin/contacts');
+  db.prepare("UPDATE contacts SET status = ? WHERE id = ?").run(status, id);
+  revalidatePath("/admin/contacts");
 }
 
 export default async function AdminContactsPage() {
   const db = getDb();
-  const contacts = db.prepare('SELECT * FROM contacts ORDER BY created_at DESC').all() as Contact[];
+  const contacts = db
+    .prepare("SELECT * FROM contacts ORDER BY created_at DESC")
+    .all() as Contact[];
 
   return (
     <div className="space-y-16 font-sans">
       <header className="space-y-2">
-        <h1 className="text-display font-sans font-light text-obsidian tracking-tight">Yêu cầu liên hệ</h1>
-        <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Theo dõi và quản lý các yêu cầu tư vấn từ khách hàng</p>
+        <h1 className="font-light font-sans text-display text-obsidian tracking-tight">
+          Yêu cầu liên hệ
+        </h1>
+        <p className="font-medium text-[11px] text-smoke uppercase tracking-[0.2em]">
+          Theo dõi và quản lý các yêu cầu tư vấn từ khách hàng
+        </p>
       </header>
 
       <div className="grid gap-4 md:hidden">
         {contacts.map((c) => (
-          <article key={c.id} className="bg-white border border-black/5 rounded-none shadow-sm p-5 flex flex-col gap-5">
+          <article
+            key={c.id}
+            className="flex flex-col gap-5 rounded-none border border-black/5 bg-white p-5 shadow-sm"
+          >
             <div className="flex items-start gap-4">
-              <div className="size-10 bg-luxury-surface rounded-none border border-black/5 flex items-center justify-center text-ash shrink-0">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-none border border-black/5 bg-luxury-surface text-ash">
                 <UserIcon className="size-4 stroke-[1.2px]" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="font-medium text-obsidian truncate">{c.name}</p>
+                <p className="truncate font-medium text-obsidian">{c.name}</p>
                 <div className="mt-2 flex flex-col gap-1">
                   <div className="flex items-center gap-2 text-smoke">
-                    <MailIcon className="size-3 text-mist shrink-0" />
-                    <span className="text-[11px] font-light truncate">{c.email || 'Không có email'}</span>
+                    <MailIcon className="size-3 shrink-0 text-mist" />
+                    <span className="truncate font-light text-[11px]">
+                      {c.email || "Không có email"}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2 text-smoke">
-                    <PhoneIcon className="size-3 text-mist shrink-0" />
-                    <span className="text-[11px] font-light">{c.phone}</span>
+                    <PhoneIcon className="size-3 shrink-0 text-mist" />
+                    <span className="font-light text-[11px]">{c.phone}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <Badge variant="outline" className="rounded-none border-gold-dim text-gold text-[9px] uppercase tracking-widest bg-gold-dim font-bold">
+              <Badge
+                variant="outline"
+                className="rounded-none border-obsidian-dim bg-obsidian-dim font-bold text-[9px] text-obsidian uppercase tracking-widest"
+              >
                 {c.service}
               </Badge>
-              <p className="text-[12px] text-smoke font-light leading-relaxed line-clamp-4">
-                {c.message ? `“${c.message}”` : 'Không có tin nhắn'}
+              <p className="line-clamp-4 font-light text-[12px] text-smoke leading-relaxed">
+                {c.message ? `“${c.message}”` : "Không có tin nhắn"}
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 border-t border-black/5 pt-4">
-              <form action={updateContactStatus} className="flex items-center gap-3">
+            <div className="flex flex-col gap-4 border-black/5 border-t pt-4">
+              <form
+                action={updateContactStatus}
+                className="flex items-center gap-3"
+              >
                 <input type="hidden" name="id" value={c.id} />
                 <select
                   name="status"
                   defaultValue={c.status}
-                  className="h-10 flex-1 text-[10px] font-bold uppercase tracking-widest bg-luxury-surface border border-black/5 rounded-none px-3 focus:ring-1 focus:ring-gold cursor-pointer"
+                  className="h-10 flex-1 cursor-pointer rounded-none border border-black/5 bg-luxury-surface px-3 font-bold text-[10px] uppercase tracking-widest focus:ring-1 focus:ring-obsidian"
                 >
                   <option value="new">Mới</option>
                   <option value="contacted">Đã liên hệ</option>
@@ -72,70 +89,99 @@ export default async function AdminContactsPage() {
                   <option value="completed">Hoàn thành</option>
                   <option value="cancelled">Hủy</option>
                 </select>
-                <Button type="submit" variant="outline" className="h-10 rounded-none text-[10px] uppercase tracking-[0.15em]">
+                <Button
+                  type="submit"
+                  variant="outline"
+                  className="h-10 rounded-none text-[10px] uppercase tracking-[0.15em]"
+                >
                   Cập nhật
                 </Button>
               </form>
               <div className="flex items-center gap-2 text-smoke">
                 <CalendarIcon className="size-3 text-mist" />
-                <span className="text-[11px] font-light">{new Date(c.created_at).toLocaleString('vi-VN')}</span>
+                <span className="font-light text-[11px]">
+                  {new Date(c.created_at).toLocaleString("vi-VN")}
+                </span>
               </div>
             </div>
           </article>
         ))}
       </div>
 
-      <div className="hidden bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden md:block">
+      <div className="hidden overflow-hidden rounded-none border border-black/5 bg-white shadow-luxury md:block">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm border-collapse">
+          <table className="w-full border-collapse text-left text-sm">
             <thead>
-              <tr className="bg-whisper border-b border-black/5">
-                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Khách hàng</th>
-                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Dịch vụ & Tin nhắn</th>
-                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash">Trạng thái</th>
-                <th className="px-8 py-6 text-[9px] uppercase tracking-[0.2em] font-bold text-ash text-right">Ngày nhận</th>
+              <tr className="border-black/5 border-b bg-whisper">
+                <th className="px-8 py-6 font-bold text-[9px] text-ash uppercase tracking-[0.2em]">
+                  Khách hàng
+                </th>
+                <th className="px-8 py-6 font-bold text-[9px] text-ash uppercase tracking-[0.2em]">
+                  Dịch vụ & Tin nhắn
+                </th>
+                <th className="px-8 py-6 font-bold text-[9px] text-ash uppercase tracking-[0.2em]">
+                  Trạng thái
+                </th>
+                <th className="px-8 py-6 text-right font-bold text-[9px] text-ash uppercase tracking-[0.2em]">
+                  Ngày nhận
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-black/5">
               {contacts.map((c) => (
-                <tr key={c.id} className="group hover:bg-whisper transition-colors animate-fade-in-up-luxury">
+                <tr
+                  key={c.id}
+                  className="group animate-fade-in-up-luxury transition-colors hover:bg-whisper"
+                >
                   <td className="px-8 py-8 align-top">
                     <div className="flex items-center gap-4">
-                      <div className="size-10 bg-luxury-surface rounded-none border border-black/5 flex items-center justify-center text-ash">
+                      <div className="flex size-10 items-center justify-center rounded-none border border-black/5 bg-luxury-surface text-ash">
                         <UserIcon className="size-4 stroke-[1.2px]" />
                       </div>
                       <div className="space-y-1">
-                        <p className="font-medium text-obsidian group-hover:text-gold transition-colors">{c.name}</p>
+                        <p className="font-medium text-obsidian transition-colors group-hover:text-obsidian">
+                          {c.name}
+                        </p>
                         <div className="flex flex-col gap-1">
                           <div className="flex items-center gap-2 text-smoke">
                             <MailIcon className="size-3 text-mist" />
-                            <span className="text-[11px] font-light">{c.email}</span>
+                            <span className="font-light text-[11px]">
+                              {c.email}
+                            </span>
                           </div>
                           <div className="flex items-center gap-2 text-smoke">
                             <PhoneIcon className="size-3 text-mist" />
-                            <span className="text-[11px] font-light">{c.phone}</span>
+                            <span className="font-light text-[11px]">
+                              {c.phone}
+                            </span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td className="px-8 py-8 align-top max-w-sm">
+                  <td className="max-w-sm px-8 py-8 align-top">
                     <div className="space-y-2">
-                      <Badge variant="outline" className="rounded-none border-gold-dim text-gold text-[9px] uppercase tracking-widest bg-gold-dim font-bold">
+                      <Badge
+                        variant="outline"
+                        className="rounded-none border-obsidian-dim bg-obsidian-dim font-bold text-[9px] text-obsidian uppercase tracking-widest"
+                      >
                         {c.service}
                       </Badge>
-                      <p className="text-[12px] text-smoke font-light leading-relaxed  line-clamp-3">
-                        {c.message ? `“${c.message}”` : 'Không có tin nhắn'}
+                      <p className="line-clamp-3 font-light text-[12px] text-smoke leading-relaxed">
+                        {c.message ? `“${c.message}”` : "Không có tin nhắn"}
                       </p>
                     </div>
                   </td>
                   <td className="px-8 py-8 align-top">
-                    <form action={updateContactStatus} className="flex flex-col gap-2">
+                    <form
+                      action={updateContactStatus}
+                      className="flex flex-col gap-2"
+                    >
                       <input type="hidden" name="id" value={c.id} />
                       <select
                         name="status"
                         defaultValue={c.status}
-                        className="text-[10px] font-bold uppercase tracking-widest bg-luxury-surface border-black/5 rounded-none px-3 py-2 focus:ring-1 focus:ring-gold appearance-none cursor-pointer w-full max-w-[140px]"
+                        className="w-full max-w-[140px] cursor-pointer appearance-none rounded-none border-black/5 bg-luxury-surface px-3 py-2 font-bold text-[10px] uppercase tracking-widest focus:ring-1 focus:ring-obsidian"
                       >
                         <option value="new">Mới</option>
                         <option value="contacted">Đã liên hệ</option>
@@ -143,19 +189,28 @@ export default async function AdminContactsPage() {
                         <option value="completed">Hoàn thành</option>
                         <option value="cancelled">Hủy</option>
                       </select>
-                      <Button type="submit" variant="link" className="h-auto p-0 text-[9px] text-mist hover:text-gold uppercase tracking-[0.2em] font-bold justify-start w-fit">
+                      <Button
+                        type="submit"
+                        variant="link"
+                        className="h-auto w-fit justify-start p-0 font-bold text-[9px] text-mist uppercase tracking-[0.2em] hover:text-obsidian"
+                      >
                         Cập nhật
                       </Button>
                     </form>
                   </td>
-                  <td className="px-8 py-8 align-top text-right">
+                  <td className="px-8 py-8 text-right align-top">
                     <div className="flex flex-col items-end gap-1">
                       <div className="flex items-center gap-2 text-smoke">
                         <CalendarIcon className="size-3 text-mist" />
-                        <span className="text-[11px] font-light">{new Date(c.created_at).toLocaleDateString('vi-VN')}</span>
+                        <span className="font-light text-[11px]">
+                          {new Date(c.created_at).toLocaleDateString("vi-VN")}
+                        </span>
                       </div>
-                      <span className="text-[9px] text-mist font-bold uppercase tracking-widest">
-                        {new Date(c.created_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}
+                      <span className="font-bold text-[9px] text-mist uppercase tracking-widest">
+                        {new Date(c.created_at).toLocaleTimeString("vi-VN", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
                       </span>
                     </div>
                   </td>
@@ -163,7 +218,10 @@ export default async function AdminContactsPage() {
               ))}
               {contacts.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="px-8 py-32 text-center text-smoke  font-light tracking-wide">
+                  <td
+                    colSpan={4}
+                    className="px-8 py-32 text-center font-light text-smoke tracking-wide"
+                  >
                     Hệ thống chưa ghi nhận yêu cầu liên hệ nào.
                   </td>
                 </tr>
@@ -174,7 +232,7 @@ export default async function AdminContactsPage() {
       </div>
 
       {contacts.length === 0 && (
-        <div className="md:hidden px-8 py-24 text-center border border-dashed border-black/10 text-smoke font-light tracking-wide">
+        <div className="border border-black/10 border-dashed px-8 py-24 text-center font-light text-smoke tracking-wide md:hidden">
           Hệ thống chưa ghi nhận yêu cầu liên hệ nào.
         </div>
       )}

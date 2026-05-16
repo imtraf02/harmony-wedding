@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import { useTransition, useState, useCallback } from 'react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
-import { Spinner } from '@/components/ui/spinner';
+import { ImageIcon, X } from "lucide-react";
+import Link from "next/link";
+import { useCallback, useState } from "react";
+import { toast } from "sonner";
+import { uploadImageAction } from "@/app/actions/upload";
+import { Button } from "@/components/ui/button";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import {
   FileUpload,
   FileUploadDropzone,
@@ -15,12 +16,11 @@ import {
   FileUploadItemPreview,
   FileUploadList,
   FileUploadTrigger,
-} from '@/components/ui/file-upload';
-import { ImageIcon, X } from 'lucide-react';
-import { toast } from 'sonner';
-import type { GalleryItem } from '@/types';
-import { createGalleryItemAction, updateGalleryItemAction } from '../actions';
-import { uploadImageAction } from '@/app/actions/upload';
+} from "@/components/ui/file-upload";
+import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
+import type { GalleryItem } from "@/types";
+import { createGalleryItemAction, updateGalleryItemAction } from "../actions";
 
 interface GalleryFormProps {
   initialData?: GalleryItem;
@@ -29,7 +29,7 @@ interface GalleryFormProps {
 export function GalleryForm({ initialData }: GalleryFormProps) {
   const [isPending, setIsPending] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
-  const [srcText, setSrcText] = useState(initialData?.src || '');
+  const [srcText, setSrcText] = useState(initialData?.src || "");
 
   const onFileReject = useCallback((file: File, message: string) => {
     toast.error(message, { description: `"${file.name}" bị từ chối` });
@@ -45,20 +45,20 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
       let finalSrc = srcText;
       if (files.length > 0) {
         const fd = new FormData();
-        fd.append('file', files[0]);
-        const res = await uploadImageAction(fd, 'gallery');
+        fd.append("file", files[0]);
+        const res = await uploadImageAction(fd, "gallery");
         if (res.success) {
           finalSrc = res.url!;
         } else {
-          toast.error('Lỗi tải ảnh: ' + res.message);
+          toast.error(`Lỗi tải ảnh: ${res.message}`);
           setIsPending(false);
           return;
         }
       }
 
-      formData.delete('src_file');
+      formData.delete("src_file");
       if (finalSrc) {
-        formData.set('src', finalSrc);
+        formData.set("src", finalSrc);
       }
 
       if (initialData) {
@@ -66,8 +66,8 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
       } else {
         await createGalleryItemAction(formData);
       }
-    } catch (err) {
-      toast.error('Có lỗi xảy ra');
+    } catch (_err) {
+      toast.error("Có lỗi xảy ra");
     } finally {
       setIsPending(false);
     }
@@ -76,10 +76,9 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-12 font-sans">
       <FieldGroup className="space-y-10">
-
         {/* ── Image source ── */}
         <Field>
-          <FieldLabel className="text-label-luxury text-ash mb-3 block">
+          <FieldLabel className="mb-3 block text-ash text-label-luxury">
             Ảnh Gallery
           </FieldLabel>
           <div className="space-y-6">
@@ -89,24 +88,30 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
               type="text"
               value={srcText}
               onChange={(e) => setSrcText(e.target.value)}
-              className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all"
+              className="h-12 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="Nhập URL ảnh (https://...)"
             />
             {srcText && files.length === 0 && (
               <div className="relative mt-4 flex items-center gap-4">
-                <div className="size-20 relative border border-black/5 bg-whisper group">
+                <div className="group relative size-20 border border-black/5 bg-whisper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={srcText} alt="Current image" className="object-cover w-full h-full" />
+                  <img
+                    src={srcText}
+                    alt="Current image"
+                    className="h-full w-full object-cover"
+                  />
                   <button
                     type="button"
-                    onClick={() => setSrcText('')}
-                    className="absolute -top-2 -right-2 size-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                    onClick={() => setSrcText("")}
+                    className="absolute -top-2 -right-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-white opacity-0 shadow-sm transition-opacity group-hover:opacity-100"
                     title="Xóa ảnh này"
                   >
                     <X className="size-3" />
                   </button>
                 </div>
-                <span className="text-[10px] text-mist uppercase tracking-widest">Ảnh đã lưu</span>
+                <span className="text-[10px] text-mist uppercase tracking-widest">
+                  Ảnh đã lưu
+                </span>
               </div>
             )}
             <FileUpload
@@ -119,23 +124,25 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
               name="src_file"
               className="w-full"
             >
-              <FileUploadDropzone className="border-dashed border-black/5 bg-luxury-surface hover:bg-white hover:border-gold/30 transition-all duration-500 py-10 group">
+              <FileUploadDropzone className="group border-black/5 border-dashed bg-luxury-surface py-10 transition-all duration-500 hover:border-obsidian/30 hover:bg-white">
                 <div className="flex flex-col items-center gap-4 text-center">
-                  <div className="rounded-none bg-white p-4 shadow-sm border border-black/5 group-hover:border-gold/20 transition-colors">
-                    <ImageIcon className="size-6 text-ash group-hover:text-gold transition-colors" />
+                  <div className="rounded-none border border-black/5 bg-white p-4 shadow-sm transition-colors group-hover:border-obsidian/20">
+                    <ImageIcon className="size-6 text-ash transition-colors group-hover:text-obsidian" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">
+                    <p className="font-bold text-[11px] text-obsidian uppercase tracking-widest">
                       Hoặc tải ảnh lên
                     </p>
-                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 100MB</p>
+                    <p className="mt-1 text-[10px] text-mist">
+                      PNG, JPG tối đa 100MB
+                    </p>
                   </div>
                   <FileUploadTrigger
                     render={
                       <Button
                         variant="outline"
                         size="sm"
-                        className="mt-2 rounded-none border-black/5 text-[9px] uppercase tracking-widest font-bold px-6"
+                        className="mt-2 rounded-none border-black/5 px-6 font-bold text-[9px] uppercase tracking-widest"
                       />
                     }
                   >
@@ -145,11 +152,21 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
               </FileUploadDropzone>
               <FileUploadList className="mt-4">
                 {files.map((file, i) => (
-                  <FileUploadItem key={i} value={file} className="bg-white border-black/5 rounded-none">
+                  <FileUploadItem
+                    key={i}
+                    value={file}
+                    className="rounded-none border-black/5 bg-white"
+                  >
                     <FileUploadItemPreview />
-                    <FileUploadItemMetadata className="text-[11px] font-light" />
+                    <FileUploadItemMetadata className="font-light text-[11px]" />
                     <FileUploadItemDelete
-                      render={<Button variant="ghost" size="icon" className="size-8 text-mist hover:text-red-500" />}
+                      render={
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="size-8 text-mist hover:text-red-500"
+                        />
+                      }
                     >
                       <X className="size-4" />
                     </FileUploadItemDelete>
@@ -161,9 +178,12 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
         </Field>
 
         {/* ── Alt text + Label ── */}
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid gap-12 md:grid-cols-2">
           <Field>
-            <FieldLabel htmlFor="alt" className="text-label-luxury text-ash mb-3 block">
+            <FieldLabel
+              htmlFor="alt"
+              className="mb-3 block text-ash text-label-luxury"
+            >
               Alt text (mô tả ảnh)
             </FieldLabel>
             <Input
@@ -171,21 +191,24 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
               name="alt"
               type="text"
               defaultValue={initialData?.alt}
-              className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all"
+              className="h-12 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="VD: Cặp đôi trong khu vườn"
             />
           </Field>
 
           <Field>
-            <FieldLabel htmlFor="label" className="text-label-luxury text-ash mb-3 block">
+            <FieldLabel
+              htmlFor="label"
+              className="mb-3 block text-ash text-label-luxury"
+            >
               Nhãn hiển thị (Label)
             </FieldLabel>
             <Input
               id="label"
               name="label"
               type="text"
-              defaultValue={initialData?.label ?? ''}
-              className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian placeholder:text-mist focus:ring-0 focus:border-gold transition-all"
+              defaultValue={initialData?.label ?? ""}
+              className="h-12 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all placeholder:text-mist focus:border-obsidian focus:ring-0"
               placeholder="VD: The Ceremony"
             />
           </Field>
@@ -193,7 +216,10 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
 
         {/* ── Sort order ── */}
         <Field>
-          <FieldLabel htmlFor="sort_order" className="text-label-luxury text-ash mb-3 block">
+          <FieldLabel
+            htmlFor="sort_order"
+            className="mb-3 block text-ash text-label-luxury"
+          >
             Thứ tự hiển thị
           </FieldLabel>
           <Input
@@ -201,53 +227,61 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
             name="sort_order"
             type="number"
             defaultValue={initialData?.sort_order ?? 0}
-            className="h-12 bg-transparent border-0 border-b border-black/5 rounded-none px-0 w-40 text-obsidian focus:ring-0 focus:border-gold transition-all"
+            className="h-12 w-40 rounded-none border-0 border-black/5 border-b bg-transparent px-0 text-obsidian transition-all focus:border-obsidian focus:ring-0"
           />
         </Field>
 
         {/* ── Active ── */}
-        <div className="flex items-center gap-4 pt-4 group">
+        <div className="group flex items-center gap-4 pt-4">
           <div className="relative flex items-center">
             <input
               type="checkbox"
               id="is_active"
               name="is_active"
               defaultChecked={initialData ? initialData.is_active : true}
-              className="peer size-5 appearance-none border border-black/10 rounded-none checked:bg-gold checked:border-gold transition-all cursor-pointer"
+              className="peer size-5 cursor-pointer appearance-none rounded-none border border-black/10 transition-all checked:border-obsidian checked:bg-obsidian"
             />
             <svg
-              className="absolute size-5 pointer-events-none hidden peer-checked:block text-ivory"
+              className="pointer-events-none absolute hidden size-5 text-ivory peer-checked:block"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={3}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
           </div>
           <label
             htmlFor="is_active"
-            className="text-[11px] font-bold uppercase tracking-[0.2em] text-smoke cursor-pointer group-hover:text-gold transition-colors"
+            className="cursor-pointer font-bold text-[11px] text-smoke uppercase tracking-[0.2em] transition-colors group-hover:text-obsidian"
           >
             Hiển thị ảnh này trên trang chủ
           </label>
         </div>
 
         {/* ── Actions ── */}
-        <div className="flex flex-col sm:flex-row gap-6 pt-12">
+        <div className="flex flex-col gap-6 pt-12 sm:flex-row">
           <Button
             type="submit"
             disabled={isPending}
-            className="flex-1 py-8 bg-obsidian text-ivory rounded-none font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-luxury"
+            className="flex-1 rounded-none bg-obsidian py-8 font-medium text-[11px] text-ivory uppercase tracking-[0.3em] shadow-luxury transition-all duration-500 hover:bg-obsidian"
           >
             {isPending && <Spinner className="mr-2" />}
-            {isPending ? 'Đang lưu...' : initialData ? 'Cập nhật ảnh' : 'Thêm ảnh'}
+            {isPending
+              ? "Đang lưu..."
+              : initialData
+                ? "Cập nhật ảnh"
+                : "Thêm ảnh"}
           </Button>
           <Button
             variant="ghost"
             render={<Link href="/admin/gallery" />}
             nativeButton={false}
-            className="flex-1 py-8 bg-transparent border border-black/5 text-mist rounded-none font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-luxury-surface transition-all duration-500"
+            className="flex-1 rounded-none border border-black/5 bg-transparent py-8 font-medium text-[11px] text-mist uppercase tracking-[0.3em] transition-all duration-500 hover:bg-luxury-surface"
           >
             Hủy bỏ
           </Button>

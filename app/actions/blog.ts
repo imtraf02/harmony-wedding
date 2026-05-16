@@ -1,32 +1,35 @@
-'use server';
+"use server";
 
-import { revalidatePath } from 'next/cache';
-import { createPost, updatePost, deletePost } from '@/lib/queries/blog';
+import { revalidatePath } from "next/cache";
+import { createPost, deletePost, updatePost } from "@/lib/queries/blog";
 
 function toSlug(str: string) {
   return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/[^a-z0-9]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 export async function createBlogPostAction(formData: FormData) {
   try {
-    const title = formData.get('title') as string;
-    const slug = formData.get('slug') as string || toSlug(title);
-    const excerpt = formData.get('excerpt') as string;
-    const content = formData.get('content') as string;
-    const cover_image = formData.get('cover_image') as string;
-    const is_published = formData.get('is_published') === 'on';
-    
+    const title = formData.get("title") as string;
+    const slug = (formData.get("slug") as string) || toSlug(title);
+    const excerpt = formData.get("excerpt") as string;
+    const content = formData.get("content") as string;
+    const cover_image = formData.get("cover_image") as string;
+    const is_published = formData.get("is_published") === "on";
+
     // Parse tags safely
     let tags: string[] = [];
-    const tagsStr = formData.get('tags') as string;
+    const tagsStr = formData.get("tags") as string;
     if (tagsStr) {
-      tags = tagsStr.split(',').map(t => t.trim()).filter(Boolean);
+      tags = tagsStr
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
     }
 
     createPost({
@@ -40,29 +43,32 @@ export async function createBlogPostAction(formData: FormData) {
       published_at: is_published ? new Date().toISOString() : null,
     });
 
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    revalidatePath("/blog");
+    revalidatePath("/admin/blog");
     return { success: true };
   } catch (error) {
-    console.error('Error creating blog post:', error);
+    console.error("Error creating blog post:", error);
     return { success: false, error: (error as Error).message };
   }
 }
 
 export async function updateBlogPostAction(id: number, formData: FormData) {
   try {
-    const title = formData.get('title') as string;
-    const slug = formData.get('slug') as string || toSlug(title);
-    const excerpt = formData.get('excerpt') as string;
-    const content = formData.get('content') as string;
-    const cover_image = formData.get('cover_image') as string;
-    const is_published = formData.get('is_published') === 'on';
-    
+    const title = formData.get("title") as string;
+    const slug = (formData.get("slug") as string) || toSlug(title);
+    const excerpt = formData.get("excerpt") as string;
+    const content = formData.get("content") as string;
+    const cover_image = formData.get("cover_image") as string;
+    const is_published = formData.get("is_published") === "on";
+
     // Parse tags safely
     let tags: string[] = [];
-    const tagsStr = formData.get('tags') as string;
+    const tagsStr = formData.get("tags") as string;
     if (tagsStr) {
-      tags = tagsStr.split(',').map(t => t.trim()).filter(Boolean);
+      tags = tagsStr
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
     }
 
     const updateData: any = {
@@ -85,12 +91,12 @@ export async function updateBlogPostAction(id: number, formData: FormData) {
 
     updatePost(id, updateData);
 
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    revalidatePath("/blog");
+    revalidatePath("/admin/blog");
     revalidatePath(`/blog/${slug}`);
     return { success: true };
   } catch (error) {
-    console.error('Error updating blog post:', error);
+    console.error("Error updating blog post:", error);
     return { success: false, error: (error as Error).message };
   }
 }
@@ -98,11 +104,11 @@ export async function updateBlogPostAction(id: number, formData: FormData) {
 export async function deleteBlogPostAction(id: number) {
   try {
     deletePost(id);
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    revalidatePath("/blog");
+    revalidatePath("/admin/blog");
     return { success: true };
   } catch (error) {
-    console.error('Error deleting blog post:', error);
+    console.error("Error deleting blog post:", error);
     return { success: false, error: (error as Error).message };
   }
 }
