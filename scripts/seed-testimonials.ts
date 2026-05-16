@@ -1,15 +1,16 @@
 #!/usr/bin/env tsx
 import { createTestimonial } from '../lib/queries/testimonials';
 import { getDb } from '../lib/db';
+import type { Testimonial } from '../types';
 
-const sampleTestimonials = [
+const sampleTestimonials: Omit<Testimonial, 'id'>[] = [
   {
     couple_name: "Minh & Hằng",
     content: "Đội ngũ vô cùng nhiệt tình và chuyên nghiệp. Ảnh chụp rất tự nhiên, chúng mình cực kì ưng ý với bộ ảnh cưới này. Cảm ơn Harmony Studio rất nhiều!",
     rating: 5,
     avatar: null,
     service: "Chụp ảnh cưới (Studio & Ngoại cảnh)",
-    wedding_year: "2025",
+    wedding_year: 2025,
     is_active: true,
     sort_order: 1
   },
@@ -19,7 +20,7 @@ const sampleTestimonials = [
     rating: 5,
     avatar: null,
     service: "Combo Chụp & Quay Pre-Wedding",
-    wedding_year: "2024",
+    wedding_year: 2024,
     is_active: true,
     sort_order: 2
   },
@@ -29,7 +30,7 @@ const sampleTestimonials = [
     rating: 5,
     avatar: null,
     service: "Quay phim phóng sự cưới",
-    wedding_year: "2025",
+    wedding_year: 2025,
     is_active: true,
     sort_order: 3
   },
@@ -39,7 +40,7 @@ const sampleTestimonials = [
     rating: 5,
     avatar: null,
     service: "Chụp ảnh cưới Studio",
-    wedding_year: "2023",
+    wedding_year: 2023,
     is_active: true,
     sort_order: 4
   },
@@ -49,7 +50,7 @@ const sampleTestimonials = [
     rating: 5,
     avatar: null,
     service: "Chụp Ngoại cảnh & Phim trường",
-    wedding_year: "2025",
+    wedding_year: 2025,
     is_active: true,
     sort_order: 5
   }
