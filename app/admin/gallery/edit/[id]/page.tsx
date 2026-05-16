@@ -41,8 +41,8 @@ export default async function EditGalleryItemPage({
       </header>
 
       {/* ── Form ── */}
-      <div className="max-w-4xl w-full">
-        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 md:p-16">
+      <div className="w-full">
+        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 lg:p-20">
           <GalleryForm initialData={item} />
         </div>
       </div>

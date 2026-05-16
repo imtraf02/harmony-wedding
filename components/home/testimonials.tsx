@@ -127,12 +127,12 @@ export function Testimonials({
   const col3 = testimonials.filter((_, i) => i % 3 === 2);
 
   return (
-    <section className="relative py-20 md:py-32 bg-luxury overflow-hidden">
+    <section className="relative py-12 md:py-32 bg-luxury overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* ── Header ── */}
         <motion.div
-          className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
+          className="mb-8 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}

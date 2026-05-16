@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+'use server';
+
 import { z } from 'zod';
 import { getDb } from '@/lib/db';
 import { sendContactNotification } from '@/lib/email';
 import { rateLimit } from '@/lib/rate-limit';
+import { headers } from 'next/headers';
 
 const schema = z.object({
   name        : z.string().min(2).max(100),
@@ -14,28 +16,20 @@ const schema = z.object({
   message     : z.string().max(1000).optional(),
 });
 
-export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-real-ip') ?? req.headers.get('x-forwarded-for') ?? 'unknown';
+export async function submitContact(formData: z.infer<typeof schema>) {
+  const headersList = await headers();
+  const ip = headersList.get('x-real-ip') ?? headersList.get('x-forwarded-for') ?? 'unknown';
   
-  // Rate limit: 5 requests per hour per IP
   if (!rateLimit(ip, 5, 60 * 60 * 1000)) {
-    return NextResponse.json(
-      { success: false, message: 'Too many requests. Please try again later.' },
-      { status: 429 }
-    );
+    return { success: false, message: 'Too many requests. Please try again later.' };
+  }
+
+  const parsed = schema.safeParse(formData);
+  if (!parsed.success) {
+    return { success: false, message: 'Dữ liệu không hợp lệ', errors: parsed.error.flatten() };
   }
 
   try {
-    const json = await req.json();
-    const parsed = schema.safeParse(json);
-    
-    if (!parsed.success) {
-      return NextResponse.json(
-        { success: false, errors: parsed.error.flatten() },
-        { status: 400 }
-      );
-    }
-
     const db = getDb();
     db.prepare(`
       INSERT INTO contacts (name, phone, email, service, wedding_date, guest_count, message, ip_address)
@@ -51,20 +45,15 @@ export async function POST(req: NextRequest) {
       ip         : ip
     });
 
-    // Send email notification asynchronously
     try {
       await sendContactNotification(parsed.data);
     } catch (emailError) {
       console.error('[EMAIL_ERROR]', emailError);
-      // We still return success: true because the contact is saved in the DB
     }
 
-    return NextResponse.json({ success: true });
+    return { success: true };
   } catch (err) {
     console.error('[POST /api/contact]', err);
-    return NextResponse.json(
-      { success: false, message: 'Internal server error' },
-      { status: 500 }
-    );
+    return { success: false, message: 'Internal server error' };
   }
 }

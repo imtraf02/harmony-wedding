@@ -20,13 +20,14 @@ import { ImageIcon, X } from 'lucide-react';
 import { toast } from 'sonner';
 import type { GalleryItem } from '@/types';
 import { createGalleryItemAction, updateGalleryItemAction } from '../actions';
+import { uploadImageAction } from '@/app/actions/upload';
 
 interface GalleryFormProps {
   initialData?: GalleryItem;
 }
 
 export function GalleryForm({ initialData }: GalleryFormProps) {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [srcText, setSrcText] = useState(initialData?.src || '');
 
@@ -34,22 +35,42 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
     toast.error(message, { description: `"${file.name}" bị từ chối` });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    setIsPending(true);
 
-    // Manually attach files to formData
-    if (files.length > 0) {
-      formData.set('src_file', files[0]);
-    }
+    try {
+      const formData = new FormData(e.currentTarget);
 
-    startTransition(() => {
-      if (initialData) {
-        updateGalleryItemAction(initialData.id, formData);
-      } else {
-        createGalleryItemAction(formData);
+      let finalSrc = srcText;
+      if (files.length > 0) {
+        const fd = new FormData();
+        fd.append('file', files[0]);
+        const res = await uploadImageAction(fd, 'gallery');
+        if (res.success) {
+          finalSrc = res.url!;
+        } else {
+          toast.error('Lỗi tải ảnh: ' + res.message);
+          setIsPending(false);
+          return;
+        }
       }
-    });
+
+      formData.delete('src_file');
+      if (finalSrc) {
+        formData.set('src', finalSrc);
+      }
+
+      if (initialData) {
+        await updateGalleryItemAction(initialData.id, formData);
+      } else {
+        await createGalleryItemAction(formData);
+      }
+    } catch (err) {
+      toast.error('Có lỗi xảy ra');
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -91,7 +112,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
             <FileUpload
               accept="image/*"
               maxFiles={1}
-              maxSize={20 * 1024 * 1024}
+              maxSize={100 * 1024 * 1024}
               value={files}
               onValueChange={setFiles}
               onFileReject={onFileReject}
@@ -107,7 +128,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
                     <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">
                       Hoặc tải ảnh lên
                     </p>
-                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 20MB</p>
+                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 100MB</p>
                   </div>
                   <FileUploadTrigger
                     render={

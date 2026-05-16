@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 
 export function CtaBanner() {
   return (
-    <section className="relative py-32 md:py-48 overflow-hidden bg-luxury text-obsidian text-center border-t border-black/5" aria-label="Kêu gọi hành động">
+    <section className="relative py-20 md:py-48 overflow-hidden bg-luxury text-obsidian text-center border-t border-black/5" aria-label="Kêu gọi hành động">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0 opacity-[0.03] grayscale pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-[url('/uploads/portfolio/cta-bg.webp')] bg-cover bg-center scale-110" />

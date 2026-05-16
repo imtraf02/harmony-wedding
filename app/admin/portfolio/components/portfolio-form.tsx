@@ -1,6 +1,6 @@
 'use client';
 
-import { useTransition, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,6 +10,7 @@ import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
 import type { Portfolio } from '@/types';
 import { createPortfolioAction, updatePortfolioAction } from '../actions';
+import { uploadImageAction } from '@/app/actions/upload';
 import {
   FileUpload,
   FileUploadDropzone,
@@ -22,14 +23,32 @@ import {
 } from "@/components/ui/file-upload";
 import { ImageIcon, X, PlusIcon } from "lucide-react";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 
 interface PortfolioFormProps {
   initialData?: Portfolio;
 }
 
+const portfolioStyleItems = [
+  { label: 'Hiện đại', value: 'modern' },
+  { label: 'Cổ điển', value: 'vintage' },
+  { label: 'Nghệ thuật', value: 'fineart' },
+  { label: 'Lãng mạn', value: 'romantic' },
+];
+
+const locationTypeItems = [
+  { label: 'Studio', value: 'studio' },
+  { label: 'Ngoại cảnh', value: 'outdoor' },
+  { label: 'Điểm đến', value: 'destination' },
+];
+
+const orientationItems = [
+  { label: 'Dọc - 3/4', value: 'portrait' },
+  { label: 'Ngang - 4/3', value: 'landscape' },
+  { label: 'Vuông - 1/1', value: 'square' },
+];
+
 export function PortfolioForm({ initialData }: PortfolioFormProps) {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
   const [coverFiles, setCoverFiles] = useState<File[]>([]);
   const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
   const [coverImageText, setCoverImageText] = useState(initialData?.cover_image || '');
@@ -48,27 +67,62 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
     });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    setIsPending(true);
 
-    if (coverFiles.length > 0) {
-      formData.set('cover_image_file', coverFiles[0]);
-    }
-    
-    // Clear and manually append multiple gallery files
-    formData.delete('images_files');
-    galleryFiles.forEach((file) => {
-      formData.append('images_files', file);
-    });
-
-    startTransition(() => {
-      if (initialData) {
-        updatePortfolioAction(initialData.id, formData);
-      } else {
-        createPortfolioAction(formData);
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      // Upload cover file if any
+      let newCover = coverImageText;
+      if (coverFiles.length > 0) {
+        const fd = new FormData();
+        fd.append('file', coverFiles[0]);
+        const res = await uploadImageAction(fd, 'portfolio');
+        if (res.success) {
+          newCover = res.url!;
+        } else {
+          toast.error('Lỗi tải ảnh bìa: ' + res.message);
+          setIsPending(false);
+          return;
+        }
       }
-    });
+      
+      // Upload gallery files one by one
+      const newGalleryUrls: string[] = [];
+      for (const file of galleryFiles) {
+        const fd = new FormData();
+        fd.append('file', file);
+        const res = await uploadImageAction(fd, 'portfolio');
+        if (res.success) {
+          newGalleryUrls.push(res.url!);
+        } else {
+          toast.error(`Lỗi tải ảnh "${file.name}": ` + res.message);
+        }
+      }
+
+      // Cleanup files from formData
+      formData.delete('images_files');
+      formData.delete('cover_image_file');
+      
+      if (newCover) {
+        formData.set('cover_image', newCover);
+      }
+      
+      const allImages = [...parsedImages, ...newGalleryUrls];
+      formData.set('images', allImages.join(','));
+
+      if (initialData) {
+        await updatePortfolioAction(initialData.id, formData);
+      } else {
+        await createPortfolioAction(formData);
+      }
+    } catch {
+      toast.error('Có lỗi xảy ra trong quá trình lưu');
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -105,16 +159,17 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         <div className="grid md:grid-cols-2 gap-12">
           <Field>
             <FieldLabel className="text-label-luxury text-ash mb-3 block">Phong cách nhiếp ảnh</FieldLabel>
-            <Select name="style" defaultValue={initialData?.style || 'modern'}>
+            <Select items={portfolioStyleItems} name="style" defaultValue={initialData?.style || 'modern'}>
               <SelectTrigger className="h-12 w-full bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian focus:ring-0 focus:border-gold transition-all">
-                <SelectValue placeholder="Chọn phong cách" />
+                <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-none border-black/5 shadow-luxury">
                 <SelectGroup>
-                  <SelectItem value="modern" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Modern (Hiện đại)</SelectItem>
-                  <SelectItem value="vintage" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Vintage (Cổ điển)</SelectItem>
-                  <SelectItem value="fineart" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Fine Art (Nghệ thuật)</SelectItem>
-                  <SelectItem value="romantic" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Romantic (Lãng mạn)</SelectItem>
+                  {portfolioStyleItems.map((item) => (
+                    <SelectItem key={item.value} value={item.value} className="focus:bg-gold-dim focus:text-gold rounded-none py-3">
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -122,15 +177,17 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
 
           <Field>
             <FieldLabel className="text-label-luxury text-ash mb-3 block">Loại hình địa điểm</FieldLabel>
-            <Select name="location_type" defaultValue={initialData?.location_type || 'studio'}>
+            <Select items={locationTypeItems} name="location_type" defaultValue={initialData?.location_type || 'studio'}>
               <SelectTrigger className="h-12 w-full bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian focus:ring-0 focus:border-gold transition-all">
-                <SelectValue placeholder="Chọn địa điểm" />
+                <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-none border-black/5 shadow-luxury">
                 <SelectGroup>
-                  <SelectItem value="studio" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Studio</SelectItem>
-                  <SelectItem value="outdoor" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Outdoor (Ngoại cảnh)</SelectItem>
-                  <SelectItem value="destination" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Destination (Điểm đến)</SelectItem>
+                  {locationTypeItems.map((item) => (
+                    <SelectItem key={item.value} value={item.value} className="focus:bg-gold-dim focus:text-gold rounded-none py-3">
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -138,15 +195,17 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
           
           <Field>
             <FieldLabel className="text-label-luxury text-ash mb-3 block">Tỷ lệ ảnh (Orientation)</FieldLabel>
-            <Select name="orientation" defaultValue={initialData?.orientation || 'portrait'}>
+            <Select items={orientationItems} name="orientation" defaultValue={initialData?.orientation || 'portrait'}>
               <SelectTrigger className="h-12 w-full bg-transparent border-0 border-b border-black/5 rounded-none px-0 text-obsidian focus:ring-0 focus:border-gold transition-all">
-                <SelectValue placeholder="Chọn tỷ lệ hiển thị" />
+                <SelectValue />
               </SelectTrigger>
               <SelectContent className="rounded-none border-black/5 shadow-luxury">
                 <SelectGroup>
-                  <SelectItem value="portrait" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Portrait (Dọc - 3/4)</SelectItem>
-                  <SelectItem value="landscape" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Landscape (Ngang - 4/3)</SelectItem>
-                  <SelectItem value="square" className="focus:bg-gold-dim focus:text-gold rounded-none py-3">Square (Vuông - 1/1)</SelectItem>
+                  {orientationItems.map((item) => (
+                    <SelectItem key={item.value} value={item.value} className="focus:bg-gold-dim focus:text-gold rounded-none py-3">
+                      {item.label}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -186,7 +245,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
             <FileUpload
               accept="image/*"
               maxFiles={1}
-              maxSize={20 * 1024 * 1024}
+              maxSize={100 * 1024 * 1024}
               value={coverFiles}
               onValueChange={setCoverFiles}
               onFileReject={onFileReject}
@@ -200,7 +259,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                   </div>
                   <div>
                     <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">Tải ảnh bìa lên</p>
-                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 20MB</p>
+                    <p className="text-[10px] text-mist mt-1">PNG, JPG tối đa 100MB</p>
                   </div>
                   <FileUploadTrigger render={<Button variant="outline" size="sm" className="mt-2 rounded-none border-black/5 text-[9px] uppercase tracking-widest font-bold px-6" />}>Chọn tệp</FileUploadTrigger>
                 </div>
@@ -353,5 +412,3 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
     </form>
   );
 }
-
-

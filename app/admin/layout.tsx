@@ -21,6 +21,7 @@ import {
 import { LayoutDashboardIcon, ImageIcon, MailIcon, StarIcon, HomeIcon, LogOutIcon, PresentationIcon } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { cn } from "@/lib/utils";
+import { logout } from '@/app/actions/auth';
 
 const MENU_ITEMS = [
   { label: 'Tổng quan', href: '/admin/dashboard', icon: LayoutDashboardIcon },
@@ -42,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
+    await logout();
     router.push('/admin');
     router.refresh();
   };
@@ -86,8 +87,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                           tooltip={item.label}
                           className={cn(
                             "h-11 px-4 transition-all duration-300 rounded-none",
-                            active 
-                              ? "bg-sidebar-accent text-gold border-l-2 border-gold shadow-none" 
+                            active
+                              ? "bg-sidebar-accent text-gold border-l-2 border-gold shadow-none"
                               : "text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-foreground"
                           )}
                         >
@@ -140,7 +141,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </div>
             </div>
           </header>
-          <div className="p-8 md:p-14 max-w-6xl mx-auto animate-fade-in-up-luxury">
+          <div className="p-8 md:p-14 animate-fade-in-up-luxury">
             {children}
           </div>
         </SidebarInset>

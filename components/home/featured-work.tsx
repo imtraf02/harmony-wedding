@@ -1,17 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { cn } from '@/lib/utils';
 
 export interface FeaturedWork {
   src: string;
   alt: string;
   title?: string;
   category?: string;
-  /** 'portrait' = 2/3, 'landscape' = 3/2, 'square' = 1/1 */
+  /** 'portrait' = 3/4, 'landscape' = 4/3, 'square' = 1/1 */
   orientation?: 'portrait' | 'landscape' | 'square';
   featured?: boolean;
   href?: string;
@@ -26,21 +24,17 @@ interface FeaturedWorksProps {
 }
 
 // ── Single card ───────────────────────────────────────────────────────────────
-function WorkCard({ work, index, colIndex }: { work: FeaturedWork; index: number; colIndex: number }) {
+function WorkCard({ work, colIndex }: { work: FeaturedWork; colIndex: number }) {
   const orientation = work.orientation ?? 'portrait';
-
-  // paddingBottom trick = the only reliable way to enforce aspect ratio
-  // inside a flex column where height is not constrained by parent.
-  const paddingBottom =
-    orientation === 'portrait' ? '150%'   // 2:3
-      : orientation === 'landscape' ? '66.666%' // 3:2
-        : '100%';                                 // 1:1
+  const aspectClass =
+    orientation === 'portrait'
+      ? 'aspect-[3/4]'
+      : orientation === 'landscape'
+        ? 'aspect-[4/3]'
+        : 'aspect-square';
 
   const inner = (
-    // Outer: sets the aspect ratio via padding-bottom hack
-    <div className="relative w-full overflow-hidden rounded-2xl" style={{ paddingBottom }}>
-      {/* Inner: absolutely fills the padding space */}
-      <div className="absolute inset-0 bg-ash/5">
+    <div className={`relative w-full overflow-hidden rounded-2xl bg-ash/5 ${aspectClass}`}>
         {work.src ? (
           <Image
             src={work.src}
@@ -86,7 +80,6 @@ function WorkCard({ work, index, colIndex }: { work: FeaturedWork; index: number
             <span className="text-white text-sm leading-none">↗</span>
           </div>
         )}
-      </div>
     </div>
   );
 
@@ -134,7 +127,7 @@ export function FeaturedWorks({
   ctaHref = '/portfolio',
 }: FeaturedWorksProps) {
   return (
-    <section className="relative py-24 md:py-36 bg-white overflow-hidden">
+    <section className="relative py-16 md:py-36 bg-white overflow-hidden">
 
       {/* ── Background decoration ── */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -155,7 +148,7 @@ export function FeaturedWorks({
 
         {/* ── Header ── */}
         <motion.div
-          className="mb-20 md:mb-28 flex flex-col md:flex-row md:items-end md:justify-between gap-10"
+          className="mb-12 md:mb-28 flex flex-col md:flex-row md:items-end md:justify-between gap-10"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
@@ -211,7 +204,7 @@ export function FeaturedWorks({
           {splitIntoColumns(works, 3).map((col, ci) => (
             <div key={ci} className="flex-1 flex flex-col gap-5 md:gap-7">
               {col.map((work, i) => (
-                <WorkCard key={i} work={work} index={i} colIndex={ci} />
+                <WorkCard key={work.href ?? `${work.src}-${i}`} work={work} colIndex={ci} />
               ))}
             </div>
           ))}
@@ -220,14 +213,14 @@ export function FeaturedWorks({
           {splitIntoColumns(works, 2).map((col, ci) => (
             <div key={ci} className="flex-1 flex flex-col gap-5">
               {col.map((work, i) => (
-                <WorkCard key={i} work={work} index={i} colIndex={ci} />
+                <WorkCard key={work.href ?? `${work.src}-${i}`} work={work} colIndex={ci} />
               ))}
             </div>
           ))}
         </div>
         <div className="flex sm:hidden flex-col gap-5">
           {works.map((work, i) => (
-            <WorkCard key={i} work={work} index={i} colIndex={0} />
+            <WorkCard key={work.href ?? `${work.src}-${i}`} work={work} colIndex={0} />
           ))}
         </div>
 

@@ -1,52 +1,66 @@
 'use client';
 
 import { useState } from 'react';
+import { submitContact } from '@/app/actions/contact';
+import { Button } from '@/components/ui/button';
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 interface FormState {
-  name       : string;
-  phone      : string;
-  email      : string;
-  service    : string;
+  name: string;
+  phone: string;
+  email: string;
+  service: 'photography' | 'videography' | 'wedding-film' | 'combo';
   weddingDate: string;
-  guestCount : string;
-  message    : string;
+  guestCount: string;
+  message: string;
 }
 
 const INITIAL: FormState = {
-  name: '', phone: '', email: '', service: 'photography',
-  weddingDate: '', guestCount: '', message: '',
+  name: '',
+  phone: '',
+  email: '',
+  service: 'photography',
+  weddingDate: '',
+  guestCount: '',
+  message: '',
 };
 
-export function ContactForm() {
-  const [form,    setForm]    = useState<FormState>(INITIAL);
-  const [status,  setStatus]  = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errMsg,  setErrMsg]  = useState('');
+const serviceItems = [
+  { label: 'Chụp ảnh cưới', value: 'photography' },
+  { label: 'Quay phim cưới', value: 'videography' },
+  { label: 'Phóng sự cưới', value: 'wedding-film' },
+  { label: 'Gói Combo (Ảnh + Phim)', value: 'combo' },
+];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+export function ContactForm() {
+  const [form, setForm] = useState<FormState>(INITIAL);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errMsg, setErrMsg] = useState('');
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setStatus('loading');
     setErrMsg('');
 
     try {
-      const res = await fetch('/api/contact', {
-        method : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify({
-          ...form,
-          guestCount: form.guestCount ? Number(form.guestCount) : undefined,
-        }),
+      const res = await submitContact({
+        ...form,
+        guestCount: form.guestCount ? Number(form.guestCount) : undefined,
       });
-      if (res.ok) {
+
+      if (res.success) {
         setStatus('success');
         setForm(INITIAL);
       } else {
-        const data = await res.json().catch(() => ({}));
         setStatus('error');
-        setErrMsg(data?.message ?? 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
+        setErrMsg(res.message ?? 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
       }
     } catch {
       setStatus('error');
@@ -56,147 +70,172 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex flex-col items-center text-center py-12 animate-fade-in" role="status">
-        <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-6">
-          <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
+      <div className="flex min-h-[420px] flex-col items-center justify-center text-center" role="status">
+        <div className="mb-8 flex h-16 min-w-16 items-center justify-center rounded-none border border-gold/30 bg-gold-dim px-5 text-[10px] font-bold uppercase tracking-[0.28em] text-gold">
+          Đã gửi
         </div>
-        <h3 className="text-2xl font-sans mb-2 text-foreground">Cảm ơn bạn!</h3>
-        <p className="text-muted-foreground font-light">Chúng tôi đã nhận được thông tin và sẽ liên hệ lại với bạn trong vòng 24 giờ.</p>
+        <h3 className="text-3xl font-sans font-light text-obsidian">Cảm ơn bạn</h3>
+        <p className="mt-4 max-w-md text-smoke font-light leading-relaxed">
+          Chúng tôi đã nhận được thông tin và sẽ liên hệ lại trong vòng 24 giờ.
+        </p>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => setStatus('idle')}
+          className="mt-10 rounded-none border-black/10 px-8 py-6 text-[10px] font-bold uppercase tracking-[0.25em]"
+        >
+          Gửi yêu cầu khác
+        </Button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-name" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Họ và tên *</label>
-          <input
-            id="cf-name"
-            name="name"
-            type="text"
-            required
-            minLength={2}
-            maxLength={100}
-            value={form.name}
-            onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold"
-            placeholder="Nguyễn Văn An"
-            autoComplete="name"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-phone" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Số điện thoại *</label>
-          <input
-            id="cf-phone"
-            name="phone"
-            type="tel"
-            required
-            value={form.phone}
-            onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold"
-            placeholder="0901 234 567"
-            autoComplete="tel"
-          />
-        </div>
-      </div>
+    <form onSubmit={handleSubmit} noValidate>
+      <FieldGroup className="gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
+          <Field>
+            <FieldLabel htmlFor="cf-name" className="text-label-luxury text-ash">
+              Họ và tên *
+            </FieldLabel>
+            <Input
+              id="cf-name"
+              name="name"
+              type="text"
+              required
+              minLength={2}
+              maxLength={100}
+              value={form.name}
+              onChange={handleChange}
+              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              placeholder="Nguyễn Văn An"
+              autoComplete="name"
+            />
+          </Field>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-email" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Địa chỉ Email</label>
-          <input
-            id="cf-email"
-            name="email"
-            type="email"
-            value={form.email}
+          <Field>
+            <FieldLabel htmlFor="cf-phone" className="text-label-luxury text-ash">
+              Số điện thoại *
+            </FieldLabel>
+            <Input
+              id="cf-phone"
+              name="phone"
+              type="tel"
+              required
+              value={form.phone}
+              onChange={handleChange}
+              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              placeholder="0901 234 567"
+              autoComplete="tel"
+            />
+          </Field>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <Field>
+            <FieldLabel htmlFor="cf-email" className="text-label-luxury text-ash">
+              Địa chỉ Email
+            </FieldLabel>
+            <Input
+              id="cf-email"
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              placeholder="email@vidu.com"
+              autoComplete="email"
+            />
+          </Field>
+
+          <Field>
+            <FieldLabel className="text-label-luxury text-ash">
+              Dịch vụ quan tâm *
+            </FieldLabel>
+            <Select
+              items={serviceItems}
+              value={form.service}
+              onValueChange={(value) => setForm((prev) => ({ ...prev, service: value as FormState['service'] }))}
+            >
+              <SelectTrigger className="h-12 w-full rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian focus:border-gold focus:ring-0">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-black/5 shadow-luxury">
+                <SelectGroup>
+                  {serviceItems.map((item) => (
+                    <SelectItem key={item.value} value={item.value} className="rounded-none py-3 focus:bg-gold-dim focus:text-gold">
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </Field>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <Field>
+            <FieldLabel htmlFor="cf-date" className="text-label-luxury text-ash">
+              Ngày cưới dự kiến
+            </FieldLabel>
+            <Input
+              id="cf-date"
+              name="weddingDate"
+              type="date"
+              value={form.weddingDate}
+              onChange={handleChange}
+              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian focus:border-gold focus:ring-0"
+            />
+          </Field>
+
+          <Field>
+            <FieldLabel htmlFor="cf-guests" className="text-label-luxury text-ash">
+              Số lượng khách
+            </FieldLabel>
+            <Input
+              id="cf-guests"
+              name="guestCount"
+              type="number"
+              min="1"
+              max="2000"
+              value={form.guestCount}
+              onChange={handleChange}
+              className="h-12 rounded-none border-0 border-b border-black/10 bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+              placeholder="150"
+            />
+          </Field>
+        </div>
+
+        <Field>
+          <FieldLabel htmlFor="cf-message" className="text-label-luxury text-ash">
+            Lời nhắn của bạn
+          </FieldLabel>
+          <Textarea
+            id="cf-message"
+            name="message"
+            rows={5}
+            maxLength={1000}
+            value={form.message}
             onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold"
-            placeholder="email@vidu.com"
-            autoComplete="email"
+            className="min-h-36 resize-y rounded-none border-black/10 bg-transparent p-4 text-obsidian placeholder:text-mist focus:border-gold focus:ring-0"
+            placeholder="Hãy kể cho chúng tôi về kế hoạch của bạn..."
           />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-service" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Dịch vụ quan tâm *</label>
-          <select
-            id="cf-service"
-            name="service"
-            required
-            value={form.service}
-            onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold appearance-none"
-          >
-            <option value="photography">Chụp ảnh cưới</option>
-            <option value="videography">Quay phim cưới</option>
-            <option value="wedding-film">Phóng sự cưới</option>
-            <option value="combo">Gói Combo (Ảnh + Phim)</option>
-          </select>
-        </div>
-      </div>
+        </Field>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-date" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Ngày cưới (dự kiến)</label>
-          <input
-            id="cf-date"
-            name="weddingDate"
-            type="date"
-            value={form.weddingDate}
-            onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="cf-guests" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Số lượng khách</label>
-          <input
-            id="cf-guests"
-            name="guestCount"
-            type="number"
-            min="1"
-            max="2000"
-            value={form.guestCount}
-            onChange={handleChange}
-            className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold"
-            placeholder="150"
-          />
-        </div>
-      </div>
+        {status === 'error' && (
+          <p className="text-sm text-destructive" role="alert">
+            {errMsg}
+          </p>
+        )}
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="cf-message" className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground ml-1">Lời nhắn của bạn</label>
-        <textarea
-          id="cf-message"
-          name="message"
-          rows={4}
-          maxLength={1000}
-          value={form.message}
-          onChange={handleChange}
-          className="px-6 py-4 bg-background border border-border rounded-2xl text-sm transition-all focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold resize-none"
-          placeholder="Hãy kể cho chúng tôi về kế hoạch của bạn..."
-        />
-      </div>
-
-      {status === 'error' && (
-        <p className="text-destructive text-xs font-medium ml-1" role="alert">{errMsg}</p>
-      )}
-
-      <button
-        type="submit"
-        id="cf-submit"
-        className="w-full inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-all shadow-md disabled:opacity-50"
-        disabled={status === 'loading'}
-      >
-        {status === 'loading' ? (
-          <span className="flex items-center gap-2">
-            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-            Đang gửi…
-          </span>
-        ) : 'Gửi thông tin'}
-      </button>
+        <Button
+          type="submit"
+          disabled={status === 'loading'}
+          className="mt-4 w-full rounded-none bg-obsidian py-8 text-[11px] font-medium uppercase tracking-[0.28em] text-ivory shadow-luxury transition-all duration-500 hover:bg-gold"
+        >
+          {status === 'loading' ? 'Đang gửi...' : 'Gửi thông tin'}
+        </Button>
+      </FieldGroup>
     </form>
   );
 }

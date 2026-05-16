@@ -16,7 +16,7 @@ export default async function EditHeroPage({ params }: EditHeroPageProps) {
 
   return (
     <div className="p-6 sm:p-10 md:p-16 space-y-12 bg-ivory min-h-screen flex flex-col items-center">
-      <header className="max-w-4xl w-full flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
+      <header className="w-full flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
         <div>
           <Link href="/admin/hero" className="inline-flex items-center gap-2 text-ash hover:text-gold transition-colors mb-6 group">
             <ChevronLeftIcon className="size-4 group-hover:-translate-x-1 transition-transform" />
@@ -29,14 +29,14 @@ export default async function EditHeroPage({ params }: EditHeroPageProps) {
           <h1 className="text-4xl md:text-5xl font-sans font-light text-obsidian leading-none tracking-tight">
             Sửa Slide
           </h1>
-          <p className="mt-4 text-ash font-light text-sm max-w-xl uppercase tracking-widest leading-relaxed">
+          <p className="mt-4 text-ash font-light text-sm uppercase tracking-widest leading-relaxed">
             Chỉnh sửa thông tin và hình ảnh hiển thị cho slide #{id}.
           </p>
         </div>
       </header>
 
-      <div className="max-w-4xl w-full">
-        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 md:p-16">
+      <div className="w-full">
+        <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 lg:p-20">
           <HeroForm initialData={slide} />
         </div>
       </div>

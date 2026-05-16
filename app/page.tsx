@@ -88,15 +88,14 @@ export default async function Home() {
       }))
     : STATIC_GALLERY_ITEMS;
 
-  // FeaturedWorks: same portfolios, alternate portrait/landscape per row
-  const ORIENTATIONS: FeaturedWork['orientation'][] = ['portrait', 'landscape', 'portrait', 'landscape', 'square', 'portrait'];
+  // FeaturedWorks: preserve each portfolio's saved cover orientation.
   const featuredWorks: FeaturedWork[] = dbPortfolios.length > 0
     ? dbPortfolios.map((p, i) => ({
         src: p.cover_image,
         alt: p.title,
         title: p.title,
         category: STYLE_LABEL[p.style] ?? p.style,
-        orientation: ORIENTATIONS[i % ORIENTATIONS.length],
+        orientation: p.orientation,
         featured: p.is_featured && i % 4 === 1, // feature every 4th item that is marked featured
         href: `/portfolio/${p.slug}`,
       }))

@@ -165,11 +165,11 @@ export function ServiceCards({
   };
 
   return (
-    <section className="relative py-28 md:py-48 bg-white overflow-hidden">
+    <section className="relative py-16 md:py-48 bg-white overflow-hidden">
       <div className="max-w-[1600px] mx-auto">
 
         {/* ── Header ── */}
-        <div className="mb-16 md:mb-24 px-6 sm:px-16 lg:px-32 xl:px-48">
+        <div className="mb-10 md:mb-24 px-6 sm:px-16 lg:px-32 xl:px-48">
           <div className="flex items-center gap-4 mb-6">
             <span className="w-12 h-px bg-obsidian" />
             <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-obsidian/50">

@@ -15,7 +15,7 @@ import { STUDIO_NAME, PHONE, FACEBOOK_URL, TIKTOK_URL, ZALO_ID } from '@/lib/con
 function GoldDiamond() {
   return (
     <span
-      className="inline-block size-[5px] rotate-45 bg-gold shrink-0"
+      className="inline-block size-[5px] rotate-45 bg-ivory shrink-0"
       aria-hidden="true"
     />
   );
@@ -24,11 +24,11 @@ function GoldDiamond() {
 function OrnamentRule() {
   return (
     <div className="flex items-center gap-4" aria-hidden="true">
-      <span className="flex-1 h-px bg-ivory/10" />
+      <span className="flex-1 h-px bg-ivory/20" />
       <GoldDiamond />
-      <span className="w-10 h-px bg-gold/40" />
+      <span className="w-10 h-px bg-ivory/55" />
       <GoldDiamond />
-      <span className="flex-1 h-px bg-ivory/10" />
+      <span className="flex-1 h-px bg-ivory/20" />
     </div>
   );
 }
@@ -64,12 +64,12 @@ function ZaloIcon({ className }: { className?: string }) {
 // TikTok icon — ivory paths
 function TikTokIcon({ className }: { className?: string }) {
   return (
-    <svg 
-      width="16" 
-      height="16" 
-      viewBox="0 0 24 24" 
-      fill="currentColor" 
-      className={className} 
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
       aria-hidden="true"
     >
       <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.8.2-.82.41-1.4 1.25-1.55 2.15-.09.76-.04 1.54.21 2.27.35.85 1.07 1.54 1.92 1.87.74.29 1.55.32 2.33.12.82-.2 1.57-.69 2.05-1.38.31-.47.46-1.01.5-1.57.02-2.31.01-4.62.01-6.93 0-3.95-.02-7.9 0-11.85z" />
@@ -163,10 +163,10 @@ export function Footer() {
         <OrnamentRule />
 
         {/* ── Grid ── */}
-        <div className="mt-20 mb-20 grid grid-cols-12 gap-x-8 gap-y-16">
+        <div className="mt-20 mb-20 grid grid-cols-12 gap-x-8 gap-y-16 text-center md:text-left">
 
           {/* Brand — 4 cols */}
-          <div className="col-span-12 md:col-span-4 flex flex-col gap-8">
+          <div className="col-span-12 md:col-span-4 flex flex-col items-center gap-8 md:items-start">
 
             {/* Studio name */}
             <div>
@@ -175,7 +175,7 @@ export function Footer() {
                 className="group inline-block"
                 aria-label={`${STUDIO_NAME} — trang chủ`}
               >
-                <span className="block text-[11px] font-semibold tracking-[0.55em] uppercase text-gold mb-2 transition-opacity duration-500 group-hover:opacity-70">
+                <span className="block text-[11px] font-semibold tracking-[0.55em] uppercase text-ivory/75 mb-2 transition-opacity duration-500 group-hover:opacity-100">
                   Studio
                 </span>
                 <span className="block font-sans font-black text-3xl tracking-[0.24em] uppercase text-ivory transition-opacity duration-500 group-hover:opacity-80">
@@ -185,15 +185,15 @@ export function Footer() {
             </div>
 
             {/* Thin gold rule */}
-            <span className="block w-12 h-px bg-gold/50" aria-hidden="true" />
+            <span className="block w-12 h-px bg-ivory/55" aria-hidden="true" />
 
             {/* Tagline */}
-            <p className="text-[13px] font-light leading-[1.9] text-ivory/45 max-w-xs">
+            <p className="max-w-xs text-[13px] font-light leading-[1.9] text-ivory/75">
               Lưu giữ khoảnh khắc vượt thời gian — từ cái nhìn đầu tiên đến vũ điệu cuối cùng.
             </p>
 
             {/* Social row */}
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex items-center justify-center gap-2 mt-2 md:justify-start">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -201,7 +201,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="group relative w-11 h-11 flex items-center justify-center text-ivory/40 border border-ivory/10 transition-all duration-500 hover:text-obsidian hover:border-ivory hover:scale-110 active:scale-95 overflow-hidden"
+                  className="group relative w-11 h-11 flex items-center justify-center text-ivory/80 border border-ivory/25 transition-all duration-500 hover:text-obsidian hover:border-ivory hover:scale-110 active:scale-95 overflow-hidden"
                 >
                   {/* High-contrast Ivory fill on hover */}
                   <span className="absolute inset-0 bg-ivory scale-0 group-hover:scale-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
@@ -219,9 +219,9 @@ export function Footer() {
 
             {footerLinks.map((section) => (
               <div key={section.heading}>
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center justify-center gap-3 mb-8 md:justify-start">
                   <GoldDiamond />
-                  <h3 className="text-[9px] uppercase tracking-[0.45em] font-bold text-gold">
+                  <h3 className="text-[9px] uppercase tracking-[0.45em] font-bold text-ivory">
                     {section.heading}
                   </h3>
                 </div>
@@ -230,9 +230,9 @@ export function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="group flex items-center gap-2 text-[12px] tracking-[0.06em] text-ivory/45 hover:text-ivory transition-all duration-400"
+                        className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
                       >
-                        <span className="block w-0 h-px bg-gold transition-all duration-400 group-hover:w-3 shrink-0" />
+                        <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                         {link.label}
                       </Link>
                     </li>
@@ -243,9 +243,9 @@ export function Footer() {
 
             {/* Contact column */}
             <div>
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center justify-center gap-3 mb-8 md:justify-start">
                 <GoldDiamond />
-                <h3 className="text-[9px] uppercase tracking-[0.45em] font-bold text-gold">
+                <h3 className="text-[9px] uppercase tracking-[0.45em] font-bold text-ivory">
                   Liên hệ
                 </h3>
               </div>
@@ -253,9 +253,9 @@ export function Footer() {
                 <li>
                   <a
                     href={`tel:${PHONE}`}
-                    className="group flex items-center gap-2 text-[12px] tracking-[0.06em] text-ivory/45 hover:text-ivory transition-all duration-400"
+                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
                   >
-                    <span className="block w-0 h-px bg-gold transition-all duration-400 group-hover:w-3 shrink-0" />
+                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                     {PHONE}
                   </a>
                 </li>
@@ -264,18 +264,18 @@ export function Footer() {
                     href={`https://zalo.me/${ZALO_ID}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 text-[12px] tracking-[0.06em] text-ivory/45 hover:text-ivory transition-all duration-400"
+                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
                   >
-                    <span className="block w-0 h-px bg-gold transition-all duration-400 group-hover:w-3 shrink-0" />
+                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                     Zalo Chat
                   </a>
                 </li>
                 <li>
                   <Link
                     href="/contact"
-                    className="group flex items-center gap-2 text-[12px] tracking-[0.06em] text-ivory/45 hover:text-ivory transition-all duration-400"
+                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
                   >
-                    <span className="block w-0 h-px bg-gold transition-all duration-400 group-hover:w-3 shrink-0" />
+                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                     Gửi lời nhắn
                   </Link>
                 </li>
@@ -289,17 +289,11 @@ export function Footer() {
 
         {/* ── Copyright bar ── */}
         <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[9px] text-ivory/20 tracking-[0.5em] uppercase">
+          <p className="text-[9px] text-ivory/45 tracking-[0.5em] uppercase">
             © {year} {STUDIO_NAME}
           </p>
 
-          <div className="flex items-center gap-2" aria-hidden="true">
-            <span className="block w-6 h-px bg-ivory/10" />
-            <span className="block size-1 rotate-45 bg-gold/30" />
-            <span className="block w-6 h-px bg-ivory/10" />
-          </div>
-
-          <p className="text-[9px] text-ivory/20 tracking-[0.4em] uppercase">
+          <p className="text-[9px] text-ivory/45 tracking-[0.4em] uppercase">
             Crafted with Excellence
           </p>
         </div>

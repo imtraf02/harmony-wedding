@@ -7,6 +7,7 @@ import { Field, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
 import { HeroSlide } from '@/lib/queries/hero';
 import { createHeroSlideAction, updateHeroSlideAction } from '../actions';
+import { uploadImageAction } from '@/app/actions/upload';
 import {
   FileUpload,
   FileUploadDropzone,
@@ -25,7 +26,7 @@ interface HeroFormProps {
 }
 
 export function HeroForm({ initialData }: HeroFormProps) {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [srcText, setSrcText] = useState(initialData?.src || '');
 
@@ -33,21 +34,42 @@ export function HeroForm({ initialData }: HeroFormProps) {
     toast.error(message, { description: `"${file.name}" bị từ chối` });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    
-    if (files.length > 0) {
-      formData.set('src_file', files[0]);
-    }
+    setIsPending(true);
 
-    startTransition(() => {
-      if (initialData) {
-        updateHeroSlideAction(initialData.id, formData);
-      } else {
-        createHeroSlideAction(formData);
+    try {
+      const formData = new FormData(e.currentTarget);
+      
+      let finalSrc = srcText;
+      if (files.length > 0) {
+        const fd = new FormData();
+        fd.append('file', files[0]);
+        const res = await uploadImageAction(fd, 'hero');
+        if (res.success) {
+          finalSrc = res.url!;
+        } else {
+          toast.error('Lỗi tải ảnh slide: ' + res.message);
+          setIsPending(false);
+          return;
+        }
       }
-    });
+
+      formData.delete('src_file');
+      if (finalSrc) {
+        formData.set('src', finalSrc);
+      }
+
+      if (initialData) {
+        await updateHeroSlideAction(initialData.id, formData);
+      } else {
+        await createHeroSlideAction(formData);
+      }
+    } catch (err) {
+      toast.error('Có lỗi xảy ra');
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -170,7 +192,7 @@ export function HeroForm({ initialData }: HeroFormProps) {
               <FileUpload
                 accept="image/*"
                 maxFiles={1}
-                maxSize={20 * 1024 * 1024}
+                maxSize={100 * 1024 * 1024}
                 value={files}
                 onValueChange={setFiles}
                 onFileReject={onFileReject}
@@ -182,7 +204,7 @@ export function HeroForm({ initialData }: HeroFormProps) {
                     </div>
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-obsidian">Tải ảnh slide lên</p>
-                      <p className="text-[10px] text-mist mt-1 uppercase">Tối đa 20MB</p>
+                      <p className="text-[10px] text-mist mt-1 uppercase">Tối đa 100MB</p>
                     </div>
                     <FileUploadTrigger render={<Button variant="outline" size="sm" className="mt-2 rounded-none border-black/5 text-[9px] uppercase tracking-widest font-bold px-6" />}>Chọn tệp</FileUploadTrigger>
                   </div>

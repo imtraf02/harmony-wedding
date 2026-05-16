@@ -36,15 +36,11 @@
   /* ── Luxury palette exposed to Tailwind ── */
   --color-gold: var(--gold);
   --color-gold-50: var(--gold-50);
-  --color-gold-100: var(--gold-100);
   --color-gold-200: var(--gold-200);
   --color-gold-300: var(--gold-300);
   --color-gold-400: var(--gold-400);
   --color-gold-500: var(--gold-500);
   --color-gold-600: var(--gold-600);
-  --color-gold-700: var(--gold-700);
-  --color-gold-800: var(--gold-800);
-  --color-gold-900: var(--gold-900);
   --color-gold-foreground: var(--gold-foreground);
   --color-gold-muted: var(--gold-muted);
   --color-gold-dim: var(--gold-dim);
@@ -52,8 +48,6 @@
   --color-champagne: var(--champagne);
   --color-champagne-dark: var(--champagne-dark);
   --color-ivory: var(--ivory);
-  --color-ivory-warm: var(--ivory-warm);
-  --color-cream: var(--cream);
 
   --color-obsidian: var(--obsidian);
   --color-obsidian-soft: var(--obsidian-soft);
@@ -63,24 +57,8 @@
   --color-mist: var(--mist);
   --color-whisper: var(--whisper);
 
-  --color-sage: var(--sage);
-  --color-sage-50: var(--sage-50);
-  --color-sage-100: var(--sage-100);
-  --color-sage-200: var(--sage-200);
-  --color-sage-300: var(--sage-300);
-  --color-sage-400: var(--sage-400);
-  --color-sage-500: var(--sage-500);
-
-  --color-blush: var(--blush);
-  --color-blush-50: var(--blush-50);
-  --color-blush-100: var(--blush-100);
-  --color-blush-200: var(--blush-200);
-  --color-blush-300: var(--blush-300);
-  --color-blush-400: var(--blush-400);
-
   --color-luxury-bg: var(--luxury-bg);
   --color-luxury-surface: var(--luxury-surface);
-  --color-luxury-surface-2: var(--luxury-surface-2);
   --color-luxury-border: var(--luxury-border);
   --color-luxury-text: var(--luxury-text);
   --color-luxury-text-muted: var(--luxury-text-muted);
@@ -201,15 +179,12 @@
 
   /* ── Black/White Palette (Replaced Gold) ── */
   --gold-50: #fcfcfc;
-  --gold-100: #f5f5f5;
   --gold-200: #e5e5e5;
   --gold-300: #d4d4d4;
   --gold-400: #a3a3a3;
-  --gold-500: #1a1a1a; /* Pure Blackish */
+  --gold-500: #1a1a1a;
+  /* Pure Blackish */
   --gold-600: #171717;
-  --gold-700: #0a0a0a;
-  --gold-800: #050505;
-  --gold-900: #000000;
 
   --gold: var(--gold-500);
   --gold-foreground: #ffffff;
@@ -221,8 +196,6 @@
   --champagne: oklch(0.98 0 0);
   --champagne-dark: oklch(0.96 0 0);
   --ivory: oklch(1 0 0);
-  --ivory-warm: oklch(0.99 0 0);
-  --cream: oklch(0.985 0 0);
 
   /* ── Obsidian / Deep Neutrals ── */
   --obsidian: oklch(0.108 0.008 260);
@@ -233,34 +206,15 @@
   --mist: oklch(0.880 0.004 260);
   --whisper: oklch(0.960 0.002 260);
 
-  /* ── Sage / Accent xanh rêu tinh tế ── */
-  --sage-50: oklch(0.968 0.018 148);
-  --sage-100: oklch(0.928 0.036 148);
-  --sage-200: oklch(0.858 0.062 148);
-  --sage-300: oklch(0.768 0.082 148);
-  --sage-400: oklch(0.660 0.092 148);
-  --sage-500: oklch(0.548 0.098 148);
-  --sage: var(--sage-400);
-
-  /* ── Blush / Rose Gold ── */
-  --blush-50: oklch(0.978 0.018 14);
-  --blush-100: oklch(0.945 0.038 14);
-  --blush-200: oklch(0.900 0.068 14);
-  --blush-300: oklch(0.845 0.098 14);
-  --blush-400: oklch(0.775 0.118 14);
-  --blush: var(--blush-300);
-
   /* ── Semantic — Light Mode ── */
   --luxury-bg: var(--ivory);
   --luxury-surface: var(--champagne);
-  --luxury-surface-2: var(--cream);
   --luxury-border: oklch(0.850 0.020 82);
   --luxury-border-fine: oklch(0.900 0.012 82);
   --luxury-text: var(--obsidian);
   --luxury-text-muted: var(--smoke);
   --luxury-text-dim: var(--ash);
   --luxury-accent: var(--gold-500);
-  --luxury-accent-soft: oklch(0.108 0 0 / 0.05);
 
   /* ── Typography Scale ── */
   --text-display: clamp(3.2rem, 7vw, 6.4rem);
@@ -382,7 +336,6 @@
   --luxury-text-muted: var(--ash);
   --luxury-text-dim: var(--smoke);
   --luxury-accent: var(--gold-400);
-  --luxury-accent-soft: oklch(0.800 0.145 68 / 0.12);
 
   --glass-bg: oklch(0.148 0.008 260 / 0.80);
   --glass-border: oklch(1 0 0 / 0.08);
@@ -422,7 +375,8 @@
     color-scheme: light;
   }
 
-  em, i {
+  em,
+  i {
     font-style: normal;
   }
 
@@ -441,6 +395,17 @@
 
   html {
     @apply font-sans;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 }
 
@@ -473,11 +438,7 @@
     line-height: var(--leading-snug);
   }
 
-  .text-title-luxury {
-    font-size: var(--text-title);
-    letter-spacing: var(--tracking-title);
-    line-height: var(--leading-snug);
-  }
+
 
   .text-label-luxury {
     font-size: var(--text-label);
@@ -516,12 +477,7 @@
     -webkit-backdrop-filter: var(--glass-blur);
   }
 
-  .glass-gold {
-    background: var(--glass-gold-bg);
-    border: 1px solid var(--glass-gold-border);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-  }
+
 
   /* ── Shimmer (skeleton / highlight) ── */
   .shimmer {
@@ -539,28 +495,15 @@
   }
 
   /* ── Dividers ── */
-  .divider-gold {
-    border: none;
-    border-top: var(--divider-gold);
-  }
+
 
   .divider-hairline {
     border: none;
     border-top: var(--divider-hairline);
   }
-
-  .divider-double {
-    border: none;
-    border-top: var(--divider-double);
-  }
-
   /* ── Shadows ── */
   .shadow-luxury {
     box-shadow: var(--shadow-lg), var(--shadow-inset);
-  }
-
-  .shadow-gold {
-    box-shadow: var(--shadow-gold-md);
   }
 
   .shadow-gold-lg {
@@ -583,35 +526,10 @@
     box-shadow: var(--shadow-xl);
   }
 
-  .hover-lift-gold:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-gold-lg);
-  }
 
   /* ── Gold Border Glow ── */
   .border-gold {
     border: 1px solid oklch(0.730 0.160 62 / 0.35);
-  }
-
-  .ring-gold {
-    box-shadow: 0 0 0 2px var(--gold-dim), 0 0 0 4px oklch(0.730 0.160 62 / 0.08);
-  }
-
-  /* ── Gradient Backgrounds ── */
-  .bg-gradient-gold {
-    background: var(--gradient-gold);
-  }
-
-  .bg-gradient-gold-subtle {
-    background: var(--gradient-gold-subtle);
-  }
-
-  .bg-gradient-champagne {
-    background: var(--gradient-champagne);
-  }
-
-  .bg-gradient-obsidian {
-    background: var(--gradient-obsidian);
   }
 
   /* ── Luxury Surface ── */
@@ -621,18 +539,6 @@
 
   .bg-luxury-surface {
     background-color: var(--luxury-surface);
-  }
-
-  .text-luxury {
-    color: var(--luxury-text);
-  }
-
-  .text-luxury-muted {
-    color: var(--luxury-text-muted);
-  }
-
-  .text-luxury-dim {
-    color: var(--luxury-text-dim);
   }
 
   /* ── Fade In Up with blur — stagger với style="--delay:150ms" ── */

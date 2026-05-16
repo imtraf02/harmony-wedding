@@ -218,25 +218,6 @@ function LiquidOrb({
 export function FloatingContact() {
   const items = [
     {
-      id: 'phone',
-      icon: (
-        <Phone
-          className="size-5"
-          strokeWidth={1.8}
-          style={{ color: 'rgba(0,0,0,0.72)', filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.6))' }}
-        />
-      ),
-      href: `tel:${PHONE}`,
-      label: 'Gọi ngay',
-      isPrimary: true,
-    },
-    {
-      id: 'zalo',
-      icon: <ZaloGlassIcon />,
-      href: `https://zalo.me/${ZALO_ID}`,
-      label: 'Zalo',
-    },
-    {
       id: 'messenger',
       icon: (
         <MessageCircle
@@ -247,7 +228,26 @@ export function FloatingContact() {
       ),
       href: FACEBOOK_URL,
       label: 'Messenger',
+      isPrimary: true,
     },
+    {
+      id: 'phone',
+      icon: (
+        <Phone
+          className="size-5"
+          strokeWidth={1.8}
+          style={{ color: 'rgba(0,0,0,0.72)', filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.6))' }}
+        />
+      ),
+      href: `tel:${PHONE}`,
+      label: 'Gọi ngay',
+    },
+    {
+      id: 'zalo',
+      icon: <ZaloGlassIcon />,
+      href: `https://zalo.me/${ZALO_ID}`,
+      label: 'Zalo',
+    }
   ];
 
   return (

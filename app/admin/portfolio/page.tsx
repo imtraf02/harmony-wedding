@@ -68,7 +68,7 @@ export default async function AdminPortfolioList() {
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
               {/* Label + actions */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-0 opacity-100 transition-all duration-500 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-gold mb-1 truncate">
                   {item.title}
                 </p>
@@ -76,9 +76,10 @@ export default async function AdminPortfolioList() {
                   {item.location_type}
                 </p>
                 <div className="flex items-center gap-2 mt-3">
-                  <Link 
-                    href={`/admin/portfolio/edit/${item.id}`} 
-                    className="flex items-center justify-center size-8 bg-white/20 hover:bg-gold transition-colors duration-300 backdrop-blur-sm"
+                  <Link
+                    href={`/admin/portfolio/edit/${item.id}`}
+                    className="flex items-center justify-center size-8 bg-white/25 hover:bg-gold transition-colors duration-300 backdrop-blur-sm"
+                    aria-label={`Sửa ${item.title}`}
                   >
                     <PencilIcon className="size-3.5 text-white" />
                   </Link>

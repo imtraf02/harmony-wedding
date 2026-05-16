@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { PlusIcon, PenLineIcon, GlobeIcon } from 'lucide-react';
+import { PlusIcon, PenLineIcon, GlobeIcon, type LucideIcon } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 export default async function AdminDashboard() {
   const stats = getDashboardStats();
@@ -97,6 +98,8 @@ export default async function AdminDashboard() {
           </div>
           <div className="flex flex-col border-t border-black/5">
             <QuickAction href="/admin/portfolio/new" label="Thêm Portfolio mới" icon={PlusIcon} />
+            <QuickAction href="/admin/hero/new" label="Thêm Slide Hero" icon={PlusIcon} />
+            <QuickAction href="/admin/gallery/new" label="Thêm ảnh Gallery" icon={PlusIcon} />
             <QuickAction href="/admin/testimonials/new" label="Soạn Đánh giá mới" icon={PenLineIcon} />
             <QuickAction href="/" label="Xem trang hiển thị" icon={GlobeIcon} />
           </div>
@@ -106,7 +109,14 @@ export default async function AdminDashboard() {
   );
 }
 
-function StatCard({ title, value, href, trend }: any) {
+interface StatCardProps {
+  title: string;
+  value: number;
+  href: string;
+  trend?: string;
+}
+
+function StatCard({ title, value, href, trend }: StatCardProps) {
   return (
     <Link href={href} className="group block">
       <Card className="rounded-none border-black/5 bg-white hover:border-gold/30 transition-all duration-500 shadow-none hover:shadow-gold-lg relative overflow-hidden h-full">
@@ -122,7 +132,13 @@ function StatCard({ title, value, href, trend }: any) {
   );
 }
 
-function QuickAction({ href, label, icon: Icon }: any) {
+interface QuickActionProps {
+  href: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+function QuickAction({ href, label, icon: Icon }: QuickActionProps) {
   return (
     <Link href={href} className="flex items-center gap-5 py-6 border-b border-black/5 hover:bg-whisper transition-all group px-4 -mx-4">
       <div className="size-10 bg-luxury-surface group-hover:bg-white rounded-none border border-black/5 flex items-center justify-center text-ash group-hover:text-gold group-hover:border-gold/20 transition-all duration-500 shadow-sm group-hover:shadow-gold-sm">
@@ -133,7 +149,3 @@ function QuickAction({ href, label, icon: Icon }: any) {
     </Link>
   );
 }
-
-
-import { cn } from "@/lib/utils";
-

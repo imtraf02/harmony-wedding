@@ -2,8 +2,9 @@ import { getAllTestimonials } from '@/lib/queries/testimonials';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { PlusIcon, StarIcon, QuoteIcon } from 'lucide-react';
+import { PencilIcon, PlusIcon, StarIcon, QuoteIcon } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import { DeleteTestimonialButton } from './components/delete-button';
 
 export default async function AdminTestimonialsList() {
   const items = getAllTestimonials();
@@ -24,7 +25,54 @@ export default async function AdminTestimonialsList() {
         </Button>
       </header>
 
-      <div className="bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden">
+      <div className="grid gap-4 md:hidden">
+        {items.map((item) => (
+          <article key={item.id} className="bg-white border border-black/5 rounded-none shadow-sm p-5 flex flex-col gap-5">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-medium text-obsidian truncate">{item.couple_name}</p>
+                <div className="flex gap-0.5 mt-2">
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon key={i} className={cn("size-3", i < (item.rating || 5) ? "fill-gold text-gold" : "text-mist")} />
+                  ))}
+                </div>
+              </div>
+              <Badge variant="outline" className={cn(
+                "rounded-none border-0 px-0 text-[9px] uppercase tracking-[0.15em] font-bold",
+                item.is_active ? "text-gold" : "text-ash"
+              )}>
+                &bull; {item.is_active ? 'Hiển thị' : 'Ẩn'}
+              </Badge>
+            </div>
+
+            <p className="text-smoke font-light leading-relaxed line-clamp-4">
+              &ldquo;{item.content}&rdquo;
+            </p>
+
+            <div className="flex items-center justify-between gap-4 border-t border-black/5 pt-4">
+              <div className="min-w-0">
+                <p className="text-[10px] uppercase tracking-widest text-obsidian font-medium truncate">{item.service}</p>
+                <p className="text-[11px] text-smoke font-light">{item.wedding_year}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  render={<Link href={`/admin/testimonials/edit/${item.id}`} />}
+                  nativeButton={false}
+                  className="size-9 rounded-none text-ash hover:text-gold"
+                  title="Sửa"
+                >
+                  <PencilIcon />
+                </Button>
+                <DeleteTestimonialButton id={item.id} />
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="hidden bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden md:block">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm border-collapse">
             <thead>
@@ -57,7 +105,7 @@ export default async function AdminTestimonialsList() {
                   <td className="px-8 py-8 align-top max-w-md">
                     <div className="flex gap-3">
                       <QuoteIcon className="size-3 text-gold/30 shrink-0 mt-1" />
-                      <p className="text-smoke font-light leading-relaxed line-clamp-3 ">"{item.content}"</p>
+                      <p className="text-smoke font-light leading-relaxed line-clamp-3">&ldquo;{item.content}&rdquo;</p>
                     </div>
                   </td>
                   <td className="px-8 py-8 align-top">
@@ -75,9 +123,18 @@ export default async function AdminTestimonialsList() {
                     </Badge>
                   </td>
                   <td className="px-8 py-8 align-top text-right">
-                    <div className="flex justify-end gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <button className="text-[10px] font-bold uppercase tracking-widest text-ash hover:text-gold transition-colors">Sửa</button>
-                      <button className="text-[10px] font-bold uppercase tracking-widest text-ash hover:text-red-500 transition-colors">Xóa</button>
+                    <div className="flex justify-end gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        render={<Link href={`/admin/testimonials/edit/${item.id}`} />}
+                        nativeButton={false}
+                        className="size-9 rounded-none text-ash hover:text-gold"
+                        title="Sửa"
+                      >
+                        <PencilIcon />
+                      </Button>
+                      <DeleteTestimonialButton id={item.id} />
                     </div>
                   </td>
                 </tr>
@@ -103,7 +160,22 @@ export default async function AdminTestimonialsList() {
           </table>
         </div>
       </div>
+
+      {items.length === 0 && (
+        <div className="md:hidden px-8 py-24 text-center border border-dashed border-black/10">
+          <div className="flex flex-col items-center gap-6 text-smoke">
+            <p className="font-light tracking-wide text-lg">Chưa có đánh giá nào được ghi nhận.</p>
+            <Button
+              variant="link"
+              render={<Link href="/admin/testimonials/new" />}
+              nativeButton={false}
+              className="text-gold font-medium uppercase tracking-[0.2em] text-[11px] hover:no-underline hover:opacity-70 transition-all"
+            >
+              Thêm đánh giá đầu tiên ngay ↗
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-

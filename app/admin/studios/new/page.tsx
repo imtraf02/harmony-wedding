@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import { ArrowLeftIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { TestimonialForm } from '../components/testimonial-form';
+import { StudioForm } from '../components/studio-form';
 
-export default function NewTestimonialPage() {
+export default function NewStudioPage() {
   return (
     <div className="space-y-16 font-sans animate-fade-in-up-luxury">
       <header className="flex flex-col gap-6">
         <Button
           variant="ghost"
-          render={<Link href="/admin/testimonials" />}
+          render={<Link href="/admin/studios" />}
           nativeButton={false}
           className="w-fit p-0 text-[10px] uppercase tracking-[0.2em] font-bold text-ash hover:text-gold hover:bg-transparent transition-all group"
         >
@@ -18,17 +18,17 @@ export default function NewTestimonialPage() {
         </Button>
         <div className="space-y-2">
           <h1 className="text-display font-sans font-light text-obsidian tracking-tight">
-            Thêm đánh giá mới
+            Thêm địa điểm mới
           </h1>
           <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">
-            Chia sẻ cảm nhận từ các cặp đôi về dịch vụ
+            Tạo studio, phim trường hoặc điểm chụp ngoại cảnh
           </p>
         </div>
       </header>
 
       <div className="w-full">
         <div className="bg-white border border-black/5 rounded-none shadow-luxury p-6 sm:p-10 lg:p-20">
-          <TestimonialForm />
+          <StudioForm />
         </div>
       </div>
     </div>

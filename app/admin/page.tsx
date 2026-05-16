@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Spinner } from '@/components/ui/spinner';
+import { login } from '@/app/actions/auth';
 
 export default function AdminLoginPage() {
   const [username, setUsername] = useState('');
@@ -20,18 +21,13 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify({ username, password }),
-      });
+      const res = await login(username, password);
 
-      if (res.ok) {
+      if (res.success) {
         router.push('/admin/dashboard');
         router.refresh();
       } else {
-        const data = await res.json();
-        setError(data.message || 'Sai tên đăng nhập hoặc mật khẩu');
+        setError(res.message || 'Sai tên đăng nhập hoặc mật khẩu');
       }
     } catch {
       setError('Đã có lỗi xảy ra. Vui lòng thử lại.');

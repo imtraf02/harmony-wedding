@@ -180,12 +180,12 @@ export function GalleryScroll({ items, title, subtitle }: GalleryScrollProps) {
     useEffect(() => () => { if (rafId.current) cancelAnimationFrame(rafId.current); }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-20 md:py-32 bg-luxury overflow-hidden">
+        <section ref={sectionRef} className="relative py-12 md:py-32 bg-luxury overflow-hidden">
 
             {/* ── Header ── */}
             {(title || subtitle) && (
                 <div
-                    className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-12 md:mb-16"
+                    className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-8 md:mb-16"
                     style={{
                         opacity: visible ? 1 : 0,
                         transform: visible ? 'translateY(0)' : 'translateY(28px)',

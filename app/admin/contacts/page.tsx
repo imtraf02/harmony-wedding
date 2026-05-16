@@ -2,8 +2,8 @@ import { getDb } from '@/lib/db';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { UserIcon, MailIcon, PhoneIcon, CalendarIcon } from 'lucide-react';
-import { cn } from "@/lib/utils";
 import { revalidatePath } from 'next/cache';
+import type { Contact } from '@/types';
 
 async function updateContactStatus(formData: FormData) {
   'use server';
@@ -16,7 +16,7 @@ async function updateContactStatus(formData: FormData) {
 
 export default async function AdminContactsPage() {
   const db = getDb();
-  const contacts = db.prepare('SELECT * FROM contacts ORDER BY created_at DESC').all() as any[];
+  const contacts = db.prepare('SELECT * FROM contacts ORDER BY created_at DESC').all() as Contact[];
 
   return (
     <div className="space-y-16 font-sans">
@@ -25,7 +25,65 @@ export default async function AdminContactsPage() {
         <p className="text-smoke text-[11px] uppercase tracking-[0.2em] font-medium">Theo dõi và quản lý các yêu cầu tư vấn từ khách hàng</p>
       </header>
 
-      <div className="bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden">
+      <div className="grid gap-4 md:hidden">
+        {contacts.map((c) => (
+          <article key={c.id} className="bg-white border border-black/5 rounded-none shadow-sm p-5 flex flex-col gap-5">
+            <div className="flex items-start gap-4">
+              <div className="size-10 bg-luxury-surface rounded-none border border-black/5 flex items-center justify-center text-ash shrink-0">
+                <UserIcon className="size-4 stroke-[1.2px]" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="font-medium text-obsidian truncate">{c.name}</p>
+                <div className="mt-2 flex flex-col gap-1">
+                  <div className="flex items-center gap-2 text-smoke">
+                    <MailIcon className="size-3 text-mist shrink-0" />
+                    <span className="text-[11px] font-light truncate">{c.email || 'Không có email'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-smoke">
+                    <PhoneIcon className="size-3 text-mist shrink-0" />
+                    <span className="text-[11px] font-light">{c.phone}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Badge variant="outline" className="rounded-none border-gold-dim text-gold text-[9px] uppercase tracking-widest bg-gold-dim font-bold">
+                {c.service}
+              </Badge>
+              <p className="text-[12px] text-smoke font-light leading-relaxed line-clamp-4">
+                {c.message ? `“${c.message}”` : 'Không có tin nhắn'}
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 border-t border-black/5 pt-4">
+              <form action={updateContactStatus} className="flex items-center gap-3">
+                <input type="hidden" name="id" value={c.id} />
+                <select
+                  name="status"
+                  defaultValue={c.status}
+                  className="h-10 flex-1 text-[10px] font-bold uppercase tracking-widest bg-luxury-surface border border-black/5 rounded-none px-3 focus:ring-1 focus:ring-gold cursor-pointer"
+                >
+                  <option value="new">Mới</option>
+                  <option value="contacted">Đã liên hệ</option>
+                  <option value="booked">Đã đặt lịch</option>
+                  <option value="completed">Hoàn thành</option>
+                  <option value="cancelled">Hủy</option>
+                </select>
+                <Button type="submit" variant="outline" className="h-10 rounded-none text-[10px] uppercase tracking-[0.15em]">
+                  Cập nhật
+                </Button>
+              </form>
+              <div className="flex items-center gap-2 text-smoke">
+                <CalendarIcon className="size-3 text-mist" />
+                <span className="text-[11px] font-light">{new Date(c.created_at).toLocaleString('vi-VN')}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="hidden bg-white border border-black/5 rounded-none shadow-luxury overflow-hidden md:block">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm border-collapse">
             <thead>
@@ -65,7 +123,7 @@ export default async function AdminContactsPage() {
                         {c.service}
                       </Badge>
                       <p className="text-[12px] text-smoke font-light leading-relaxed  line-clamp-3">
-                        {c.message ? `"${c.message}"` : '— No message —'}
+                        {c.message ? `“${c.message}”` : 'Không có tin nhắn'}
                       </p>
                     </div>
                   </td>
@@ -112,6 +170,12 @@ export default async function AdminContactsPage() {
           </table>
         </div>
       </div>
+
+      {contacts.length === 0 && (
+        <div className="md:hidden px-8 py-24 text-center border border-dashed border-black/10 text-smoke font-light tracking-wide">
+          Hệ thống chưa ghi nhận yêu cầu liên hệ nào.
+        </div>
+      )}
     </div>
   );
 }

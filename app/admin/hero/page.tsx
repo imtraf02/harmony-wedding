@@ -22,7 +22,7 @@ export default function HeroAdminPage() {
           <h1 className="text-4xl md:text-6xl font-sans font-light text-obsidian leading-none tracking-tight">
             Hero Slider
           </h1>
-          <p className="mt-4 text-ash font-light text-sm max-w-xl uppercase tracking-widest leading-relaxed">
+          <p className="mt-4 text-ash font-light text-sm uppercase tracking-widest leading-relaxed">
             Quản lý các hình ảnh và thông tin hiển thị ở đầu trang chủ.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function HeroAdminPage() {
               </div>
 
               {/* Actions */}
-              <div className="absolute top-4 right-4 flex gap-2 translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500">
+              <div className="absolute top-4 right-4 flex gap-2 translate-x-0 opacity-100 transition-all duration-500 md:translate-x-10 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100">
                 <Link href={`/admin/hero/edit/${slide.id}`}>
                   <Button variant="ghost" size="icon" className="size-10 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-obsidian transition-all rounded-none border border-white/20">
                     <Edit3Icon className="size-4" />
