@@ -61,7 +61,7 @@ export default function ContactPage() {
                 aria-hidden="true"
               />
               <div
-                className="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-black/25 to-transparent"
+                className="absolute bottom-0 left-0 h-32 w-full bg-linear-to-t from-black/25 to-transparent"
                 aria-hidden="true"
               />
 

@@ -184,7 +184,7 @@ export function FeaturedWorks({
           {/* Right: CTA — desktop */}
           <Link
             href={ctaHref}
-            className="group hidden flex-shrink-0 items-center gap-3 self-end pb-1 md:inline-flex"
+            className="group hidden shrink-0 items-center gap-3 self-end pb-1 md:inline-flex"
             aria-label={ctaLabel}
           >
             <span className="relative font-bold text-[11px] text-obsidian uppercase tracking-[0.28em]">

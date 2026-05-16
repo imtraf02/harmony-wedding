@@ -304,7 +304,7 @@ export function GalleryScroll({ items, title, subtitle }: GalleryScrollProps) {
                       </span>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-transparent" />
                   {item.label && (
                     <div className="absolute right-4 bottom-4 left-4">
                       <span className="font-bold text-[9px] text-white/80 uppercase tracking-[0.25em]">

@@ -153,59 +153,54 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          <Field>
-            <FieldLabel
-              htmlFor="cf-email"
-              className="text-ash text-label-luxury"
-            >
-              Địa chỉ Email
-            </FieldLabel>
-            <Input
-              id="cf-email"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
-              placeholder="email@vidu.com"
-              autoComplete="email"
-            />
-          </Field>
+        <Field>
+          <FieldLabel htmlFor="cf-email" className="text-ash text-label-luxury">
+            Địa chỉ Email
+          </FieldLabel>
+          <Input
+            id="cf-email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            className="h-12 rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian placeholder:text-mist focus:border-obsidian focus:ring-0"
+            placeholder="email@vidu.com"
+            autoComplete="email"
+          />
+        </Field>
 
-          <Field>
-            <FieldLabel className="text-ash text-label-luxury">
-              Dịch vụ quan tâm *
-            </FieldLabel>
-            <Select
-              items={serviceItems}
-              value={form.service}
-              onValueChange={(value) =>
-                setForm((prev) => ({
-                  ...prev,
-                  service: value as FormState["service"],
-                }))
-              }
-            >
-              <SelectTrigger className="h-12 w-full rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian focus:border-obsidian focus:ring-0">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="rounded-none border-black/5 shadow-luxury">
-                <SelectGroup>
-                  {serviceItems.map((item) => (
-                    <SelectItem
-                      key={item.value}
-                      value={item.value}
-                      className="rounded-none py-3 focus:bg-obsidian-dim focus:text-obsidian"
-                    >
-                      {item.label}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </Field>
-        </div>
+        <Field>
+          <FieldLabel className="text-ash text-label-luxury">
+            Dịch vụ quan tâm *
+          </FieldLabel>
+          <Select
+            items={serviceItems}
+            value={form.service}
+            onValueChange={(value) =>
+              setForm((prev) => ({
+                ...prev,
+                service: value as FormState["service"],
+              }))
+            }
+          >
+            <SelectTrigger className="h-12 w-full rounded-none border-0 border-black/10 border-b bg-transparent px-0 text-obsidian focus:border-obsidian focus:ring-0">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-black/5 shadow-luxury">
+              <SelectGroup>
+                {serviceItems.map((item) => (
+                  <SelectItem
+                    key={item.value}
+                    value={item.value}
+                    className="rounded-none py-3 focus:bg-obsidian-dim focus:text-obsidian"
+                  >
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
 
         <div className="grid gap-8 md:grid-cols-2">
           <Field>

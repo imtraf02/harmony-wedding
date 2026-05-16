@@ -59,7 +59,7 @@ function ServiceCard({
     <div
       className={cn(
         // Width: cố định trên mobile, tự stretch trên md+
-        "w-[78vw] max-w-[300px] flex-shrink-0 md:w-auto md:max-w-none",
+        "w-[78vw] max-w-[300px] shrink-0 md:w-auto md:max-w-none",
         "relative snap-start",
         "overflow-hidden rounded-[32px] bg-white transition-all duration-700",
         "flex cursor-pointer flex-col",
@@ -70,7 +70,7 @@ function ServiceCard({
       )}
       onClick={onClick}
     >
-      <div className="relative aspect-[3/4] w-full flex-shrink-0 overflow-hidden bg-whisper">
+      <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden bg-whisper">
         {images.map((image, index) => (
           <Image
             key={image}
@@ -87,7 +87,7 @@ function ServiceCard({
           />
         ))}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 to-black/10" />
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 text-white">
           <span className="font-bold text-[9px] text-white/65 uppercase tracking-[0.35em]">
             {[service.index, service.meta].filter(Boolean).join(" · ")}
@@ -217,11 +217,7 @@ export function ServiceCards({
             style={{ scrollPaddingLeft: SIDE_PAD }}
           >
             {/* Leading spacer — gives breathing room from left edge */}
-            <div
-              className="flex-shrink-0"
-              style={{ width: SIDE_PAD }}
-              aria-hidden
-            />
+            <div className="shrink-0" style={{ width: SIDE_PAD }} aria-hidden />
 
             {services.map((service, i) => (
               <ServiceCard
@@ -233,11 +229,7 @@ export function ServiceCards({
             ))}
 
             {/* Trailing spacer — so last card doesn't snap flush to right edge */}
-            <div
-              className="flex-shrink-0"
-              style={{ width: SIDE_PAD }}
-              aria-hidden
-            />
+            <div className="shrink-0" style={{ width: SIDE_PAD }} aria-hidden />
           </div>
 
           {/* Dots */}
@@ -292,7 +284,7 @@ export function ServiceCards({
                 href={service.href ?? "/pricing"}
                 className="group flex items-center gap-6 border-black/5 border-t py-8 transition-all hover:bg-ash/[0.01] md:gap-8 md:py-10"
               >
-                <div className="flex size-14 flex-shrink-0 items-center justify-center rounded-[20px] border border-black/5 bg-ash/5 text-lg text-obsidian transition-all duration-700 group-hover:bg-obsidian group-hover:text-white md:size-16 md:text-xl">
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-[20px] border border-black/5 bg-ash/5 text-lg text-obsidian transition-all duration-700 group-hover:bg-obsidian group-hover:text-white md:size-16 md:text-xl">
                   {service.index ?? String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -303,7 +295,7 @@ export function ServiceCards({
                     {service.meta || "Xem chi tiết dịch vụ"}
                   </div>
                 </div>
-                <div className="flex size-11 flex-shrink-0 items-center justify-center rounded-full border border-obsidian/10 text-obsidian text-xl transition-all duration-500 group-hover:bg-obsidian group-hover:text-white md:size-12">
+                <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-obsidian/10 text-obsidian text-xl transition-all duration-500 group-hover:bg-obsidian group-hover:text-white md:size-12">
                   →
                 </div>
               </Link>

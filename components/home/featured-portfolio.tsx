@@ -101,7 +101,7 @@ export function FeaturedPortfolio({ items }: FeaturedPortfolioProps) {
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {/* Content Reveal */}
                   <div className="absolute inset-0 flex translate-y-3 flex-col justify-end p-8 transition-all duration-500 group-hover:translate-y-0">

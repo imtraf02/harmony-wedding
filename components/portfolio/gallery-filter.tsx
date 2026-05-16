@@ -44,7 +44,7 @@ function FilterPill({
           ? [
               "bg-transparent text-obsidian",
               "after:absolute after:inset-0 after:border after:border-obsidian-400",
-              "before:absolute before:bottom-0 before:left-0 before:h-px before:w-full before:bg-gradient-to-r before:from-transparent before:via-obsidian-400 before:to-transparent",
+              "before:absolute before:bottom-0 before:left-0 before:h-px before:w-full before:bg-linear-to-r before:from-transparent before:via-obsidian-400 before:to-transparent",
             ].join(" ")
           : [
               "bg-transparent text-ash",
@@ -57,7 +57,7 @@ function FilterPill({
       {active && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-obsidian-50 to-champagne opacity-80"
+          className="pointer-events-none absolute inset-0 bg-linear-to-b from-obsidian-50 to-champagne opacity-80"
         />
       )}
       <span className="relative z-10">{children}</span>
@@ -81,7 +81,7 @@ function FilterGroup({
       {/* hairline */}
       <span
         aria-hidden="true"
-        className="hidden h-4 w-px bg-gradient-to-b from-transparent via-luxury-border to-transparent sm:block"
+        className="hidden h-4 w-px bg-linear-to-b from-transparent via-luxury-border to-transparent sm:block"
       />
       <div className="flex flex-wrap justify-center gap-2">{children}</div>
     </div>
@@ -103,11 +103,11 @@ export function GalleryFilter() {
   };
 
   return (
-    <div role="search" aria-label="Lọc portfolio" className="mb-8 md:mb-20">
+    <search aria-label="Lọc portfolio" className="mb-8 md:mb-20">
       {/* top obsidian hairline */}
       <div
         aria-hidden="true"
-        className="mb-4 h-px w-full bg-gradient-to-r from-transparent via-obsidian-300 to-transparent opacity-60 md:mb-10"
+        className="mb-4 h-px w-full bg-linear-to-r from-transparent via-obsidian-300 to-transparent opacity-60 md:mb-10"
       />
 
       <div className="flex flex-col items-center gap-3">
@@ -169,8 +169,8 @@ export function GalleryFilter() {
       {/* bottom obsidian hairline */}
       <div
         aria-hidden="true"
-        className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-obsidian-300 to-transparent opacity-60 md:mt-10"
+        className="mt-4 h-px w-full bg-linear-to-r from-transparent via-obsidian-300 to-transparent opacity-60 md:mt-10"
       />
-    </div>
+    </search>
   );
 }

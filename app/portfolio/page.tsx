@@ -36,7 +36,7 @@ function GallerySkeleton() {
   return (
     <div
       className="columns-1 gap-5 space-y-5 sm:columns-2 lg:columns-3"
-      aria-hidden="true"
+      role="status"
       aria-label="Đang tải..."
     >
       {[
@@ -85,13 +85,13 @@ export default async function PortfolioPage({
             className="mb-6 flex animate-fade-in-up-luxury items-center gap-6 md:mb-16"
             style={{ "--delay": "0ms" } as React.CSSProperties}
           >
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-luxury-border" />
+            <span className="h-px flex-1 bg-linear-to-r from-transparent to-luxury-border" />
             <span className="block h-1.5 w-1.5 shrink-0 rotate-45 border border-obsidian-400" />
             <span className="shrink-0 font-bold text-[8px] text-mist uppercase tracking-[0.32em]">
               Portfolio
             </span>
             <span className="block h-1.5 w-1.5 shrink-0 rotate-45 border border-obsidian-400" />
-            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-luxury-border" />
+            <span className="h-px flex-1 bg-linear-to-l from-transparent to-luxury-border" />
           </div>
 
           <div
@@ -109,7 +109,7 @@ export default async function PortfolioPage({
             </h1>
 
             <p
-              className="max-w-xl font-light text-smoke leading-relaxed"
+              className="mx-auto max-w-xl font-light text-smoke leading-relaxed"
               style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)" }}
             >
               Mỗi đám cưới là một câu chuyện độc nhất. Hãy duyệt qua portfolio

@@ -70,7 +70,7 @@ export function HeroVideo({
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-obsidian/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-obsidian/40 via-transparent to-obsidian/70" />
       </div>
 
       <motion.div
@@ -137,7 +137,7 @@ export function HeroVideo({
         <span className="font-medium text-[8px] text-ivory/30 uppercase tracking-[0.25em]">
           Cuộn xuống
         </span>
-        <span className="h-12 w-px bg-gradient-to-b from-white/60 to-transparent" />
+        <span className="h-12 w-px bg-linear-to-b from-white/60 to-transparent" />
       </motion.div>
     </section>
   );

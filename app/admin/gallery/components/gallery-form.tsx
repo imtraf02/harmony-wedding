@@ -97,7 +97,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={srcText}
-                    alt="Current image"
+                    alt="Current"
                     className="h-full w-full object-cover"
                   />
                   <button
@@ -243,6 +243,7 @@ export function GalleryForm({ initialData }: GalleryFormProps) {
             />
             <svg
               className="pointer-events-none absolute hidden size-5 text-ivory peer-checked:block"
+              aria-hidden="true"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

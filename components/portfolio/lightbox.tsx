@@ -135,7 +135,7 @@ export function Lightbox({ images, initialIndex, onClose }: LightboxProps) {
         {/* obsidian hairline */}
         <div
           aria-hidden="true"
-          className="mx-8 hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent sm:block"
+          className="mx-8 hidden h-px flex-1 bg-linear-to-r from-transparent via-white/10 to-transparent sm:block"
         />
 
         {/* close */}

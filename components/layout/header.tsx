@@ -29,7 +29,7 @@ function _GrayLine({ className }: { className?: string }) {
     <span
       aria-hidden="true"
       className={cn(
-        "block h-px w-6 bg-gradient-to-r from-transparent via-ash/50 to-transparent opacity-60",
+        "block h-px w-6 bg-linear-to-r from-transparent via-ash/50 to-transparent opacity-60",
         className,
       )}
     />
@@ -62,7 +62,7 @@ function DesktopDropdown({
       aria-hidden={!open}
     >
       {/* top obsidian accent */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-ash/40 to-transparent opacity-70" />
+      <div className="h-px w-full bg-linear-to-r from-transparent via-ash/40 to-transparent opacity-70" />
 
       <ul className="py-2">
         {children.map((child, i) => (
@@ -170,7 +170,7 @@ function MobileMenu({
         </div>
 
         {/* Obsidian accent line */}
-        <div className="mx-8 h-px bg-gradient-to-r from-transparent via-ash/30 to-transparent opacity-40" />
+        <div className="mx-8 h-px bg-linear-to-r from-transparent via-ash/30 to-transparent opacity-40" />
 
         {/* Nav items */}
         <nav className="flex-1 overflow-y-auto px-8 py-4">

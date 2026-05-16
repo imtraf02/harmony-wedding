@@ -165,7 +165,7 @@ export default function StudiosPage() {
                       className="object-cover"
                       priority={index === 0}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian/55 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-obsidian/55 via-transparent to-transparent" />
                     <div className="absolute bottom-6 left-6 text-ivory">
                       <p className="font-bold text-[10px] text-obsidian uppercase tracking-[0.28em]">
                         {typeLabels[studio.type]}

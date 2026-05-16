@@ -1,5 +1,6 @@
 "use client";
 
+import { QuoteIcon } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
@@ -70,9 +71,7 @@ function TestimonialCard({
     >
       {/* Editorial Quote Mark */}
       <div className="pointer-events-none absolute top-8 right-10 select-none text-obsidian/10 transition-colors duration-700 group-hover:text-obsidian/20">
-        <svg width="48" height="38" viewBox="0 0 48 38" fill="currentColor">
-          <path d="M0 38V19.8649C0 13.3441 1.13514 8.44144 3.40541 5.15676C5.67568 1.87207 9.40541 0.151351 14.5946 0V7.2973C11.6757 7.2973 9.72973 8.35676 8.75676 10.4757C7.78378 12.5946 7.2973 15.7297 7.2973 19.8811H14.5946V38H0ZM33.4054 38V19.8649C33.4054 13.3441 34.5405 8.44144 36.8108 5.15676C39.0811 1.87207 42.8108 0.151351 48 0V7.2973C45.0811 7.2973 43.1351 8.35676 42.1622 10.4757C41.1892 12.5946 40.7027 15.7297 40.7027 19.8811H48V38H33.4054Z" />
-        </svg>
+        <QuoteIcon size={20} />
       </div>
 
       <div className="relative z-10 space-y-6">
@@ -92,7 +91,7 @@ function TestimonialCard({
       </div>
 
       <div className="relative z-10 mt-8 flex items-center gap-5 border-black/[0.04] border-t pt-8">
-        <div className="relative size-12 flex-shrink-0 overflow-hidden rounded-full bg-luxury shadow-inner ring-1 ring-black/5">
+        <div className="relative size-12 shrink-0 overflow-hidden rounded-full bg-luxury shadow-inner ring-1 ring-black/5">
           {t.src ? (
             <Image
               src={t.src}
@@ -216,7 +215,7 @@ export function Testimonials({
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="w-[85vw] flex-shrink-0 snap-center sm:w-[450px]"
+                className="w-[85vw] shrink-0 snap-center sm:w-[450px]"
               >
                 <TestimonialCard t={t} index={i} />
               </div>

@@ -20,9 +20,9 @@ function EmptyState() {
     <div className="flex flex-col items-center justify-center gap-6 py-32">
       {/* decorative lines */}
       <div aria-hidden="true" className="flex w-48 items-center gap-4">
-        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-luxury-border" />
+        <span className="h-px flex-1 bg-linear-to-r from-transparent to-luxury-border" />
         <span className="block h-1.5 w-1.5 rotate-45 border border-obsidian-400" />
-        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-luxury-border" />
+        <span className="h-px flex-1 bg-linear-to-l from-transparent to-luxury-border" />
       </div>
       <p className="text-center font-bold text-[10px] text-ash uppercase tracking-[0.28em]">
         Không tìm thấy album
@@ -31,9 +31,9 @@ function EmptyState() {
         Thử điều chỉnh bộ lọc để khám phá thêm những khoảnh khắc khác.
       </p>
       <div aria-hidden="true" className="flex w-48 items-center gap-4">
-        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-luxury-border" />
+        <span className="h-px flex-1 bg-linear-to-r from-transparent to-luxury-border" />
         <span className="block h-1.5 w-1.5 rotate-45 border border-obsidian-400" />
-        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-luxury-border" />
+        <span className="h-px flex-1 bg-linear-to-l from-transparent to-luxury-border" />
       </div>
     </div>
   );
@@ -78,7 +78,7 @@ export function MasonryGallery({ items }: MasonryGalleryProps) {
               aria-hidden="true"
               className={cn(
                 "absolute inset-0",
-                "bg-gradient-to-t from-obsidian/85 via-obsidian/20 to-transparent",
+                "bg-linear-to-t from-obsidian/85 via-obsidian/20 to-transparent",
                 "opacity-0 group-hover:opacity-100",
                 "transition-opacity duration-600",
               )}
@@ -134,7 +134,7 @@ export function MasonryGallery({ items }: MasonryGalleryProps) {
           {/* obsidian bottom border that grows in on hover */}
           <div
             aria-hidden="true"
-            className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-obsidian-400 to-obsidian-600 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:w-full"
+            className="absolute bottom-0 left-0 h-px w-0 bg-linear-to-r from-obsidian-400 to-obsidian-600 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:w-full"
           />
         </Link>
       ))}

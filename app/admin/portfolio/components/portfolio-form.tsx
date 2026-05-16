@@ -395,7 +395,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={img}
-                        alt={`Gallery image ${i}`}
+                        alt={`Gallery ${i}`}
                         className="h-full w-full object-cover"
                       />
                       <button

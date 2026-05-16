@@ -258,7 +258,7 @@ export function FloatingContact() {
   ];
 
   return (
-    <div
+    <nav
       className="fixed right-6 bottom-8 z-[70] flex flex-col gap-3 md:right-10 md:bottom-12"
       aria-label="Liên hệ nhanh"
     >
@@ -272,6 +272,6 @@ export function FloatingContact() {
           isPrimary={item.isPrimary}
         />
       ))}
-    </div>
+    </nav>
   );
 }

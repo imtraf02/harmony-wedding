@@ -92,7 +92,7 @@ export function HeroImages({ items }: HeroImagesProps) {
                 {/* ── Image side ── */}
                 <motion.div
                   className={cn(
-                    "relative aspect-[3/4] flex-shrink-0 overflow-hidden shadow-2xl",
+                    "relative aspect-[3/4] shrink-0 overflow-hidden shadow-2xl",
                     "w-[55%] md:w-auto md:flex-1",
                     "rounded-2xl md:rounded-[2rem]",
                     "ring-4 ring-white",
@@ -180,7 +180,7 @@ export function HeroImages({ items }: HeroImagesProps) {
                       >
                         <span
                           className={cn(
-                            "relative hidden font-bold text-[9px] uppercase tracking-[0.2em] sm:inline md:text-[11px] md:tracking-[0.25em]",
+                            "inline font-bold text-[9px] uppercase tracking-[0.2em] md:text-[11px] md:tracking-[0.25em]",
                             isEven ? "order-2" : "",
                           )}
                         >

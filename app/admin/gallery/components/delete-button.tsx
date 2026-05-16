@@ -15,6 +15,7 @@ export function DeleteGalleryButton({ id }: { id: number }) {
 
   return (
     <button
+      type="button"
       onClick={handleDelete}
       disabled={isPending}
       className="p-2 text-mist transition-colors hover:text-red-500 disabled:opacity-40"

@@ -45,7 +45,7 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
         </span>
         <div
           aria-hidden="true"
-          className="h-px flex-1 bg-gradient-to-r from-luxury-border to-transparent"
+          className="h-px flex-1 bg-linear-to-r from-luxury-border to-transparent"
         />
         <span className="font-bold text-[9px] text-ash uppercase tabular-nums tracking-[0.28em]">
           {String(images.length).padStart(2, "0")} ảnh
@@ -126,7 +126,7 @@ export function PortfolioAlbum({ images, title }: PortfolioAlbumProps) {
             {/* obsidian border sweep on hover */}
             <div
               aria-hidden="true"
-              className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-gradient-to-r from-obsidian-400 to-obsidian-600 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:w-full"
+              className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-linear-to-r from-obsidian-400 to-obsidian-600 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:w-full"
             />
           </button>
         ))}

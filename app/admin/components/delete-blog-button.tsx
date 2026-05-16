@@ -36,6 +36,7 @@ export function DeleteBlogButton({ id, title }: { id: number; title: string }) {
       <DialogTrigger
         render={
           <button
+            type="button"
             className="p-2 text-mist transition-colors hover:text-red-500"
             aria-label={`Xoá ${title}`}
           >

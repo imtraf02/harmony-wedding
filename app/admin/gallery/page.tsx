@@ -66,7 +66,7 @@ export default async function AdminGalleryPage() {
               </div>
 
               {/* Hover overlay */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-obsidian/70 via-obsidian/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute inset-0 z-10 bg-linear-to-t from-obsidian/70 via-obsidian/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               {/* Label + actions */}
               <div className="absolute right-0 bottom-0 left-0 z-20 translate-y-0 p-3 opacity-100 transition-all duration-500 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
