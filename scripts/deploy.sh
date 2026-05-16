@@ -15,6 +15,10 @@ echo "🚀 Bắt đầu quá trình triển khai: $(date)"
 echo "🗄️ Database path: $DATABASE_PATH"
 
 mkdir -p "$(dirname "$DATABASE_PATH")" "$UPLOAD_DIR"
+test -w "$(dirname "$DATABASE_PATH")" || {
+  echo "❌ Không có quyền ghi vào $(dirname "$DATABASE_PATH"). Hãy tạo/chown thư mục này trước khi deploy."
+  exit 1
+}
 
 # 1. Lấy mã nguồn mới nhất
 echo "📦 Đang lấy code mới từ GitHub..."
