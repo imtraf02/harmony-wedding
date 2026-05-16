@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import { getPortfolioBySlug } from '@/lib/queries/portfolio';
 import { buildMetadata }      from '@/lib/metadata';
 import { SectionTitle }       from '@/components/shared/section-title';
-import { OptimizedImage }     from '@/components/shared/optimized-image';
 import { VideoEmbed }         from '@/components/shared/video-embed';
 import { CtaBanner }          from '@/components/home/cta-banner';
 import { PortfolioAlbum }     from '@/components/portfolio/portfolio-album';
+import { JsonLd, breadcrumbSchema, portfolioSchema } from '@/components/shared/json-ld';
 
 interface PortfolioDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -46,6 +46,14 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
     <div className="pt-32 bg-background">
+      <JsonLd data={portfolioSchema(portfolio)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Trang chủ', path: '/' },
+          { name: 'Portfolio', path: '/portfolio' },
+          { name: portfolio.title, path: `/portfolio/${portfolio.slug}` },
+        ])}
+      />
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
 

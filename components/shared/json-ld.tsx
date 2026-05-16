@@ -1,10 +1,10 @@
-import { STUDIO_NAME, SITE_URL, PHONE } from '@/lib/constants';
+import { FACEBOOK_URL, PHONE, SITE_URL, STUDIO_NAME, TIKTOK_URL } from '@/lib/constants';
 
 export function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }}
     />
   );
 }
@@ -14,23 +14,78 @@ export function JsonLd({ data }: { data: object }) {
 export const localBusinessSchema = {
   '@context' : 'https://schema.org',
   '@type'    : ['LocalBusiness', 'PhotographyBusiness'],
+  '@id'      : `${SITE_URL}/#business`,
   name       : STUDIO_NAME,
   url        : SITE_URL,
   telephone  : PHONE,
-  image      : `${SITE_URL}/og-default.jpg`,
+  logo       : `${SITE_URL}/logo.png`,
+  image      : `${SITE_URL}/logo.png`,
   priceRange : '₫₫₫',
-  openingHours: ['Mo-Sa 08:00-18:00'],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
   address: {
     '@type'        : 'PostalAddress',
-    streetAddress  : '123 Your Street',
-    addressLocality: 'Your City',
+    streetAddress  : '45 Đường Cuối Chợ Đông Hoà',
+    addressLocality: 'Trảng Bom',
+    addressRegion  : 'Đồng Nai',
     addressCountry : 'VN',
   },
-  sameAs: [
-    process.env.NEXT_PUBLIC_FACEBOOK_URL,
-    process.env.NEXT_PUBLIC_TIKTOK_URL,
-  ].filter(Boolean),
+  sameAs: [FACEBOOK_URL, TIKTOK_URL].filter(Boolean),
 };
+
+export const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: STUDIO_NAME,
+  url: SITE_URL,
+  publisher: { '@id': `${SITE_URL}/#business` },
+  inLanguage: 'vi-VN',
+};
+
+export function portfolioSchema(portfolio: {
+  title: string;
+  slug: string;
+  cover_image: string;
+  images: string[];
+  style: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: portfolio.title,
+    url: `${SITE_URL}/portfolio/${portfolio.slug}`,
+    image: [portfolio.cover_image, ...portfolio.images]
+      .filter(Boolean)
+      .map((image) => image.startsWith('http') ? image : `${SITE_URL}${image}`),
+    genre: portfolio.style,
+    creator: { '@id': `${SITE_URL}/#business` },
+    inLanguage: 'vi-VN',
+  };
+}
+
+export function serviceSchema(service: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.description,
+    url: `${SITE_URL}${service.path}`,
+    provider: { '@id': `${SITE_URL}/#business` },
+    areaServed: { '@type': 'Country', name: 'Vietnam' },
+    serviceType: service.name,
+  };
+}
 
 export function articleSchema(post: {
   title: string; excerpt: string | null; published_at: string | null;

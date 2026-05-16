@@ -108,6 +108,8 @@ const socialLinks = [
   },
 ];
 
+const GOOGLE_MAP_URL = 'https://maps.app.goo.gl/Ny9QSqj9tk5o5C7Z7';
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -268,6 +270,17 @@ export function Footer() {
                   >
                     <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
                     Zalo Chat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={GOOGLE_MAP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center gap-2 text-[12px] tracking-[0.06em] text-ivory/75 hover:text-ivory transition-all duration-400 md:justify-start"
+                  >
+                    <span className="block w-0 h-px bg-ivory transition-all duration-400 group-hover:w-3 shrink-0" />
+                    Google Map
                   </a>
                 </li>
                 <li>

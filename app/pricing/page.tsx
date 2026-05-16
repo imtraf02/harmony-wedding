@@ -1,7 +1,6 @@
 import { buildMetadata } from '@/lib/metadata';
 import { SectionTitle } from '@/components/shared/section-title';
 import { CtaBanner } from '@/components/home/cta-banner';
-import { cn } from '@/lib/utils';
 
 export const metadata = buildMetadata({
   title: 'Báo giá dịch vụ | Harmony Wedding',
@@ -113,8 +112,8 @@ const PRICING_DATA: PricingGroup[] = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-luxury">
-      <section className="pt-40 pb-24">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="pt-28 pb-16 md:pt-40 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <SectionTitle
             eyebrow="Investment"
             title="Báo giá dịch vụ"
@@ -122,36 +121,38 @@ export default function PricingPage() {
             centered
           />
 
-          <div className="mt-20 space-y-24">
+          <div className="mt-10 space-y-16 md:mt-20 md:space-y-24">
             {PRICING_DATA.map((group, groupIdx) => (
-              <div key={groupIdx} className="space-y-12">
+              <div key={groupIdx} className="space-y-8 md:space-y-12">
                 {/* Category Header */}
                 <div className="relative">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold">0{groupIdx + 1}</span>
-                    <h2 className="text-2xl md:text-3xl font-sans font-light text-obsidian tracking-tight italic">
+                  <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                    <span className="w-fit border border-gold/25 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
+                      0{groupIdx + 1}
+                    </span>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-sans font-light text-obsidian tracking-tight italic leading-snug">
                       {group.category}
                     </h2>
                   </div>
-                  <p className="text-ash font-light text-sm max-w-2xl">{group.description}</p>
+                  <p className="text-ash font-light text-sm leading-relaxed max-w-2xl">{group.description}</p>
                   <div className="absolute -bottom-4 left-0 w-12 h-px bg-gold/30" />
                 </div>
 
                 {/* Pricing Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
                   {group.items.map((item, itemIdx) => (
                     <div 
                       key={itemIdx} 
-                      className="group p-8 bg-white/50 backdrop-blur-sm border border-luxury-border-fine hover:border-gold/30 transition-all duration-500 rounded-none shadow-sm hover:shadow-luxury"
+                      className="group p-5 sm:p-6 md:p-8 bg-white/70 md:bg-white/50 backdrop-blur-sm border border-luxury-border-fine hover:border-gold/30 transition-all duration-500 rounded-none shadow-sm hover:shadow-luxury"
                     >
-                      <div className="flex flex-col h-full justify-between gap-6">
+                      <div className="flex h-full flex-col justify-between gap-6">
                         <div className="space-y-4">
-                          <div className="flex justify-between items-start gap-4">
-                            <h3 className="text-lg font-sans font-medium text-obsidian tracking-wide uppercase">
+                          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                            <h3 className="text-base sm:text-lg font-sans font-medium text-obsidian tracking-wide uppercase leading-snug">
                               {item.title}
                             </h3>
                             {item.price && (
-                              <span className="text-gold font-medium text-sm whitespace-nowrap">
+                              <span className="w-fit border-t border-gold/30 pt-2 text-sm font-medium leading-relaxed text-gold sm:border-t-0 sm:pt-0 sm:text-right">
                                 {item.price}
                               </span>
                             )}
@@ -164,11 +165,11 @@ export default function PricingPage() {
                           )}
 
                           {item.details && (
-                            <ul className="space-y-2 pt-2">
+                            <ul className="space-y-3 pt-2">
                               {item.details.map((detail, dIdx) => (
-                                <li key={dIdx} className="flex items-start gap-3 text-sm text-ash font-light">
-                                  <span className="size-1 bg-gold/40 rounded-full mt-1.5 shrink-0" />
-                                  <span>{detail}</span>
+                                <li key={dIdx} className="flex items-start gap-3 text-sm text-ash font-light leading-relaxed">
+                                  <span className="size-1.5 bg-gold/40 rounded-full mt-2 shrink-0" />
+                                  <span className="min-w-0">{detail}</span>
                                 </li>
                               ))}
                             </ul>
@@ -183,8 +184,8 @@ export default function PricingPage() {
           </div>
 
           {/* Note Footer */}
-          <div className="mt-24 p-8 bg-gold/5 border border-gold/10 text-center italic">
-            <p className="text-sm text-smoke font-light">
+          <div className="mt-16 p-5 sm:p-8 md:mt-24 bg-gold/5 border border-gold/10 text-center italic">
+            <p className="text-sm text-smoke font-light leading-relaxed">
               * Báo giá trên mang tính chất tham khảo. Để có báo giá chính xác nhất theo nhu cầu riêng, quý khách vui lòng liên hệ trực tiếp với Harmony Studio.
             </p>
           </div>

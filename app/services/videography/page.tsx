@@ -2,6 +2,7 @@ import { buildMetadata } from '@/lib/metadata';
 import { SectionTitle } from '@/components/shared/section-title';
 import { CtaBanner } from '@/components/home/cta-banner';
 import Image from 'next/image';
+import { JsonLd, serviceSchema } from '@/components/shared/json-ld';
 
 export const metadata = buildMetadata({
   title: 'Quay phim Cinematic | Harmony Studio',
@@ -12,6 +13,13 @@ export const metadata = buildMetadata({
 export default function VideographyPage() {
   return (
     <div className="min-h-screen bg-luxury">
+      <JsonLd
+        data={serviceSchema({
+          name: 'Quay phim Cinematic',
+          description: 'Dịch vụ quay phim cưới cinematic 4K, dựng highlight và kể chuyện ngày cưới bằng hình ảnh điện ảnh.',
+          path: '/services/videography',
+        })}
+      />
       <section className="pt-40 pb-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <SectionTitle

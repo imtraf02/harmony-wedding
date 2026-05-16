@@ -3,6 +3,11 @@ import type { Metadata } from 'next';
 const BASE_URL  = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://localhost:3000';
 const SITE_NAME = process.env.NEXT_PUBLIC_STUDIO_NAME ?? 'Harmony Studio';
 
+function absoluteUrl(pathOrUrl: string): string {
+  if (/^https?:\/\//.test(pathOrUrl)) return pathOrUrl;
+  return `${BASE_URL}${pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`}`;
+}
+
 interface SeoInput {
   title       : string;
   description : string;
@@ -12,19 +17,22 @@ interface SeoInput {
 }
 
 export function buildMetadata({ title, description, path, image, noIndex }: SeoInput): Metadata {
-  const url     = `${BASE_URL}${path}`;
-  const ogImage = image ?? `${BASE_URL}/og-default.jpg`;
+  const url     = absoluteUrl(path);
+  const ogImage = image ? absoluteUrl(image) : absoluteUrl('/logo.png');
 
   return {
     title,
     description,
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: BASE_URL }],
+    publisher: SITE_NAME,
     alternates : { canonical: url },
     openGraph  : {
       title, description, url,
       siteName : SITE_NAME,
       locale   : 'vi_VN',
       type     : 'website',
-      images   : [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      images   : [{ url: ogImage, alt: title }],
     },
     twitter: {
       card   : 'summary_large_image',
@@ -35,7 +43,13 @@ export function buildMetadata({ title, description, path, image, noIndex }: SeoI
       ? { index: false, follow: false }
       : {
           index: true, follow: true,
-          googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+          },
         },
   };
 }

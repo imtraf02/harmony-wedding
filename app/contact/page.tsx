@@ -36,6 +36,8 @@ const contactDetails = [
   },
 ];
 
+const GOOGLE_MAP_URL = 'https://maps.app.goo.gl/Ny9QSqj9tk5o5C7Z7';
+
 const processSteps = [
   'Gửi yêu cầu tư vấn',
   'Trao đổi concept và lịch trình',
@@ -143,7 +145,15 @@ export default function ContactPage() {
             <p className="text-sm font-light text-obsidian/70">
               Bạn cũng có thể nhắn trực tiếp qua mạng xã hội để gửi moodboard hoặc lịch trình sơ bộ.
             </p>
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-5">
+              <Link
+                href={GOOGLE_MAP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center border border-obsidian px-5 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-obsidian transition-colors hover:bg-obsidian hover:text-ivory"
+              >
+                Google Map
+              </Link>
               <Link
                 href={FACEBOOK_URL}
                 target="_blank"
