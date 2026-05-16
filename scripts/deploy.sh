@@ -16,7 +16,9 @@ echo "🗄️ Database path: $DATABASE_PATH"
 
 mkdir -p "$(dirname "$DATABASE_PATH")" "$UPLOAD_DIR"
 test -w "$(dirname "$DATABASE_PATH")" || {
-  echo "❌ Không có quyền ghi vào $(dirname "$DATABASE_PATH"). Hãy tạo/chown thư mục này trước khi deploy."
+  echo "❌ Không có quyền ghi vào $(dirname "$DATABASE_PATH")."
+  echo "   NixOS: thêm tmpfiles cho /var/lib/wedding hoặc chạy:"
+  echo "   sudo install -d -o wedding-user -g wedding-group -m 0755 /var/lib/wedding /var/lib/wedding/uploads"
   exit 1
 }
 

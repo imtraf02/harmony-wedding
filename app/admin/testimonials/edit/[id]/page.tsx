@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { getTestimonialById } from '@/lib/queries/testimonials';
 import { TestimonialForm } from '../../components/testimonial-form';
 
+export const dynamic = 'force-dynamic';
+
 export default async function EditTestimonialPage({
   params,
 }: {

@@ -6,6 +6,8 @@ import { PencilIcon, PlusIcon, StarIcon, QuoteIcon } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { DeleteTestimonialButton } from './components/delete-button';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminTestimonialsList() {
   const items = getAllTestimonials();
 

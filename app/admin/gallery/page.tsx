@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { DeleteGalleryButton } from './components/delete-button';
 import { PlusIcon, PencilIcon } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminGalleryPage() {
   const items = getAllGalleryItems();
 

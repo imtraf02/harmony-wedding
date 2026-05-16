@@ -5,6 +5,8 @@ import { UserIcon, MailIcon, PhoneIcon, CalendarIcon } from 'lucide-react';
 import { revalidatePath } from 'next/cache';
 import type { Contact } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 async function updateContactStatus(formData: FormData) {
   'use server';
   const id = Number(formData.get('id'));

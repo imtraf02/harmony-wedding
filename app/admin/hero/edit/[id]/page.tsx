@@ -4,6 +4,8 @@ import { getHeroSlideById } from '@/lib/queries/hero';
 import { HeroForm } from '../../components/hero-form';
 import { ChevronLeftIcon } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 interface EditHeroPageProps {
   params: Promise<{ id: string }>;
 }

@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { getStudioById } from '@/lib/queries/studios';
 import { StudioForm } from '../../components/studio-form';
 
+export const dynamic = 'force-dynamic';
+
 export default async function EditStudioPage({
   params,
 }: {

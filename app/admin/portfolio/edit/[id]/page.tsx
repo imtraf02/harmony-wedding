@@ -5,6 +5,8 @@ import { getPortfolios } from '@/lib/queries/portfolio';
 import { ArrowLeftIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+export const dynamic = 'force-dynamic';
+
 export default async function EditPortfolioPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const id = Number(params.id);

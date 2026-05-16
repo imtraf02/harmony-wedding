@@ -12,6 +12,8 @@ const typeLabels = {
   destination: 'Điểm đến',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminStudiosPage() {
   const studios = getAllStudiosAdmin();
 

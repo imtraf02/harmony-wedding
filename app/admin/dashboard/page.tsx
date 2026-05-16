@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { PlusIcon, PenLineIcon, GlobeIcon, type LucideIcon } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboard() {
   const stats = getDashboardStats();
   const recent = getRecentContacts(5);

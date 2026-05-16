@@ -67,6 +67,11 @@ Tài liệu này hướng dẫn cách đưa dự án **Harmony Wedding** từ Gi
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d /var/lib/wedding 0755 wedding-user wedding-group - -"
+    "d /var/lib/wedding/uploads 0755 wedding-user wedding-group - -"
+  ];
+
   networking.firewall.allowedTCPPorts = [ 80 443 22 ];
 }
 ```
