@@ -33,7 +33,7 @@ export default function AdminBlogPage() {
       </header>
 
       {posts.length > 0 ? (
-        <div className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <div className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-8">
           {posts.map((post) => {
             return (
               <article

@@ -42,7 +42,7 @@ export default function HeroAdminPage() {
       <SortableAdminGrid
         ids={slides.map((slide) => slide.id)}
         onReorder={reorderHeroSlidesAction}
-        className="grid 3xl:grid-cols-5 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+        className="grid 3xl:grid-cols-5 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6"
       >
         {slides.map((slide) => (
           <div

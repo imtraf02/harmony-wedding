@@ -10,7 +10,8 @@
     "check": "pnpm biome check --write .",
     "format": "pnpm biome format --write .",
     "ci": "pnpm biome ci .",
-    "db:init": "tsx scripts/init-db.ts"
+    "db:init": "tsx scripts/init-db.ts",
+    "cleanup:uploads": "tsx scripts/cleanup-uploads.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

@@ -43,7 +43,7 @@ export default function AdminStudiosPage() {
         <SortableAdminGrid
           ids={studios.map((studio) => studio.id)}
           onReorder={reorderStudiosAction}
-          className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+          className="grid 3xl:grid-cols-6 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-8"
         >
           {studios.map((studio) => {
             const image = studio.images[0] || "/img/prewedding.jpg";

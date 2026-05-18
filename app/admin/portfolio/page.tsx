@@ -39,7 +39,7 @@ export default async function AdminPortfolioList() {
         <SortableAdminGrid
           ids={items.map((item) => item.id)}
           onReorder={reorderPortfoliosAction}
-          className="grid 3xl:grid-cols-5 grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+          className="grid 3xl:grid-cols-5 grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-7"
         >
           {items.map((item) => (
             <div

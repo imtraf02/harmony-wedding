@@ -44,7 +44,7 @@ export default async function AdminPostProductionPage() {
         <SortableAdminGrid
           ids={items.map((item) => item.id)}
           onReorder={reorderPostProductionsAction}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-6 4xl:grid-cols-7"
         >
           {items.map((item) => (
             <div
