@@ -57,7 +57,7 @@ const orientationItems = [
   { label: "Vuông - 1/1", value: "square" },
 ];
 
-const VIDEO_MAX_SIZE = 500 * 1024 * 1024;
+const VIDEO_MAX_SIZE = 99 * 1024 * 1024;
 
 export function PortfolioForm({ initialData }: PortfolioFormProps) {
   const [isPending, setIsPending] = useState(false);
@@ -85,8 +85,8 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
       onError: (file: File, error: Error) => void;
     }
   ) => {
-    setActiveUploads(prev => prev + files.length);
-    const promises = files.map(async (file) => {
+    for (const file of files) {
+      setActiveUploads(prev => prev + 1);
       try {
         const result = await uploadImageFile(file, "portfolio", (progress) => {
           options.onProgress(file, progress);
@@ -106,8 +106,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
       } finally {
         setActiveUploads(prev => Math.max(0, prev - 1));
       }
-    });
-    await Promise.all(promises);
+    }
   }, []);
 
   const handleUploadCover = useCallback(async (
@@ -656,7 +655,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                         Tải video lên
                       </p>
                       <p className="mt-1 text-[10px] text-mist">
-                        MP4, WebM, OGG, MOV tối đa 500MB
+                        MP4, WebM, OGG, MOV tối đa 99MB (Giới hạn Cloudflare)
                       </p>
                     </div>
                     <FileUploadTrigger

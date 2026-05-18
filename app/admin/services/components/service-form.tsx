@@ -51,8 +51,8 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
       onError: (file: File, error: Error) => void;
     }
   ) => {
-    setActiveUploads(prev => prev + files.length);
-    const promises = files.map(async (file) => {
+    for (const file of files) {
+      setActiveUploads(prev => prev + 1);
       try {
         const result = await uploadImageFile(file, "services", (progress) => {
           options.onProgress(file, progress);
@@ -72,8 +72,7 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
       } finally {
         setActiveUploads(prev => Math.max(0, prev - 1));
       }
-    });
-    await Promise.all(promises);
+    }
   }, []);
 
   const handleUploadHero = useCallback(async (
