@@ -1,14 +1,14 @@
-export type UploadVideoResult = {
+export type UploadImageResult = {
   success: boolean;
   url?: string;
   message?: string;
 };
 
-export function uploadVideoFile(
+export function uploadImageFile(
   file: File,
   category: string,
   onProgress?: (progress: number) => void,
-): Promise<UploadVideoResult> {
+): Promise<UploadImageResult> {
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
 
@@ -30,7 +30,7 @@ export function uploadVideoFile(
           const response = JSON.parse(xhr.responseText || "{}");
           resolve({
             success: false,
-            message: response.message || `Lỗi tải video (${xhr.status})`,
+            message: response.message || `Lỗi tải lên (${xhr.status})`,
           });
         }
       } catch (_e) {
@@ -48,7 +48,7 @@ export function uploadVideoFile(
 
     xhr.open(
       "POST",
-      `/api/admin/upload-video?category=${encodeURIComponent(category)}`,
+      `/api/admin/upload-image?category=${encodeURIComponent(category)}`,
     );
     xhr.setRequestHeader("content-type", file.type || "application/octet-stream");
     xhr.setRequestHeader("x-file-name", encodeURIComponent(file.name));

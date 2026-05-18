@@ -14,9 +14,11 @@ import {
   FileUploadItemDelete,
   FileUploadItemMetadata,
   FileUploadItemPreview,
+  FileUploadItemProgress,
   FileUploadList,
   FileUploadTrigger,
 } from "@/components/ui/file-upload";
+import { uploadImageFile } from "@/lib/upload-image-client";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -63,6 +65,63 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
     initialData?.video_url || "",
   );
   const [posterText, setPosterText] = useState(initialData?.poster_image || "");
+  const [activeUploads, setActiveUploads] = useState(0);
+
+  const handleUploadVideo = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (files.length === 0) return;
+    const file = files[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadVideoFile(file, "post-production", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setVideoUrlText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải video thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải video thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
+
+  const handleUploadPoster = useCallback(async (
+    filesList: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (filesList.length === 0) return;
+    const file = filesList[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadImageFile(file, "post-production", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setPosterText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải poster thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải poster thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
 
   const onFileReject = useCallback((file: File, message: string) => {
     toast.error(message, { description: `"${file.name}" bị từ chối` });
@@ -70,43 +129,19 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (activeUploads > 0) {
+      toast.error("Vui lòng đợi quá trình tải lên hoàn tất!");
+      return;
+    }
     setIsPending(true);
 
     try {
       const formData = new FormData(event.currentTarget);
 
-      let finalVideoUrl = videoUrlText;
-      if (videoFiles.length > 0) {
-        const result = await uploadVideoFile(videoFiles[0], "post-production");
-
-        if (result.success && result.url) {
-          finalVideoUrl = result.url;
-        } else {
-          toast.error(`Lỗi tải video: ${result.message}`);
-          setIsPending(false);
-          return;
-        }
-      }
-
-      let finalPoster = posterText;
-      if (posterFiles.length > 0) {
-        const posterData = new FormData();
-        posterData.append("file", posterFiles[0]);
-        const result = await uploadImageAction(posterData, "post-production");
-
-        if (result.success && result.url) {
-          finalPoster = result.url;
-        } else {
-          toast.error(`Lỗi tải poster: ${result.message}`);
-          setIsPending(false);
-          return;
-        }
-      }
-
       formData.delete("video_file");
       formData.delete("poster_file");
-      formData.set("video_url", finalVideoUrl);
-      formData.set("poster_image", finalPoster);
+      formData.set("video_url", videoUrlText);
+      formData.set("poster_image", posterText);
 
       if (initialData) {
         await updatePostProductionAction(initialData.id, formData);
@@ -254,6 +289,7 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
               value={videoFiles}
               onValueChange={setVideoFiles}
               onFileReject={onFileReject}
+              onUpload={handleUploadVideo}
               name="video_file"
             >
               <FileUploadDropzone className="group border-black/5 border-dashed bg-luxury-surface py-10 transition-all duration-500 hover:border-obsidian/30 hover:bg-white">
@@ -290,7 +326,10 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
                     className="rounded-none border-black/5 bg-white"
                   >
                     <FileUploadItemPreview />
-                    <FileUploadItemMetadata className="font-light text-[11px]" />
+                    <div className="flex-1 min-w-0">
+                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <FileUploadItemProgress className="mt-1" />
+                    </div>
                     <FileUploadItemDelete
                       render={
                         <Button
@@ -354,6 +393,7 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
               value={posterFiles}
               onValueChange={setPosterFiles}
               onFileReject={onFileReject}
+              onUpload={handleUploadPoster}
               name="poster_file"
             >
               <FileUploadDropzone className="group border-black/5 border-dashed bg-luxury-surface py-10 transition-all duration-500 hover:border-obsidian/30 hover:bg-white">
@@ -390,7 +430,10 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
                     className="rounded-none border-black/5 bg-white"
                   >
                     <FileUploadItemPreview />
-                    <FileUploadItemMetadata className="font-light text-[11px]" />
+                    <div className="flex-1 min-w-0">
+                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <FileUploadItemProgress className="mt-1" />
+                    </div>
                     <FileUploadItemDelete
                       render={
                         <Button
@@ -470,11 +513,15 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
         <div className="flex flex-col gap-6 pt-12 sm:flex-row">
           <Button
             type="submit"
-            disabled={isPending}
+            disabled={isPending || activeUploads > 0}
             className="flex-1 rounded-none bg-obsidian py-8 font-medium text-[11px] text-ivory uppercase tracking-[0.3em] shadow-luxury transition-all duration-500 hover:bg-obsidian"
           >
-            {isPending && <Spinner className="mr-2" />}
-            {isPending ? "Đang lưu..." : "Lưu video hậu kỳ"}
+            {(isPending || activeUploads > 0) && <Spinner className="mr-2" />}
+            {isPending
+              ? "Đang lưu..."
+              : activeUploads > 0
+                ? "Đang tải tệp..."
+                : "Lưu video hậu kỳ"}
           </Button>
           <Button
             variant="ghost"

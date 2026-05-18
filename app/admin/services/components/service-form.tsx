@@ -14,9 +14,11 @@ import {
   FileUploadItemDelete,
   FileUploadItemMetadata,
   FileUploadItemPreview,
+  FileUploadItemProgress,
   FileUploadList,
   FileUploadTrigger,
 } from "@/components/ui/file-upload";
+import { uploadImageFile } from "@/lib/upload-image-client";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,6 +40,70 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
     initialData?.demo_images.join("\n") || "",
   );
 
+  const [uploadedDemoUrls, setUploadedDemoUrls] = useState<Map<File, string>>(new Map());
+  const [activeUploads, setActiveUploads] = useState(0);
+
+  const handleUploadDemo = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    setActiveUploads(prev => prev + files.length);
+    const promises = files.map(async (file) => {
+      try {
+        const result = await uploadImageFile(file, "services", (progress) => {
+          options.onProgress(file, progress);
+        });
+        if (result.success && result.url) {
+          setUploadedDemoUrls((prev) => {
+            const next = new Map(prev);
+            next.set(file, result.url!);
+            return next;
+          });
+          options.onSuccess(file);
+        } else {
+          options.onError(file, new Error(result.message || "Tải ảnh thất bại"));
+        }
+      } catch (err) {
+        options.onError(file, err instanceof Error ? err : new Error("Tải ảnh thất bại"));
+      } finally {
+        setActiveUploads(prev => Math.max(0, prev - 1));
+      }
+    });
+    await Promise.all(promises);
+  }, []);
+
+  const handleUploadHero = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (files.length === 0) return;
+    const file = files[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadImageFile(file, "services", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setHeroImageText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải ảnh đại diện thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải ảnh đại diện thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
+
   const parsedDemoImages = demoImagesText
     .split(/\n|,/)
     .map((item) => item.trim())
@@ -55,49 +121,28 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (activeUploads > 0) {
+      toast.error("Vui lòng đợi quá trình tải ảnh lên hoàn tất!");
+      return;
+    }
     setIsPending(true);
 
     try {
       const formData = new FormData(event.currentTarget);
-      let heroImage = heroImageText;
-
-      if (heroFiles.length > 0) {
-        const uploadData = new FormData();
-        uploadData.append("file", heroFiles[0]);
-        const result = await uploadImageAction(uploadData, "services");
-
-        if (!result.success || !result.url) {
-          toast.error(`Lỗi tải ảnh đại diện: ${result.message}`);
-          setIsPending(false);
-          return;
-        }
-
-        heroImage = result.url;
-      }
-
-      // Upload demo files concurrently
-      const uploadPromises = demoFiles.map(async (file) => {
-        const uploadData = new FormData();
-        uploadData.append("file", file);
-        const result = await uploadImageAction(uploadData, "services");
-        if (result.success && result.url) {
-          return result.url;
-        } else {
-          toast.error(`Lỗi tải ảnh "${file.name}": ${result.message}`);
-          return null;
-        }
-      });
-      const uploadResults = await Promise.all(uploadPromises);
-      const uploadedDemoUrls = uploadResults.filter(
-        (url): url is string => !!url,
-      );
 
       formData.delete("hero_image_file");
       formData.delete("demo_images_files");
-      formData.set("hero_image", heroImage);
+
+      formData.set("hero_image", heroImageText);
+
+      // Map current demo files to their uploaded URLs
+      const newDemoUrls = demoFiles
+        .map((file) => uploadedDemoUrls.get(file))
+        .filter((url): url is string => !!url);
+
       formData.set(
         "demo_images",
-        [...parsedDemoImages, ...uploadedDemoUrls].join("\n"),
+        [...parsedDemoImages, ...newDemoUrls].join("\n"),
       );
 
       if (initialData) {
@@ -111,6 +156,7 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
           ? error.message
           : "Có lỗi xảy ra khi lưu dịch vụ",
       );
+    } finally {
       setIsPending(false);
     }
   };
@@ -269,6 +315,7 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
               value={heroFiles}
               onValueChange={setHeroFiles}
               onFileReject={onFileReject}
+              onUpload={handleUploadHero}
               name="hero_image_file"
               className="w-full"
             >
@@ -306,7 +353,10 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
                     className="rounded-none border-black/5 bg-white"
                   >
                     <FileUploadItemPreview />
-                    <FileUploadItemMetadata className="font-light text-[11px]" />
+                    <div className="flex-1 min-w-0">
+                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <FileUploadItemProgress className="mt-1" />
+                    </div>
                     <FileUploadItemDelete
                       render={
                         <Button
@@ -413,6 +463,7 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
                 value={demoFiles}
                 onValueChange={setDemoFiles}
                 onFileReject={onFileReject}
+                onUpload={handleUploadDemo}
                 multiple
                 name="demo_images_files"
                 className="w-full"
@@ -450,7 +501,10 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
                       className="rounded-none border-black/5 bg-white p-3"
                     >
                       <FileUploadItemPreview className="size-12 rounded-none" />
-                      <FileUploadItemMetadata className="truncate font-light text-[10px]" />
+                      <div className="flex-1 min-w-0">
+                        <FileUploadItemMetadata className="truncate font-light text-[10px]" />
+                        <FileUploadItemProgress className="mt-1" />
+                      </div>
                       <FileUploadItemDelete
                         render={
                           <Button
@@ -489,15 +543,17 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
         <div className="flex flex-col gap-6 pt-10 sm:flex-row">
           <Button
             type="submit"
-            disabled={isPending}
+            disabled={isPending || activeUploads > 0}
             className="flex-1 rounded-none bg-obsidian py-8 font-medium text-[11px] text-ivory uppercase tracking-[0.3em] shadow-luxury transition-all duration-500 hover:bg-obsidian"
           >
-            {isPending && <Spinner data-icon="inline-start" />}
+            {(isPending || activeUploads > 0) && <Spinner data-icon="inline-start" />}
             {isPending
               ? "Đang lưu..."
-              : initialData
-                ? "Cập nhật dịch vụ"
-                : "Tạo dịch vụ"}
+              : activeUploads > 0
+                ? `Đang tải ${activeUploads} ảnh...`
+                : initialData
+                  ? "Cập nhật dịch vụ"
+                  : "Tạo dịch vụ"}
           </Button>
           <Button
             variant="ghost"

@@ -14,9 +14,11 @@ import {
   FileUploadItemDelete,
   FileUploadItemMetadata,
   FileUploadItemPreview,
+  FileUploadItemProgress,
   FileUploadList,
   FileUploadTrigger,
 } from "@/components/ui/file-upload";
+import { uploadImageFile } from "@/lib/upload-image-client";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -72,6 +74,98 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
     initialData?.video_url || "",
   );
 
+  const [uploadedGalleryUrls, setUploadedGalleryUrls] = useState<Map<File, string>>(new Map());
+  const [activeUploads, setActiveUploads] = useState(0);
+
+  const handleUploadGallery = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    setActiveUploads(prev => prev + files.length);
+    const promises = files.map(async (file) => {
+      try {
+        const result = await uploadImageFile(file, "portfolio", (progress) => {
+          options.onProgress(file, progress);
+        });
+        if (result.success && result.url) {
+          setUploadedGalleryUrls((prev) => {
+            const next = new Map(prev);
+            next.set(file, result.url!);
+            return next;
+          });
+          options.onSuccess(file);
+        } else {
+          options.onError(file, new Error(result.message || "Tải ảnh thất bại"));
+        }
+      } catch (err) {
+        options.onError(file, err instanceof Error ? err : new Error("Tải ảnh thất bại"));
+      } finally {
+        setActiveUploads(prev => Math.max(0, prev - 1));
+      }
+    });
+    await Promise.all(promises);
+  }, []);
+
+  const handleUploadCover = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (files.length === 0) return;
+    const file = files[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadImageFile(file, "portfolio", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setCoverImageText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải ảnh bìa thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải ảnh bìa thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
+
+  const handleUploadVideo = useCallback(async (
+    files: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (files.length === 0) return;
+    const file = files[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadVideoFile(file, "portfolio", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setVideoUrlText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải video thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải video thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
+
   const parsedImages = imagesText
     .split(/,|\n/)
     .map((s) => s.trim())
@@ -90,68 +184,32 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (activeUploads > 0) {
+      toast.error("Vui lòng đợi quá trình tải ảnh/video lên hoàn tất!");
+      return;
+    }
     setIsPending(true);
 
     try {
       const formData = new FormData(e.currentTarget);
 
-      // Upload cover file if any
-      let newCover = coverImageText;
-      if (coverFiles.length > 0) {
-        const fd = new FormData();
-        fd.append("file", coverFiles[0]);
-        const res = await uploadImageAction(fd, "portfolio");
-        if (res.success && res.url) {
-          newCover = res.url;
-        } else {
-          toast.error(`Lỗi tải ảnh bìa: ${res.message}`);
-          setIsPending(false);
-          return;
-        }
-      }
-
-      // Upload gallery files concurrently
-      const uploadPromises = galleryFiles.map(async (file) => {
-        const fd = new FormData();
-        fd.append("file", file);
-        const res = await uploadImageAction(fd, "portfolio");
-        if (res.success && res.url) {
-          return res.url;
-        } else {
-          toast.error(`Lỗi tải ảnh "${file.name}": ${res.message}`);
-          return null;
-        }
-      });
-      const uploadResults = await Promise.all(uploadPromises);
-      const newGalleryUrls = uploadResults.filter(
-        (url): url is string => !!url,
-      );
-
-      // Cleanup files from formData
+      // Cleanup files from formData so we don't submit raw binary fields via server actions
       formData.delete("images_files");
       formData.delete("cover_image_file");
-
-      let newVideoUrl = videoUrlText;
-      if (videoFiles.length > 0) {
-        const res = await uploadVideoFile(videoFiles[0], "portfolio");
-        if (res.success && res.url) {
-          newVideoUrl = res.url;
-        } else {
-          toast.error(`Lỗi tải video: ${res.message}`);
-          setIsPending(false);
-          return;
-        }
-      }
-
       formData.delete("video_file");
 
-      if (newCover) {
-        formData.set("cover_image", newCover);
+      if (coverImageText) {
+        formData.set("cover_image", coverImageText);
       }
+
+      // Map current gallery files to their uploaded URLs
+      const newGalleryUrls = galleryFiles
+        .map((file) => uploadedGalleryUrls.get(file))
+        .filter((url): url is string => !!url);
 
       const allImages = [...parsedImages, ...newGalleryUrls];
       formData.set("images", allImages.join(","));
-      formData.set("video_url", newVideoUrl);
+      formData.set("video_url", videoUrlText);
 
       if (initialData) {
         await updatePortfolioAction(initialData.id, formData);
@@ -337,6 +395,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
               value={coverFiles}
               onValueChange={setCoverFiles}
               onFileReject={onFileReject}
+              onUpload={handleUploadCover}
               name="cover_image_file"
               className="w-full"
             >
@@ -374,7 +433,10 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                     className="rounded-none border-black/5 bg-white"
                   >
                     <FileUploadItemPreview />
-                    <FileUploadItemMetadata className="font-light text-[11px]" />
+                    <div className="flex-1 min-w-0">
+                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <FileUploadItemProgress className="mt-1" />
+                    </div>
                     <FileUploadItemDelete
                       render={
                         <Button
@@ -445,6 +507,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
               value={galleryFiles}
               onValueChange={setGalleryFiles}
               onFileReject={onFileReject}
+              onUpload={handleUploadGallery}
               multiple
               name="images_files"
               className="w-full"
@@ -482,7 +545,10 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                     className="rounded-none border-black/5 bg-white p-3"
                   >
                     <FileUploadItemPreview className="size-12 rounded-none" />
-                    <FileUploadItemMetadata className="truncate font-light text-[10px]" />
+                    <div className="flex-1 min-w-0">
+                      <FileUploadItemMetadata className="truncate font-light text-[10px]" />
+                      <FileUploadItemProgress className="mt-1" />
+                    </div>
                     <FileUploadItemDelete
                       render={
                         <Button
@@ -576,6 +642,7 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                 value={videoFiles}
                 onValueChange={setVideoFiles}
                 onFileReject={onFileReject}
+                onUpload={handleUploadVideo}
                 name="video_file"
                 className="w-full"
               >
@@ -613,7 +680,10 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
                       className="rounded-none border-black/5 bg-white"
                     >
                       <FileUploadItemPreview />
-                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <div className="flex-1 min-w-0">
+                        <FileUploadItemMetadata className="font-light text-[11px]" />
+                        <FileUploadItemProgress className="mt-1" />
+                      </div>
                       <FileUploadItemDelete
                         render={
                           <Button
@@ -683,11 +753,15 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         <div className="flex flex-col gap-6 pt-12 sm:flex-row">
           <Button
             type="submit"
-            disabled={isPending}
+            disabled={isPending || activeUploads > 0}
             className="flex-1 rounded-none bg-obsidian py-8 font-medium text-[11px] text-ivory uppercase tracking-[0.3em] shadow-luxury transition-all duration-500 hover:bg-obsidian"
           >
-            {isPending && <Spinner className="mr-2" />}
-            {isPending ? "Đang lưu hệ thống..." : "Lưu Portfolio"}
+            {(isPending || activeUploads > 0) && <Spinner className="mr-2" />}
+            {isPending
+              ? "Đang lưu hệ thống..."
+              : activeUploads > 0
+                ? `Đang tải ${activeUploads} tệp lên...`
+                : "Lưu Portfolio"}
           </Button>
           <Button
             variant="ghost"

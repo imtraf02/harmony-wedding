@@ -13,9 +13,11 @@ import {
   FileUploadItemDelete,
   FileUploadItemMetadata,
   FileUploadItemPreview,
+  FileUploadItemProgress,
   FileUploadList,
   FileUploadTrigger,
 } from "@/components/ui/file-upload";
+import { uploadImageFile } from "@/lib/upload-image-client";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import type { HeroSlide } from "@/lib/queries/hero";
@@ -29,6 +31,35 @@ export function HeroForm({ initialData }: HeroFormProps) {
   const [isPending, setIsPending] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [srcText, setSrcText] = useState(initialData?.src || "");
+  const [activeUploads, setActiveUploads] = useState(0);
+
+  const handleUploadImage = useCallback(async (
+    filesList: File[],
+    options: {
+      onProgress: (file: File, progress: number) => void;
+      onSuccess: (file: File) => void;
+      onError: (file: File, error: Error) => void;
+    }
+  ) => {
+    if (filesList.length === 0) return;
+    const file = filesList[0];
+    setActiveUploads(prev => prev + 1);
+    try {
+      const result = await uploadImageFile(file, "hero", (progress) => {
+        options.onProgress(file, progress);
+      });
+      if (result.success && result.url) {
+        setSrcText(result.url);
+        options.onSuccess(file);
+      } else {
+        options.onError(file, new Error(result.message || "Tải ảnh thất bại"));
+      }
+    } catch (err) {
+      options.onError(file, err instanceof Error ? err : new Error("Tải ảnh thất bại"));
+    } finally {
+      setActiveUploads(prev => Math.max(0, prev - 1));
+    }
+  }, []);
 
   const onFileReject = useCallback((file: File, message: string) => {
     toast.error(message, { description: `"${file.name}" bị từ chối` });
@@ -36,28 +67,18 @@ export function HeroForm({ initialData }: HeroFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (activeUploads > 0) {
+      toast.error("Vui lòng đợi quá trình tải ảnh lên hoàn tất!");
+      return;
+    }
     setIsPending(true);
 
     try {
       const formData = new FormData(e.currentTarget);
 
-      let finalSrc = srcText;
-      if (files.length > 0) {
-        const fd = new FormData();
-        fd.append("file", files[0]);
-        const res = await uploadImageAction(fd, "hero");
-        if (res.success) {
-          finalSrc = res.url!;
-        } else {
-          toast.error(`Lỗi tải ảnh slide: ${res.message}`);
-          setIsPending(false);
-          return;
-        }
-      }
-
       formData.delete("src_file");
-      if (finalSrc) {
-        formData.set("src", finalSrc);
+      if (srcText) {
+        formData.set("src", srcText);
       }
 
       if (initialData) {
@@ -239,6 +260,7 @@ export function HeroForm({ initialData }: HeroFormProps) {
                 value={files}
                 onValueChange={setFiles}
                 onFileReject={onFileReject}
+                onUpload={handleUploadImage}
               >
                 <FileUploadDropzone className="border-black/5 border-dashed bg-luxury-surface py-10 transition-all hover:border-obsidian/30 hover:bg-white">
                   <div className="flex flex-col items-center gap-4 text-center">
@@ -274,7 +296,10 @@ export function HeroForm({ initialData }: HeroFormProps) {
                       className="rounded-none border-black/5 bg-white"
                     >
                       <FileUploadItemPreview />
-                      <FileUploadItemMetadata className="font-light text-[11px]" />
+                      <div className="flex-1 min-w-0">
+                        <FileUploadItemMetadata className="font-light text-[11px]" />
+                        <FileUploadItemProgress className="mt-1" />
+                      </div>
                       <FileUploadItemDelete
                         render={
                           <Button
@@ -298,12 +323,12 @@ export function HeroForm({ initialData }: HeroFormProps) {
       <div className="flex justify-end gap-4 border-black/5 border-t pt-10">
         <Button
           type="submit"
-          disabled={isPending}
+          disabled={isPending || activeUploads > 0}
           className="rounded-none bg-obsidian px-12 py-7 font-medium text-[11px] text-ivory uppercase tracking-[0.2em] shadow-luxury transition-all duration-500 hover:bg-obsidian"
         >
-          {isPending ? (
+          {isPending || activeUploads > 0 ? (
             <>
-              <Spinner className="mr-2 size-4" /> Đang xử lý...
+              <Spinner className="mr-2 size-4" /> {activeUploads > 0 ? "Đang tải ảnh..." : "Đang xử lý..."}
             </>
           ) : initialData ? (
             "Cập nhật Slide"
