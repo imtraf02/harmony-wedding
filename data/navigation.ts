@@ -10,9 +10,9 @@ export const navLinks: NavLink[] = [
     label: "Dịch vụ",
     href: "/services",
     children: [
-      { label: "Chụp ảnh cưới", href: "/services/photography" },
-      { label: "Quay phim cưới", href: "/services/videography" },
-      { label: "Phóng sự cưới", href: "/services/wedding-film" },
+      { label: "Gói Dịch Vụ Ngày Cưới", href: "/services" },
+      { label: "Gói Chụp Ảnh Album", href: "/services" },
+      { label: "Thuê Lẻ & Phát Sinh", href: "/services" },
     ],
   },
   {

@@ -36,9 +36,9 @@ const INITIAL: FormState = {
 };
 
 const serviceItems = [
-  { label: "Chụp ảnh cưới", value: "photography" },
-  { label: "Quay phim cưới", value: "videography" },
-  { label: "Phóng sự cưới", value: "wedding-film" },
+  { label: "Gói Dịch Vụ Ngày Cưới", value: "wedding-film" },
+  { label: "Gói Chụp Ảnh Album", value: "photography" },
+  { label: "Thuê Lẻ & Phát Sinh", value: "videography" },
   { label: "Gói Combo (Ảnh + Phim)", value: "combo" },
 ];
 

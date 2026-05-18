@@ -66,7 +66,7 @@ function DesktopDropdown({
 
       <ul className="py-2">
         {items.map((child, i) => (
-          <li key={child.href}>
+          <li key={child.label}>
             <Link
               href={child.href}
               role="menuitem"
@@ -283,7 +283,7 @@ function MobileMenu({
                     <ul className="space-y-3 pt-2 pl-9">
                       {link.children.map((child, j) => (
                         <li
-                          key={child.href}
+                          key={child.label}
                           className="animate-fade-in-up-luxury"
                           style={
                             {
@@ -523,7 +523,7 @@ export function Header() {
               <ul className="flex items-center gap-6 xl:gap-12">
                 {(navLinks as NavLink[]).map((link) => (
                   <li
-                    key={link.href}
+                    key={link.label}
                     className="relative"
                     onMouseEnter={() =>
                       link.children && openDropdown(link.href)

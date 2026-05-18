@@ -7,10 +7,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000"
   ).replace(/\/$/, "");
 
-  // Fetch dynamic routes
-  const portfolios = db
-    .prepare(`SELECT slug, updated_at FROM portfolios`)
-    .all() as { slug: string; updated_at: string }[];
+  let portfolios: { slug: string; updated_at: string }[] = [];
+  try {
+    portfolios = db
+      .prepare(`SELECT slug, updated_at FROM portfolios`)
+      .all() as { slug: string; updated_at: string }[];
+  } catch (error) {
+    console.error("Failed to fetch portfolios for sitemap:", error);
+  }
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: base, priority: 1.0, changeFrequency: "weekly" },

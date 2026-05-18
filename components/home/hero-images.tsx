@@ -71,7 +71,7 @@ const textBlockVariants: Variants = {
 
 export function HeroImages({ items }: HeroImagesProps) {
   return (
-    <section className="relative overflow-hidden bg-luxury pt-20 pb-12 md:pt-32 md:pb-24">
+    <section className="relative overflow-hidden bg-luxury pt-24 pb-12 md:pt-32 md:pb-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="space-y-8 md:space-y-48">
           {items.map((item, index) => {
