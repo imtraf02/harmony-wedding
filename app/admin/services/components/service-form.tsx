@@ -75,18 +75,22 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
         heroImage = result.url;
       }
 
-      const uploadedDemoUrls: string[] = [];
-      for (const file of demoFiles) {
+      // Upload demo files concurrently
+      const uploadPromises = demoFiles.map(async (file) => {
         const uploadData = new FormData();
         uploadData.append("file", file);
         const result = await uploadImageAction(uploadData, "services");
-
         if (result.success && result.url) {
-          uploadedDemoUrls.push(result.url);
+          return result.url;
         } else {
           toast.error(`Lỗi tải ảnh "${file.name}": ${result.message}`);
+          return null;
         }
-      }
+      });
+      const uploadResults = await Promise.all(uploadPromises);
+      const uploadedDemoUrls = uploadResults.filter(
+        (url): url is string => !!url,
+      );
 
       formData.delete("hero_image_file");
       formData.delete("demo_images_files");

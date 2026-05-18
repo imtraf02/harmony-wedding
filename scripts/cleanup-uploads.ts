@@ -1,9 +1,9 @@
-import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import Database from "better-sqlite3";
-import { getDatabasePath } from "../lib/db-path";
 import { UPLOAD_DIR } from "../lib/constants";
+import { getDatabasePath } from "../lib/db-path";
 
 async function cleanupUploads() {
   const dbPath = getDatabasePath();

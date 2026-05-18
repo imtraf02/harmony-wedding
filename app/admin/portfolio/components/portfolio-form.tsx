@@ -110,18 +110,22 @@ export function PortfolioForm({ initialData }: PortfolioFormProps) {
         }
       }
 
-      // Upload gallery files one by one
-      const newGalleryUrls: string[] = [];
-      for (const file of galleryFiles) {
+      // Upload gallery files concurrently
+      const uploadPromises = galleryFiles.map(async (file) => {
         const fd = new FormData();
         fd.append("file", file);
         const res = await uploadImageAction(fd, "portfolio");
         if (res.success && res.url) {
-          newGalleryUrls.push(res.url);
+          return res.url;
         } else {
           toast.error(`Lỗi tải ảnh "${file.name}": ${res.message}`);
+          return null;
         }
-      }
+      });
+      const uploadResults = await Promise.all(uploadPromises);
+      const newGalleryUrls = uploadResults.filter(
+        (url): url is string => !!url,
+      );
 
       // Cleanup files from formData
       formData.delete("images_files");
