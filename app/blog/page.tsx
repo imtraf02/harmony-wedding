@@ -37,7 +37,7 @@ export default function BlogPage() {
 
         {/* Blog Grid */}
         {posts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7">
             {posts.map((post) => (
               <article
                 key={post.id}

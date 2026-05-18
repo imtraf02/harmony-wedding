@@ -1,5 +1,4 @@
 import crypto from "node:crypto";
-import { once } from "node:events";
 import { createWriteStream, promises as fs } from "node:fs";
 import path from "node:path";
 import { getIronSession } from "iron-session";
@@ -17,6 +16,12 @@ function resolveUploadDir(category: string) {
   return path.isAbsolute(UPLOAD_DIR)
     ? path.join(UPLOAD_DIR, category, "videos")
     : path.join(process.cwd(), UPLOAD_DIR, category, "videos");
+}
+
+function resolveTempDir(uploadId: string) {
+  return path.isAbsolute(UPLOAD_DIR)
+    ? path.join(UPLOAD_DIR, "tmp", uploadId)
+    : path.join(process.cwd(), UPLOAD_DIR, "tmp", uploadId);
 }
 
 function parseCategory(value: string | null) {
@@ -59,79 +64,116 @@ export async function POST(request: Request) {
     );
   }
 
-  const body = request.body;
-  if (!body) {
-    return NextResponse.json(
-      { success: false, message: "No file found" },
-      { status: 400 },
-    );
-  }
-
-  const maxSize = VIDEO_UPLOAD_MAX_MB * 1024 * 1024;
-  const contentLength = Number(request.headers.get("content-length") || 0);
-  if (contentLength > maxSize) {
-    return NextResponse.json(
-      { success: false, message: `Video tối đa ${VIDEO_UPLOAD_MAX_MB}MB` },
-      { status: 413 },
-    );
-  }
-
-  const fileType = request.headers.get("content-type") || "";
-  const originalName = parseFilename(request.headers.get("x-file-name"));
-  const ext = path.extname(originalName).toLowerCase();
-
-  if (!fileType.startsWith("video/") || !VIDEO_EXTENSIONS.has(ext)) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Chỉ hỗ trợ video MP4, WebM, OGG, MOV hoặc M4V",
-      },
-      { status: 400 },
-    );
-  }
-
-  let filepath = "";
   try {
     const url = new URL(request.url);
     const category = parseCategory(url.searchParams.get("category"));
-    const dir = resolveUploadDir(category);
-    const filename = `${crypto.randomBytes(8).toString("hex")}${ext}`;
-    filepath = path.join(dir, filename);
 
-    await fs.mkdir(dir, { recursive: true });
+    // Check if it's a chunked upload
+    const uploadId = request.headers.get("x-upload-id") || "";
+    const chunkIndexStr = request.headers.get("x-chunk-index");
+    const totalChunksStr = request.headers.get("x-total-chunks");
+    const originalName = parseFilename(request.headers.get("x-file-name"));
+    const ext = path.extname(originalName).toLowerCase();
 
-    const reader = body.getReader();
-    const fileStream = createWriteStream(filepath, { flags: "wx" });
-    let uploadedBytes = 0;
+    if (!VIDEO_EXTENSIONS.has(ext)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Chỉ hỗ trợ video MP4, WebM, OGG, MOV hoặc M4V",
+        },
+        { status: 400 },
+      );
+    }
 
-    try {
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+    const arrayBuffer = await request.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-        uploadedBytes += value.byteLength;
-        if (uploadedBytes > maxSize) {
-          throw new Error(`Video tối đa ${VIDEO_UPLOAD_MAX_MB}MB`);
-        }
-
-        if (!fileStream.write(value)) {
-          await once(fileStream, "drain");
-        }
+    // If it's a standard single-file upload (no chunk headers)
+    if (!uploadId || chunkIndexStr === null || totalChunksStr === null) {
+      const maxSize = VIDEO_UPLOAD_MAX_MB * 1024 * 1024;
+      if (buffer.length > maxSize) {
+        return NextResponse.json(
+          { success: false, message: `Video tối đa ${VIDEO_UPLOAD_MAX_MB}MB` },
+          { status: 413 },
+        );
       }
-    } finally {
-      fileStream.end();
-      await once(fileStream, "finish");
+
+      const dir = resolveUploadDir(category);
+      const filename = `${crypto.randomBytes(8).toString("hex")}${ext}`;
+      const filepath = path.join(dir, filename);
+
+      await fs.mkdir(dir, { recursive: true });
+      await fs.writeFile(filepath, buffer);
+
+      return NextResponse.json({
+        success: true,
+        url: `/uploads/${category}/videos/${filename}`,
+      });
+    }
+
+    // Chunked Upload logic
+    const chunkIndex = parseInt(chunkIndexStr, 10);
+    const totalChunks = parseInt(totalChunksStr, 10);
+
+    // Validate chunk numbers and upload ID
+    if (
+      Number.isNaN(chunkIndex) ||
+      Number.isNaN(totalChunks) ||
+      !/^[a-zA-Z0-9_-]{8,64}$/.test(uploadId)
+    ) {
+      return NextResponse.json(
+        { success: false, message: "Thông số chunk không hợp lệ" },
+        { status: 400 },
+      );
+    }
+
+    const tempDir = resolveTempDir(uploadId);
+    await fs.mkdir(tempDir, { recursive: true });
+
+    // Save the current chunk
+    const chunkPath = path.join(tempDir, `chunk_${chunkIndex}`);
+    await fs.writeFile(chunkPath, buffer);
+
+    // Check if we received all chunks
+    const files = await fs.readdir(tempDir);
+    const chunkFiles = files.filter((f) => f.startsWith("chunk_"));
+
+    if (chunkFiles.length === totalChunks) {
+      // All chunks are uploaded, merge them
+      const dir = resolveUploadDir(category);
+      const filename = `${crypto.randomBytes(8).toString("hex")}${ext}`;
+      const filepath = path.join(dir, filename);
+
+      await fs.mkdir(dir, { recursive: true });
+
+      // Merge sequential chunks to the final file path
+      const writeStream = createWriteStream(filepath);
+
+      for (let i = 0; i < totalChunks; i++) {
+        const partPath = path.join(tempDir, `chunk_${i}`);
+        const partBuffer = await fs.readFile(partPath);
+        writeStream.write(partBuffer);
+        // Delete chunk file immediately to save space
+        await fs.unlink(partPath).catch(() => {});
+      }
+
+      writeStream.end();
+      
+      // Clean up the temp directory
+      await fs.rm(tempDir, { recursive: true, force: true }).catch(() => {});
+
+      return NextResponse.json({
+        success: true,
+        url: `/uploads/${category}/videos/${filename}`,
+      });
     }
 
     return NextResponse.json({
       success: true,
-      url: `/uploads/${category}/videos/${filename}`,
+      message: `Đã tải lên phân đoạn ${chunkIndex + 1}/${totalChunks}`,
     });
   } catch (err) {
-    if (filepath) {
-      await fs.unlink(filepath).catch(() => {});
-    }
-
+    console.error("Video upload error:", err);
     return NextResponse.json(
       {
         success: false,

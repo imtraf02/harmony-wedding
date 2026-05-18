@@ -76,7 +76,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                 Ảnh demo dịch vụ
               </h2>
             </div>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7">
               {demoImages.map((image, index) => (
                 <div
                   key={`${image}-${index}`}

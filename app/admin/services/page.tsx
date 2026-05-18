@@ -37,7 +37,7 @@ export default function AdminServicesPage() {
         <SortableAdminGrid
           ids={services.map((service) => service.id)}
           onReorder={reorderServicesAction}
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7"
         >
           {services.map((service) => (
             <article

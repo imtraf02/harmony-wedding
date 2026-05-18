@@ -55,7 +55,7 @@ const orientationItems = [
   { label: "Vuông - 1/1", value: "square" },
 ];
 
-const VIDEO_MAX_SIZE = 99 * 1024 * 1024;
+const VIDEO_MAX_SIZE = 500 * 1024 * 1024;
 
 export function PostProductionForm({ initialData }: PostProductionFormProps) {
   const [isPending, setIsPending] = useState(false);
@@ -302,7 +302,7 @@ export function PostProductionForm({ initialData }: PostProductionFormProps) {
                       Tải video dọc lên
                     </p>
                     <p className="mt-1 text-[10px] text-mist">
-                      MP4, WebM, OGG, MOV tối đa 99MB (Giới hạn Cloudflare)
+                      MP4, WebM, OGG, MOV tối đa 500MB (Tự động chia nhỏ khi tải lên)
                     </p>
                   </div>
                   <FileUploadTrigger
