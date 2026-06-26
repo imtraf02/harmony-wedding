@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-
+import { siteConfig } from "@/lib/config";
 import { blogPosts } from "@/constants/blog";
 import { albumItems, albumDetails } from "@/constants/data";
 
-const BASE_URL = "https://harmonywedding.vn";
+const BASE_URL = siteConfig.url;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const albumSlugs = new Set([
