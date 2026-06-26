@@ -111,7 +111,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 			<JsonLd data={articleJsonLd} />
 
 			{/* Article Content Section */}
-			<article className="mx-auto max-w-[800px] px-5 py-24 md:px-8 md:py-32">
+			<article className="mx-auto max-w-[800px] px-5 pt-[11.5rem] pb-24 md:px-8 md:pt-56 md:pb-32">
 				{/* Article Meta */}
 				<header className="mb-10 text-center md:mb-14">
 					<span className="inline-block rounded-full bg-neutral-50 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-widest text-neutral-500">

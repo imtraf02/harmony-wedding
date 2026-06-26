@@ -34,7 +34,7 @@ export function BlogPage() {
 			<Header variant="solid" />
 
 			{/* Hero banner section */}
-			<section className="relative overflow-hidden bg-neutral-950 py-20 text-center text-white md:py-28">
+			<section className="relative overflow-hidden bg-neutral-950 pt-[10.5rem] pb-20 text-center text-white md:pt-[13rem] md:pb-28">
 				<div className="absolute inset-0 opacity-20">
 					<div className="absolute inset-0 bg-radial-[circle_at_center,_var(--tw-gradient-stops)] from-neutral-800 to-black" />
 				</div>
