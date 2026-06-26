@@ -309,6 +309,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 										sizes="(min-width: 1280px) 320px, (min-width: 768px) 340px, (min-width: 640px) 384px, 100vw"
 										src={item.image}
 										unoptimized
+										priority={index < 4}
 									/>
 								</article>
 							);

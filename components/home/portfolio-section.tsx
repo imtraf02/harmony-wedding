@@ -210,7 +210,7 @@ export function PortfolioSection() {
             className="flex gap-5 pb-4 lg:w-max lg:flex-row lg:gap-8 lg:pb-0"
             ref={trackRef}
           >
-            {portfolioItems.map((item) => {
+            {portfolioItems.map((item, index) => {
               const cardClasses =
                 "portfolio-card group relative block aspect-[1365/2048] w-[78vw] shrink-0 snap-start overflow-hidden rounded-md bg-neutral-900 md:w-[45vw] md:max-w-[400px] lg:h-[72vh] lg:w-[48vh] lg:max-w-none lg:shrink-0 lg:rounded-none lg:bg-neutral-100 cursor-pointer";
 
@@ -222,6 +222,7 @@ export function PortfolioSection() {
                     fill
                     sizes="(min-width: 1024px) 52vw, 100vw"
                     src={item.image}
+                    priority={index < 3}
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_48%,rgba(0,0,0,0.74)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">

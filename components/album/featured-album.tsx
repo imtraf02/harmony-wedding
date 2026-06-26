@@ -46,6 +46,7 @@ export function FeaturedAlbum() {
                 fill
                 sizes="100vw"
                 src={item.image}
+                priority={index === 0 || index === 1}
               />
             </div>
           ))}
@@ -67,6 +68,7 @@ export function FeaturedAlbum() {
                 fill
                 sizes={item.featured ? "(min-width: 1024px) 42vw, 100vw" : "30vw"}
                 src={item.image}
+                priority={item.featured}
               />
             </div>
           ))}
