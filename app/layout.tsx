@@ -3,9 +3,10 @@ import type { ReactNode } from "react";
 
 import { FloatingContact } from "@/components/home/floating-contact";
 import { LocalBusinessJsonLd, WebsiteJsonLd } from "@/components/seo/json-ld";
+import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
-const SITE_URL = "https://harmonywedding.vn";
+const SITE_URL = siteConfig.url;
 
 export const viewport: Viewport = {
 	themeColor: "#111111",

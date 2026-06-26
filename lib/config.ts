@@ -1,8 +1,8 @@
 export const siteConfig = {
 	name: "Harmony Wedding",
 	tagline: "Khoảnh Khắc Trọn Đời",
-	url: "https://harmonywedding.vn",
-	ogImage: "https://harmonywedding.vn/og.jpg",
+	url: "https://harmonywedding.com.vn",
+	ogImage: "https://harmonywedding.com.vn/og.jpg",
 	description:
 		"Studio cưới cao cấp tại Việt Nam, chuyên chụp ảnh cưới, phim cưới và trải nghiệm hình ảnh tinh tế.",
 	email: "giahan6845@gmail.com",
