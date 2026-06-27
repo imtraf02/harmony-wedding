@@ -16,6 +16,7 @@ export function AlbumHero() {
             priority
             sizes="100vw"
             src={albumHero.image}
+            unoptimized
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_18%,rgba(0,0,0,0.82)_100%)]" />
           <div className="absolute inset-x-0 bottom-0 px-5 pb-10 text-white">
@@ -92,6 +93,7 @@ export function AlbumHero() {
             priority
             sizes="55vw"
             src={albumHero.image}
+            unoptimized
           />
           <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent" />
         </div>

@@ -47,6 +47,7 @@ export function FeaturedAlbum() {
                 sizes="100vw"
                 src={item.image}
                 priority={index === 0 || index === 1}
+                unoptimized
               />
             </div>
           ))}
@@ -69,6 +70,7 @@ export function FeaturedAlbum() {
                 sizes={item.featured ? "(min-width: 1024px) 42vw, 100vw" : "30vw"}
                 src={item.image}
                 priority={item.featured}
+                unoptimized
               />
             </div>
           ))}

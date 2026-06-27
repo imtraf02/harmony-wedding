@@ -15,13 +15,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Làm sao để không bị gượng gạo trước ống kính? Harmony gợi ý những bí quyết tạo dáng tự nhiên, giúp lưu lại trọn vẹn cảm xúc chân thật nhất của hai bạn.",
 		coverImage: "/images/blog/wedding_posing.png",
-		date: "25/06/2026",
+		date: "05/06/2026",
 		readTime: "5 phút đọc",
 		category: "Kinh Nghiệm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -91,13 +87,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Khám phá những góc chụp đầy nghệ thuật, từ Sunny Garden lãng mạn đến các phim trường và ngoại cảnh thiên nhiên độc đáo ngay tại Đồng Nai.",
 		coverImage: "/images/blog/wedding_locations.png",
-		date: "18/06/2026",
+		date: "01/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -167,13 +159,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Mỗi vóc dáng đều có những thiết kế váy cưới và vest tôn dáng nhất. Tìm hiểu bí quyết từ Harmony để hai bạn tự tin tỏa sáng trong ngày trọng đại.",
 		coverImage: "/images/blog/wedding_attire.png",
-		date: "10/06/2026",
+		date: "28/05/2026",
 		readTime: "7 phút đọc",
 		category: "Trang Phục",
-		author: {
-			name: "Gia Hân",
-			role: "Bridal Stylist & Consultant",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -242,13 +230,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Phong cách trang điểm trong suốt, tự nhiên nhưng không kém phần quý phái đang dẫn đầu xu hướng mùa cưới năm nay. Khám phá những điểm nhấn đặc biệt.",
 		coverImage: "/images/blog/wedding_makeup.png",
-		date: "05/06/2026",
+		date: "24/05/2026",
 		readTime: "5 phút đọc",
 		category: "Trang Điểm",
-		author: {
-			name: "Gia Hân",
-			role: "Bridal Stylist & Consultant",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -309,13 +293,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Khám phá Vũ Garden Bình Dương - Phim trường cưới mang đậm phong cách Châu Âu cổ điển với những nhà kính ngập tràn ánh sáng và khu vườn thượng uyển đầy hoa hồng lãng mạn.",
 		coverImage: "/images/blog/vu_garden_cover.png",
-		date: "30/06/2026",
+		date: "08/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -383,13 +363,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Chi tiết về bối cảnh, chi phí và kinh nghiệm chụp ảnh cưới tại Sunny Garden Đồng Nai - phim trường mang phong cách đồng quê châu Âu lãng mạn.",
 		coverImage: "/images/blog/sunny_garden_cover.png",
-		date: "02/07/2026",
+		date: "12/06/2026",
 		readTime: "5 phút đọc",
 		category: "Địa Điểm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -456,13 +432,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Khám phá bối cảnh ngập tràn sắc xanh tươi mát, những góc nhà gỗ Hàn Quốc lãng mạn tại An Garden - lựa chọn tuyệt vời cho các cặp đôi yêu thích phong cách mộc mạc.",
 		coverImage: "/images/blog/an_garden_cover.png",
-		date: "05/07/2026",
+		date: "15/06/2026",
 		readTime: "5 phút đọc",
 		category: "Địa Điểm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -529,13 +501,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Tìm hiểu chi tiết về phong cách chụp ảnh phóng sự cưới, sự khác biệt so với ảnh cưới truyền thống và kinh nghiệm lựa chọn dịch vụ tốt nhất cho ngày cưới.",
 		coverImage: "/images/blog/journalism_cover.png",
-		date: "08/07/2026",
+		date: "21/06/2026",
 		readTime: "6 phút đọc",
 		category: "Kinh Nghiệm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -602,13 +570,9 @@ export const blogPosts: BlogPost[] = [
 		summary:
 			"Đà Lạt luôn là điểm đến mơ ước của các cặp đôi. Khám phá những góc chụp ảnh cưới ngoại cảnh thơ mộng từ đồi thông xanh mướt, hồ Tuyền Lâm sương mờ đến những con dốc tình yêu hoài cổ.",
 		coverImage: "/images/blog/dalat_cover.png",
-		date: "12/07/2026",
+		date: "24/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
-		author: {
-			name: "Hiếu Trần",
-			role: "Founder & Lead Photographer",
-		},
 		content: [
 			{
 				type: "paragraph",
@@ -667,6 +631,749 @@ export const blogPosts: BlogPost[] = [
 			{
 				type: "paragraph",
 				text: "Một trong những lý do khiến chụp ảnh cưới Đà Lạt được yêu thích là bạn có thể kết hợp chuyến đi thành một buổi hẹn hò, nghỉ dưỡng ngắn ngày. Thay vì áp lực chụp ảnh, hãy coi đây là chuyến đi chơi để hâm nóng tình cảm. Những nụ cười hạnh phúc khi cùng nhau nhâm nhi ly cafe nóng, dạo bước qua chợ đêm hay ngắm hoàng hôn trên đồi sẽ được Harmony bắt trọn một cách tự nhiên và chân thật nhất.",
+			},
+		],
+	},
+	{
+		slug: "thue-vay-cuoi-chup-anh-cuoi-trang-bom-gia-harmony",
+		title: "Kinh Nghiệm Thuê Váy Cưới & Chụp Phóng Sự Cưới Đẹp Tại Trảng Bom: Bảng Giá Harmony Wedding Chi Tiết",
+		summary:
+			"Tìm kiếm tiệm áo cưới gần đây tại Trảng Bom? Harmony Wedding chia sẻ kinh nghiệm thuê váy cưới đẹp, chụp ảnh phóng sự cưới tự nhiên cùng bảng giá Harmony Soiree mới nhất.",
+		coverImage: "/images/blog/anime_wedding_cover.png",
+		date: "27/06/2026",
+		readTime: "8 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Chuẩn bị cho ngày trọng đại là một hành trình đong đầy cảm xúc nhưng cũng không ít lo toan. Đối với các cặp đôi tại Đồng Nai, việc tìm kiếm một tiệm áo cưới gần đây uy tín, chất lượng để thuê váy cưới và chụp ảnh phóng sự cưới đẹp là mối quan tâm hàng đầu. Giữa rất nhiều sự lựa chọn tại khu vực Đông Nam Bộ, làm sao để chọn được chiếc váy cưới, đầm cưới (wedding dress) hoàn hảo và một ekip chụp hình tận tâm? Hãy cùng Harmony Wedding khám phá kinh nghiệm chọn đồ cưới và tham khảo bảng giá Harmony mới nhất ngay tại Trảng Bom.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Tiêu chí chọn tiệm áo cưới gần đây và dịch vụ cho thuê váy Trảng Bom uy tín",
+			},
+			{
+				type: "paragraph",
+				text: "Khi tìm kiếm một tiệm thuê đồ gần đây hay tiệm áo cưới tại Trảng Bom, các cô dâu chú rể thường ưu tiên lựa chọn những studio uy tín hàng đầu như Harmony Wedding để gửi gắm niềm tin. Với thế mạnh về phong cách chụp ảnh cưới đẹp tự nhiên và gu phục trang tinh tế, Harmony sẽ giúp hai bạn tỏa sáng nhất. Để chọn được dịch vụ phù hợp, bạn nên lưu ý các yếu tố sau:",
+			},
+			{
+				type: "list",
+				items: [
+					"Sự đa dạng của váy cưới và vest: Một studio chất lượng cần sở hữu bộ sưu tập áo cưới phong phú từ phom dáng xòe phồng công chúa cho đến đầm cưới tối giản satin hiện đại.",
+					"Dịch vụ may đo chỉnh sửa theo số đo: Phục trang chỉ thực sự tôn dáng khi vừa vặn tuyệt đối. Các mẫu Harmony Soiree luôn được chỉnh sửa tỉ mỉ để cô dâu tự tin nhất.",
+					"Đội ngũ tư vấn tận tình: Chọn váy cưới (vay cuoi) cần người có chuyên môn đồng hành giúp bạn che đi khuyết điểm và tôn lên ưu điểm cơ thể.",
+				],
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_bride_soiree.png",
+				alt: "Cô dâu thử váy cưới Harmony Soiree trước gương",
+				caption: "Trải nghiệm thử váy cưới lãng mạn giúp cô dâu tìm thấy chiếc váy cưới mơ ước của đời mình.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Xu hướng thuê váy cưới và chụp phóng sự cưới đẹp hiện nay tại Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Nếu trước đây các cặp đôi chuộng lối chụp ảnh truyền thống cứng nhắc tại studio, thì xu hướng hiện nay lại hướng tới sự phóng khoáng, tự nhiên qua dịch vụ chụp ảnh phóng sự cưới và quay phim phóng sự cưới. Trải nghiệm chụp ảnh cưới gần đây được nâng tầm bằng các album phóng sự cưới chân thật, ghi lại từng giọt nước mắt hạnh phúc, nụ cười rạng rỡ của cô dâu chú rể tại ngày vui Trảng Bom. Bên cạnh đó, các buổi chụp pre-wedding ngoại cảnh hoang sơ tại Hồ Trị An hay chụp cưới Mathsen cá tính tại phim trường An Garden Đồng Nai cũng rất được ưa chuộng.",
+			},
+			{
+				type: "paragraph",
+				text: "Đi kèm với xu hướng chụp ảnh phóng sự cưới tự nhiên là phong cách phục trang tối giản nhưng sang trọng. Việc trang trí ngày cưới như cổng cưới hoa tươi, hoa cầm tay cô dâu cũng được kết hợp đồng bộ với màu sắc của váy cưới. Khi thuê váy cưới tại Harmony Wedding, cô dâu sẽ được tư vấn trọn gói từ trang điểm cô dâu, làm tóc cho đến phụ kiện đi kèm để tạo nên tổng thể hài hòa nhất, giúp cô dâu nhẹ nhàng di chuyển và có những bức ảnh phóng sự cưới tự nhiên nhất.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_photoshoot.png",
+				alt: "Cặp đôi chụp ảnh cưới ngoại cảnh dưới cổng cưới lãng mạn",
+				caption: "Concept chụp ảnh cưới ngoại cảnh tự nhiên kết hợp cổng cưới lãng mạn đang là xu hướng hot được yêu thích nhất.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Chi tiết bảng giá Harmony Wedding mới nhất",
+			},
+			{
+				type: "paragraph",
+				text: "Để giúp các cặp đôi dễ dàng lên ngân sách chuẩn bị đám cưới, Harmony Wedding xin chia sẻ chi tiết bảng giá Harmony mới nhất năm nay cho tất cả các dịch vụ từ chụp ảnh pre-wedding đến trọn gói ngày cưới:",
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "A. Gói Chụp Album Pre-wedding tại Studio",
+			},
+			{
+				type: "list",
+				items: [
+					"Gói Basic - 3.900.000đ: Chụp 1 váy + 1 vest, làm tóc & makeup chuyên nghiệp, tặng 1 ảnh cổng 60x90 tráng gương 4K bo viền, album 20 trang, 35 file chỉnh sửa, tặng 5 ảnh bàn.",
+					"Gói VIP - 4.900.000đ: Chụp 1 váy + 1 vest, làm tóc & makeup, tặng 2 ảnh cổng 60x90 tráng gương titan công nghệ mới, album 30 trang, 45 file chỉnh sửa, tặng 5 ảnh bàn.",
+					"Gói Concept VIP Độc Quyền - 6.900.000đ: Chụp 2 váy + 2 vest, 1 concept tự chọn độc đáo, tặng 2 ảnh cổng 60x90 tráng gương titan mới, album 30 trang cao cấp, 50 file chỉnh sửa, tặng 5 ảnh bàn.",
+				],
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "B. Combo Ngày Cưới (Chỉ Trang Phục Cưới)",
+			},
+			{
+				type: "list",
+				items: [
+					"Combo Diamond - 9.500.000đ: Gồm 2 váy Signature, 2 váy Ruby, 2 Veston cao cấp, 1 Áo dài dâu rể, 2 Hoa cầm tay cô dâu.",
+					"Combo Ruby - 13.000.000đ: Gồm 2 váy Signature, 3 váy Ruby, 3 Veston cao cấp, 1 cặp Áo dài dâu rể, 6 Áo dài phụ dâu rể, 1 Veston ông sui, 1 Áo dài bà sui, 2 Hoa cầm tay.",
+					"Combo Signature - 16.500.000đ: Gồm 3 váy Signature, 3 váy Ruby, 3 Veston cao cấp, 1 cặp Áo dài dâu rể, 6 Áo dài phụ dâu rể, 1 Vest ông sui, 2 Áo dài bà sui, 2 Hoa cầm tay.",
+				],
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "C. Trọn Gói 1 Ngày Cưới (Bao Gồm Quay Chụp & Phục Trang)",
+			},
+			{
+				type: "list",
+				items: [
+					"Gói Diamond - 11.000.000đ: 1 váy Signature, 1 váy Ruby, 1 bộ Veston thiết kế, 1 Áo dài dâu rể, 1 máy chụp phóng sự cưới (1 buổi), 1 makeup cô dâu tại nhà, 6 Áo dài phụ dâu rể, 1 Hoa cầm tay, album + 50 ảnh rửa 13x18.",
+					"Gói Ruby - 12.500.000đ: 1 váy Signature, 1 váy Ruby, 1 cặp Áo dài dâu rể, 2 bộ Veston thiết kế, 2 caravat, 1 makeup & làm tóc cô dâu tại tiệm, 1 máy chụp phóng sự (1 buổi), 6 Áo dài phụ dâu rể, 1 Vest sui (hoặc áo dài sui), 1 Hoa cầm tay, album + 50 ảnh rửa 18x18.",
+					"Gói Signature - 15.500.000đ: 2 váy Signature, 2 váy Ruby, 1 cặp Áo dài dâu rể, 2 bộ Veston thiết kế, 2 caravat, 1 makeup cô dâu tại tiệm, phụ kiện đi kèm, 1 manocanh, 1 máy chụp phóng sự (1 buổi), 1 Hoa cầm tay, album + 50 ảnh rửa 18x18.",
+					"Gói Super VIP - 19.500.000đ: 3 váy Signature, 1 váy Ruby, 1 cặp Áo dài dâu rể, 2 bộ Veston thiết kế, 2 caravat, 1 makeup cô dâu tại nhà, phụ kiện đi kèm, 1 manocanh, 2 máy chụp phóng sự (1 buổi), 1 Hoa cầm tay, album + 50 ảnh rửa 18x18, có ekip riêng take care ngày cưới.",
+				],
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "D. Bảng Giá Cho Thuê Trang Phục & Dịch Vụ Lẻ",
+			},
+			{
+				type: "list",
+				items: [
+					"Thuê Váy cưới Diamond lẻ: 1.550.000đ",
+					"Thuê Váy cưới Ruby lẻ: 1.850.000đ",
+					"Thuê Váy cưới Signature lẻ (Harmony Soiree): 2.250.000đ",
+					"Thuê Veston chú rể cao cấp: 600.000đ | Veston ông sui: 500.000đ",
+					"Thuê Áo dài cô dâu / bà sui: 600.000đ | Cặp Hỷ phục Trung Hoa: 3.500.000đ / cặp",
+					"Dịch vụ Makeup cô dâu tại tiệm: 1.500.000đ | Makeup cô dâu tại nhà: 2.000.000đ",
+				],
+			},
+			{
+				type: "quote",
+				text: "Đến với Wedding Harmony, chúng tôi không chỉ cho thuê một chiếc váy cưới, chúng tôi cùng bạn lưu giữ những khoảnh khắc hạnh phúc trọn vẹn nhất của cuộc đời.",
+				author: "Gia Hân",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Thông tin liên hệ Harmony Wedding tại Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Hãy liên hệ ngay với HarmonyWedding để nhận ưu đãi đặc biệt cho mùa cưới năm nay. Đội ngũ tư vấn luôn sẵn sàng hỗ trợ bạn qua hotline và địa chỉ studio trực tiếp:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "phoi-layout-trang-diem-phu-hop-dang-vay-cuoi-soiree",
+		title: "Bí Quyết Phối Layout Trang Điểm Cô Dâu Hợp Tone Với Từng Dáng Váy Cưới (Soiree)",
+		summary:
+			"Harmony Wedding hướng dẫn cách kết hợp layout trang điểm cô dâu và làm tóc hài hòa với từng kiểu dáng váy cưới khác nhau, giúp nàng tỏa sáng rạng ngời trong ngày cưới.",
+		coverImage: "/images/blog/anime_makeup_cover.png",
+		date: "27/06/2026",
+		readTime: "6 phút đọc",
+		category: "Trang Điểm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Khi chuẩn bị cho ngày trọng đại, bên cạnh việc chọn thuê váy cưới thì layout trang điểm cô dâu cũng đóng vai trò quyết định giúp tôn vinh vẻ đẹp kiêu sa của tân nương. Một chiếc áo cưới lộng lẫy chỉ thực sự phát huy hết vẻ quyến rũ khi đi kèm với một phong cách makeup và kiểu tóc đồng điệu. Tại Trảng Bom, Đồng Nai, Harmony Wedding tự hào là tiệm áo cưới gần đây đi đầu trong việc tư vấn trọn gói từ dịch vụ cho thuê váy cưới cao cấp (Harmony Soiree) đến các tone trang điểm cô dâu thời thượng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Layout cổ điển, sang trọng cho dáng váy cưới xòe công chúa (Ball Gown)",
+			},
+			{
+				type: "paragraph",
+				text: "Váy cưới dáng công chúa xòe bồng bềnh luôn là giấc mơ của mọi cô gái. Với thiết kế lộng lẫy và cầu kỳ này, phong cách trang điểm cô dâu cần mang hơi hướng hoàng gia cổ điển để tạo sự cân bằng và cuốn hút. Layout makeup với đôi mắt sâu hút hồn kết hợp cùng tone màu son đỏ đất hoặc hồng khô trầm ấm sẽ tạo điểm nhấn quyền lực. Kiểu tóc búi cao (high bun) kiêu sa đính vương miện hoặc cài von lúp dài sẽ là lựa chọn hoàn hảo nhất.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_ball_gown.png",
+				alt: "Cô dâu trong dáng váy cưới công chúa xòe bồng lộng lẫy",
+				caption: "Dáng váy công chúa lộng lẫy cực kỳ ăn ý với kiểu tóc búi cao quý phái và layout makeup cổ điển sang trọng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Layout dewy trong trẻo Hàn Quốc cho dáng váy cưới tối giản (Minimalist Satin)",
+			},
+			{
+				type: "paragraph",
+				text: "Nếu bạn chọn những thiết kế đầm cưới tối giản làm từ satin bóng bẩy với đường cắt may tinh tế, layout trang điểm cô dâu mỏng nhẹ như sương (Dewy Skin) kiểu Hàn Quốc sẽ là sự kết hợp tuyệt vời. Lớp nền mỏng mịn làm tôn lên làn da khỏe khoắn tự nhiên, đi cùng má hồng cam đào rạng rỡ và đôi môi căng mọng tràn đầy sức sống. Kiểu tóc buông lơi xoăn sóng nhẹ nhàng hoặc tóc buộc nửa đầu (half-up) đính hoa tươi sẽ làm nổi bật vẻ đẹp tinh khôi, trong trẻo của cô dâu.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_minimalist_gown.png",
+				alt: "Cô dâu rạng rỡ trong váy cưới tối giản làm bằng lụa satin",
+				caption: "Vẻ đẹp thuần khiết và thanh lịch từ sự kết hợp giữa váy cưới satin tối giản cùng layout trang điểm trong veo Hàn Quốc.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Tầm quan trọng của makeup đồng bộ với ảnh phóng sự cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Một layout trang điểm đẹp không chỉ giúp cô dâu tự tin đón khách mà còn là chìa khóa để có những bức ảnh phóng sự cưới tự nhiên và chân thật nhất. Dưới ống kính bắt khoảnh khắc của các nhiếp ảnh gia chuyên nghiệp tại Harmony Wedding, một lớp trang điểm mỏng nhẹ, bền màu sẽ giúp da bạn không bị đổ bóng dầu hay xỉn màu dưới ánh nắng. Các góc máy cận cảnh trong album phóng sự cưới sẽ ghi lại trọn vẹn nét thanh tú, cảm xúc tươi tắn của cô dâu mà không hề có cảm giác gượng gạo phấn son dày cộp.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Tư vấn trọn gói dịch vụ cưới tại Harmony Wedding Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Harmony Wedding mang đến giải pháp trọn gói hoàn hảo cho ngày cưới của bạn ngay tại Trảng Bom, từ khâu may đo, cho thuê váy cưới đến dịch vụ makeup chuyên nghiệp của chuyên gia Ngoc Gia Han Makeup. Hãy liên hệ ngay với chúng tôi để được tư vấn layout phù hợp nhất:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "bi-quyet-chon-ao-dai-co-dau-chu-re-doi-bung-qua-dep",
+		title: "Bí Quyết Chọn Áo Dài Cô Dâu Chú Rể & Đội Bưng Quả Đẹp Cho Lễ Gia Tiên Trọn Vẹn",
+		summary:
+			"Kinh nghiệm chọn áo dài cưới truyền thống, phối màu áo dài bưng quả và lựa chọn hỷ phục giúp ngày lễ gia tiên của hai bạn thêm phần chỉn chu và ngập tràn cảm xúc.",
+		coverImage: "/images/blog/anime_aodai_cover.png",
+		date: "27/06/2026",
+		readTime: "7 phút đọc",
+		category: "Trang Phục",
+		content: [
+			{
+				type: "paragraph",
+				text: "Lễ gia tiên là một nghi thức truyền thống thiêng liêng, đánh dấu cột mốc hai bạn chính thức ra mắt tổ tiên và hai bên gia đình. Trong ngày này, tà áo dài cưới truyền thống đóng vai trò tôn vinh vẻ đẹp trang trọng, thành kính của cô dâu chú rể. Không chỉ vậy, việc lựa chọn trang phục cho đội hình bưng quả và gia đình (như áo dài bà sui) cũng cần sự đồng bộ để tạo nên những bức ảnh phóng sự cưới hoàn hảo. Harmony Wedding xin chia sẻ những bí quyết giúp bạn chuẩn bị đồ cưới gia tiên chỉn chu nhất ngay tại Trảng Bom.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Chọn màu sắc và chất liệu áo dài cô dâu chú rể phù hợp",
+			},
+			{
+				type: "paragraph",
+				text: "Áo dài cô dâu và áo dài chú rể hiện nay rất đa dạng về kiểu dáng và chất liệu. Sắc đỏ truyền thống tượng trưng cho sự may mắn, song hỷ lâm môn vẫn luôn là lựa chọn hàng đầu. Các mẫu áo dài đỏ thêu rồng phượng bằng chỉ vàng nổi bật mang lại sự sang trọng, cổ điển. Về chất liệu, gấm, lụa tơ tằm hoặc voan cát co giãn nhẹ là ưu tiên số một giúp giữ phom áo dài chuẩn mà vẫn mang lại sự thoải mái trong suốt buổi lễ.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_aodai_couple.png",
+				alt: "Cô dâu chú rể dâng trà kính tổ tiên trong trang phục áo dài truyền thống",
+				caption: "Sự kết hợp đồng điệu giữa sắc trắng tinh khôi của cô dâu và sắc đỏ may mắn của chú rể trong ngày lễ gia tiên.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Phối màu áo dài bưng quả tạo điểm nhấn hài hòa",
+			},
+			{
+				type: "paragraph",
+				text: "Đội hình bưng quả (bê quả) chính là phông nền giúp nổi bật cô dâu chú rể. Nguyên tắc vàng là áo dài bưng quả phải có màu sắc nhạt hơn hoặc đối lập nhẹ với áo dài của nhân vật chính. Ví dụ, nếu cô dâu mặc áo dài đỏ, đội dâu phụ nên mặc áo dài bưng quả màu hồng pastel, vàng nhạt hoặc trắng sữa. Nếu cô dâu mặc áo dài trắng, đội phụ dâu có thể mặc màu xanh ngọc, cam đào hoặc hồng phấn. Tại Harmony Wedding, chúng tôi cung cấp đầy đủ các set áo dài bưng quả đồng bộ từ 6 đến 12 bộ với giá thuê cực kỳ ưu đãi, giúp đội hình của bạn trở nên gọn gàng và đẹp mắt.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_aodai_procession.png",
+				alt: "Cô dâu và dàn dâu phụ xinh đẹp trong ngày rước dâu",
+				caption: "Dàn dâu phụ diện áo dài hồng pastel đồng bộ giúp tôn vinh tà áo dài đỏ rực rỡ và nụ cười rạng ngời của tân nương.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Tham khảo bảng giá thuê áo dài cưới lẻ tại Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Bên cạnh việc cung cấp các gói dịch vụ chụp ảnh cưới trọn gói, Harmony còn cho thuê đồ cưới gia tiên lẻ với bảng giá Harmony cực kỳ phải chăng và cam kết chất lượng tốt nhất Trảng Bom, Đồng Nai:",
+			},
+			{
+				type: "list",
+				items: [
+					"Thuê Áo dài cô dâu thiết kế cao cấp: 600.000đ / bộ",
+					"Thuê Áo dài chú rể phom dáng hiện đại: 500.000đ / bộ",
+					"Thuê Áo dài bà sui (mẹ cô dâu/chú rể) sang trọng: 600.000đ / bộ",
+					"Thuê Áo dài bưng quả: 100.000đ / bộ (Set 6 bộ chỉ 550.000đ | Set 12 bộ chỉ 1.100.000đ)",
+					"Cặp Hỷ Phục Trung Hoa: 3.500.000đ / cặp",
+					"Hỗ trợ miễn phí các phụ kiện đi kèm trang phục cưới: mấn đội đầu, von lúp, tùng váy, nơ, cà vạt...",
+				],
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Địa chỉ thuê váy cưới và áo dài cưới uy tín tại Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "HarmonyWedding hân hạnh được đồng hành cùng ngày hạnh phúc của hai bạn. Hãy liên hệ ngay với chúng tôi để chọn lựa những bộ áo dài gia tiên và thuê váy cưới ưng ý nhất:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "harmony-wedding-chat-luong-san-pham-vuot-troi-trong-tam-gia",
+		title: "Harmony Wedding: Định Nghĩa Lại Chất Lượng Vượt Trội Trong Tầm Giá Hợp Lý Tại Trảng Bom",
+		summary:
+			"Khám phá lý do Harmony Wedding Trảng Bom trở thành lựa chọn hàng đầu cho các cặp đôi nhờ dịch vụ cho thuê váy cưới và chụp ảnh chất lượng cao cấp với mức giá tối ưu nhất.",
+		coverImage: "/images/blog/anime_quality_cover.png",
+		date: "27/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Khi chuẩn bị đám cưới, nhiều cặp đôi thường đối mặt với bài toán kinh tế nan giải: làm sao chọn được dịch vụ thuê váy cưới lộng lẫy và chụp ảnh cưới đẹp mà không phải bỏ ra chi phí quá đắt đỏ tại các studio lớn ở thành phố? Với mong muốn mang đến giá trị thực sự cho khách hàng, Harmony Wedding tự hào khẳng định vị thế tại Trảng Bom, Đồng Nai nhờ cam kết chất lượng sản phẩm vượt trội trong tầm giá cực kỳ hợp lý.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Những mẫu váy cưới thiết kế (Harmony Soiree) dòng cao cấp",
+			},
+			{
+				type: "paragraph",
+				text: "Chất lượng của một chiếc váy cưới (wedding dress) được định nghĩa qua ba yếu tố: chất liệu vải, phom dáng và độ tỉ mỉ trong từng đường kim mũi chỉ. Tại showroom Harmony Wedding Trảng Bom, các cô dâu sẽ được khoác lên mình những mẫu đầm cưới, váy cưới Signature, Ruby được nhập khẩu hoặc thiết kế riêng biệt. Chất liệu lụa satin cao cấp kết hợp cùng ren hoa 3D tinh tế và đá kết lấp lánh giúp giữ phom dáng chuẩn, tôn lên đường cong tự nhiên của cô dâu. Đặc biệt, mỗi chiếc váy trước khi bàn giao đều trải qua quy trình giặt hấp vô trùng chuyên nghiệp, đảm bảo sạch sẽ và thơm tho tuyệt đối.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Ekip chuyên nghiệp và trang thiết bị hiện đại bắt trọn khoảnh khắc",
+			},
+			{
+				type: "paragraph",
+				text: "Một bức ảnh cưới đẹp hay một thước phim phóng sự cưới đong đầy cảm xúc đòi hỏi thiết bị chuyên dụng và con mắt nghệ thuật của nhiếp ảnh gia. Harmony Wedding đầu tư mạnh mẽ vào hệ thống máy ảnh full-frame Sony cao cấp cùng ống kính khẩu độ lớn giúp bắt trọn những khoảnh khắc tự nhiên nhất trong điều kiện ánh sáng phức tạp. Đội ngũ nhiếp ảnh gia của chúng tôi không chỉ chụp hình truyền thống mà còn có thế mạnh vượt trội trong phong cách chụp ảnh phóng sự cưới tự nhiên, ghi lại cảm xúc chân thật mà không cần cô dâu chú rể phải gượng gạo tạo dáng.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_quality_photoshoot.png",
+				alt: "Ekip nhiếp ảnh chuyên nghiệp bắt trọn khoảnh khắc hạnh phúc dưới cổng hoa",
+				caption: "Trang thiết bị chuyên nghiệp cùng tinh thần bắt khoảnh khắc tự nhiên giúp album phóng sự cưới của hai bạn ngập tràn cảm xúc.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Công nghệ in ấn album và ảnh cổng tráng gương titan 4K cao cấp",
+			},
+			{
+				type: "paragraph",
+				text: "Nhiều studio cắt giảm chi phí bằng cách sử dụng các loại album mỏng hoặc ảnh cổng ép gỗ thông thường dễ bị ẩm mốc, phai màu theo thời gian. Ngược lại, tại Harmony Wedding, mỗi album pre-wedding đều được in ấn trên giấy photobook chống nước chuyên dụng, đóng quyển tỉ mỉ bằng bìa da cao cấp. Đặc biệt, ảnh cổng ngày cưới được chúng tôi sản xuất theo công nghệ tráng gương titan 4K mới nhất, cho hình ảnh sâu sắc nét, bền màu vĩnh cửu và bo viền kim loại sang trọng. Đây chính là minh chứng rõ nhất cho chất lượng sản phẩm vượt trội trong tầm giá.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_album.png",
+				alt: "Cặp đôi hạnh phúc xem cuốn album cưới chất lượng cao của mình",
+				caption: "Từng trang album photobook được in ấn sắc nét trên giấy chuyên dụng cao cấp chống nước, chống bay màu.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Dịch vụ makeup cô dâu high-end chuyên nghiệp",
+			},
+			{
+				type: "paragraph",
+				text: "Với triết lý làm tôn vinh vẻ đẹp tự nhiên sẵn có, chuyên gia Ngoc Gia Han Makeup tại Harmony cam kết 100% sử dụng các dòng mỹ phẩm high-end chính hãng (Chanel, Dior, Estee Lauder...) an toàn cho mọi làn da. Kỹ thuật đánh nền mỏng nhẹ như sương kết hợp cùng phong cách làm tóc cô dâu biến hóa đa dạng giúp lớp makeup bền màu suốt cả ngày dài, sắc nét dưới ống kính của máy ảnh phóng sự cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "5. Bảng giá trọn gói tối ưu chi phí tối đa",
+			},
+			{
+				type: "paragraph",
+				text: "So sánh với các gói cưới chất lượng tương đương tại TP.HCM có mức giá dao động từ 20-30 triệu đồng, bảng giá Harmony trọn gói 1 ngày cưới chỉ từ 11.000.000đ đến 15.500.000đ. Đây là mức giá cực kỳ tối ưu vì đã bao gồm tất cả các khâu từ phục trang, makeup tại nhà, máy chụp phóng sự đến sản phẩm album hoàn thiện mà không hề phát sinh bất kỳ chi phí ẩn nào.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "6. Liên hệ Harmony Wedding để nhận tư vấn và ưu đãi ngay hôm nay",
+			},
+			{
+				type: "paragraph",
+				text: "Chúng tôi luôn sẵn sàng lắng nghe và tư vấn phong cách trang điểm, phục trang phù hợp nhất cho ngày vui của bạn. Hãy liên hệ với Wedding Harmony ngay tại Trảng Bom:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "top-5-phong-cach-chup-anh-cuoi-dep-thinh-hanh-nhat",
+		title: "Top 5 Phong Cách Chụp Ảnh Cưới Đẹp Thịnh Hành Nhất: Từ Pre-wedding Đến Phóng Sự Cưới",
+		summary:
+			"Tổng hợp các phong cách chụp ảnh cưới hot nhất năm nay giúp các cặp đôi dễ dàng chọn lựa concept phù hợp để lưu giữ câu chuyện tình yêu trọn vẹn.",
+		coverImage: "/images/blog/anime_styles_cover.png",
+		date: "27/06/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Chụp ảnh cưới đẹp không chỉ đơn giản là việc ghi lại hình ảnh của cô dâu chú rể trong bộ lễ phục, mà đó là cách hai bạn kể câu chuyện tình yêu của riêng mình. Mỗi phong cách chụp ảnh mang lại một màu sắc cảm xúc và giá trị nghệ thuật khác nhau. Để giúp các cặp đôi dễ dàng lựa chọn định hướng cho album cưới của mình, Harmony Wedding xin tổng hợp 5 phong cách chụp ảnh cưới thịnh hành và được yêu thích nhất hiện nay.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Phong cách Hàn Quốc nhẹ nhàng, tối giản (Minimalist)",
+			},
+			{
+				type: "paragraph",
+				text: "Phong cách Hàn Quốc tối giản luôn giữ vững độ hot nhờ sự nhẹ nhàng, tinh tế và không bao giờ lỗi mốt. Thường được thực hiện ngay tại studio với phông nền trơn màu pastel (như be, xám, trắng) kết hợp cùng ánh sáng tự nhiên mềm mại. Trọng tâm của bức ảnh tập trung vào biểu cảm ngọt ngào, nụ cười hạnh phúc và ánh mắt tình tứ của cô dâu chú rể. Các cô dâu thường chọn những mẫu đầm cưới, váy cưới (wedding dress) phom dáng chữ A hoặc satin tối giản đi kèm phong cách makeup sương khói tự nhiên.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Phong cách Retro cổ điển đầy hoài niệm (Vintage)",
+			},
+			{
+				type: "paragraph",
+				text: "Dành cho các cặp đôi yêu thích nét hoài cổ và lãng mạn của những thập niên trước. Phong cách chụp ảnh cưới Vintage tái hiện không gian cổ xưa với trang phục mang hơi hướng cổ điển như áo dài cô dâu xưa, váy cưới ren tay dài bồng bềnh hay veston nâu ấm áp của chú rể kết hợp với các phụ kiện như mũ pillbox, găng tay ren. Những bức ảnh thường được xử lý màu sắc mang tone ấm, hơi úa vàng hoặc phủ một lớp grain nhẹ, mang lại cảm giác ấm áp và hoài niệm sâu sắc.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_retro_style.png",
+				alt: "Cặp đôi diện đồ cưới vintage ngọt ngào bên xe cổ",
+				caption: "Phong cách Retro Vintage hoài niệm kể lại câu chuyện tình yêu vượt qua dòng chảy thời gian.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Phong cách Cinematic ngoại cảnh lãng mạn",
+			},
+			{
+				type: "paragraph",
+				text: "Phong cách này biến album cưới của bạn thành một bộ phim điện ảnh lãng mạn. Buổi chụp thường diễn ra ngoài trời vào thời điểm 'khung giờ vàng' (bình minh hoặc hoàng hôn) tại những địa điểm thiên nhiên rộng lớn như đồi thông Đà Lạt, bờ hồ Trị An thơ mộng. Ánh sáng xiên từ mặt trời chiếu rọi mái tóc bồng bềnh của cô dâu tạo nên những vầng sáng lung linh ấm áp. Từng khung hình ghi lại chuyển động tự nhiên như hai bạn nắm tay chạy trên đồi cỏ hay trao nhau cái ôm siết chặt.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_cinematic_style.png",
+				alt: "Cặp đôi nắm tay chạy trên đồi cỏ lộng gió hoàng hôn rực rỡ",
+				caption: "Góc ảnh rộng cùng ánh sáng hoàng hôn cinematic rực rỡ mang đến cảm xúc thăng hoa như một thước phim điện ảnh.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Phong cách Phóng sự cưới tự nhiên (Wedding Photojournalism)",
+			},
+			{
+				type: "paragraph",
+				text: "Không còn là những buổi chụp pre-wedding được chuẩn bị từ trước, phong cách chụp phóng sự cưới ghi lại diễn biến chân thực nhất trong ngày lễ ăn hỏi, lễ gia tiên hay tiệc cưới. Nhiếp ảnh gia sẽ ẩn mình và bắt trọn khoảnh khắc giọt nước mắt xúc động của mẹ, nụ cười rạng rỡ của bạn bè hay cái nắm tay động viên của chú rể dành cho cô dâu. Sự chân thật chính là linh hồn làm nên giá trị vượt thời gian của một album phóng sự cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "5. Phong cách châu Âu sang trọng, quý phái",
+			},
+			{
+				type: "paragraph",
+				text: "Phù hợp với các cặp đôi yêu thích vẻ đẹp lộng lẫy và hoàng gia. Concept này thường được thực hiện tại các phim trường lớn mô phỏng kiến trúc lâu đài cổ kính như phim trường An Garden Đồng Nai hoặc Sunny Garden. Những chiếc váy cưới công chúa xòe phồng lộng lẫy kết hợp với veston thiết kế tinh xảo sẽ tôn lên vẻ đẹp kiêu sa, quý tộc của hai bạn trong từng bức ảnh.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "6. Liên hệ Harmony Wedding Trảng Bom để nhận tư vấn trọn gói",
+			},
+			{
+				type: "paragraph",
+				text: "Đội ngũ tư vấn và ekip chuyên nghiệp tại HarmonyWedding luôn sẵn sàng đồng hành giúp bạn hiện thực hóa concept cưới mơ ước. Hãy liên hệ ngay hôm nay:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "ho-tri-an-thien-duong-chup-anh-cuoi-ngoai-canh",
+		title: "Hồ Trị An: Thiên Đường Chụp Ảnh Cưới Ngoại Cảnh Hoang Sơ & Thơ Mộng Tại Đồng Nai",
+		summary:
+			"Harmony Wedding chia sẻ kinh nghiệm chụp ảnh cưới ngoại cảnh tại Hồ Trị An với các góc chụp hoàng hôn rực rỡ, cắm trại lãng mạn và chọn trang phục phù hợp nhất.",
+		coverImage: "/images/blog/anime_trian_cover.png",
+		date: "27/06/2026",
+		readTime: "6 phút đọc",
+		category: "Địa Điểm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Nếu hai bạn đã quá quen thuộc với những album ảnh cưới chụp tại phim trường hay studio trong nhà, hãy thử tìm đến những địa điểm thiên nhiên hoang sơ để lưu giữ câu chuyện tình yêu của mình. Tọa lạc tại huyện Vĩnh Cửu, tỉnh Đồng Nai và rất gần với Trảng Bom, Hồ Trị An nổi lên như một thiên đường chụp ảnh cưới ngoại cảnh lý tưởng. Với làn nước xanh biếc trải dài vô tận, những đồi cỏ xanh rì rợp bóng thông và ánh hoàng hôn buông lơi lãng mạn, nơi đây hứa hẹn sẽ mang đến cho hai bạn một album cưới đầy chất thơ.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Những concept chụp ảnh cưới độc đáo nhất tại Hồ Trị An",
+			},
+			{
+				type: "paragraph",
+				text: "Hồ Trị An sở hữu vẻ đẹp đa dạng theo từng thời điểm trong ngày, cho phép ekip thỏa sức sáng tạo nhiều concept chụp ảnh cưới độc đáo: Concept cắm trại lãng mạn (Glamping Style) dưới ánh hoàng hôn vàng rực rỡ với lều trại trang trí đèn led lung linh, hoặc Concept chèo thuyền trên mặt hồ phẳng lặng, mờ sương trong sương mai mát lành.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_trian_boat.png",
+				alt: "Cặp đôi chèo thuyền gỗ lãng mạn trên mặt hồ Trị An sương mờ",
+				caption: "Concept chèo thuyền lãng mạn trên hồ nước xanh biếc trong sương sớm mang lại vẻ đẹp huyền ảo như truyện cổ tích.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Thời điểm vàng để bắt trọn những khung hình cưới đẹp",
+			},
+			{
+				type: "paragraph",
+				text: "Thời gian chụp ảnh cưới ngoại cảnh quyết định rất lớn đến chất lượng ánh sáng. Có hai thời điểm vàng được các nhiếp ảnh gia tại Harmony Wedding lựa chọn: Buổi sáng sớm từ 5h00 đến 8h00 khi trời mát mẻ và có sương nhẹ, và buổi chiều tà từ 15h30 đến 17h30 lúc hoàng hôn rực rỡ buông xuống tạo nên những vầng sáng ngược nghệ thuật bắt mắt.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Kinh nghiệm chọn váy cưới và trang phục khi chụp ngoại cảnh hồ",
+			},
+			{
+				type: "paragraph",
+				text: "Để thuận tiện di chuyển trên đồi cỏ hay sát bờ hồ, cô dâu nên ưu tiên chọn thuê váy cưới (vay cuoi) có chất liệu voan cát, ren mỏng nhẹ bay bổng trong gió, tránh những dáng váy cưới công chúa quá nặng nề. Chú rể có thể chọn veston màu trung tính hoặc phong cách lãng tử với sơ mi trắng, quần tây và đai quần chữ Y để đồng điệu với thiên nhiên.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Gói chụp ảnh cưới ngoại cảnh Hồ Trị An trọn gói tại Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Harmony Wedding mang đến gói chụp ảnh cưới ngoại cảnh Hồ Trị An trọn gói bao gồm phục trang cưới cao cấp, dịch vụ makeup từ Ngoc Gia Han Makeup và toàn bộ album ảnh cổng chất lượng cao. Liên hệ ngay với chúng tôi để nhận ưu đãi:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "nhung-luu-y-quan-trong-trong-ngay-cuoi-co-dau-chu-re",
+		title: "Những Lưu Ý Quan Trọng Trong Ngày Cưới Để Cô Dâu Chú Rể Luôn Rạng Rỡ & Thư Thái",
+		summary:
+			"Tổng hợp danh sách các lưu ý thực tế trong ngày cưới giúp cô dâu chú rể giảm thiểu căng thẳng, quản lý thời gian làm lễ và giữ vững năng lượng trọn vẹn.",
+		coverImage: "/images/blog/anime_wedding_cover.png",
+		date: "27/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Ngày cưới là đỉnh cao của hành trình chuẩn bị dài ngày với rất nhiều cảm xúc đan xen. Tuy nhiên, việc phải đón tiếp hàng trăm quan khách, thực hiện nhiều nghi lễ truyền thống và di chuyển liên tục có thể khiến các cặp đôi dễ mệt mỏi hoặc căng thẳng. Để ngày trọng đại diễn ra trọn vẹn, suôn sẻ và giữ được nụ cười rạng rỡ nhất, Harmony Wedding xin chia sẻ cẩm nang những lưu ý quan trọng trong ngày cưới dành riêng cho cô dâu chú rể.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Sắp xếp thời gian trang điểm cô dâu và làm tóc hợp lý",
+			},
+			{
+				type: "paragraph",
+				text: "Trang điểm cô dâu và làm tóc thường mất từ 2 đến 3 tiếng đồng hồ tùy thuộc vào độ cầu kỳ của layout. Sai lầm phổ biến của nhiều cặp đôi là đặt lịch makeup quá sát giờ rước dâu hoặc làm lễ. Điều này dễ dẫn đến tâm lý vội vàng, lo lắng. Hãy hẹn chuyên gia trang điểm đến sớm hơn giờ G ít nhất 3 tiếng. Việc này giúp cô dâu có thời gian thư thái ăn nhẹ và sẵn sàng đón tiếp nhà trai mà không bị cập rập.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_makeup_cover.png",
+				alt: "Cô dâu rạng rỡ làm tóc trang điểm buổi sáng ngày cưới",
+				caption: "Sắp xếp thời gian trang điểm cô dâu sớm hơn giờ lễ ít nhất 3 tiếng giúp giữ vững tâm lý thoải mái, vui tươi.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Chuẩn bị một bộ kit cứu trợ khẩn cấp (Emergency Kit)",
+			},
+			{
+				type: "paragraph",
+				text: "Hãy chuẩn bị một chiếc túi nhỏ chứa các vật dụng cá nhân thiết yếu và nhờ một người bạn thân hoặc dâu phụ giữ hộ suốt buổi lễ. Bộ kit này nên bao gồm: kim chỉ, ghim băng (để cố định tà váy cưới hay áo dài nếu có sự cố), khăn giấy thấm dầu, son môi dặm lại, thuốc giảm đau, băng cá nhân (cho cô dâu đi giày cao gót bị đau chân) và một ít kẹo ngọt giúp bổ sung năng lượng nhanh chóng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Lưu ý về trang phục và cách di chuyển",
+			},
+			{
+				type: "paragraph",
+				text: "Những chiếc váy cưới công chúa xòe phồng lộng lẫy hay đầm cưới dài quét đất thường khá cồng kềnh. Khi bước đi, cô dâu nên dùng một tay nâng nhẹ tùng váy phía trước để tránh bị giẫm xéo gây vấp ngã. Hãy phân công một người hỗ trợ riêng (như phù dâu hoặc ekip take care của studio) để chỉnh sửa đuôi váy và von lúp thẳng thớm mỗi khi bước lên sân khấu hay lúc chụp phóng sự cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Phối hợp nhịp nhàng với ekip chụp phóng sự cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Ảnh phóng sự cưới có giá trị cao nhất khi bắt trọn những khoảnh khắc xúc động và tự nhiên nhất. Cô dâu chú rể không cần quá chú ý vào ống kính camera hay gượng cười tạo dáng mỗi khi thấy nhiếp ảnh gia. Hãy cứ tự tin giao tiếp, thể hiện cảm xúc chân thật, lắng nghe lời dặn dò của ba mẹ trong lễ gia tiên. Việc còn lại hãy để ekip chụp phóng sự cưới chuyên nghiệp của Harmony bắt trọn từng khung hình đắt giá.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_photoshoot.png",
+				alt: "Ekip chụp ảnh cưới bắt trọn những khoảnh khắc tự nhiên lãng mạn dưới cổng hoa",
+				caption: "Phối hợp tự nhiên với ekip chụp phóng sự cưới giúp lưu giữ trọn vẹn những nụ cười và giọt nước mắt hạnh phúc thật nhất.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "5. Giữ sức khỏe, ăn nhẹ và uống nước đầy đủ",
+			},
+			{
+				type: "paragraph",
+				text: "Rất nhiều cô dâu chú rể vì quá bận rộn hoặc lo lắng mà bỏ bữa sáng, dẫn đến kiệt sức hoặc hạ đường huyết giữa buổi lễ. Hãy nhớ ăn một bữa sáng đủ chất nhưng dễ tiêu hóa và liên tục bổ sung nước lọc bằng ống hút (để tránh trôi son môi). Giữ tinh thần thoải mái, vì đây chính là ngày vui lớn nhất cuộc đời hai bạn!",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "6. Dịch vụ cưới trọn gói tận tâm tại Harmony Wedding Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Harmony Wedding không chỉ mang đến dịch vụ cho thuê váy cưới cao cấp và chụp ảnh cưới đẹp, chúng tôi còn đồng hành chia sẻ mọi lo toan trong ngày cưới cùng bạn. Liên hệ ngay với Harmony để nhận tư vấn trọn gói:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "phong-tuc-cuoi-hoi-truyen-thong-viet-nam-nghi-thuc-gia-tien",
+		title: "Tìm Hiểu Phong Tục Cưới Hỏi Truyền Thống Việt Nam & Các Nghi Thức Lễ Gia Tiên Chuẩn",
+		summary:
+			"Khám phá ý nghĩa của phong tục cưới hỏi truyền thống Việt Nam và quy trình thực hiện nghi thức lễ gia tiên chỉn chu, trang nghiêm trong ngày cưới.",
+		coverImage: "/images/blog/anime_aodai_cover.png",
+		date: "27/06/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Cưới hỏi là một trong những việc trọng đại nhất của đời người. Trong văn hóa Việt Nam, phong tục cưới hỏi không chỉ đơn thuần là sự kết hợp của hai cá nhân mà còn là dịp gắn kết tình thân giữa hai dòng họ. Trải qua dòng chảy thời gian, các nghi lễ cưới hỏi ngày nay tuy đã giản lược bớt nhưng các nghi thức cốt lõi, đặc biệt là lễ gia tiên, vẫn được gìn giữ vẹn nguyên tính trang nghiêm và thành kính. Hãy cùng Harmony Wedding tìm hiểu quy trình nghi lễ chuẩn để ngày vui thêm phần chỉn chu.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Quy trình 3 lễ cưới hỏi chính hiện nay",
+			},
+			{
+				type: "paragraph",
+				text: "Để phù hợp với nhịp sống hiện đại, phong tục cưới hỏi Việt Nam ngày nay thường được thu gọn thành 3 lễ chính: Lễ dạm ngõ (buổi gặp gỡ đầu tiên giữa hai bên gia đình), Lễ ăn hỏi (nhà trai chính thức mang mâm lễ vật sang hỏi cưới nhà gái), và Lễ cưới (Lễ rước dâu chính thức đưa cô dâu về nhà chồng).",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Quy trình thực hiện Nghi thức Lễ Gia Tiên chuẩn",
+			},
+			{
+				type: "paragraph",
+				text: "Lễ gia tiên (Ancestor Worship Ceremony) là nghi thức dâng hương kính báo tổ tiên về việc cưới hỏi của đôi trẻ, cầu mong ông bà chứng giám và phù hộ cho cuộc sống hôn nhân hạnh phúc. Nghi lễ này được thực hiện với các bước cơ bản sau:",
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "A. Trao nhận mâm quả cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Khi đoàn nhà trai đến, dàn bưng quả nam của nhà trai sẽ thực hiện nghi thức trao mâm quả cưới cho đội bưng quả nữ của nhà gái ngay trước cổng cưới. Đội dâu phụ thường mặc áo dài bưng quả màu hồng, vàng hoặc xanh nhã nhặn để tạo sự đồng bộ đẹp mắt.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_aodai_procession.png",
+				alt: "Dàn dâu phụ bê mâm quả cưới xinh xắn bên cô dâu tà áo dài đỏ",
+				caption: "Nghi thức trao quả mở đầu ngày cưới rạng rỡ của đôi bạn trẻ tại lễ rước dâu gia tiên.",
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "B. Ra mắt tổ tiên và thắp hương bái lạy",
+			},
+			{
+				type: "paragraph",
+				text: "Đứng trước bàn thờ tổ tiên được trang hoàng nghiêm trang, dưới sự hướng dẫn của người đại diện, bố mẹ cô dâu (chú rể) sẽ thắp hương báo cáo trước, sau đó trao hương cho đôi tân hôn bái lạy tổ tiên, xin phép rước dâu và làm lễ xuất giá.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_aodai_couple.png",
+				alt: "Nghi lễ dâng trà dâng hương gia tiên thành kính của đôi tân hôn",
+				caption: "Cô dâu chú rể thành kính dâng hương trước bàn thờ gia tiên cầu mong ông bà phù hộ cho cuộc sống trăm năm.",
+			},
+			{
+				type: "heading",
+				level: 3,
+				text: "C. Dâng trà kính cha mẹ và nhận lời dặn dò chúc phúc",
+			},
+			{
+				type: "paragraph",
+				text: "Sau khi bái lạy gia tiên, cô dâu chú rể sẽ rót trà dâng lên cha mẹ để bày tỏ chữ hiếu. Đây cũng là lúc cha mẹ trao của hồi môn, nhẫn cưới, vòng vàng và dặn dò đôi trẻ những kinh nghiệm sống quý báu cho gia đình nhỏ.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Tầm quan trọng của phục trang truyền thống trong lễ gia tiên",
+			},
+			{
+				type: "paragraph",
+				text: "Trang phục áo dài luôn là lựa chọn hàng đầu cho cô dâu chú rể trong ngày lễ gia tiên. Tà áo dài cô dâu thêu phượng, áo dài chú rể thêu rồng đỏ thắm mang ý nghĩa song hỷ lâm môn và may mắn. Việc lựa chọn áo dài bà sui cho mẹ và phối màu áo dài bưng quả hài hòa sẽ giúp những bức ảnh phóng sự cưới gia tiên của bạn trở nên tinh tế, giữ nguyên vẹn cảm xúc truyền thống thiêng liêng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Dịch vụ cho thuê áo dài và chụp phóng sự cưới trọn gói tại Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Harmony Wedding cung cấp dịch vụ trọn gói từ cho thuê áo dài cưới, hỷ phục Trung Hoa, áo dài bưng quả đến makeup ngày cưới và quay phim, chụp ảnh phóng sự cưới lễ gia tiên chuyên nghiệp. Hãy liên hệ ngay với chúng tôi để chuẩn bị cho ngày vui của bạn:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
 			},
 		],
 	},

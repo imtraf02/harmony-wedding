@@ -19,6 +19,6 @@ export interface BlogPost {
 	date: string;
 	readTime: string;
 	category: string;
-	author: BlogAuthor;
+	author?: BlogAuthor;
 	content: BlogContentBlock[];
 }

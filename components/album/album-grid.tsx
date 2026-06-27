@@ -81,6 +81,7 @@ export function AlbumGrid() {
                 fill
                 sizes="(min-width: 1024px) 31vw, (min-width: 768px) 50vw, 100vw"
                 src={album.image}
+                unoptimized
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_42%,rgba(0,0,0,0.78)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">

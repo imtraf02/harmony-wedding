@@ -223,6 +223,7 @@ export function PortfolioSection() {
                     sizes="(min-width: 1024px) 52vw, 100vw"
                     src={item.image}
                     priority={index < 3}
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_48%,rgba(0,0,0,0.74)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white md:p-8">

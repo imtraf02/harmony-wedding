@@ -141,6 +141,12 @@ export const portfolioItems: PortfolioItem[] = [
 		slug: "studio-phong-vai-lanh-trang",
 	},
 	{
+		location: "Studio Hàn Quốc",
+		image: localImage("studio-han-quoc/1.webp"),
+		alt: "Ảnh cưới phong cách Hàn Quốc nhẹ nhàng - Harmony Wedding",
+		slug: "studio-han-quoc",
+	},
+	{
 		location: "Sunny Garden",
 		image: localImage("sunny-garden/15.webp"),
 		alt: "Ảnh cưới chụp cận cảnh cô dâu rạng rỡ tại Sunny Garden - Harmony Wedding",
@@ -194,6 +200,12 @@ export const portfolioItems: PortfolioItem[] = [
 		alt: "Vẻ đẹp sang trọng của cặp đôi bên phông nền vải lạnh - Harmony Wedding",
 		slug: "studio-phong-vai-lanh-trang",
 	},
+	{
+		location: "Studio Hàn Quốc",
+		image: localImage("studio-han-quoc/3.webp"),
+		alt: "Cặp đôi ngọt ngào trong studio phong cách Hàn Quốc - Harmony Wedding",
+		slug: "studio-han-quoc",
+	},
 ];
 
 export const albumHero = {
@@ -206,9 +218,7 @@ export const albumFilters = [
 	"An Garden",
 	"Đà Lạt",
 	"Đường Phố Hồ Chí Minh",
-	"Studio Phông Hoa Đỏ Trắng",
-	"Studio Phông Trắng Trơn",
-	"Studio Phông Vải Lạnh Trắng",
+	"Studio",
 	"Sunny Garden",
 	"Vũ Garden",
 ];
@@ -217,8 +227,8 @@ export const albumItems: AlbumItem[] = [
 	{
 		slug: "studio-phong-trang-tron",
 		title: "Studio Phông Trắng Trơn",
-		category: "Studio Phông Trắng Trơn",
-		location: "Studio Phông Trắng Trơn",
+		category: "Studio",
+		location: "Studio",
 		image: localImage("studio-phong-trang-tron/1.webp"),
 		alt: "Album ảnh cưới Studio Phòng Trắng Tròn - Harmony Wedding",
 		width: 1365,
@@ -277,8 +287,8 @@ export const albumItems: AlbumItem[] = [
 	{
 		slug: "studio-phong-hoa-do-trang",
 		title: "Studio Phông Hoa Đỏ Trắng",
-		category: "Studio Phông Hoa Đỏ Trắng",
-		location: "Studio Phông Hoa Đỏ Trắng",
+		category: "Studio",
+		location: "Studio",
 		image: localImage("studio-phong-hoa-do-trang/1.webp"),
 		alt: "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Harmony Wedding",
 		width: 1366,
@@ -297,10 +307,20 @@ export const albumItems: AlbumItem[] = [
 	{
 		slug: "studio-phong-vai-lanh-trang",
 		title: "Studio Phông Vải Lạnh Trắng",
-		category: "Studio Phông Vải Lạnh Trắng",
-		location: "Studio Phông Vải Lạnh Trắng",
+		category: "Studio",
+		location: "Studio",
 		image: localImage("studio-phong-vai-lanh-trang/1.webp"),
 		alt: "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Harmony Wedding",
+		width: 1365,
+		height: 2048,
+	},
+	{
+		slug: "studio-han-quoc",
+		title: "Studio Phong Cách Hàn Quốc",
+		category: "Studio",
+		location: "Studio",
+		image: localImage("studio-han-quoc/1.webp"),
+		alt: "Album ảnh cưới Studio Phong Cách Hàn Quốc - Harmony Wedding",
 		width: 1365,
 		height: 2048,
 	},

@@ -46,7 +46,7 @@ export async function generateMetadata({
 			url: `/blog/${slug}`,
 			type: "article",
 			publishedTime: post.date.split("/").reverse().join("-"),
-			authors: [post.author.name],
+			authors: [post.author?.name || siteConfig.name],
 			images: [
 				{
 					url: post.coverImage,
@@ -84,7 +84,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 		datePublished: post.date.split("/").reverse().join("-"),
 		author: {
 			"@type": "Person",
-			name: post.author.name,
+			name: post.author?.name || siteConfig.name,
 		},
 		publisher: {
 			"@type": "Organization",
@@ -146,7 +146,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 							case "paragraph":
 								return (
 									<p key={index} className="mb-6 font-sans">
-										{block.text}
+										{parseMarkdownLinks(block.text)}
 									</p>
 								);
 							case "heading":
@@ -181,7 +181,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 										className="list-disc pl-6 mb-6 space-y-3 text-neutral-700"
 									>
 										{block.items.map((item, itemIdx) => (
-											<li key={itemIdx}>{item}</li>
+											<li key={itemIdx}>{parseMarkdownLinks(item)}</li>
 										))}
 									</ul>
 								);
@@ -262,6 +262,42 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 			<Footer />
 		</main>
 	);
+}
+
+function parseMarkdownLinks(text: string) {
+	const regex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+	const parts = [];
+	let lastIndex = 0;
+	let match;
+
+	while ((match = regex.exec(text)) !== null) {
+		const [fullMatch, linkText, url] = match;
+		const matchIndex = match.index;
+
+		if (matchIndex > lastIndex) {
+			parts.push(text.substring(lastIndex, matchIndex));
+		}
+
+		parts.push(
+			<a
+				key={matchIndex}
+				href={url}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="text-neutral-900 underline hover:text-neutral-600 transition-colors"
+			>
+				{linkText}
+			</a>
+		);
+
+		lastIndex = regex.lastIndex;
+	}
+
+	if (lastIndex < text.length) {
+		parts.push(text.substring(lastIndex));
+	}
+
+	return parts.length > 0 ? parts : text;
 }
 
 export default BlogPostPage;

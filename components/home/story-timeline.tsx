@@ -259,6 +259,7 @@ export function StoryTimeline() {
 							fill
 							sizes="(min-width: 1024px) 44vw, 100vw"
 							src={weddingImages.process}
+							unoptimized
 						/>
 						<div className="process-card absolute bottom-0 left-0 border border-black/10 bg-white/92 p-8 md:p-10 md:backdrop-blur-sm">
 							<p className="font-serif text-6xl leading-none text-black md:text-7xl">
@@ -331,6 +332,7 @@ export function StoryTimeline() {
 										fill
 										sizes="(min-width: 1024px) 190px, 42vw"
 										src={step.image}
+										unoptimized
 									/>
 								</div>
 							</div>
