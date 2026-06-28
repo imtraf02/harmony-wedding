@@ -1454,4 +1454,77 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "nhung-tam-anh-cuoi-vuot-thoi-gian-gia-tri-vo-gia-ky-uc",
+		title: "Những Tấm Ảnh Cưới Vượt Thời Gian: Giá Trị Vô Giá Của Ký Ức Hạnh Phúc",
+		summary:
+			"Những tấm ảnh cưới không đơn thuần là những khuôn hình đẹp, mà đó là kỷ vật thiêng liêng lưu giữ trọn vẹn những cảm xúc chân thật nhất của ngày hạnh phúc.",
+		coverImage: "/images/blog/anime_memories_cover.png",
+		date: "28/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Khi ánh đèn sân khấu nhà hàng đã tắt, những bó hoa cưới đã phai màu và ngày trọng đại lùi dần vào quá khứ, điều duy nhất còn lại sống động và vẹn nguyên chính là những tấm ảnh cưới. Chúng không chỉ đơn thuần là giấy và mực, mà là 'cỗ máy thời gian' lưu giữ nụ cười rạng rỡ, giọt nước mắt xúc động của mẹ cha và lời hẹn ước trăm năm của hai bạn. Hãy cùng Harmony Wedding lắng đọng để thấu hiểu giá trị thiêng liêng đằng sau mỗi bức ảnh cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lưu giữ cảm xúc chân thực – Sức sống của phóng sự cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Thời gian trôi đi có thể làm nhạt phai một số ký ức, nhưng một tấm ảnh cưới đẹp sẽ ngay lập tức khơi dậy cảm xúc của bạn như vừa mới xảy ra hôm qua. Đặc biệt là các bức ảnh trong album phóng sự cưới: Cái ôm siết chặt đầy lưu luyến của người cha trước khi con gái về nhà chồng, ánh mắt tự hào và xúc động của chú rể khi lần đầu nhìn thấy cô dâu diện chiếc váy cưới (wedding dress) lộng lẫy bước vào lễ đường. Sự tự nhiên và chân thật chính là linh hồn mang lại giá trị vượt thời gian cho bộ ảnh cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Kỷ vật kết nối các thế hệ trong gia đình",
+			},
+			{
+				type: "paragraph",
+				text: "Hãy tưởng tượng 10 năm, 20 năm sau, khi các con của bạn lớn lên. Chúng sẽ tò mò mở cuốn album cưới gỗ hay lật giở từng trang ảnh, ngắm nhìn bố mẹ thuở thanh xuân tràn đầy sức sống và tình yêu. Khung ảnh cưới lớn tráng gương hay canvas treo trang trọng tại phòng khách không chỉ làm ấm cúng không gian sống, mà còn là lời nhắc nhở hằng ngày về tình yêu, sự gắn kết và lời hứa cùng nhau vượt qua mọi sóng gió cuộc đời.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_memories_frame.png",
+				alt: "Cặp đôi cùng ngắm nhìn khung ảnh cưới canvas treo tường đầy lãng mạn",
+				caption: "Ảnh cổng cưới treo trang trọng tại phòng khách là lời nhắc nhở ngọt ngào về ngày tình yêu đơm hoa kết trái.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Kinh nghiệm in ấn và lựa chọn chất liệu album cưới bền bỉ",
+			},
+			{
+				type: "paragraph",
+				text: "Để những tấm ảnh cưới đi cùng năm tháng mà không bị phai màu hay hư hỏng, việc lựa chọn chất liệu in ấn vô cùng quan trọng: Album Photobook cao cấp sử dụng giấy mỹ thuật chống ẩm mốc giúp màu sắc bền bỉ hàng chục năm; và Ảnh cổng cưới tráng gương hoặc Canvas nghệ thuật mang lại sự sang trọng và thẩm mỹ cao.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_memories_albums.png",
+				alt: "Bộ album ảnh cưới gỗ, da cao cấp và USB lưu trữ dữ liệu chất lượng cao",
+				caption: "Lựa chọn chất liệu in ấn cao cấp tại Harmony giúp những tấm ảnh cưới của bạn luôn bền đẹp, nguyên bản.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Đồng hành lưu giữ khoảnh khắc trọn đời cùng Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Với tâm niệm mỗi bức ảnh là một tác phẩm nghệ thuật chứa đựng câu chuyện tình yêu duy nhất, ekip tại Harmony Wedding luôn chăm chút tỉ mỉ từng góc máy, ánh sáng và khâu thiết kế album. Chúng tôi cam kết bàn giao những sản phẩm in ấn cao cấp nhất để kỷ niệm của bạn luôn bền vững với thời gian. Liên hệ với tiệm áo cưới gần đây uy tín nhất Trảng Bom để được tư vấn:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
