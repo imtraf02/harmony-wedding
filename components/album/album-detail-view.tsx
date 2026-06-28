@@ -17,7 +17,28 @@ interface AlbumDetailViewProps {
 export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 	const [activeIndex, setActiveIndex] = useState<number | null>(null);
+	
+	// Pinch-to-zoom & pan states
+	const [scale, setScale] = useState(1);
+	const [position, setPosition] = useState({ x: 0, y: 0 });
+	const dragStart = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+	const isDragging = useRef<boolean>(false);
+
+	const startDistance = useRef<number | null>(null);
+	const startScale = useRef<number>(1);
 	const touchStartX = useRef<number | null>(null);
+	const touchStartY = useRef<number | null>(null);
+	const isPinching = useRef<boolean>(false);
+
+	const resetZoom = useCallback(() => {
+		setScale(1);
+		setPosition({ x: 0, y: 0 });
+	}, []);
+
+	// Reset zoom when activeIndex changes
+	useEffect(() => {
+		resetZoom();
+	}, [activeIndex, resetZoom]);
 
 	// Close lightbox
 	const closeLightbox = useCallback(() => {
@@ -40,24 +61,137 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 		);
 	}, [activeIndex, album.gallery.length]);
 
-	// Touch swipe support for mobile
+	// Touch handlers supporting swipe (only when scale=1) and pinch-zoom / pan (when scale > 1)
 	const handleTouchStart = (e: React.TouchEvent) => {
-		touchStartX.current = e.touches[0].clientX;
+		if (activeIndex === null) return;
+
+		if (e.touches.length === 1) {
+			touchStartX.current = e.touches[0].clientX;
+			touchStartY.current = e.touches[0].clientY;
+
+			if (scale > 1) {
+				isDragging.current = true;
+				dragStart.current = {
+					x: e.touches[0].clientX - position.x,
+					y: e.touches[0].clientY - position.y,
+				};
+			}
+		} else if (e.touches.length === 2) {
+			isPinching.current = true;
+			const dist = Math.hypot(
+				e.touches[0].clientX - e.touches[1].clientX,
+				e.touches[0].clientY - e.touches[1].clientY,
+			);
+			startDistance.current = dist;
+			startScale.current = scale;
+		}
+	};
+
+	const handleTouchMove = (e: React.TouchEvent) => {
+		if (activeIndex === null) return;
+
+		if (isPinching.current && e.touches.length === 2 && startDistance.current !== null) {
+			e.preventDefault();
+			const dist = Math.hypot(
+				e.touches[0].clientX - e.touches[1].clientX,
+				e.touches[0].clientY - e.touches[1].clientY,
+			);
+			const factor = dist / startDistance.current;
+			let newScale = startScale.current * factor;
+			newScale = Math.max(1, Math.min(newScale, 4));
+			setScale(newScale);
+
+			if (newScale === 1) {
+				setPosition({ x: 0, y: 0 });
+			}
+		} else if (scale > 1 && isDragging.current && e.touches.length === 1) {
+			e.preventDefault();
+			const x = e.touches[0].clientX - dragStart.current.x;
+			const y = e.touches[0].clientY - dragStart.current.y;
+			const maxTranslateX = (scale - 1) * window.innerWidth / 2;
+			const maxTranslateY = (scale - 1) * window.innerHeight / 2;
+
+			setPosition({
+				x: Math.max(-maxTranslateX, Math.min(x, maxTranslateX)),
+				y: Math.max(-maxTranslateY, Math.min(y, maxTranslateY)),
+			});
+		}
 	};
 
 	const handleTouchEnd = (e: React.TouchEvent) => {
-		if (touchStartX.current === null) return;
-		const touchEndX = e.changedTouches[0].clientX;
-		const diff = touchStartX.current - touchEndX;
+		if (activeIndex === null) return;
 
-		if (Math.abs(diff) > 50) {
-			if (diff > 0) {
-				showNext();
-			} else {
-				showPrev();
+		if (isPinching.current) {
+			if (e.touches.length < 2) {
+				isPinching.current = false;
+				startDistance.current = null;
+			}
+			return;
+		}
+
+		if (scale > 1) {
+			isDragging.current = false;
+			return;
+		}
+
+		if (touchStartX.current !== null && e.changedTouches.length === 1) {
+			const touchEndX = e.changedTouches[0].clientX;
+			const touchEndY = e.changedTouches[0].clientY;
+			const diffX = touchStartX.current - touchEndX;
+			const diffY = touchStartY.current! - touchEndY;
+
+			if (Math.abs(diffX) > 50 && Math.abs(diffY) < 100) {
+				if (diffX > 0) {
+					showNext();
+				} else {
+					showPrev();
+				}
 			}
 		}
 		touchStartX.current = null;
+		touchStartY.current = null;
+	};
+
+	// Mouse handlers for desktop panning
+	const handleMouseDown = (e: React.MouseEvent) => {
+		if (scale > 1) {
+			e.preventDefault();
+			isDragging.current = true;
+			dragStart.current = {
+				x: e.clientX - position.x,
+				y: e.clientY - position.y,
+			};
+		}
+	};
+
+	const handleMouseMove = (e: React.MouseEvent) => {
+		if (scale > 1 && isDragging.current) {
+			e.preventDefault();
+			const x = e.clientX - dragStart.current.x;
+			const y = e.clientY - dragStart.current.y;
+			const maxTranslateX = (scale - 1) * window.innerWidth / 2;
+			const maxTranslateY = (scale - 1) * window.innerHeight / 2;
+
+			setPosition({
+				x: Math.max(-maxTranslateX, Math.min(x, maxTranslateX)),
+				y: Math.max(-maxTranslateY, Math.min(y, maxTranslateY)),
+			});
+		}
+	};
+
+	const handleMouseUp = () => {
+		isDragging.current = false;
+	};
+
+	// Double click to toggle zoom
+	const handleDoubleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (scale > 1) {
+			resetZoom();
+		} else {
+			setScale(2.5);
+			setPosition({ x: 0, y: 0 });
+		}
 	};
 
 	// Keyboard navigation
@@ -400,39 +534,39 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.3 }}
-						className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-neutral-950/98 backdrop-blur-md select-none"
+						className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black select-none"
 						onClick={closeLightbox}
 						onTouchStart={handleTouchStart}
+						onTouchMove={handleTouchMove}
 						onTouchEnd={handleTouchEnd}
 					>
 						{/* Top bar controls */}
-						<div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/50 to-transparent">
-							<span className="font-sans text-[0.66rem] font-bold tracking-widest uppercase text-white/70">
-								{album.gallery[activeIndex].alt.split(" - ")[0]} /{" "}
-								{String(album.gallery.length).padStart(2, "0")}
+						<div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/60 to-transparent">
+							<span className="font-sans text-[0.62rem] font-bold tracking-[0.24em] uppercase text-white/70">
+								{album.title} &mdash; {String(activeIndex + 1).padStart(2, "0")}/{String(album.gallery.length).padStart(2, "0")}
 							</span>
-							<div className="flex items-center gap-3">
+							<div className="flex items-center gap-4">
 								<a
 									href={album.gallery[activeIndex].image}
 									download
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-flex h-9 items-center justify-center bg-white/10 hover:bg-white/20 px-4 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white border border-white/10 transition-colors cursor-pointer"
+									className="inline-flex h-8 items-center justify-center bg-white/10 hover:bg-white/20 px-4 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white border border-white/10 transition-colors cursor-pointer"
 									onClick={(e) => e.stopPropagation()}
 								>
 									Tải ảnh gốc
 								</a>
 								<button
 									onClick={closeLightbox}
-									className="grid size-11 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
+									className="grid size-9 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
 									aria-label="Đóng ảnh"
 									type="button"
 								>
 									<svg
-										className="size-5"
+										className="size-4"
 										fill="none"
 										stroke="currentColor"
-										strokeWidth="1.5"
+										strokeWidth="1.8"
 										viewBox="0 0 24 24"
 									>
 										<path
@@ -447,21 +581,28 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 
 						{/* Active Image viewport */}
 						<div
-							className="relative flex items-center justify-center w-full h-full p-4 md:p-12 overflow-auto"
+							className="relative flex items-center justify-center w-full h-full p-4 md:p-12 overflow-hidden"
 							onClick={closeLightbox}
 						>
 							<div
-								className="relative max-w-full max-h-[82vh] h-full"
+								className={`relative max-w-full max-h-[86vh] h-full ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"}`}
 								style={{
 									aspectRatio: `${album.gallery[activeIndex].width ?? 1366} / ${album.gallery[activeIndex].height ?? 2048}`,
+									transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+									transition: isDragging.current || isPinching.current ? "none" : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
 								}}
 								onClick={(e) => e.stopPropagation()}
+								onDoubleClick={handleDoubleClick}
+								onMouseDown={handleMouseDown}
+								onMouseMove={handleMouseMove}
+								onMouseUp={handleMouseUp}
+								onMouseLeave={handleMouseUp}
 							>
 								<Image
 									src={album.gallery[activeIndex].image}
 									alt={album.gallery[activeIndex].alt}
 									fill
-									className="object-contain"
+									className="object-contain pointer-events-none"
 									priority
 									unoptimized
 								/>
