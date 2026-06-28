@@ -61,7 +61,7 @@ export function AboutSection() {
 						fill
 						sizes="(min-width: 1024px) 50vw, 100vw"
 						src={weddingImages.about}
-						quality={85}
+						unoptimized
 					/>
 				</div>
 
