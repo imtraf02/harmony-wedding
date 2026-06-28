@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: "/services",
     images: [
       {
-        url: "/images/services/services-hero.png",
+        url: "/images/services/services-hero.webp",
         width: 1200,
         height: 630,
         alt: "Dịch vụ cưới trọn gói Harmony Wedding",

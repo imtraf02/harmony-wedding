@@ -13,7 +13,7 @@ const serviceDetails = [
 		title: "Chụp Ảnh Cưới",
 		description:
 			"Bộ ảnh cưới được lên concept theo câu chuyện, địa điểm và phong cách riêng của từng cặp đôi.",
-		image: "/images/services/photography.png",
+		image: "/images/services/photography.webp",
 		alt: "Dịch vụ chụp ảnh cưới ngoại cảnh Đà Lạt Harmony Wedding",
 		deliverables: [
 			"Tư vấn concept",
@@ -26,7 +26,7 @@ const serviceDetails = [
 		title: "Quay Phim Cưới",
 		description:
 			"Thước phim highlight giàu cảm xúc, dựng nhịp điện ảnh và giữ lại không khí thật của ngày cưới.",
-		image: "/images/services/videography.png",
+		image: "/images/services/videography.webp",
 		alt: "Dịch vụ quay phim cưới ngoại cảnh Harmony Wedding",
 		deliverables: [
 			"Kịch bản quay",
@@ -39,7 +39,7 @@ const serviceDetails = [
 		title: "Trang Điểm Cô Dâu",
 		description:
 			"Makeup tự nhiên, thanh lịch, bền màu và phù hợp gương mặt, váy cưới, ánh sáng chụp.",
-		image: "/images/services/makeup.png",
+		image: "/images/services/makeup.webp",
 		alt: "Dịch vụ trang điểm cô dâu Harmony Wedding",
 		deliverables: [
 			"Tư vấn layout",
@@ -52,7 +52,7 @@ const serviceDetails = [
 		title: "Thuê Vest & Váy Cưới",
 		description:
 			"Cung cấp các mẫu vest chú rể lịch lãm và váy cưới thiết kế cao cấp, tôn vinh vóc dáng và phong cách riêng.",
-		image: "/images/services/suit-dress-rental.png",
+		image: "/images/services/suit-dress-rental.webp",
 		alt: "Dịch vụ thuê vest và váy cưới thiết kế cao cấp Harmony Wedding",
 		deliverables: [
 			"Thử váy & vest không giới hạn",
@@ -65,7 +65,7 @@ const serviceDetails = [
 		title: "Tổ Chức Tiệc Cưới",
 		description:
 			"Đồng hành điều phối timeline, hình ảnh, không gian và trải nghiệm trong ngày trọng đại.",
-		image: "/images/services/wedding-planning.png",
+		image: "/images/services/wedding-planning.webp",
 		alt: "Dịch vụ tổ chức tiệc cưới Harmony Wedding",
 		deliverables: [
 			"Timeline ngày cưới",
@@ -78,7 +78,7 @@ const serviceDetails = [
 		title: "Chụp Beauty",
 		description:
 			"Bộ ảnh chân dung nghệ thuật làm nổi bật đường nét thanh tú và biểu cảm tự nhiên của riêng bạn.",
-		image: "/images/services/beauty.png",
+		image: "/images/services/beauty.webp",
 		alt: "Dịch vụ chụp ảnh chân dung nghệ thuật Beauty Harmony Wedding",
 		deliverables: [
 			"Tư vấn layout trang điểm",
@@ -91,7 +91,7 @@ const serviceDetails = [
 		title: "Chụp Baby",
 		description:
 			"Ghi lại những khoảnh khắc trong trẻo, hồn nhiên và đáng yêu nhất của các bé trong không gian tự nhiên ấm áp.",
-		image: "/images/services/baby.png",
+		image: "/images/services/baby.webp",
 		alt: "Dịch vụ chụp ảnh cho bé Baby Portrait Harmony Wedding",
 		deliverables: [
 			"Chuẩn bị phụ kiện & bối cảnh",
@@ -104,7 +104,7 @@ const serviceDetails = [
 		title: "Chụp Sinh Nhật",
 		description:
 			"Lưu giữ nụ cười rạng rỡ và những khoảnh khắc ý nghĩa bên người thân, bạn bè trong ngày đón tuổi mới.",
-		image: "/images/services/birthday.png",
+		image: "/images/services/birthday.webp",
 		alt: "Dịch vụ chụp ảnh sinh nhật sự kiện Harmony Wedding",
 		deliverables: [
 			"Chụp tiệc hoặc chụp ngoại cảnh",
@@ -117,7 +117,7 @@ const serviceDetails = [
 		title: "Đào Tạo Quay Chụp",
 		description:
 			"Khóa học thực chiến giúp bạn làm chủ thiết bị, tư duy bố cục, ánh sáng và kỹ năng quay phim, chụp ảnh từ cơ bản đến nâng cao.",
-		image: "/images/services/teaching-media.png",
+		image: "/images/services/teaching-media.webp",
 		alt: "Khóa đào tạo quay phim chụp ảnh chuyên nghiệp Harmony Wedding",
 		deliverables: [
 			"Giáo trình lý thuyết bố cục & ánh sáng",
@@ -130,7 +130,7 @@ const serviceDetails = [
 		title: "Đào Tạo Makeup",
 		description:
 			"Khóa học trang điểm cá nhân hoặc chuyên nghiệp giúp bạn tự tin làm đẹp cho bản thân hoặc trở thành chuyên viên makeup thực thụ.",
-		image: "/images/services/teaching-makeup.png",
+		image: "/images/services/teaching-makeup.webp",
 		alt: "Khóa đào tạo trang điểm chuyên nghiệp Harmony Wedding",
 		deliverables: [
 			"Nhận diện dáng khuôn mặt & loại da",
@@ -221,7 +221,7 @@ export function ServicesPageContent() {
 							fill
 							priority
 							sizes="(min-width: 1024px) 58vw, 100vw"
-							src="/images/services/services-hero.png"
+							src="/images/services/services-hero.webp"
 						/>
 					</div>
 				</div>
