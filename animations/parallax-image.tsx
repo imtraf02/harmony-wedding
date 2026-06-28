@@ -38,7 +38,7 @@ export function ParallaxImage({
             priority={priority}
             sizes={sizes}
             src={src}
-            unoptimized
+            quality={85}
           />
         </div>
       </div>

@@ -109,7 +109,7 @@ export function PricingGallery() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                   loading="lazy"
-                  unoptimized
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
               </div>
@@ -183,7 +183,7 @@ export function PricingGallery() {
                 height={isZoomed ? 1600 : undefined}
                 className={`object-contain ${isZoomed ? "shadow-2xl" : ""}`}
                 priority
-                unoptimized
+                quality={95}
               />
             </div>
           </div>
