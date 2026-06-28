@@ -1527,4 +1527,77 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "khoa-hoc-dao-tao-quay-chup-chinh-sua-anh-ket-hop-ai",
+		title: "Khóa Học Đào Tạo Quay Chụp & Chỉnh Sửa Ảnh Chuyên Nghiệp Kết Hợp Công Nghệ AI",
+		summary:
+			"Harmony Wedding khai giảng các khóa đào tạo nhiếp ảnh, quay phim phóng sự cưới và kỹ năng hậu kỳ photoshop chuyên sâu tích hợp công nghệ trí tuệ nhân tạo AI đột phá.",
+		coverImage: "/images/blog/anime_coaching_cover.png",
+		date: "28/06/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Sự bùng nổ của nhiếp ảnh số và đặc biệt là công nghệ trí tuệ nhân tạo (AI) đang định hình lại toàn bộ quy trình sản xuất hình ảnh chuyên nghiệp. Để giúp các bạn trẻ đam mê nhiếp ảnh nhanh chóng làm chủ thiết bị, nâng cao tư duy nghệ thuật và đi đầu trong việc ứng dụng công nghệ hiện đại, Harmony Wedding chính thức khai giảng khóa đào tạo quay phim, chụp ảnh cưới đẹp và kỹ năng hậu kỳ chuyên sâu tích hợp AI tại Trảng Bom, Đồng Nai.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lộ trình đào tạo quay chụp từ cơ bản đến nâng cao",
+			},
+			{
+				type: "paragraph",
+				text: "Khóa học được thiết kế thực tế 100%, cầm tay chỉ việc giúp học viên vững vàng tay nghề sau khi tốt nghiệp: từ kỹ năng làm chủ thiết bị thông số máy ảnh, tiêu cự ống kính, setup ánh sáng studio chuyên nghiệp cho đến tư duy bố cục bắt trọn khoảnh khắc tự nhiên trong ngày cưới và các nghi lễ truyền thống.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_coaching_practice.png",
+				alt: "Học viên cầm máy ảnh tác nghiệp chụp mẫu thực tế tại studio",
+				caption: "Học viên được trực tiếp cầm máy ảnh thực hành trong môi trường studio chuyên nghiệp có người hướng dẫn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Kỹ thuật hậu kỳ chuyên nghiệp và ứng dụng AI đột phá",
+			},
+			{
+				type: "paragraph",
+				text: "Khóa học chú trọng đào tạo tư duy hậu kỳ - chìa khóa làm nên màu ảnh thương hiệu riêng biệt. Học viên sẽ được hướng dẫn chuyên sâu kỹ năng blend màu da tươi sáng tự nhiên, nhặt chi tiết rác, đồng thời ứng dụng trí tuệ nhân tạo AI để tự động hóa quy trình hậu kỳ giúp tiết kiệm 80% thời gian xử lý hình ảnh mà vẫn giữ nguyên chất lượng ảnh gốc sắc nét.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_coaching_editing.png",
+				alt: "Học viên ngồi trước máy tính chỉnh sửa hậu kỳ ảnh cưới tích hợp AI",
+				caption: "Làm chủ các phần mềm Photoshop, Lightroom kết hợp công cụ AI tiên tiến để tối ưu hóa quy trình làm ảnh cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Cơ hội thực chiến và làm việc trực tiếp tại studio",
+			},
+			{
+				type: "paragraph",
+				text: "Học viên xuất sắc sau khóa học sẽ có cơ hội tham gia trực tiếp vào các dự án chụp ngoại cảnh Hồ Trị An, Đà Lạt hoặc tác nghiệp tại các sự kiện cưới thực tế của Harmony Wedding. Đây là bước đệm tuyệt vời để các bạn xây dựng portfolio cá nhân ấn tượng và có cơ hội trở thành thành viên chính thức trong ekip chuyên nghiệp của Harmony.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Đăng ký khóa học đào tạo quay chụp tại Harmony Wedding Trảng Bom",
+			},
+			{
+				type: "paragraph",
+				text: "Với mức giá Harmony hỗ trợ tối đa cho học viên và trang thiết bị hiện đại sẵn có tại studio, khóa học hứa hẹn mang lại cho bạn bệ phóng nghề nghiệp vững chắc nhất. Liên hệ ngay hôm nay để nhận thông tin chi tiết khóa học:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
