@@ -411,26 +411,38 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 								{album.gallery[activeIndex].alt.split(" - ")[0]} /{" "}
 								{String(album.gallery.length).padStart(2, "0")}
 							</span>
-							<button
-								onClick={closeLightbox}
-								className="grid size-11 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
-								aria-label="Đóng ảnh"
-								type="button"
-							>
-								<svg
-									className="size-5"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="1.5"
-									viewBox="0 0 24 24"
+							<div className="flex items-center gap-3">
+								<a
+									href={album.gallery[activeIndex].image}
+									download
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex h-9 items-center justify-center bg-white/10 hover:bg-white/20 px-4 text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white border border-white/10 transition-colors cursor-pointer"
+									onClick={(e) => e.stopPropagation()}
 								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										d="M6 18L18 6M6 6l12 12"
-									/>
-								</svg>
-							</button>
+									Tải ảnh gốc
+								</a>
+								<button
+									onClick={closeLightbox}
+									className="grid size-11 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
+									aria-label="Đóng ảnh"
+									type="button"
+								>
+									<svg
+										className="size-5"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="1.5"
+										viewBox="0 0 24 24"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M6 18L18 6M6 6l12 12"
+										/>
+									</svg>
+								</button>
+							</div>
 						</div>
 
 						{/* Active Image viewport */}
