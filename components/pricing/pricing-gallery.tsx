@@ -137,16 +137,6 @@ export function PricingGallery() {
               {pricingImages[activeIdx].title} / {String(pricingImages.length).padStart(2, "0")}
             </span>
             <div className="flex items-center gap-4">
-              <a
-                href={pricingImages[activeIdx].src}
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-9 items-center justify-center bg-white/10 hover:bg-white/20 px-4 text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-white border border-white/10 transition-colors cursor-pointer"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Tải ảnh gốc
-              </a>
               <button
                 onClick={() => setIsZoomed(!isZoomed)}
                 className="hidden md:flex px-4 py-2 text-[0.66rem] font-semibold uppercase tracking-[0.2em] bg-white/10 hover:bg-white/20 transition-colors text-white border border-white/10"

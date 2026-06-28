@@ -546,16 +546,6 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 								{album.title} &mdash; {String(activeIndex + 1).padStart(2, "0")}/{String(album.gallery.length).padStart(2, "0")}
 							</span>
 							<div className="flex items-center gap-4">
-								<a
-									href={album.gallery[activeIndex].image}
-									download
-									target="_blank"
-									rel="noopener noreferrer"
-									className="inline-flex h-8 items-center justify-center bg-white/10 hover:bg-white/20 px-4 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white border border-white/10 transition-colors cursor-pointer"
-									onClick={(e) => e.stopPropagation()}
-								>
-									Tải ảnh gốc
-								</a>
 								<button
 									onClick={closeLightbox}
 									className="grid size-9 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer"
