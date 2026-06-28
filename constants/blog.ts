@@ -1377,4 +1377,81 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "bi-quyet-chon-vest-cuoi-chu-re-lich-lam-hop-dang",
+		title: "Bí Quyết Chọn Vest Cưới Chú Rể Lịch Lãm & Hợp Dáng Cho Ngày Cưới Trọn Vẹn",
+		summary:
+			"Harmony Wedding chia sẻ kinh nghiệm chọn kiểu dáng, màu sắc và chất liệu vest cưới (suit) giúp chú rể trông thật nổi bật và tự tin sánh đôi bên cô dâu.",
+		coverImage: "/images/blog/anime_suit_cover.png",
+		date: "28/06/2026",
+		readTime: "6 phút đọc",
+		category: "Trang Phục",
+		content: [
+			{
+				type: "paragraph",
+				text: "Trong ngày cưới, nếu cô dâu là tâm điểm của sự kiêu sa trong bộ váy cưới lộng lẫy thì chú rể chính là mảnh ghép hoàn hảo đại diện cho nét lịch lãm, phong độ. Tuy nhiên, việc chọn một bộ vest cưới (suit) vừa vặn, tôn dáng và đồng điệu với tân nương không hề đơn giản. Bộ vest phù hợp sẽ giúp chú rể tự tin tỏa sáng khi đứng trên lễ đường. Hãy cùng Harmony Wedding tìm hiểu các bí quyết chọn vest cưới hoàn hảo ngay sau đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lựa chọn kiểu dáng vest cưới phổ biến nhất",
+			},
+			{
+				type: "paragraph",
+				text: "Hiện nay, có 2 kiểu dáng vest cưới chú rể được lựa chọn nhiều nhất: Single-Breasted (Vest một hàng khuy) trẻ trung năng động thích hợp chụp pre-wedding ngoài trời và Double-Breasted (Vest hai hàng khuy) lịch lãm cổ điển tôn lên vẻ trang trọng cho chú rể trong ngày cưới chính tại nhà hàng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Chọn vest cưới phù hợp với dáng người của chú rể",
+			},
+			{
+				type: "paragraph",
+				text: "Mỗi chú rể có một vóc dáng khác nhau, chọn phom vest phù hợp sẽ giúp che khuyết điểm và tôn lên ưu điểm cơ thể: Chú rể cao gầy nên chọn tông màu sáng (be, xám nhạt) cùng phom Regular Fit để người trông đầy đặn hơn. Ngược lại, chú rể dáng người tròn nên ưu tiên chọn vest sẫm màu phom Slim Fit thon gọn.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_suit_couple.png",
+				alt: "Cô dâu ân cần chỉnh nơ áo vest cưới xanh navy lịch lãm cho chú rể",
+				caption: "Sự kết hợp hoàn hảo giữa tà váy cưới trắng lộng lẫy và bộ vest cưới lịch thiệp mang lại sự đồng điệu tuyệt đối.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Chọn màu sắc vest cưới đồng điệu với váy cưới cô dâu",
+			},
+			{
+				type: "paragraph",
+				text: "Để hai bạn trông thật hài hòa khi đứng trước cổng cưới đón khách, màu sắc vest của chú rể cần có sự kết nối chặt chẽ với màu váy cưới, đầm cưới (wedding dress) của cô dâu. Tone đen, navy phù hợp với váy cưới trắng, trong khi vest màu be, nâu đất sẽ ăn ý với váy cưới tone màu kem hoặc pastel nhẹ nhàng.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Dịch vụ cho thuê vest cưới chú rể trọn gói tại Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Với hàng trăm mẫu vest cưới đa dạng kích cỡ, màu sắc từ phom dáng Slim Fit hiện đại đến Tuxedo quý tộc, Harmony Wedding tự hào là tiệm thuê đồ gần đây uy tín nhất Trảng Bom. Đội ngũ stylist của chúng tôi sẽ hỗ trợ chú rể đo đạc, chỉnh sửa vest hoàn hảo và đồng bộ màu sắc với váy cưới cô dâu.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_suit_showroom.png",
+				alt: "Tủ treo trưng bày vest cưới chú rể sang trọng tại showroom Harmony",
+				caption: "Showroom Harmony trưng bày đa dạng kiểu dáng vest cưới chú rể, hỗ trợ may đo chỉnh sửa vừa vặn nhất.",
+			},
+			{
+				type: "paragraph",
+				text: "Hãy liên hệ ngay với Harmony để đặt lịch thử vest cưới chú rể với giá Harmony ưu đãi nhất:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
