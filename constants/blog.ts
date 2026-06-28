@@ -14,7 +14,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Bí Quyết Tạo Dáng Tự Nhiên Khi Chụp Ảnh Cưới",
 		summary:
 			"Làm sao để không bị gượng gạo trước ống kính? Harmony gợi ý những bí quyết tạo dáng tự nhiên, giúp lưu lại trọn vẹn cảm xúc chân thật nhất của hai bạn.",
-		coverImage: "/images/blog/wedding_posing.png",
+		coverImage: "/images/blog/wedding_posing.webp",
 		date: "05/06/2026",
 		readTime: "5 phút đọc",
 		category: "Kinh Nghiệm",
@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/wedding_posing_walk.png",
+				src: "/images/blog/wedding_posing_walk.webp",
 				alt: "Cô dâu chú rể đi dạo giữa rừng thông Đà Lạt",
 				caption: "Chuyển động đi bộ tự nhiên giúp bức hình cưới trở nên sinh động và thơ mộng.",
 			},
@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Top 5 Địa Điểm Chụp Ảnh Cưới Ngoại Cảnh Đẹp Nhất Đồng Nai",
 		summary:
 			"Khám phá những góc chụp đầy nghệ thuật, từ Sunny Garden lãng mạn đến các phim trường và ngoại cảnh thiên nhiên độc đáo ngay tại Đồng Nai.",
-		coverImage: "/images/blog/wedding_locations.png",
+		coverImage: "/images/blog/wedding_locations.webp",
 		date: "01/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
@@ -106,7 +106,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/wedding_sunny_garden.png",
+				src: "/images/blog/wedding_sunny_garden.webp",
 				alt: "Góc chụp lãng mạn tại Sunny Garden Đồng Nai",
 				caption: "Sunny Garden ngập tràn ánh sáng tự nhiên lý tưởng cho ảnh cưới lãng mạn.",
 			},
@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Kinh Nghiệm Chọn Váy Cưới & Vest Phù Hợp Cho Từng Dáng Người",
 		summary:
 			"Mỗi vóc dáng đều có những thiết kế váy cưới và vest tôn dáng nhất. Tìm hiểu bí quyết từ Harmony để hai bạn tự tin tỏa sáng trong ngày trọng đại.",
-		coverImage: "/images/blog/wedding_attire.png",
+		coverImage: "/images/blog/wedding_attire.webp",
 		date: "28/05/2026",
 		readTime: "7 phút đọc",
 		category: "Trang Phục",
@@ -187,7 +187,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/wedding_bride_dress.png",
+				src: "/images/blog/wedding_bride_dress.webp",
 				alt: "Cô dâu trong chiếc váy cưới chữ A thanh lịch tại An Garden",
 				caption: "Dáng váy chữ A thanh lịch giúp cô dâu di chuyển dễ dàng mà vẫn giữ được sự nhẹ nhàng, kiêu sa.",
 			},
@@ -229,7 +229,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Xu Hướng Trang Điểm Cô Dâu Tự Nhiên & Thanh Lịch 2026",
 		summary:
 			"Phong cách trang điểm trong suốt, tự nhiên nhưng không kém phần quý phái đang dẫn đầu xu hướng mùa cưới năm nay. Khám phá những điểm nhấn đặc biệt.",
-		coverImage: "/images/blog/wedding_makeup.png",
+		coverImage: "/images/blog/wedding_makeup.webp",
 		date: "24/05/2026",
 		readTime: "5 phút đọc",
 		category: "Trang Điểm",
@@ -249,7 +249,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/wedding_makeup_close.png",
+				src: "/images/blog/wedding_makeup_close.webp",
 				alt: "Gương mặt trang điểm tự nhiên trong veo của cô dâu",
 				caption: "Layout makeup trong trẻo giúp nổi bật nét thanh tú và dịu dàng tự nhiên của tân nương.",
 			},
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Vũ Garden Bình Dương - Thánh Đường Ảnh Cưới Cổ Điển & Thơ Mộng",
 		summary:
 			"Khám phá Vũ Garden Bình Dương - Phim trường cưới mang đậm phong cách Châu Âu cổ điển với những nhà kính ngập tràn ánh sáng và khu vườn thượng uyển đầy hoa hồng lãng mạn.",
-		coverImage: "/images/blog/vu_garden_cover.png",
+		coverImage: "/images/blog/vu_garden_cover.webp",
 		date: "08/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
@@ -329,7 +329,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/vu_garden_roses.png",
+				src: "/images/blog/vu_garden_roses.webp",
 				alt: "Cặp đôi bên vòm hoa hồng lãng mạn tại Vũ Garden Bình Dương",
 				caption: "Vòm hoa hồng rực rỡ cùng đài phun nước cổ kính làm nổi bật vẻ đẹp lãng mạn của cặp đôi.",
 			},
@@ -362,7 +362,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Sunny Garden - Phim Trường Cưới Châu Âu Thơ Mộng Ngay Tại Đồng Nai",
 		summary:
 			"Chi tiết về bối cảnh, chi phí và kinh nghiệm chụp ảnh cưới tại Sunny Garden Đồng Nai - phim trường mang phong cách đồng quê châu Âu lãng mạn.",
-		coverImage: "/images/blog/sunny_garden_cover.png",
+		coverImage: "/images/blog/sunny_garden_cover.webp",
 		date: "12/06/2026",
 		readTime: "5 phút đọc",
 		category: "Địa Điểm",
@@ -382,7 +382,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/sunny_garden_path.png",
+				src: "/images/blog/sunny_garden_path.webp",
 				alt: "Lối đi lát đá uốn lượn giữa vườn hoa ngập nắng tại Sunny Garden",
 				caption: "Những lối đi lát đá uốn lượn quanh những đóa hoa rực rỡ tạo nên chiều sâu thơ mộng cho album cưới.",
 			},
@@ -431,7 +431,7 @@ export const blogPosts: BlogPost[] = [
 		title: "An Garden - Bản Tình Ca Trong Trẻo & Bình Yên Cho Album Cưới",
 		summary:
 			"Khám phá bối cảnh ngập tràn sắc xanh tươi mát, những góc nhà gỗ Hàn Quốc lãng mạn tại An Garden - lựa chọn tuyệt vời cho các cặp đôi yêu thích phong cách mộc mạc.",
-		coverImage: "/images/blog/an_garden_cover.png",
+		coverImage: "/images/blog/an_garden_cover.webp",
 		date: "15/06/2026",
 		readTime: "5 phút đọc",
 		category: "Địa Điểm",
@@ -451,7 +451,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/an_garden_details.png",
+				src: "/images/blog/an_garden_details.webp",
 				alt: "Cặp đôi đứng bên nhà kính bằng gỗ tại An Garden",
 				caption: "Góc nhà kính gỗ nhỏ xinh xắn ngập tràn các chậu cây cảnh tạo phông nền xanh mát, trong trẻo.",
 			},
@@ -500,7 +500,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Phóng Sự Cưới Là Gì? Phân Biệt Ảnh Phóng Sự & Ảnh Truyền Thống",
 		summary:
 			"Tìm hiểu chi tiết về phong cách chụp ảnh phóng sự cưới, sự khác biệt so với ảnh cưới truyền thống và kinh nghiệm lựa chọn dịch vụ tốt nhất cho ngày cưới.",
-		coverImage: "/images/blog/journalism_cover.png",
+		coverImage: "/images/blog/journalism_cover.webp",
 		date: "21/06/2026",
 		readTime: "6 phút đọc",
 		category: "Kinh Nghiệm",
@@ -520,7 +520,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/journalism_detail.png",
+				src: "/images/blog/journalism_detail.webp",
 				alt: "Chi tiết chuẩn bị cưới được ghi lại trong ảnh phóng sự",
 				caption: "Phóng sự cưới đặc biệt chú trọng ghi lại những chi tiết nhỏ nhưng giàu ý nghĩa như nhẫn cưới, thiệp mời, hoa cầm tay.",
 			},
@@ -569,7 +569,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Đà Lạt - Thiên Đường Ảnh Cưới Ngoại Cảnh Thơ Mộng & Lãng Mạn",
 		summary:
 			"Đà Lạt luôn là điểm đến mơ ước của các cặp đôi. Khám phá những góc chụp ảnh cưới ngoại cảnh thơ mộng từ đồi thông xanh mướt, hồ Tuyền Lâm sương mờ đến những con dốc tình yêu hoài cổ.",
-		coverImage: "/images/blog/dalat_cover.png",
+		coverImage: "/images/blog/dalat_cover.webp",
 		date: "24/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
@@ -598,7 +598,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/wedding_posing_walk.png",
+				src: "/images/blog/wedding_posing_walk.webp",
 				alt: "Cặp đôi đi dạo lãng mạn giữa rừng thông Đà Lạt",
 				caption: "Rừng thông Đà Lạt là phông nền tự nhiên mang vẻ đẹp lãng mạn và vượt thời gian cho mọi album cưới.",
 			},
@@ -639,7 +639,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Kinh Nghiệm Thuê Váy Cưới & Chụp Phóng Sự Cưới Đẹp Tại Trảng Bom: Bảng Giá Harmony Wedding Chi Tiết",
 		summary:
 			"Tìm kiếm tiệm áo cưới gần đây tại Trảng Bom? Harmony Wedding chia sẻ kinh nghiệm thuê váy cưới đẹp, chụp ảnh phóng sự cưới tự nhiên cùng bảng giá Harmony Soiree mới nhất.",
-		coverImage: "/images/blog/anime_wedding_cover.png",
+		coverImage: "/images/blog/anime_wedding_cover.webp",
 		date: "27/06/2026",
 		readTime: "8 phút đọc",
 		category: "Kinh Nghiệm",
@@ -667,7 +667,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_bride_soiree.png",
+				src: "/images/blog/anime_bride_soiree.webp",
 				alt: "Cô dâu thử váy cưới Harmony Soiree trước gương",
 				caption: "Trải nghiệm thử váy cưới lãng mạn giúp cô dâu tìm thấy chiếc váy cưới mơ ước của đời mình.",
 			},
@@ -686,7 +686,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_wedding_photoshoot.png",
+				src: "/images/blog/anime_wedding_photoshoot.webp",
 				alt: "Cặp đôi chụp ảnh cưới ngoại cảnh dưới cổng cưới lãng mạn",
 				caption: "Concept chụp ảnh cưới ngoại cảnh tự nhiên kết hợp cổng cưới lãng mạn đang là xu hướng hot được yêu thích nhất.",
 			},
@@ -785,7 +785,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Bí Quyết Phối Layout Trang Điểm Cô Dâu Hợp Tone Với Từng Dáng Váy Cưới (Soiree)",
 		summary:
 			"Harmony Wedding hướng dẫn cách kết hợp layout trang điểm cô dâu và làm tóc hài hòa với từng kiểu dáng váy cưới khác nhau, giúp nàng tỏa sáng rạng ngời trong ngày cưới.",
-		coverImage: "/images/blog/anime_makeup_cover.png",
+		coverImage: "/images/blog/anime_makeup_cover.webp",
 		date: "27/06/2026",
 		readTime: "6 phút đọc",
 		category: "Trang Điểm",
@@ -805,7 +805,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_ball_gown.png",
+				src: "/images/blog/anime_ball_gown.webp",
 				alt: "Cô dâu trong dáng váy cưới công chúa xòe bồng lộng lẫy",
 				caption: "Dáng váy công chúa lộng lẫy cực kỳ ăn ý với kiểu tóc búi cao quý phái và layout makeup cổ điển sang trọng.",
 			},
@@ -820,7 +820,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_minimalist_gown.png",
+				src: "/images/blog/anime_minimalist_gown.webp",
 				alt: "Cô dâu rạng rỡ trong váy cưới tối giản làm bằng lụa satin",
 				caption: "Vẻ đẹp thuần khiết và thanh lịch từ sự kết hợp giữa váy cưới satin tối giản cùng layout trang điểm trong veo Hàn Quốc.",
 			},
@@ -858,7 +858,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Bí Quyết Chọn Áo Dài Cô Dâu Chú Rể & Đội Bưng Quả Đẹp Cho Lễ Gia Tiên Trọn Vẹn",
 		summary:
 			"Kinh nghiệm chọn áo dài cưới truyền thống, phối màu áo dài bưng quả và lựa chọn hỷ phục giúp ngày lễ gia tiên của hai bạn thêm phần chỉn chu và ngập tràn cảm xúc.",
-		coverImage: "/images/blog/anime_aodai_cover.png",
+		coverImage: "/images/blog/anime_aodai_cover.webp",
 		date: "27/06/2026",
 		readTime: "7 phút đọc",
 		category: "Trang Phục",
@@ -878,7 +878,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_aodai_couple.png",
+				src: "/images/blog/anime_aodai_couple.webp",
 				alt: "Cô dâu chú rể dâng trà kính tổ tiên trong trang phục áo dài truyền thống",
 				caption: "Sự kết hợp đồng điệu giữa sắc trắng tinh khôi của cô dâu và sắc đỏ may mắn của chú rể trong ngày lễ gia tiên.",
 			},
@@ -893,7 +893,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_aodai_procession.png",
+				src: "/images/blog/anime_aodai_procession.webp",
 				alt: "Cô dâu và dàn dâu phụ xinh đẹp trong ngày rước dâu",
 				caption: "Dàn dâu phụ diện áo dài hồng pastel đồng bộ giúp tôn vinh tà áo dài đỏ rực rỡ và nụ cười rạng ngời của tân nương.",
 			},
@@ -942,7 +942,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Harmony Wedding: Định Nghĩa Lại Chất Lượng Vượt Trội Trong Tầm Giá Hợp Lý Tại Trảng Bom",
 		summary:
 			"Khám phá lý do Harmony Wedding Trảng Bom trở thành lựa chọn hàng đầu cho các cặp đôi nhờ dịch vụ cho thuê váy cưới và chụp ảnh chất lượng cao cấp với mức giá tối ưu nhất.",
-		coverImage: "/images/blog/anime_quality_cover.png",
+		coverImage: "/images/blog/anime_quality_cover.webp",
 		date: "27/06/2026",
 		readTime: "6 phút đọc",
 		category: "Kinh Nghiệm",
@@ -971,7 +971,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_quality_photoshoot.png",
+				src: "/images/blog/anime_quality_photoshoot.webp",
 				alt: "Ekip nhiếp ảnh chuyên nghiệp bắt trọn khoảnh khắc hạnh phúc dưới cổng hoa",
 				caption: "Trang thiết bị chuyên nghiệp cùng tinh thần bắt khoảnh khắc tự nhiên giúp album phóng sự cưới của hai bạn ngập tràn cảm xúc.",
 			},
@@ -986,7 +986,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_wedding_album.png",
+				src: "/images/blog/anime_wedding_album.webp",
 				alt: "Cặp đôi hạnh phúc xem cuốn album cưới chất lượng cao của mình",
 				caption: "Từng trang album photobook được in ấn sắc nét trên giấy chuyên dụng cao cấp chống nước, chống bay màu.",
 			},
@@ -1033,7 +1033,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Top 5 Phong Cách Chụp Ảnh Cưới Đẹp Thịnh Hành Nhất: Từ Pre-wedding Đến Phóng Sự Cưới",
 		summary:
 			"Tổng hợp các phong cách chụp ảnh cưới hot nhất năm nay giúp các cặp đôi dễ dàng chọn lựa concept phù hợp để lưu giữ câu chuyện tình yêu trọn vẹn.",
-		coverImage: "/images/blog/anime_styles_cover.png",
+		coverImage: "/images/blog/anime_styles_cover.webp",
 		date: "27/06/2026",
 		readTime: "7 phút đọc",
 		category: "Kinh Nghiệm",
@@ -1062,7 +1062,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_retro_style.png",
+				src: "/images/blog/anime_retro_style.webp",
 				alt: "Cặp đôi diện đồ cưới vintage ngọt ngào bên xe cổ",
 				caption: "Phong cách Retro Vintage hoài niệm kể lại câu chuyện tình yêu vượt qua dòng chảy thời gian.",
 			},
@@ -1077,7 +1077,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_cinematic_style.png",
+				src: "/images/blog/anime_cinematic_style.webp",
 				alt: "Cặp đôi nắm tay chạy trên đồi cỏ lộng gió hoàng hôn rực rỡ",
 				caption: "Góc ảnh rộng cùng ánh sáng hoàng hôn cinematic rực rỡ mang đến cảm xúc thăng hoa như một thước phim điện ảnh.",
 			},
@@ -1124,7 +1124,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Hồ Trị An: Thiên Đường Chụp Ảnh Cưới Ngoại Cảnh Hoang Sơ & Thơ Mộng Tại Đồng Nai",
 		summary:
 			"Harmony Wedding chia sẻ kinh nghiệm chụp ảnh cưới ngoại cảnh tại Hồ Trị An với các góc chụp hoàng hôn rực rỡ, cắm trại lãng mạn và chọn trang phục phù hợp nhất.",
-		coverImage: "/images/blog/anime_trian_cover.png",
+		coverImage: "/images/blog/anime_trian_cover.webp",
 		date: "27/06/2026",
 		readTime: "6 phút đọc",
 		category: "Địa Điểm",
@@ -1144,7 +1144,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_trian_boat.png",
+				src: "/images/blog/anime_trian_boat.webp",
 				alt: "Cặp đôi chèo thuyền gỗ lãng mạn trên mặt hồ Trị An sương mờ",
 				caption: "Concept chèo thuyền lãng mạn trên hồ nước xanh biếc trong sương sớm mang lại vẻ đẹp huyền ảo như truyện cổ tích.",
 			},
@@ -1191,7 +1191,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Những Lưu Ý Quan Trọng Trong Ngày Cưới Để Cô Dâu Chú Rể Luôn Rạng Rỡ & Thư Thái",
 		summary:
 			"Tổng hợp danh sách các lưu ý thực tế trong ngày cưới giúp cô dâu chú rể giảm thiểu căng thẳng, quản lý thời gian làm lễ và giữ vững năng lượng trọn vẹn.",
-		coverImage: "/images/blog/anime_wedding_cover.png",
+		coverImage: "/images/blog/anime_wedding_cover.webp",
 		date: "27/06/2026",
 		readTime: "6 phút đọc",
 		category: "Kinh Nghiệm",
@@ -1211,7 +1211,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_makeup_cover.png",
+				src: "/images/blog/anime_makeup_cover.webp",
 				alt: "Cô dâu rạng rỡ làm tóc trang điểm buổi sáng ngày cưới",
 				caption: "Sắp xếp thời gian trang điểm cô dâu sớm hơn giờ lễ ít nhất 3 tiếng giúp giữ vững tâm lý thoải mái, vui tươi.",
 			},
@@ -1244,7 +1244,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_wedding_photoshoot.png",
+				src: "/images/blog/anime_wedding_photoshoot.webp",
 				alt: "Ekip chụp ảnh cưới bắt trọn những khoảnh khắc tự nhiên lãng mạn dưới cổng hoa",
 				caption: "Phối hợp tự nhiên với ekip chụp phóng sự cưới giúp lưu giữ trọn vẹn những nụ cười và giọt nước mắt hạnh phúc thật nhất.",
 			},
@@ -1282,7 +1282,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Tìm Hiểu Phong Tục Cưới Hỏi Truyền Thống Việt Nam & Các Nghi Thức Lễ Gia Tiên Chuẩn",
 		summary:
 			"Khám phá ý nghĩa của phong tục cưới hỏi truyền thống Việt Nam và quy trình thực hiện nghi thức lễ gia tiên chỉn chu, trang nghiêm trong ngày cưới.",
-		coverImage: "/images/blog/anime_aodai_cover.png",
+		coverImage: "/images/blog/anime_aodai_cover.webp",
 		date: "27/06/2026",
 		readTime: "7 phút đọc",
 		category: "Kinh Nghiệm",
@@ -1320,7 +1320,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_aodai_procession.png",
+				src: "/images/blog/anime_aodai_procession.webp",
 				alt: "Dàn dâu phụ bê mâm quả cưới xinh xắn bên cô dâu tà áo dài đỏ",
 				caption: "Nghi thức trao quả mở đầu ngày cưới rạng rỡ của đôi bạn trẻ tại lễ rước dâu gia tiên.",
 			},
@@ -1335,7 +1335,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_aodai_couple.png",
+				src: "/images/blog/anime_aodai_couple.webp",
 				alt: "Nghi lễ dâng trà dâng hương gia tiên thành kính của đôi tân hôn",
 				caption: "Cô dâu chú rể thành kính dâng hương trước bàn thờ gia tiên cầu mong ông bà phù hộ cho cuộc sống trăm năm.",
 			},
@@ -1382,7 +1382,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Bí Quyết Chọn Vest Cưới Chú Rể Lịch Lãm & Hợp Dáng Cho Ngày Cưới Trọn Vẹn",
 		summary:
 			"Harmony Wedding chia sẻ kinh nghiệm chọn kiểu dáng, màu sắc và chất liệu vest cưới (suit) giúp chú rể trông thật nổi bật và tự tin sánh đôi bên cô dâu.",
-		coverImage: "/images/blog/anime_suit_cover.png",
+		coverImage: "/images/blog/anime_suit_cover.webp",
 		date: "28/06/2026",
 		readTime: "6 phút đọc",
 		category: "Trang Phục",
@@ -1411,7 +1411,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_suit_couple.png",
+				src: "/images/blog/anime_suit_couple.webp",
 				alt: "Cô dâu ân cần chỉnh nơ áo vest cưới xanh navy lịch lãm cho chú rể",
 				caption: "Sự kết hợp hoàn hảo giữa tà váy cưới trắng lộng lẫy và bộ vest cưới lịch thiệp mang lại sự đồng điệu tuyệt đối.",
 			},
@@ -1435,7 +1435,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_suit_showroom.png",
+				src: "/images/blog/anime_suit_showroom.webp",
 				alt: "Tủ treo trưng bày vest cưới chú rể sang trọng tại showroom Harmony",
 				caption: "Showroom Harmony trưng bày đa dạng kiểu dáng vest cưới chú rể, hỗ trợ may đo chỉnh sửa vừa vặn nhất.",
 			},
@@ -1459,7 +1459,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Những Tấm Ảnh Cưới Vượt Thời Gian: Giá Trị Vô Giá Của Ký Ức Hạnh Phúc",
 		summary:
 			"Những tấm ảnh cưới không đơn thuần là những khuôn hình đẹp, mà đó là kỷ vật thiêng liêng lưu giữ trọn vẹn những cảm xúc chân thật nhất của ngày hạnh phúc.",
-		coverImage: "/images/blog/anime_memories_cover.png",
+		coverImage: "/images/blog/anime_memories_cover.webp",
 		date: "28/06/2026",
 		readTime: "6 phút đọc",
 		category: "Kinh Nghiệm",
@@ -1488,7 +1488,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_memories_frame.png",
+				src: "/images/blog/anime_memories_frame.webp",
 				alt: "Cặp đôi cùng ngắm nhìn khung ảnh cưới canvas treo tường đầy lãng mạn",
 				caption: "Ảnh cổng cưới treo trang trọng tại phòng khách là lời nhắc nhở ngọt ngào về ngày tình yêu đơm hoa kết trái.",
 			},
@@ -1503,7 +1503,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_memories_albums.png",
+				src: "/images/blog/anime_memories_albums.webp",
 				alt: "Bộ album ảnh cưới gỗ, da cao cấp và USB lưu trữ dữ liệu chất lượng cao",
 				caption: "Lựa chọn chất liệu in ấn cao cấp tại Harmony giúp những tấm ảnh cưới của bạn luôn bền đẹp, nguyên bản.",
 			},
@@ -1532,7 +1532,7 @@ export const blogPosts: BlogPost[] = [
 		title: "Khóa Học Đào Tạo Quay Chụp & Chỉnh Sửa Ảnh Chuyên Nghiệp Kết Hợp Công Nghệ AI",
 		summary:
 			"Harmony Wedding khai giảng các khóa đào tạo nhiếp ảnh, quay phim phóng sự cưới và kỹ năng hậu kỳ photoshop chuyên sâu tích hợp công nghệ trí tuệ nhân tạo AI đột phá.",
-		coverImage: "/images/blog/anime_coaching_cover.png",
+		coverImage: "/images/blog/anime_coaching_cover.webp",
 		date: "28/06/2026",
 		readTime: "7 phút đọc",
 		category: "Kinh Nghiệm",
@@ -1552,7 +1552,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_coaching_practice.png",
+				src: "/images/blog/anime_coaching_practice.webp",
 				alt: "Học viên cầm máy ảnh tác nghiệp chụp mẫu thực tế tại studio",
 				caption: "Học viên được trực tiếp cầm máy ảnh thực hành trong môi trường studio chuyên nghiệp có người hướng dẫn.",
 			},
@@ -1567,7 +1567,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "image",
-				src: "/images/blog/anime_coaching_editing.png",
+				src: "/images/blog/anime_coaching_editing.webp",
 				alt: "Học viên ngồi trước máy tính chỉnh sửa hậu kỳ ảnh cưới tích hợp AI",
 				caption: "Làm chủ các phần mềm Photoshop, Lightroom kết hợp công cụ AI tiên tiến để tối ưu hóa quy trình làm ảnh cưới.",
 			},
