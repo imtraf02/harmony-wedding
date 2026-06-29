@@ -1920,4 +1920,77 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "cam-nang-chup-anh-chan-dung-beauty-chuyen-nghiep",
+		title: "Cẩm Nang Chụp Ảnh Chân Dung Beauty Chuyên Nghiệp: Nghệ Thuật Tôn Vinh Vẻ Đẹp Tự Nhiên",
+		summary:
+			"Hướng dẫn chi tiết từ A đến Z giúp các bạn gái chuẩn bị tốt từ dưỡng da, layout makeup cho đến thần thái biểu cảm để sở hữu bộ ảnh chân dung Beauty ưng ý.",
+		coverImage: "/images/blog/anime_beauty_shoot_cover.webp",
+		date: "29/06/2026",
+		readTime: "8 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Chụp ảnh chân dung Beauty (beauty photography) là thể loại nhiếp ảnh cận cảnh tập trung tôn vinh các đường nét thanh tú trên khuôn mặt, làn da rạng rỡ, layout trang điểm và thần thái tinh tế của nhân vật. Không giống như chụp ảnh ngoại cảnh hay thời trang thông thường, ảnh Beauty đòi hỏi độ sắc nét và sự chỉn chu tuyệt đối trong từng chi tiết nhỏ. Dù bạn muốn chụp ảnh chân dung cá nhân làm kỷ niệm, làm profile cá nhân (branding) hay xây dựng hình ảnh chuyên nghiệp trên mạng xã hội, cẩm nang dưới đây của Harmony Wedding sẽ giúp bạn có sự chuẩn bị chu đáo và tự tin.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Quy trình dưỡng da (skincare) chuẩn bị trước ngày chụp",
+			},
+			{
+				type: "paragraph",
+				text: "Dưới ống kính macro sắc nét của phòng studio, mọi chi tiết trên da từ lỗ chân lông, nếp nhăn cho đến mụn hay vảy da khô đều hiển thị rất rõ. Do đó, việc chăm sóc da trước ngày chụp ảnh Beauty đóng vai trò quyết định giúp lớp nền trang điểm mượt mà, căng bóng. Bạn nên cấp ẩm sâu bằng cách đắp mặt nạ giấy cấp nước liên tục trong 3 ngày trước khi chụp. Đồng thời, hạn chế các liệu trình peel da mạnh, nặn mụn hoặc sử dụng các hoạt chất treatment mạnh (như retinol, AHA/BHA) trong tuần chụp ảnh để ngăn ngừa tình trạng da bị bong tróc, đỏ rát.",
+			},
+			{
+				type: "image",
+				src: "/images/services/teaching-makeup.webp",
+				alt: "Chuyên viên trang điểm đang tỉ mỉ kẻ mắt và hoàn thiện layout makeup cho cô gái trước gương",
+				caption: "Một layout trang điểm mỏng nhẹ, tinh tế là nền tảng cốt lõi giúp tôn vinh trọn vẹn nét thanh tú trên gương mặt bạn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Lựa chọn layout makeup và gu trang phục tối giản tôn nét đẹp tự nhiên",
+			},
+			{
+				type: "paragraph",
+				text: "Khi chụp chân dung Beauty cận cảnh, phong cách makeup nhẹ nhàng sẽ tôn lên nét đẹp nguyên bản của bạn: tập trung vào hiệu ứng da căng bóng tự nhiên với các tone màu pastel tươi tắn (hồng đào, cam san hô); hàng mi tơ mỏng nhẹ tự nhiên kết hợp cùng son bóng nhẹ tạo cảm giác môi căng mọng. Về trang phục, bạn nên ưu tiên chọn áo cổ chữ V, áo trễ vai hoặc áo cổ yếm đơn sắc (trắng, đen, pastel) để làm nổi bật chiếc cổ thon dài và bờ vai thanh tú mà không làm loãng sự tập trung vào khuôn mặt.",
+			},
+			{
+				type: "image",
+				src: "/images/services/makeup.webp",
+				alt: "Các dụng cụ trang điểm chuyên nghiệp xếp ngăn nắp trên bàn trang điểm studio",
+				caption: "Sử dụng mỹ phẩm cao cấp và cọ trang điểm chuyên dụng giúp tạo nên lớp nền mướt mịn tự nhiên dưới ánh đèn chụp.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Kỹ thuật tạo dáng bàn tay và kiểm soát thần thái cơ mặt",
+			},
+			{
+				type: "paragraph",
+				text: "Biểu cảm thần thái chính là linh hồn của bức ảnh chân dung Beauty. Khác với chụp ảnh thông thường, bạn cần chú trọng các chuyển động vi mô trên khuôn mặt: thả lỏng cơ mặt, tập trung ánh mắt sâu có hồn, tránh nhìn chằm chằm căng thẳng vào ống kính. Việc kết hợp các ngón tay đặt hờ lên cằm, má hay vuốt nhẹ làn tóc một cách mềm mại sẽ tạo nên chiều sâu và sự quyến rũ cho bức ảnh. Đồng thời, hãy cùng nhiếp ảnh gia trao đổi để tìm ra góc mặt tự tin góc nghiêng 3/4 giúp khuôn mặt thanh thoát.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Dịch vụ chụp ảnh chân dung Beauty trọn gói chuyên nghiệp tại Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Với hệ thống phòng chụp studio được đầu tư trang thiết bị ánh sáng hiện đại (đèn Beauty Dish, Softbox chuyên dụng tạo vùng sáng dịu ngọt ôm trọn gương mặt) và đội ngũ nhiếp ảnh gia giàu kinh nghiệm bắt trọn khoảnh khắc tự nhiên, Harmony Wedding là địa chỉ tin cậy giúp bạn sở hữu bộ ảnh chân dung Beauty tinh tế. Chúng tôi mang đến dịch vụ trọn gói từ khâu dưỡng da prep, chuyên viên trang điểm makeup chuyên nghiệp đến hậu kỳ ảnh sắc nét, giữ nguyên vẻ đẹp chân thực tự nhiên của bạn. Liên hệ ngay với Harmony để nhận tư vấn chi tiết:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
