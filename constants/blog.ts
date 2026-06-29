@@ -1993,4 +1993,62 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "kinh-nghiem-chup-anh-cho-be-baby-studio",
+		title: "Kinh Nghiệm Chụp Ảnh Cho Bé Tại Studio: Lưu Giữ Khoảnh Khắc Ngây Ngô Của Con",
+		summary:
+			"Harmony Wedding chia sẻ những bí quyết giúp ba mẹ chuẩn bị tốt nhất về thời gian, trang phục và tâm lý cho bé để buổi chụp hình diễn ra suôn sẻ, tự nhiên.",
+		coverImage: "/images/services/baby.webp",
+		date: "29/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Những năm tháng đầu đời của con trẻ trôi qua rất nhanh với vô vàn khoảnh khắc đáng yêu từ nụ cười móm mém, ánh mắt tròn xoe ngơ ngác đến cái ngáp dài ngộ nghĩnh. Để lưu giữ những kỷ niệm tuổi thơ vô giá này, chụp ảnh cho bé tại studio (baby photography) là lựa chọn được nhiều ba mẹ ưa chuộng. Tuy nhiên, trẻ nhỏ thường nhạy cảm, dễ quấy khóc khi tiếp xúc với môi trường lạ. Hãy cùng Harmony Wedding tìm hiểu kinh nghiệm chuẩn bị chu đáo giúp bé có một buổi chụp hình thật vui vẻ và tự nhiên.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lựa chọn thời điểm chụp ảnh phù hợp với lịch sinh hoạt của bé",
+			},
+			{
+				type: "paragraph",
+				text: "Trẻ con chỉ thực sự vui tươi và hợp tác khi cơ thể thoải mái, khỏe mạnh. Ba mẹ nên đặt lịch chụp vào thời điểm sau giấc ngủ ngắn buổi sáng của bé và khi bé đã được ăn no nê. Ngoài ra, đặt lịch chụp vào ngày thường giúp không gian studio yên tĩnh hơn, tránh bé bị giật mình bởi tiếng ồn đông người.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Chuẩn bị trang phục thoải mái và các món đồ chơi quen thuộc",
+			},
+			{
+				type: "paragraph",
+				text: "Sự chuẩn bị của ba mẹ về vật dụng cá nhân là chìa khóa cho sự thành công của buổi chụp: nên chọn trang phục thun cotton co giãn tốt, thấm hút mồ hôi, chuẩn bị 2 - 3 bộ đồ màu sắc tươi sáng; mang theo các món đồ chơi có âm thanh quen thuộc để thu hút sự chú ý của bé; chuẩn bị sữa và đồ ăn dặm nhẹ để nạp năng lượng nhanh cho bé giữa buổi chụp.",
+			},
+			{
+				type: "image",
+				src: "/images/services/birthday.webp",
+				alt: "Bàn tiệc trang trí sinh nhật cho bé tràn đầy màu sắc rực rỡ và bóng bay dễ thương",
+				caption: "Kết hợp bối cảnh sinh nhật thôi nôi ấm áp giúp tạo nên không gian gần gũi, thoải mái cho bé thỏa thích chơi đùa.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Tương tác tự nhiên của ba mẹ và sự kiên nhẫn của ê kíp",
+			},
+			{
+				type: "paragraph",
+				text: "Việc bắt chụp khoảnh khắc của bé đòi hỏi sự kiên nhẫn của cả ê kíp. Nhiếp ảnh gia tại Harmony tập trung bắt trọn những cử chỉ tự nhiên của bé thay vì ép buộc tạo dáng. Sự tương tác tích cực của ba mẹ đứng sau ống kính là nguồn động viên tuyệt vời giúp bé tự tin. Harmony sở hữu phòng chụp em bé sạch sẽ, an toàn và đầy đủ tiện nghi tại Trảng Bom, sẵn sàng đồng hành cùng gia đình bạn.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
