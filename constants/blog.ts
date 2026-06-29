@@ -1792,4 +1792,68 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "cac-studio-chup-anh-cuoi-dang-chon-o-dong-nai",
+		title: "Kinh Nghiệm Chọn Studio Cưới Tại Đồng Nai & Cảnh Báo Bẫy Chi Phí Phát Sinh",
+		summary:
+			"Phân tích các phản hồi và bài phốt phổ biến trên Facebook về dịch vụ cưới, cách chọn studio phù hợp tại Đồng Nai và phân biệt thương hiệu Harmony Wedding Trảng Bom.",
+		coverImage: "/images/blog/anime_studio_reviews_cover.webp",
+		date: "29/06/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Tìm kiếm một studio chụp ảnh cưới uy tín tại Đồng Nai luôn là bài toán khó của nhiều cặp đôi trước mùa cưới. Trên các hội nhóm review và chia sẻ kinh nghiệm cưới hỏi trên Facebook, không khó để bắt gặp những bài chia sẻ đầy bức xúc về tình trạng phát sinh chi phí hay thái độ phục vụ thiếu chuyên nghiệp của một số đơn vị. Để tránh những trải nghiệm không mong muốn trong ngày vui, hãy cùng Harmony Wedding điểm qua các kinh nghiệm thực tế khi chọn studio cưới tại Đồng Nai.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Cảnh báo các bẫy chi phí phát sinh thường gặp",
+			},
+			{
+				type: "paragraph",
+				text: "Dựa trên khảo sát các bài phản hồi trên mạng xã hội Facebook, dưới đây là những 'bẫy chi phí' phổ biến mà các cặp đôi cần đề phòng: Phát sinh phí nâng hạng váy cưới (khi đến thử chỉ toàn váy cũ rách, muốn mặc váy đẹp thiết kế mới phải bù tiền triệu); phát sinh chi phí xe cộ di chuyển của cả ê kíp và vé vào cổng phim trường ngoài thỏa thuận; các khoản phí trang điểm đi kèm, hoa cầm tay và giới hạn số lượng ảnh photoshop tối đa.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_studio_reviews_price.webp",
+				alt: "Bản báo giá dịch vụ tiệc cưới rõ ràng chi tiết ghi rõ không có chi phí ẩn phát sinh",
+				caption: "Một bảng báo giá chi tiết, cam kết rõ ràng bằng hợp đồng là yếu tố quan trọng để bảo vệ quyền lợi của cô dâu chú rể.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Gợi ý các phong cách studio cưới đáng chọn tại Đồng Nai",
+			},
+			{
+				type: "paragraph",
+				text: "Các cặp đôi nên xác định rõ gu thẩm mỹ của mình để lựa chọn studio phù hợp theo từng phong cách và khu vực: Khu vực Biên Hòa tập trung các studio chuyên về concept chụp trong phòng (indoor) tối giản kiểu Hàn Quốc; Khu vực Trảng Bom nổi bật với thế mạnh chụp ảnh cưới ngoại cảnh tự nhiên, kể chuyện dã ngoại gần gũi như tại Hồ Trị An (tiêu biểu có Harmony Wedding với thế mạnh làm việc chuyên nghiệp, hợp đồng minh bạch); Khu vực Long Khánh phù hợp cho phong cách vintage hoài cổ nhẹ nhàng.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_studio_reviews_outdoor.webp",
+				alt: "Cô dâu chú rể hạnh phúc nắm tay nhau đi dạo bên bờ hồ thơ mộng dưới ánh hoàng hôn",
+				caption: "Concept dã ngoại ngoài trời tại Đồng Nai mang lại những thước ảnh cưới tự nhiên, đong đầy cảm xúc chân thật.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Cảnh báo nhầm lẫn thương hiệu: Harmony Wedding khác biệt hoàn toàn",
+			},
+			{
+				type: "paragraph",
+				text: "Một lưu ý cực kỳ quan trọng cho các cặp đôi tại Đồng Nai: Hiện nay trên thị trường có một số đơn vị sử dụng tên gọi tương tự như 'Harmony Studio' ở các tỉnh thành khác. Harmony Wedding của chúng tôi là thương hiệu độc lập, có địa chỉ tại 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai và Zalo/Hotline hỗ trợ 035.725.6845. Chúng tôi hoàn toàn không liên quan đến các cơ sở mang tên Harmony Studio khác. Kính mong quý khách hàng kiểm tra kỹ thông tin liên hệ và địa chỉ để tránh những nhầm lẫn đáng tiếc.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
