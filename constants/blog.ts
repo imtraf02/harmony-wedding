@@ -1394,11 +1394,11 @@ export const blogPosts: BlogPost[] = [
 			{
 				type: "heading",
 				level: 2,
-				text: "1. Lựa chọn kiểu dáng vest cưới phổ biến nhất",
+				text: "1. Lựa chọn kiểu dáng vest cưới phổ biến",
 			},
 			{
 				type: "paragraph",
-				text: "Hiện nay, có 2 kiểu dáng vest cưới chú rể được lựa chọn nhiều nhất: Single-Breasted (Vest một hàng khuy) trẻ trung năng động thích hợp chụp pre-wedding ngoài trời và Double-Breasted (Vest hai hàng khuy) lịch lãm cổ điển tôn lên vẻ trang trọng cho chú rể trong ngày cưới chính tại nhà hàng.",
+				text: "Hiện nay, có 2 kiểu dáng vest cưới chú rể được lựa chọn phổ biến: Single-Breasted (Vest một hàng khuy) trẻ trung năng động thích hợp chụp pre-wedding ngoài trời và Double-Breasted (Vest hai hàng khuy) lịch lãm cổ điển tôn lên vẻ trang trọng cho chú rể trong ngày cưới chính tại nhà hàng.",
 			},
 			{
 				type: "heading",
@@ -1431,7 +1431,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "paragraph",
-				text: "Với hàng trăm mẫu vest cưới đa dạng kích cỡ, màu sắc từ phom dáng Slim Fit hiện đại đến Tuxedo quý tộc, Harmony Wedding tự hào là tiệm thuê đồ gần đây uy tín nhất Trảng Bom. Đội ngũ stylist của chúng tôi sẽ hỗ trợ chú rể đo đạc, chỉnh sửa vest hoàn hảo và đồng bộ màu sắc với váy cưới cô dâu.",
+				text: "Với hàng trăm mẫu vest cưới đa dạng kích cỡ, màu sắc từ phom dáng Slim Fit hiện đại đến Tuxedo quý tộc, Harmony Wedding tự hào là tiệm thuê đồ gần đây uy tín tại Trảng Bom. Đội ngũ stylist của chúng tôi sẽ hỗ trợ chú rể đo đạc, chỉnh sửa vest hoàn hảo và đồng bộ màu sắc với váy cưới cô dâu.",
 			},
 			{
 				type: "image",
@@ -1441,7 +1441,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "paragraph",
-				text: "Hãy liên hệ ngay với Harmony để đặt lịch thử vest cưới chú rể với giá Harmony ưu đãi nhất:",
+				text: "Hãy liên hệ ngay với Harmony để đặt lịch thử vest cưới chú rể với giá Harmony ưu đãi:",
 			},
 			{
 				type: "list",
@@ -1514,7 +1514,7 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "paragraph",
-				text: "Với tâm niệm mỗi bức ảnh là một tác phẩm nghệ thuật chứa đựng câu chuyện tình yêu duy nhất, ekip tại Harmony Wedding luôn chăm chút tỉ mỉ từng góc máy, ánh sáng và khâu thiết kế album. Chúng tôi cam kết bàn giao những sản phẩm in ấn cao cấp nhất để kỷ niệm của bạn luôn bền vững với thời gian. Liên hệ với tiệm áo cưới gần đây uy tín nhất Trảng Bom để được tư vấn:",
+				text: "Với tâm niệm mỗi bức ảnh là một tác phẩm nghệ thuật chứa đựng câu chuyện tình yêu duy nhất, ekip tại Harmony Wedding luôn chăm chút tỉ mỉ từng góc máy, ánh sáng và khâu thiết kế album. Chúng tôi cam kết bàn giao những sản phẩm in ấn cao cấp để kỷ niệm của bạn luôn bền vững với thời gian. Liên hệ với tiệm áo cưới gần đây uy tín tại Trảng Bom để được tư vấn:",
 			},
 			{
 				type: "list",
@@ -1587,7 +1587,199 @@ export const blogPosts: BlogPost[] = [
 			},
 			{
 				type: "paragraph",
-				text: "Với mức giá Harmony hỗ trợ tối đa cho học viên và trang thiết bị hiện đại sẵn có tại studio, khóa học hứa hẹn mang lại cho bạn bệ phóng nghề nghiệp vững chắc nhất. Liên hệ ngay hôm nay để nhận thông tin chi tiết khóa học:",
+				text: "Với mức giá Harmony hỗ trợ tối đa cho học viên và trang thiết bị hiện đại sẵn có tại studio, khóa học hứa hẹn mang lại cho bạn bệ phóng nghề nghiệp vững chắc. Liên hệ ngay hôm nay để nhận thông tin chi tiết khóa học:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "kinh-nghiem-chon-nha-hang-tiec-cuoi-thuc-don",
+		title: "Kinh Nghiệm Chọn Nhà Hàng Tiệc Cưới & Lên Thực Đơn Chuẩn Ngon Cho Ngày Cưới",
+		summary:
+			"Harmony Wedding chia sẻ bí quyết khảo sát nhà hàng tiệc cưới lý tưởng và cách xây dựng thực đơn cưới ngon miệng, tiết kiệm chi phí cho các cặp đôi.",
+		coverImage: "/images/blog/anime_venue_cover.webp",
+		date: "29/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Chọn địa điểm tổ chức hôn lễ và thiết lập một thực đơn tiệc cưới hấp dẫn là một trong những quyết định quan trọng ảnh hưởng trực tiếp đến sự thành bại của đám cưới. Một nhà hàng tiệc cưới có vị trí thuận lợi, không gian sang trọng và món ăn chuẩn vị sẽ thay lời cảm ơn sâu sắc gửi đến các vị quan khách. Hãy cùng Harmony Wedding tìm hiểu kinh nghiệm chọn nhà hàng và thực đơn tiệc cưới trọn vẹn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Tiêu chí chọn nhà hàng tiệc cưới lý tưởng",
+			},
+			{
+				type: "paragraph",
+				text: "Khi chọn trung tâm tiệc cưới hoặc nhà hàng tổ chức hôn lễ, các cặp đôi cần lưu ý: vị trí địa lý thuận tiện dễ tìm kiếm tại Trảng Bom; bãi đỗ xe rộng rãi; sảnh tiệc có sức chứa thoải mái hơn 10% so với lượng khách mời thực tế; hệ thống âm thanh, ánh sáng và màn hình LED sân khấu hiện đại giúp các nghi thức diễn ra lung linh và trang trọng.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_venue_setup.webp",
+				alt: "Sảnh tiệc cưới sang trọng lộng lẫy ngập tràn hoa tươi và ánh đèn ấm cúng",
+				caption: "Không gian tiệc cưới lộng lẫy với hệ thống setup chuyên nghiệp mang lại trải nghiệm đáng nhớ cho quan khách.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Bí quyết xây dựng thực đơn cưới chuẩn vị, tiết kiệm",
+			},
+			{
+				type: "paragraph",
+				text: "Thực đơn tiệc cưới chuẩn ngon thường gồm 5 - 7 món kết hợp hài hòa từ món khai vị (soup, gỏi), món chính đa dạng phương thức chế biến (thịt heo, gà, hải sản, lẩu/cơm/mì), đến món tráng miệng ngọt nhẹ (trái cây, chè). Nên lựa chọn món ăn theo mùa để đảm bảo nguyên liệu tươi ngon và tối ưu hóa chi phí thực đơn.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_venue_menu.webp",
+				alt: "Món ăn tiệc cưới cao cấp được trình bày đẹp mắt bên cạnh menu sang trọng",
+				caption: "Thực đơn tiệc cưới hài hòa, chuẩn vị là cách thể hiện sự hiếu khách chu đáo nhất của cô dâu chú rể.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Lưu giữ trọn vẹn khoảnh khắc hạnh phúc cùng Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Sau khi chốt xong nhà hàng và thực đơn tiệc cưới hoàn hảo, việc lựa chọn ekip quay phim chụp ảnh phóng sự cưới chuyên nghiệp là điều không thể thiếu để lưu giữ lại những nụ cười rạng rỡ của bạn bè, người thân. Harmony Wedding tự hào cung cấp dịch vụ chụp ảnh tiệc cưới trọn gói tại Trảng Bom với ê kíp chuyên nghiệp tận tâm. Liên hệ với chúng tôi để nhận tư vấn chi tiết:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "ke-hoach-chuan-bi-dam-cuoi-chi-tiet-a-to-z",
+		title: "Kế Hoạch Chuẩn Bị Đám Cưới Chi Tiết Từ A Đến Z Cho Các Cặp Đôi",
+		summary:
+			"Bảng checklist và lộ trình chuẩn bị đám cưới chi tiết trong 12 tháng giúp cô dâu chú rể chuẩn bị ngày cưới chu đáo, khoa học và không bị bỏ sót các việc quan trọng.",
+		coverImage: "/images/blog/anime_checklist_cover.webp",
+		date: "29/06/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Để chuẩn bị cho một ngày cưới trọn vẹn, các cặp đôi thường phải đối mặt với khối lượng công việc khổng lồ từ việc chụp ảnh cưới đẹp, thuê đồ cưới, đặt tiệc cho đến đăng ký kết hôn. Nếu không có một kế hoạch khoa học, bạn rất dễ rơi vào trạng thái căng thẳng và bỏ sót những việc quan trọng. Harmony Wedding xin gửi đến các tân lang tân nương bảng kế hoạch chuẩn bị đám cưới chi tiết từ A đến Z dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lộ trình chuẩn bị đám cưới theo dòng thời gian (Timeline)",
+			},
+			{
+				type: "paragraph",
+				text: "Bắt đầu lên kế hoạch sớm từ 6 - 12 tháng trước ngày cưới để chủ động đặt chỗ nhà hàng tiệc cưới và chọn studio chụp pre-wedding. Trong khoảng 3 - 5 tháng trước cưới, tiến hành chụp ảnh ngoại cảnh/studio, đặt may váy cưới và vest cưới chú rể. Khoảng 1 - 2 tháng cuối cùng, gửi thiệp mời, chốt thực đơn, makeup thử và chuẩn bị tráp lễ gia tiên.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_checklist_timeline.webp",
+				alt: "Bảng countdown thời gian chi tiết chuẩn bị đám cưới vẽ tay ngộ nghĩnh",
+				caption: "Lên kế hoạch cưới theo mốc thời gian rõ ràng giúp cô dâu chú rể tránh được sự vội vã, căng thẳng cận ngày cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Quản lý ngân sách cưới thông minh",
+			},
+			{
+				type: "paragraph",
+				text: "Việc kiểm soát chi phí đám cưới vô cùng quan trọng để tránh phát sinh nợ nần sau hôn lễ. Hãy lập một bảng tính Excel chi tiết chia nhỏ các khoản chi: tiền bàn tiệc, tiền chụp ảnh/quay phim cưới, nhẫn cưới, makeup cô dâu, trang phục cưới và mâm quả gia tiên. Luôn dự phòng khoảng 10% - 15% tổng ngân sách cho các chi phí phát sinh bất ngờ ngoài kế hoạch.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_checklist_budget.webp",
+				alt: "Cặp nhẫn cưới lấp lánh đặt cạnh hũ thủy tinh tiết kiệm tích lũy quỹ cưới",
+				caption: "Quản lý ngân sách cưới chặt chẽ giúp hai bạn xây dựng kế hoạch chi tiêu thực tế, hiệu quả.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Đồng hành chuẩn bị ngày cưới trọn gói cùng Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Để ngày cưới của bạn diễn ra suôn sẻ và nhẹ nhàng nhất, Harmony Wedding mang đến dịch vụ cưới trọn gói: từ cho thuê váy cưới lộng lẫy, vest cưới chú rể lịch lãm, makeup ngày cưới, quay phim chụp ảnh phóng sự cưới chuyên nghiệp. Ekip của chúng tôi sẽ đồng hành và tư vấn chi tiết từng bước giúp hai bạn yên tâm tận hưởng ngày hạnh phúc. Hãy liên hệ ngay với Harmony để nhận giá Harmony ưu đãi:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "chup-anh-cuoi-o-dau-dep-studio-uy-tin-trang-bom",
+		title: "Chụp Ảnh Cưới Ở Đâu Đẹp? Studio Chụp Ảnh Cưới Uy Tín Chuyên Nghiệp Tại Trảng Bom",
+		summary:
+			"Harmony Wedding chia sẻ kinh nghiệm chọn studio chụp ảnh cưới đẹp và vì sao Harmony tự hào là điểm đến tin cậy của các cặp đôi tại Trảng Bom, Đồng Nai.",
+		coverImage: "/images/blog/anime_best_studio_cover.webp",
+		date: "29/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Ngày cưới là mốc son chói lọi đánh dấu hành trình yêu thương đơm hoa kết trái của mỗi cặp đôi. Để lưu giữ trọn vẹn những khoảnh khắc thăng hoa và ngọt ngào ấy, một bộ ảnh cưới đẹp, tinh tế là vô cùng quan trọng. Thế nhưng, giữa vô vàn sự lựa chọn hiện nay, chụp ảnh cưới ở đâu đẹp và uy tín luôn là câu hỏi khiến nhiều cặp đôi trăn trở. Hãy cùng Harmony Wedding tìm hiểu các tiêu chí vàng để chọn lựa studio phù hợp cho ngày vui của bạn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Tiêu chí vàng chọn studio chụp ảnh cưới đẹp và uy tín",
+			},
+			{
+				type: "paragraph",
+				text: "Một studio chụp ảnh cưới chuyên nghiệp cần có phong cách chụp ảnh đa dạng (chụp ảnh cưới pre-wedding ngoài trời lãng mạn, chụp ảnh studio phông nền tối giản thanh lịch, đến quay phim chụp ảnh phóng sự cưới tự nhiên và cảm xúc). Bên cạnh đó, đội ngũ chụp ảnh và trang điểm (makeup) phải có tay nghề cao để giúp cô dâu chú rể trông thật nổi bật và tự tin.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_best_studio_consult.webp",
+				alt: "Cô dâu chú rể ngồi lắng nghe chuyên viên tư vấn các gói chụp ảnh cưới tại showroom",
+				caption: "Harmony Wedding luôn đón tiếp và hỗ trợ tư vấn nhiệt tình từng chi tiết giúp các cặp đôi chọn lựa gói dịch vụ ưng ý.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Vì sao Harmony Wedding được nhiều cặp đôi tin chọn tại Trảng Bom, Đồng Nai?",
+			},
+			{
+				type: "paragraph",
+				text: "Harmony Wedding tự hào là tiệm áo cưới gần đây uy tín chuyên nghiệp được hàng trăm cặp đôi tại Trảng Bom và Đồng Nai tin cậy trao gửi niềm tin nhờ cung cấp dịch vụ cưới trọn gói chuyên nghiệp: cho thuê váy cưới thiết kế lộng lẫy, vest cưới chú rể lịch lãm, makeup ngày cưới, quay phim phóng sự cưới gia tiên và nhà hàng. Chúng tôi còn có xưởng hỗ trợ chỉnh sửa trang phục vừa vặn số đo và chất lượng in ấn album cao cấp bền bỉ với thời gian.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_best_studio_details.webp",
+				alt: "Chiếc váy cưới thiết kế ren lộng lẫy treo cạnh kệ trưng bày album photobook cao cấp",
+				caption: "Mỗi chiếc váy cưới thiết kế và bộ album photobook tại Harmony đều được tuyển chọn và thực hiện tỉ mỉ.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Liên hệ Harmony Wedding để chuẩn bị ngày cưới trọn vẹn",
+			},
+			{
+				type: "paragraph",
+				text: "Với sứ mệnh đồng hành và dệt nên câu chuyện hạnh phúc của bạn bằng những khuôn hình đong đầy cảm xúc, ekip Harmony Wedding luôn sẵn sàng chào đón và phục vụ hai bạn bằng tất cả sự tận tụy. Hãy liên hệ ngay với chúng tôi để nhận tư vấn chi tiết về các gói chụp cưới và dịch vụ trọn gói:",
 			},
 			{
 				type: "list",
