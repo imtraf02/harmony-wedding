@@ -1856,4 +1856,68 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "kinh-nghiem-quay-chup-anh-cuoi-le-nha-tho",
+		title: "Kinh Nghiệm Quay Chụp Ảnh Phóng Sự Cưới Lễ Nhà Thờ Trang Nghiêm, Trọn Vẹn",
+		summary:
+			"Harmony Wedding chia sẻ những lưu ý quan trọng về trang phục, nghi thức và quy tắc ứng xử của cô dâu chú rể cũng như ê kíp quay chụp khi làm lễ tại nhà thờ.",
+		coverImage: "/images/blog/anime_church_wedding_cover.webp",
+		date: "29/06/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Lễ Hôn Phối (lễ cưới tại nhà thờ) là một trong những nghi thức thiêng liêng và trang trọng trong đám cưới Công giáo. Khác với lễ cưới tại nhà hàng hay tư gia, nghi lễ tại thánh đường đòi hỏi sự tôn nghiêm và tuân thủ các quy tắc nghiêm ngặt của Giáo xứ. Để bộ ảnh phóng sự cưới của hai bạn vừa ghi lại trọn vẹn những khoảnh khắc xúc động vừa giữ đúng tinh thần trang trọng của buổi lễ, cả cô dâu chú rể lẫn ê kíp quay chụp cần chuẩn bị chu đáo và lưu ý những điều quan trọng dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Lưu ý quan trọng về trang phục cô dâu chú rể",
+			},
+			{
+				type: "paragraph",
+				text: "Thánh đường là nơi tôn nghiêm, do đó trang phục cưới cần kín đáo và thanh lịch: cô dâu nên ưu tiên chọn váy cưới tay dài, cổ cao hoặc khăn voan che vai kín đáo (tránh cúp ngực hay hở lưng sâu); chú rể mặc vest cưới tối màu (đen, navy) lịch sự phối cà vạt chỉn chu.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_church_wedding_dress.webp",
+				alt: "Chiếc váy cưới ren tay dài cổ cao kín đáo và bó hoa hồng trắng thanh lịch treo bên cửa sổ",
+				caption: "Váy cưới tay dài cổ cao kín đáo là lựa chọn phù hợp nhất tôn vinh vẻ thanh lịch của cô dâu trong thánh đường.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Quy tắc ứng xử và tác nghiệp chuyên nghiệp cho ê kíp quay chụp",
+			},
+			{
+				type: "paragraph",
+				text: "Việc tác nghiệp của thợ chụp hình cần sự tinh tế tuyệt đối để tránh làm gián đoạn buổi lễ: tuyệt đối không bước lên Cung Thánh hoặc đứng chắn tầm nhìn của Cha xứ; hạn chế tối đa sử dụng đèn flash trong các phần lễ chính; sử dụng chế độ chụp im lặng (silent shutter) trên các dòng máy mirrorless hiện đại để giữ không gian tĩnh lặng, nghiêm trang; ê kíp mặc quần tây áo sơ mi chỉnh tề và di chuyển nhẹ nhàng.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_church_wedding_rules.webp",
+				alt: "Nhiếp ảnh gia đứng tác nghiệp từ xa kín đáo phía sau hàng ghế giáo dân",
+				caption: "Tác nghiệp lịch sự, giữ khoảng cách tôn trọng giúp giữ nguyên không gian trang nghiêm của buổi lễ.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Đồng hành quay chụp phóng sự cưới trọn vẹn cùng Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Với kinh nghiệm thực hiện quay chụp phóng sự cưới cho các cặp đôi Công giáo tại Trảng Bom, Đồng Nai, ê kíp Harmony Wedding tự tin am hiểu nghi thức lễ Hôn Phối, giúp bắt trọn những khoảnh khắc thăng hoa đầy cảm xúc mà vẫn tuân thủ đúng nội quy thánh đường. Hãy liên hệ với chúng tôi để nhận tư vấn trọn gói dịch vụ cưới:",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
