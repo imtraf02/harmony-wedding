@@ -9,9 +9,193 @@ const pricingImages = Array.from({ length: 13 }, (_, i) => ({
   title: `Trang ${String(i + 1).padStart(2, "0")}`,
 }));
 
+const pricingCategories = [
+  {
+    title: "A. Gói Chụp Album Pre-wedding tại Studio",
+    description: "Các gói chụp ảnh cưới pre-wedding chuyên nghiệp trong phòng studio với bối cảnh dàn dựng hiện đại và trang nhã.",
+    packages: [
+      {
+        name: "Gói Basic",
+        price: "3.900.000đ",
+        details: [
+          "Chụp 1 váy cưới + 1 vest chú rể",
+          "Làm tóc & makeup chuyên nghiệp",
+          "Tặng 1 ảnh cổng 60x90 tráng gương 4K bo viền",
+          "Album 20 trang cao cấp",
+          "Bàn giao 35 file chỉnh sửa hoàn thiện",
+          "Tặng kèm 5 ảnh bàn trang trí"
+        ]
+      },
+      {
+        name: "Gói VIP",
+        price: "4.900.000đ",
+        details: [
+          "Chụp 1 váy cưới + 1 vest chú rể",
+          "Làm tóc & makeup chuyên nghiệp",
+          "Tặng 2 ảnh cổng 60x90 tráng gương titan công nghệ mới",
+          "Album 30 trang cao cấp",
+          "Bàn giao 45 file chỉnh sửa hoàn thiện",
+          "Tặng kèm 5 ảnh bàn trang trí"
+        ]
+      },
+      {
+        name: "Gói Concept VIP Độc Quyền",
+        price: "6.900.000đ",
+        details: [
+          "Chụp 2 váy cưới + 2 vest chú rể",
+          "1 concept tự chọn độc đáo theo gu riêng",
+          "Tặng 2 ảnh cổng 60x90 tráng gương titan mới",
+          "Album 30 trang cao cấp đặc biệt",
+          "Bàn giao 50 file chỉnh sửa hoàn thiện",
+          "Tặng kèm 5 ảnh bàn trang trí"
+        ]
+      }
+    ]
+  },
+  {
+    title: "B. Combo Ngày Cưới (Chỉ Trang Phục Cưới)",
+    description: "Giải pháp cho thuê váy cưới dòng Harmony Soiree và veston chú rể thiết kế, chỉnh sửa may đo theo số đo của dâu rể.",
+    packages: [
+      {
+        name: "Combo Diamond",
+        price: "9.500.000đ",
+        details: [
+          "2 váy cưới dòng Signature cao cấp",
+          "2 váy cưới dòng Ruby sang trọng",
+          "2 bộ Veston chú rể cao cấp thiết kế",
+          "1 bộ Áo dài cô dâu chú rể ngày lễ gia tiên",
+          "Tặng kèm 2 hoa cầm tay cô dâu tươi tắn"
+        ]
+      },
+      {
+        name: "Combo Ruby",
+        price: "13.000.000đ",
+        details: [
+          "2 váy cưới dòng Signature cao cấp",
+          "3 váy cưới dòng Ruby sang trọng",
+          "3 bộ Veston chú rể cao cấp thiết kế",
+          "1 cặp Áo dài cô dâu chú rể ngày lễ",
+          "6 bộ Áo dài bê quả cho đội phụ dâu rể",
+          "1 bộ Veston thiết kế cho ông sui",
+          "1 bộ Áo dài sang trọng cho bà sui",
+          "Tặng kèm 2 hoa cầm tay cô dâu tươi"
+        ]
+      },
+      {
+        name: "Combo Signature",
+        price: "16.500.000đ",
+        details: [
+          "3 váy cưới dòng Signature cao cấp",
+          "3 váy cưới dòng Ruby sang trọng",
+          "3 bộ Veston chú rể cao cấp thiết kế",
+          "1 cặp Áo dài cô dâu chú rể ngày lễ",
+          "6 bộ Áo dài bê quả cho đội phụ dâu rể",
+          "1 bộ Veston thiết kế cho ông sui",
+          "2 bộ Áo dài sang trọng cho bà sui",
+          "Tặng kèm 2 hoa cầm tay cô dâu tươi"
+        ]
+      }
+    ]
+  },
+  {
+    title: "C. Trọn Gói 1 Ngày Cưới (Bao Gồm Quay Chụp & Phục Trang)",
+    description: "Gói dịch vụ toàn diện cho ngày cưới, bao gồm đầy đủ trang phục cưới thiết kế, makeup cô dâu tận nơi và chụp ảnh phóng sự cưới chuyên nghiệp.",
+    packages: [
+      {
+        name: "Gói Diamond",
+        price: "11.000.000đ",
+        details: [
+          "1 váy cưới dòng Signature + 1 váy dòng Ruby",
+          "1 bộ Veston chú rể thiết kế riêng",
+          "1 bộ Áo dài dâu rể ngày lễ gia tiên",
+          "Chụp phóng sự cưới ngày cưới (1 máy chụp, 1 buổi)",
+          "1 layout makeup & làm tóc cô dâu tại nhà",
+          "6 bộ Áo dài bê quả phụ dâu rể",
+          "1 hoa cầm tay cô dâu tươi + album ảnh kỷ niệm",
+          "Tặng kèm 50 ảnh rửa 13x18 ép lụa"
+        ]
+      },
+      {
+        name: "Gói Ruby",
+        price: "12.500.000đ",
+        details: [
+          "1 váy cưới dòng Signature + 1 váy dòng Ruby",
+          "2 bộ Veston chú rể thiết kế riêng",
+          "1 cặp Áo dài dâu rể ngày lễ gia tiên",
+          "Chụp phóng sự cưới ngày cưới (1 máy chụp, 1 buổi)",
+          "1 layout makeup & làm tóc cô dâu tại tiệm",
+          "6 bộ Áo dài bê quả phụ dâu rể",
+          "1 bộ Vest ông sui (hoặc áo dài bà sui)",
+          "1 hoa cầm tay dâu tươi + album phóng sự",
+          "Tặng kèm 50 ảnh rửa 18x18 ép lụa"
+        ]
+      },
+      {
+        name: "Gói Signature",
+        price: "15.500.000đ",
+        details: [
+          "2 váy cưới dòng Signature + 2 váy dòng Ruby",
+          "2 bộ Veston chú rể thiết kế riêng",
+          "1 cặp Áo dài dâu rể ngày lễ gia tiên",
+          "Chụp phóng sự cưới ngày cưới (1 máy chụp, 1 buổi)",
+          "1 layout makeup & làm tóc cô dâu tại tiệm",
+          "6 bộ Áo dài bê quả phụ dâu rể",
+          "1 hoa cầm tay dâu tươi + phụ kiện đi kèm",
+          "Album phóng sự cưới cao cấp + 50 ảnh rửa 18x18"
+        ]
+      },
+      {
+        name: "Gói Super VIP",
+        price: "19.500.000đ",
+        details: [
+          "3 váy cưới dòng Signature + 1 váy dòng Ruby",
+          "2 bộ Veston chú rể thiết kế riêng",
+          "1 cặp Áo dài dâu rể ngày lễ gia tiên",
+          "Chụp phóng sự cưới ngày cưới (2 máy chụp, 1 buổi)",
+          "1 layout makeup & làm tóc cô dâu tại nhà",
+          "6 bộ Áo dài bê quả phụ dâu rể",
+          "1 hoa cầm tay cô dâu + phụ kiện đi kèm",
+          "Album phóng sự cao cấp + 50 ảnh rửa 18x18",
+          "Ekip điều phối riêng hỗ trợ dâu rể suốt ngày cưới"
+        ]
+      }
+    ]
+  },
+  {
+    title: "D. Bảng Giá Cho Thuê Trang Phục & Dịch Vụ Lẻ",
+    description: "Các gói dịch vụ lẻ cho khách hàng có nhu cầu riêng biệt, đảm bảo tính minh bạch, không phát sinh.",
+    packages: [
+      {
+        name: "Thuê Trang Phục Lẻ",
+        price: "Từ 500.000đ",
+        details: [
+          "Thuê Váy cưới Diamond lẻ: 1.550.000đ / váy",
+          "Thuê Váy cưới Ruby lẻ: 1.850.000đ / váy",
+          "Thuê Váy cưới Signature lẻ (Harmony Soiree): 2.250.000đ / váy",
+          "Thuê Veston chú rể cao cấp: 600.000đ / bộ",
+          "Thuê Veston ông sui: 500.000đ / bộ",
+          "Thuê Áo dài dâu rể / bà sui: 600.000đ / bộ",
+          "Thuê Hỷ phục Trung Hoa: 3.500.000đ / cặp"
+        ]
+      },
+      {
+        name: "Dịch Vụ Makeup Chuyên Nghiệp",
+        price: "Từ 1.500.000đ",
+        details: [
+          "Makeup cô dâu tại tiệm: 1.500.000đ / lần",
+          "Makeup cô dâu tại nhà: 2.000.000đ / lần (hỗ trợ bán kính quy định)",
+          "Đã bao gồm làm tóc và phụ kiện tóc cô dâu đi kèm",
+          "Cam kết sử dụng mỹ phẩm cao cấp an toàn cho da"
+        ]
+      }
+    ]
+  }
+];
+
 export function PricingGallery() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
   const closeLightbox = useCallback(() => {
@@ -121,6 +305,80 @@ export function PricingGallery() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Text-based Pricing Directory for SEO and UI */}
+        <div className="mt-24 border-t border-black/[0.06] pt-20" id="pricing-details">
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <h3 className="font-serif text-[2rem] leading-tight text-neutral-900 mb-4">
+              Chi Tiết Các Gói Dịch Vụ Cưới
+            </h3>
+            <p className="text-sm leading-relaxed text-neutral-500">
+              Harmony Wedding cam kết bảng giá công khai, hợp đồng minh bạch và hoàn toàn không phát sinh chi phí ẩn suốt quá trình thực hiện.
+            </p>
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="flex border-b border-black/[0.06] overflow-x-auto scrollbar-none gap-2 pb-px mb-12">
+            {pricingCategories.map((cat, idx) => (
+              <button
+                key={cat.title}
+                onClick={() => setActiveTab(idx)}
+                className={`whitespace-nowrap pb-4 px-6 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 border-b-2 ${
+                  activeTab === idx
+                    ? "border-black text-black"
+                    : "border-transparent text-neutral-400 hover:text-black"
+                }`}
+                type="button"
+              >
+                {cat.title.split(". ")[1] || cat.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Active Tab Content */}
+          <div className="space-y-8">
+            <p className="text-xs tracking-wider text-neutral-400 uppercase">
+              {pricingCategories[activeTab].description}
+            </p>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {pricingCategories[activeTab].packages.map((pkg) => (
+                <div
+                  key={pkg.name}
+                  className="flex flex-col border border-black/5 bg-neutral-50/50 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.03)] hover:bg-white"
+                >
+                  <div className="mb-6 flex justify-between items-start gap-4">
+                    <h4 className="font-serif text-xl font-medium text-neutral-900 leading-tight">
+                      {pkg.name}
+                    </h4>
+                    <span className="font-serif text-base font-semibold text-black bg-neutral-100/80 px-3 py-1 rounded shrink-0">
+                      {pkg.price}
+                    </span>
+                  </div>
+                  <div className="h-px bg-black/[0.06] w-full mb-6" />
+                  <ul className="space-y-3.5 flex-1 mb-8">
+                    {pkg.details.map((detail) => (
+                      <li key={detail} className="flex items-start gap-3 text-xs text-neutral-600 leading-relaxed">
+                        <svg className="size-4 text-neutral-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="https://zalo.me/0357256845"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center w-full bg-black text-white py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.2em] hover:bg-neutral-800 transition-colors"
+                  >
+                    Nhận tư vấn & Đặt lịch
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
