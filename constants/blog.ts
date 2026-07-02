@@ -2365,4 +2365,72 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "30-cach-tao-dang-chup-anh-cuoi-cho-chu-re",
+		title: "30 Cách Tạo Dáng Chụp Ảnh Cưới Cho Chú Rể Lịch Lãm Tự Nhiên",
+		summary:
+			"Harmony Wedding tổng hợp 30 tư thế tạo dáng đứng lịch thiệp, dáng ngồi nam tính và tương tác đôi tự nhiên giúp chú rể tự tin tỏa sáng.",
+		coverImage: "/images/blog/anime_groom_posing_cover.webp",
+		date: "02/07/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Khi chụp ảnh cưới, sự chú ý thường đổ dồn vào cô dâu, trong khi các chú rể đôi khi cảm thấy bối rối, không biết nên đặt tay thế nào, đứng tư thế nào cho tự nhiên và lịch lãm. Một bộ ảnh cưới trọn vẹn rất cần những khoảnh khắc nam tính, tự tin và đầy lôi cuốn của chú rể. Hãy cùng Harmony Wedding điểm qua 30 cách tạo dáng chụp ảnh cưới cho chú rể đơn giản, lịch thiệp và dễ thực hiện dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "Phần 1: 10 Cách Tạo Dáng Đứng Lịch Lãm Và Nam Tính",
+			},
+			{
+				type: "paragraph",
+				text: "Các dáng đứng tập trung khoe bờ vai rộng, phom dáng Veston phẳng phiu sang trọng:\n1. Đứng thẳng chỉnh caravat hoặc nơ cổ áo: Động tác chỉnh nơ/cravat cổ điển khoe sự chỉn chu, tỉ mỉ.\n2. Đút một tay vào túi quần, một tay thả lỏng: Tư thế thư thả, vừa phóng khoáng lại vô cùng tự nhiên.\n3. Đút cả hai tay vào túi quần: Khép hờ hai khủy tay, giữ thẳng lưng toát lên vẻ tự tin mạnh mẽ.\n4. Cầm nhẹ ve áo veston: Hai ngón tay cái móc nhẹ vào ve áo vest thể hiện phong thái đĩnh đạc.\n5. Khoác áo vest hờ qua vai: Một tay cầm cổ áo vest khoác hờ qua vai cá tính, phong trần.\n6. Đứng dựa lưng vào tường, một chân co nhẹ: Một tư thế đứng dã ngoại hay studio vô cùng năng động.\n7. Đứng khoanh tay trước ngực suy tư: Thả lỏng vai, mắt nhìn hơi lệch góc máy tạo nét cuốn hút.\n8. Chỉnh khuy măng sét cổ tay áo: Động tác chụp cận cảnh tinh tế khoe sự lịch thiệp quý ông.\n9. Đứng vuốt tóc nhẹ nhàng: Đưa một tay chỉnh lại mái tóc, mắt nhìn góc nghiêng tự nhiên.\n10. Đứng thẳng cầm hoa cưới chờ dâu: Tay cầm hoa cưới trước ngực, ánh mắt đầy mong đợi ngập tràn hạnh phúc.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_groom_posing_detail.webp",
+				alt: "Chú rể lịch lãm mỉm cười chỉnh nơ cổ áo tuxedo đen sang trọng ngày cưới",
+				caption: "Động tác chỉnh nơ/caravat đơn giản giúp chú rể có diện mạo chỉn chu và phong thái tự tin trước ống kính.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "Phần 2: 10 Tư Thế Ngồi Phong Thái Lịch Thiệp",
+			},
+			{
+				type: "paragraph",
+				text: "Tạo dáng ngồi mang lại vẻ lịch thiệp, đĩnh đạc và đầy phong cách:\n11. Ngồi bắt chéo chân trên sofa đơn: Tư thế ngồi kinh điển của một quý ông.\n12. Ngồi cúi người về phía trước, hai tay đan vào nhau: Đặt khủy tay lên đầu gối, mắt nhìn thẳng tự tin.\n13. Ngồi tựa lưng thoải mái, một tay đặt trên đùi: Thả lỏng cơ thể tự nhiên và thư thái.\n14. Ngồi trên bục cầu thang, một chân duỗi thẳng: Góc máy từ trên xuống tạo chiều sâu không gian.\n15. Ngồi tựa cằm suy tư bên bàn trà: Tay chống cằm nhẹ nhàng ngắm cảnh ngoài cửa sổ.\n16. Ngồi ngược ghế tựa tay lên lưng ghế: Tạo cảm giác phá cách, hiện đại đầy cá tính.\n17. Ngồi bắt chéo chân chỉnh lại dây giày tây: Tư thế chuẩn bị phong trần và tự nhiên.\n18. Ngồi ngắm nhìn chiếc nhẫn cưới trên tay: Khoảnh khắc lắng đọng đầy cảm xúc yêu thương.\n19. Ngồi dựa đầu nhẹ vào tường phòng chụp: Một góc máy tĩnh lặng đầy lôi cuốn.\n20. Ngồi nhâm nhi tách cà phê đón nắng sáng: Thích hợp cho các concept chụp ảnh cưới đời thường (lifestyle).",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_groom_posing_sitting.webp",
+				alt: "Chú rể mặc vest xám ngồi lịch lãm vắt chéo chân trên chiếc ghế bành da sang trọng trong thư viện",
+				caption: "Tư thế ngồi vắt chéo chân tự tin giúp tôn lên nét đĩnh đạc, nam tính của chú rể.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "Phần 3: 10 Dáng Tương Tác Tự Nhiên & Khoảnh Khắc Đôi",
+			},
+			{
+				type: "paragraph",
+				text: "Sự đồng điệu và chăm sóc cô dâu của chú rể luôn là điểm tựa ngọt ngào cho bộ ảnh cưới:\n21. Nụ cười rạng rỡ khi nhìn thấy cô dâu: Ánh mắt đong đầy hạnh phúc khi đón nàng dâu bước vào.\n22. Dắt tay cô dâu đi dạo nhẹ nhàng: Bắt trọn nụ cười rạng ngời tự nhiên của cả hai.\n23. Hôn nhẹ lên mu bàn tay cô dâu: Cử chỉ lãng mạn nâng niu đầy trân trọng.\n24. Chú rể ôm eo cô dâu từ phía sau: Mang lại cảm giác che chở, ấm áp ngọt ngào.\n25. Thì thầm to nhỏ làm cô dâu bật cười: Nhiếp ảnh gia bắt khoảnh khắc cười sảng khoái tự nhiên.\n26. Chú rể chỉnh hộ voan lúp hay váy cưới cho cô dâu: Thể hiện sự chăm sóc ân cần tinh tế.\n27. Cởi áo vest đắp lên vai cô dâu: Động tác ga-lăng đầy ngọt ngào trong khung cảnh dã ngoại trời lạnh.\n28. Cầm tay dắt cô dâu bước xuống bậc thềm: Chăm sóc nâng đỡ dâu hiền từng bước chân.\n29. Nụ cười sảng khoái tự nhiên cùng dàn phù rể: Khoảnh khắc tình bạn thân thiết vui tươi.\n30. Khoảnh khắc lau nhẹ giọt nước mắt hạnh phúc của cô dâu: Đong đầy tình yêu trân quý của chú rể.",
+			},
+			{
+				type: "paragraph",
+				text: "Bộ vest cưới vừa vặn phom dáng luôn là chìa khóa giúp chú rể tự tin nhất. Tại Harmony Wedding, chúng tôi cung cấp các dòng Veston chú rể cao cấp phom dáng Hàn Quốc hiện đại và lịch lãm. Các nhiếp ảnh gia tận tâm tại Harmony luôn sẵn sàng đồng hành, hướng dẫn tỉ mỉ từng chi tiết nhỏ từ cách đặt tay, hướng mắt đến tư thế đứng, giúp chú rể hoàn toàn tự nhiên và thoải mái ghi lại những khoảnh khắc đẹp nhất.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
