@@ -145,7 +145,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 						switch (block.type) {
 							case "paragraph":
 								return (
-									<p key={index} className="mb-6 font-sans">
+									<p key={index} className="mb-6 font-sans whitespace-pre-line">
 										{parseMarkdownLinks(block.text)}
 									</p>
 								);
