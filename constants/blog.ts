@@ -2206,4 +2206,150 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "bao-nhieu-tien-la-du-de-to-chuc-dam-cuoi",
+		title: "Bao Nhiêu Tiền Là Đủ Để Tổ Chức Đám Cưới? Kế Hoạch Phân Bổ Ngân Sách",
+		summary:
+			"Harmony Wedding giúp các cặp đôi lập bảng dự toán chi tiết các khoản chi phí tiệc gia tiên, cỗ bàn nhà hàng, trang phục và quay chụp ngày cưới.",
+		coverImage: "/images/blog/anime_wedding_budget_cover.webp",
+		date: "02/07/2026",
+		readTime: "7 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Tổ chức đám cưới là một trong những cột mốc quan trọng của cuộc đời mỗi người. Bên cạnh niềm hạnh phúc lứa đôi, vấn đề ngân sách luôn là nỗi trăn trở lớn đối với các cặp đôi trẻ: Cần chuẩn bị bao nhiêu tiền là đủ để tổ chức đám cưới? Làm sao để phân bổ chi phí hợp lý mà không rơi vào tình trạng bội chi sau hôn lễ? Hãy cùng Harmony Wedding xây dựng bảng kế hoạch chi phí cưới chi tiết và thực tế dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Các khoản chi phí cố định (Chuẩn bị trước cưới)",
+			},
+			{
+				type: "paragraph",
+				text: "Chi phí chuẩn bị trước đám cưới thường bao gồm nhẫn cưới, đăng ký kết hôn, trang phục cưới và trang điểm cô dâu. Đây là những hạng mục cốt lõi tạo nên diện mạo chỉn chu cho ngày trọng đại: nhẫn cưới dao động từ 5.000.000đ - 15.000.000đ tùy chất liệu vàng ta, vàng Tây hoặc đính đá; trang phục cưới & trang điểm cô dâu nên chọn thuê tại các studio uy tín như Harmony Wedding với giá dao động từ 1.500.000đ - 7.000.000đ kèm phụ kiện và makeup chuyên nghiệp.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_budget_rings.webp",
+				alt: "Chú rể đang đeo nhẫn cưới đính đá lấp lánh lên ngón tay áp út của cô dâu dưới vòm hoa hồng",
+				caption: "Nhẫn cưới là vật đính ước thiêng liêng đồng hành cùng hai bạn suốt chặng đường đời phía trước.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Chi phí trang trí gia tiên và cỗ tiệc (Hai bên gia đình)",
+			},
+			{
+				type: "paragraph",
+				text: "Đây là phần chiếm tỷ trọng lớn trong tổng ngân sách cưới, bao gồm: trang trí lễ gia tiên tại nhà trai & nhà gái dao động từ 4.000.000đ - 10.000.000đ tùy mức độ cầu kỳ của hoa tươi hoặc hoa lụa cao cấp, thuê rạp cưới và bàn ghế tiếp khách; chi phí cỗ bàn tiệc cưới tại nhà hàng hoặc tư gia dao động từ 2.500.000đ - 5.000.000đ mỗi bàn tiệc (cho 10 khách). Đây là khoản chi lớn nhưng thường có nguồn thu bù từ tiền mừng cưới để hoàn vốn.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_budget_ceremony.webp",
+				alt: "Không gian tiệc cưới nhà hàng lộng lẫy được trang trí bằng hoa tươi, nến ấm áp và đèn chùm lấp lánh",
+				caption: "Bố trí không gian tiệc cưới ấm áp, sang trọng giúp khách mời có những trải nghiệm tuyệt vời cùng gia đình.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Chi phí album cưới Pre-wedding và quay chụp ngày cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Để lưu giữ trọn vẹn những khoảnh khắc hạnh phúc, các cặp đôi không nên bỏ qua chi phí quay chụp: album cưới Pre-wedding tại Harmony Wedding (gói studio từ 3.900.000đ, gói phim trường từ 6.900.000đ) và chi phí quay chụp ngày cưới dao động từ 3.200.000đ - 15.400.000đ tùy thuộc vào số lượng máy chụp, máy quay phóng sự cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Dự phòng ngân sách phát sinh và giải pháp tối ưu",
+			},
+			{
+				type: "paragraph",
+				text: "Một nguyên tắc vàng trong lập ngân sách cưới là luôn dành ra khoảng 10% - 15% tổng chi phí làm quỹ dự phòng cho các khoản phát sinh ngoài kế hoạch (phụ thu bàn tiệc, chi phí đi lại, chuẩn bị quà cáp,...). Để tối ưu hóa ngân sách hiệu quả, lựa chọn gói combo trọn gói ngày cưới từ studio chuyên nghiệp là giải pháp thông minh. Harmony Wedding tự hào cung cấp các gói Combo Trọn Gói Ngày Cưới giá cả minh bạch, hợp đồng rõ ràng và cam kết hoàn toàn không phát sinh chi phí ẩn suốt quá trình thực hiện tại khu vực Đồng Nai.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "50-cach-tao-dang-chup-anh-cuoi-cho-co-dau",
+		title: "50 Cách Tạo Dáng Chụp Ảnh Cưới Cho Cô Dâu Đẹp Tự Nhiên",
+		summary:
+			"Harmony Wedding tổng hợp cẩm nang các cách tạo dáng chụp ảnh cưới đơn giản, tự nhiên giúp cô dâu tự tin tỏa sáng trước ống kính.",
+		coverImage: "/images/blog/anime_bride_posing_cover.webp",
+		date: "02/07/2026",
+		readTime: "8 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Đứng trước ống kính máy ảnh trong buổi chụp ảnh cưới luôn mang lại cảm giác hồi hộp và đôi chút ngượng ngùng cho các nàng dâu. Làm sao để tay chân tự nhiên? Góc mặt nào sẽ thanh thoát và tôn dáng nhất? Để giúp các nàng dâu xóa tan nỗi lo lắng đó, Harmony Wedding đã tổng hợp cẩm nang các cách tạo dáng chụp ảnh cưới đẹp tự nhiên, dễ thực hiện và vô cùng thanh lịch dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Các tư thế tạo dáng chân dung cận cảnh (Cận mặt)",
+			},
+			{
+				type: "paragraph",
+				text: "Những bức ảnh chân dung cận cảnh tập trung bắt trọn biểu cảm gương mặt đong đầy hạnh phúc của cô dâu: chỉnh lúp voan cưới nhẹ nhàng khi cô dâu dùng hai tay nâng nhẹ hoặc che hờ tấm khăn voan lúp cưới bồng bềnh, mắt nhắm nhẹ hoặc nhìn xuống mỉm cười e ấp mang lại chiều sâu lãng mạn; hoặc tạo dáng tay nâng cằm nhẹ nhàng tựa khủy tay lên bục trang trí tạo cảm giác thanh thoát, khoe góc nghiêng thanh tú.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_bride_posing_veil.webp",
+				alt: "Cô dâu xinh đẹp cười dịu dàng nâng nhẹ khăn voan lúp cưới thêu ren tinh xảo",
+				caption: "Động tác chỉnh lúp cưới đơn giản nhưng luôn mang lại thước ảnh cưới lãng mạn đầy cảm xúc.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Các tư thế tạo dáng đứng toàn thân (Khoe dáng váy cưới)",
+			},
+			{
+				type: "paragraph",
+				text: "Khi diện những thiết kế váy cưới xòe bồng hay đuôi cá lộng lẫy, dáng đứng toàn thân giúp bạn phô diễn trọn vẹn vẻ đẹp trang phục: đứng thẳng ngắm hoa cầm tay nghiêng góc 45 độ so với ống kính, hai tay nâng nhẹ bó hoa tươi ngang hông mang lại cảm giác an toàn và tự nhiên; hoặc nắm lấy tà váy cưới và xoay nhẹ người tạo hiệu ứng tà váy bay bay uyển chuyển thích hợp chụp tại phim trường hay dã ngoại ngoài trời.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Các tư thế tạo dáng đôi cùng chú rể đầy tình cảm",
+			},
+			{
+				type: "paragraph",
+				text: "Sự tương tác lãng mạn giữa dâu rể luôn là linh hồn của album ảnh cưới: tựa đầu lên vai chú rể khi cả hai cùng ngồi trên chiếc ghế sofa vintage cổ điển hoặc thảm cỏ xanh, cô dâu nghiêng nhẹ đầu tựa vào vai chú rể, hai tay đan vào nhau ấm áp toát lên sự bình yên; hoặc chú rể dắt tay cô dâu đi dạo nhẹ nhàng hướng về phía trước giúp nhiếp ảnh gia bắt trọn khoảnh khắc cười tự nhiên mộc mạc.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_bride_posing_shoulder.webp",
+				alt: "Cô dâu và chú rể cười rạng rỡ đan tay ngồi tựa vai nhau trên ghế sofa gỗ cổ điển sang trọng",
+				caption: "Khoảnh khắc tựa vai bình yên đong đầy tình cảm luôn là điểm nhấn đắt giá trong album cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Lời khuyên từ nhiếp ảnh gia tại Harmony Wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Bí quyết lớn nhất để có những bức ảnh cưới đẹp không nằm ở việc thực hiện đúng các tư thế rập khuôn mà chính là sự thoải mái và tự tin từ bên trong tâm hồn. Tại Harmony Wedding, các nhiếp ảnh gia kiên nhẫn và tận tâm luôn trực tiếp hướng dẫn, gợi mở cảm xúc và pha trò giúp dâu rể gạt bỏ sự ngượng ngùng trước ống kính, sẵn sàng lưu giữ những thước phim chân thật nhất của đôi bạn.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
