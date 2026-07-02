@@ -2051,4 +2051,159 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: "5-sai-lam-khi-co-dau-chon-vay-cuoi",
+		title: "5 Sai Lầm Thường Gặp Khi Chọn Váy Cưới Cô Dâu Cần Tránh",
+		summary:
+			"Harmony Wedding tổng hợp 5 sai lầm phổ biến từ thời điểm thử váy, chọn size đến ngân sách giúp các nàng dâu lựa chọn được chiếc váy cưới ưng ý và tự tin.",
+		coverImage: "/images/blog/anime_wedding_dress_mistakes_cover.webp",
+		date: "02/07/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Lựa chọn váy cưới luôn là một trong những trải nghiệm thiêng liêng và đáng nhớ của mỗi cô dâu trước ngày cưới. Chiếc váy cưới không chỉ giúp tôn vinh diện mạo mà còn thể hiện cá tính riêng của bạn trong ngày trọng đại. Tuy nhiên, trong không khí bận rộn chuẩn bị đám cưới, không ít nàng dâu đã vướng phải những sai lầm phổ biến khi chọn váy cưới, dẫn đến những tiếc nuối không đáng có. Hãy cùng Harmony Wedding điểm qua 5 sai lầm thường gặp dưới đây để việc tìm kiếm chiếc váy cưới mơ ước trở nên dễ dàng và trọn vẹn hơn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Chọn váy cưới quá sớm hoặc quá trễ",
+			},
+			{
+				type: "paragraph",
+				text: "Nhiều cô dâu có tâm lý nôn nóng muốn chọn váy cưới ngay sau khi đính hôn. Tuy nhiên, chọn váy quá sớm (trước hơn 9 tháng) có thể khiến bạn bỏ lỡ các xu hướng thiết kế mới, hoặc vóc dáng có sự thay đổi đáng kể trước ngày cưới. Ngược lại, nếu chọn váy quá trễ (dưới 2 tháng), bạn sẽ gặp áp lực lớn về thời gian chỉnh sửa phom dáng vừa vặn. Thời điểm lý tưởng là từ 4 đến 6 tháng trước lễ cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Chọn size váy cưới nhỏ hơn với hy vọng giảm cân",
+			},
+			{
+				type: "paragraph",
+				text: "Các cô dâu thường đặt mục tiêu giảm cân trước ngày cưới và quyết định chọn chiếc váy nhỏ hơn 1 hoặc 2 size so với số đo hiện tại. Việc này vô tình tạo ra áp lực tâm lý vô cùng lớn và có thể ảnh hưởng xấu đến sức khỏe. Nguyên tắc an toàn là chọn váy vừa vặn với số đo hiện tại. Nếu bạn giảm cân thành công, việc bóp nhỏ váy cưới tại các studio chuyên nghiệp như Harmony Soiree luôn dễ dàng hơn nhiều so với việc nới rộng một chiếc váy quá chật.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_dress_fitting.webp",
+				alt: "Chuyên viên tư vấn đang tỉ mỉ cân chỉnh dáng váy cưới xòe bồng cho cô dâu trước gương",
+				caption: "Hãy thử váy theo đúng số đo cơ thể hiện tại để có trải nghiệm dễ chịu và thoải mái nhất.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Không thử di chuyển, đi lại hoặc ngồi thử khi mặc váy",
+			},
+			{
+				type: "paragraph",
+				text: "Khi đi thử váy, cô dâu thường chỉ đứng yên trước gương để ngắm nhìn. Tuy nhiên, trong ngày cưới, bạn sẽ phải di chuyển nhiều để làm lễ, chào bàn và khiêu vũ. Một chiếc váy trông lộng lẫy khi đứng yên nhưng có thể khiến bạn vấp ngã khi đi lại hoặc gây khó thở khi ngồi xuống. Vì vậy, hãy thử đi lại vài vòng, nâng tay lên cao và ngồi thử để đảm bảo chiếc váy mang lại sự thoải mái.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_wedding_dress_movement.webp",
+				alt: "Cô dâu rạng rỡ xoay nhẹ váy cưới bồng bềnh cầm bó hoa tươi trong phòng studio",
+				caption: "Di chuyển nhẹ nhàng, đi lại thoải mái giúp cô dâu tự tin tỏa sáng rực rỡ suốt ngày vui.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Bị ảnh hưởng quá nhiều bởi ý kiến của người đi cùng",
+			},
+			{
+				type: "paragraph",
+				text: "Dẫn theo quá nhiều người thân hoặc bạn bè đi thử váy có thể tạo ra những ý kiến trái chiều, khiến bạn bị rối và mất đi lập trường của bản thân. Bạn mới là người mặc chiếc váy đó trong ngày cưới. Bạn chỉ nên đi cùng 1 hoặc 2 người thực sự hiểu gu thẩm mỹ của bạn và luôn ủng hộ quyết định của bạn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "5. Bỏ qua các chi phí ẩn đi kèm váy cưới",
+			},
+			{
+				type: "paragraph",
+				text: "Nhiều cô dâu chỉ tính toán chi phí thuê váy cưới mà quên mất các khoản chi phí phát sinh như: tiền chỉnh sửa váy theo số đo, chi phí phụ kiện cưới (như khăn voan, găng tay, trang sức tóc, lúp cưới), hoặc chi phí giặt hấp sau ngày cưới. Hãy cùng studio thống nhất hợp đồng minh bạch, trọn gói để tránh các chi phí phát sinh ngoài ý muốn. Tại Harmony Wedding, chúng tôi luôn hỗ trợ các phụ kiện đi kèm và chỉnh sửa phom dáng vừa vặn cho dâu rể.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
+	{
+		slug: "chup-anh-prewedding-la-gi-va-y-nghia",
+		title: "Chụp Ảnh Pre-wedding Là Gì? Ý Nghĩa Và Cẩm Nang Chuẩn Bị Từ A Đến Z",
+		summary:
+			"Harmony Wedding chia sẻ chi tiết về khái niệm chụp ảnh Pre-wedding, ý nghĩa đặc biệt và những kinh nghiệm chuẩn bị chu đáo để sở hữu bộ ảnh cưới tự nhiên.",
+		coverImage: "/images/blog/anime_prewedding_meaning_cover.webp",
+		date: "02/07/2026",
+		readTime: "6 phút đọc",
+		category: "Kinh Nghiệm",
+		content: [
+			{
+				type: "paragraph",
+				text: "Chụp ảnh Pre-wedding đã trở thành một phần quan trọng trong kế hoạch cưới của các cặp đôi hiện đại. Khác với bộ ảnh chụp phóng sự ngày cưới, pre-wedding mang đến không gian tự do sáng tạo, nơi dâu rể thỏa sức thể hiện câu chuyện tình yêu riêng của mình trước ngày cưới. Vậy chụp ảnh Pre-wedding thực chất là gì? Ý nghĩa của nó ra sao và cần chuẩn bị những gì để có một buổi chụp hình trọn vẹn? Hãy cùng Harmony Wedding khám phá cẩm nang chi tiết dưới đây.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "1. Chụp ảnh Pre-wedding là gì?",
+			},
+			{
+				type: "paragraph",
+				text: "Pre-wedding (hay còn gọi là chụp ảnh cưới trước ngày cưới) là buổi chụp hình được thực hiện trước hôn lễ từ vài tuần đến vài tháng. Buổi chụp này thường diễn ra tại studio, phim trường hoặc các địa điểm ngoại cảnh dã ngoại ngoài trời. Mục đích chính là để tạo nên cuốn album cưới lưu niệm chất lượng và bức ảnh cổng lớn chào khách tại nhà hàng tiệc cưới.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "2. Ý nghĩa đặc biệt của album ảnh Pre-wedding",
+			},
+			{
+				type: "paragraph",
+				text: "Album Pre-wedding không đơn thuần chỉ là những bức ảnh mặc váy cưới, vest cưới mà mang những giá trị tinh thần to lớn: giúp giảm bớt áp lực chuẩn bị trong ngày cưới chính thức; giúp dâu rể tập dượt posing tương tác trước ống kính; và tự do thể hiện phong cách riêng (tối giản Hàn Quốc, dã ngoại tự nhiên hoặc thời trang nghệ thuật).",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_prewedding_studio.webp",
+				alt: "Cặp đôi dâu rể đứng tạo dáng hạnh phúc bên cạnh máy ảnh trên chân đế trong phòng studio",
+				caption: "Chụp ảnh pre-wedding tại studio mang lại những bức ảnh chân dung tinh tế, tập trung vào cảm xúc chân thật.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "3. Các phong cách chụp ảnh Pre-wedding được yêu thích",
+			},
+			{
+				type: "paragraph",
+				text: "Hiện nay, các cặp đôi có rất nhiều lựa chọn phong cách chụp ảnh pre-wedding phù hợp với sở thích: phong cách Studio tối giản kiểu Hàn Quốc; phong cách Phim trường đa dạng bối cảnh; phong cách Ngoại cảnh dã ngoại tự nhiên. Trong đó, concept dã ngoại tự nhiên bên Hồ Trị An hay Đà Lạt là thế mạnh nổi bật tại Harmony Wedding.",
+			},
+			{
+				type: "image",
+				src: "/images/blog/anime_prewedding_outdoor.webp",
+				alt: "Cặp đôi vui vẻ cười đùa trong chuyến dã ngoại cắm trại bên bờ hồ thiên nhiên",
+				caption: "Phong cách dã ngoại ngoài trời ghi lại trọn vẹn những khoảnh khắc tự nhiên, đong đầy hạnh phúc của đôi lứa.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "4. Cẩm nang chuẩn bị cho buổi chụp Pre-wedding trọn vẹn",
+			},
+			{
+				type: "paragraph",
+				text: "Để buổi chụp hình diễn ra suôn sẻ, dâu rể nên giữ tinh thần thoải mái, ngủ đủ giấc để có làn da rạng rỡ; thảo luận kỹ lưỡng với ê kíp về concept và layout makeup mong muốn; đồng thời lựa chọn studio uy tín có hợp đồng minh bạch, trọn gói để tránh các phát sinh ngoài ý muốn. Harmony Wedding tự hào đồng hành cùng dâu rể Trảng Bom với dịch vụ tận tâm và chuyên nghiệp.",
+			},
+			{
+				type: "list",
+				items: [
+					"Địa chỉ studio: 45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai.",
+					"Harmony contact number: [035.725.6845](tel:0357256845) (Zalo/Hotline hỗ trợ tư vấn 24/7).",
+					"Zalo tư vấn nhanh: [Zalo Harmony Wedding](https://zalo.me/0357256845).",
+					"Fanpage chính thức: [Harmony Wedding](https://www.facebook.com/profile.php?id=61550358332202) (Facebook chính thức).",
+				],
+			},
+		],
+	},
 ];
