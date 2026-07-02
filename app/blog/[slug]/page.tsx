@@ -128,14 +128,11 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 				</header>
 
 				{/* Cover Image */}
-				<div className="relative mb-12 aspect-16/9 w-full overflow-hidden border border-neutral-100">
-					<Image
+				<div className="relative mb-12 w-full overflow-hidden border border-neutral-100 bg-neutral-50 flex items-center justify-center">
+					<img
 						src={post.coverImage}
 						alt={post.title}
-						fill
-						priority
-						sizes="(min-width: 800px) 800px, 100vw"
-						className="object-cover"
+						className="max-h-[550px] w-auto object-contain"
 					/>
 				</div>
 
@@ -188,13 +185,11 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 							case "image":
 								return (
 									<figure key={index} className="my-10 text-center">
-										<div className="relative aspect-16/10 w-full overflow-hidden border border-neutral-100">
-											<Image
+										<div className="relative w-full overflow-hidden border border-neutral-100 bg-neutral-50 flex items-center justify-center">
+											<img
 												src={block.src}
 												alt={block.alt}
-												fill
-												sizes="(min-width: 800px) 700px, 100vw"
-												className="object-cover"
+												className="max-h-[500px] w-auto object-contain"
 											/>
 										</div>
 										{block.caption && (
