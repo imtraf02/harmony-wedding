@@ -2283,7 +2283,7 @@ export const blogPosts: BlogPost[] = [
 		slug: "50-cach-tao-dang-chup-anh-cuoi-cho-co-dau",
 		title: "50 Cách Tạo Dáng Chụp Ảnh Cưới Cho Cô Dâu Đẹp Tự Nhiên",
 		summary:
-			"Harmony Wedding tổng hợp cẩm nang các cách tạo dáng chụp ảnh cưới đơn giản, tự nhiên giúp cô dâu tự tin tỏa sáng trước ống kính.",
+			"Harmony Wedding tổng hợp cẩm nang 50 cách tạo dáng chụp ảnh cưới đơn giản, tự nhiên giúp cô dâu tự tin tỏa sáng trước ống kính.",
 		coverImage: "/images/blog/anime_bride_posing_cover.webp",
 		date: "02/07/2026",
 		readTime: "8 phút đọc",
@@ -2291,55 +2291,68 @@ export const blogPosts: BlogPost[] = [
 		content: [
 			{
 				type: "paragraph",
-				text: "Đứng trước ống kính máy ảnh trong buổi chụp ảnh cưới luôn mang lại cảm giác hồi hộp và đôi chút ngượng ngùng cho các nàng dâu. Làm sao để tay chân tự nhiên? Góc mặt nào sẽ thanh thoát và tôn dáng nhất? Để giúp các nàng dâu xóa tan nỗi lo lắng đó, Harmony Wedding đã tổng hợp cẩm nang các cách tạo dáng chụp ảnh cưới đẹp tự nhiên, dễ thực hiện và vô cùng thanh lịch dưới đây.",
+				text: "Đứng trước ống kính máy ảnh trong buổi chụp ảnh cưới luôn mang lại cảm giác hồi hộp và đôi chút ngượng ngùng cho các nàng dâu. Làm sao để tay chân tự nhiên? Góc mặt nào sẽ thanh thoát và tôn dáng nhất? Để giúp các nàng dâu xóa tan nỗi lo lắng đó, Harmony Wedding đã tổng hợp cẩm nang 50 cách tạo dáng chụp ảnh cưới đẹp tự nhiên, dễ thực hiện và vô cùng thanh lịch dưới đây.",
 			},
 			{
 				type: "heading",
 				level: 2,
-				text: "1. Các tư thế tạo dáng chân dung cận cảnh (Cận mặt)",
+				text: "Phần 1: 10 Cách Tạo Dáng Cận Cảnh Cho Cô Dâu (Chân Dung)",
 			},
 			{
 				type: "paragraph",
-				text: "Những bức ảnh chân dung cận cảnh tập trung bắt trọn biểu cảm gương mặt đong đầy hạnh phúc của cô dâu: chỉnh lúp voan cưới nhẹ nhàng khi cô dâu dùng hai tay nâng nhẹ hoặc che hờ tấm khăn voan lúp cưới bồng bềnh, mắt nhắm nhẹ hoặc nhìn xuống mỉm cười e ấp mang lại chiều sâu lãng mạn; hoặc tạo dáng tay nâng cằm nhẹ nhàng tựa khủy tay lên bục trang trí tạo cảm giác thanh thoát, khoe góc nghiêng thanh tú.",
+				text: "Những góc chụp chân dung cận cảnh giúp cô dâu khoe trọn những đường nét thanh tú và cảm xúc hạnh phúc đong đầy:\n1. Chỉnh lúp voan cưới e ấp: Hai tay nâng nhẹ hoặc che hờ tấm khăn voan mỏng trước mặt.\n2. Hai tay nâng nhẹ hoa cưới trước ngực: Tạo sự đối xứng cân đối cho khung hình.\n3. Ánh mắt nhìn xuống hoa cưới e thẹn: Mang lại cảm xúc nhẹ nhàng, sâu lắng.\n4. Nghiêng mặt cười mỉm tự nhiên: Góc mặt nghiêng 45 độ tôn sống mũi cao.\n5. Tay nâng nhẹ cằm suy tư: Đặt ngón tay vuốt nhẹ cằm hoặc má thanh thoát.\n6. Khoe nhẫn đính hôn khéo léo bên má: Đặt nhẹ tay lên má khoe chiếc nhẫn lấp lánh.\n7. Nhìn thẳng ống kính cười rạng rỡ: Sự tự tin và nụ cười rạng ngời truyền năng lượng tích cực.\n8. Gió thổi tóc bay nhẹ nhàng: Nhiếp ảnh gia bắt khoảnh khắc làn tóc tung bay tự nhiên.\n9. Vuốt nhẹ tóc sau vành tai: Động tác nữ tính, nhẹ nhàng đầy cuốn hút.\n10. Chụp qua làn voan lúp mỏng: Tạo hiệu ứng mờ ảo lãng mạn cho khuôn mặt.",
 			},
 			{
 				type: "image",
 				src: "/images/blog/anime_bride_posing_veil.webp",
 				alt: "Cô dâu xinh đẹp cười dịu dàng nâng nhẹ khăn voan lúp cưới thêu ren tinh xảo",
-				caption: "Động tác chỉnh lúp cưới đơn giản nhưng luôn mang lại thước ảnh cưới lãng mạn đầy cảm xúc.",
+				caption: "Các tư thế che mặt bằng lúp voan mỏng mang lại chiều sâu cảm xúc cực kỳ lãng mạn.",
 			},
 			{
 				type: "heading",
 				level: 2,
-				text: "2. Các tư thế tạo dáng đứng toàn thân (Khoe dáng váy cưới)",
+				text: "Phần 2: 10 Dáng Đứng Toàn Thân Tôn Phom Dáng Váy Cưới",
 			},
 			{
 				type: "paragraph",
-				text: "Khi diện những thiết kế váy cưới xòe bồng hay đuôi cá lộng lẫy, dáng đứng toàn thân giúp bạn phô diễn trọn vẹn vẻ đẹp trang phục: đứng thẳng ngắm hoa cầm tay nghiêng góc 45 độ so với ống kính, hai tay nâng nhẹ bó hoa tươi ngang hông mang lại cảm giác an toàn và tự nhiên; hoặc nắm lấy tà váy cưới và xoay nhẹ người tạo hiệu ứng tà váy bay bay uyển chuyển thích hợp chụp tại phim trường hay dã ngoại ngoài trời.",
+				text: "Các dáng đứng giúp cô dâu phô diễn trọn vẹn sự bồng bềnh, kiêu sa của chiếc váy cưới thiết kế:\n11. Đứng nghiêng 45 độ khoe đường cong: Tạo cảm giác vóc dáng thon gọn hơn.\n12. Xoay người nhìn lại phía sau lưng: Khoe phần lưng thiết kế tinh xảo của váy cưới.\n13. Nắm nhẹ tà váy cưới nghiêng người: Động tác cầm hờ tà váy tạo nhịp điệu chuyển động.\n14. Đứng tựa lưng bên bục cửa sổ studio: Đón ánh sáng tự nhiên rạng rỡ.\n15. Đứng thả lỏng tay tự nhiên: Vừa thả lỏng cơ thể vừa hướng mắt nhìn nhẹ ra xa.\n16. Bước đi nhẹ nhàng hướng về camera: Bắt trọn nhịp chân chuyển động tự nhiên.\n17. Đứng chéo chân nhẹ nhàng: Tạo hiệu ứng thị giác đôi chân dài thanh thoát.\n18. Một tay cầm hoa, một tay đặt nhẹ lên eo: Tạo khoảng trống cơ thể thon gọn.\n19. Đứng xoay váy cưới bồng bềnh: Hiệu ứng váy xoay tạo cảm giác sống động như nàng công chúa.\n20. Đứng thẳng tự tin thả lỏng đôi vai: Tư thế kiêu sa tôn dáng dâu hiền.",
 			},
 			{
 				type: "heading",
 				level: 2,
-				text: "3. Các tư thế tạo dáng đôi cùng chú rể đầy tình cảm",
+				text: "Phần 3: 10 Dáng Ngồi Sang Trọng Và Cổ Điển",
 			},
 			{
 				type: "paragraph",
-				text: "Sự tương tác lãng mạn giữa dâu rể luôn là linh hồn của album ảnh cưới: tựa đầu lên vai chú rể khi cả hai cùng ngồi trên chiếc ghế sofa vintage cổ điển hoặc thảm cỏ xanh, cô dâu nghiêng nhẹ đầu tựa vào vai chú rể, hai tay đan vào nhau ấm áp toát lên sự bình yên; hoặc chú rể dắt tay cô dâu đi dạo nhẹ nhàng hướng về phía trước giúp nhiếp ảnh gia bắt trọn khoảnh khắc cười tự nhiên mộc mạc.",
+				text: "Tư thế ngồi mang đến vẻ đẹp cổ điển, thư thái và bình yên cho cô dâu:\n21. Ngồi thẳng lưng trên sofa vintage: Tôn lên vẻ quý phái sang trọng.\n22. Ngồi nghiêng tựa lưng vào thành ghế: Tư thế thư giãn nhưng vẫn đầy lịch thiệp.\n23. Ngồi bệt dưới sàn trải rộng váy cưới xung quanh: Tạo thành một vòng hoa váy cưới rực rỡ.\n24. Ngồi tựa đầu nhẹ vào gối sofa: Khoảnh khắc thư thả tự nhiên trước ống kính.\n25. Ngồi bắt chéo chân thanh lịch: Khoe khéo đôi giày cưới lộng lẫy dưới tà váy.\n26. Ngồi trang điểm trước gương cổ kính: Bắt khoảnh khắc chuẩn bị cô dâu dịu dàng.\n27. Ngồi cúi đầu ngắm chiếc giày cưới: Động tác tự nhiên tạo cảm xúc mong chờ.\n28. Ngồi khoanh chân trên thảm dã ngoại ngoài trời: Mang đậm phong cách phóng khoáng tự do.\n29. Ngồi tựa cằm bên ô cửa kính: Góc máy lãng mạn trầm tư.\n30. Ngồi nghiêng đầu cười với hoa đặt trên đùi: Vừa dịu dàng lại vô cùng dễ thương.",
 			},
 			{
 				type: "image",
 				src: "/images/blog/anime_bride_posing_shoulder.webp",
 				alt: "Cô dâu và chú rể cười rạng rỡ đan tay ngồi tựa vai nhau trên ghế sofa gỗ cổ điển sang trọng",
-				caption: "Khoảnh khắc tựa vai bình yên đong đầy tình cảm luôn là điểm nhấn đắt giá trong album cưới.",
+				caption: "Dáng ngồi kề vai đan tay thể hiện sự gắn kết gắn bó bền chặt của cặp đôi.",
 			},
 			{
 				type: "heading",
 				level: 2,
-				text: "4. Lời khuyên từ nhiếp ảnh gia tại Harmony Wedding",
+				text: "Phần 4: 10 Dáng Đôi Lãng Mạn Bên Chú Rể",
 			},
 			{
 				type: "paragraph",
-				text: "Bí quyết lớn nhất để có những bức ảnh cưới đẹp không nằm ở việc thực hiện đúng các tư thế rập khuôn mà chính là sự thoải mái và tự tin từ bên trong tâm hồn. Tại Harmony Wedding, các nhiếp ảnh gia kiên nhẫn và tận tâm luôn trực tiếp hướng dẫn, gợi mở cảm xúc và pha trò giúp dâu rể gạt bỏ sự ngượng ngùng trước ống kính, sẵn sàng lưu giữ những thước phim chân thật nhất của đôi bạn.",
+				text: "Sự tương tác lãng mạn chính là điểm nhấn cho cuốn album cưới đong đầy tình yêu:\n31. Tựa đầu nhẹ nhàng lên vai chú rể: Cảm giác bình yên và tin cậy.\n32. Chú rể ôm cô dâu từ phía sau: Vòng ôm che chở đầy ấm áp.\n33. Hai người trán kề trán nhắm mắt cảm nhận: Thước phim lãng mạn sâu lắng.\n34. Chú rể hôn nhẹ lên trán cô dâu: Nụ hôn dịu dàng tràn đầy trân trọng.\n35. Chú rể nâng cằm cô dâu trao ánh mắt: Giao thoa cảm xúc ngọt ngào.\n36. Dắt tay nhau đi dạo tự nhiên: Ghi lại nụ cười rạng rỡ tự nhiên của cả hai dâu rể.\n37. Chú rể ôm eo kéo sát cô dâu vào lòng: Bức ảnh thể hiện sự gắn kết chặt chẽ.\n38. Cùng nhìn về một hướng xa xăm: Cùng mơ về ngôi nhà chung tương lai.\n39. Chú rể bế bổng cô dâu lên cao: Khoảnh khắc vui tươi đầy sức sống trẻ trung.\n40. Cùng khiêu vũ nhẹ nhàng dưới ánh đèn: Tái hiện điệu nhảy tình yêu lãng mạn.",
+			},
+			{
+				type: "heading",
+				level: 2,
+				text: "Phần 5: 10 Dáng Chụp Tự Nhiên & Bắt Trọn Khoảnh Khắc (Candid)",
+			},
+			{
+				type: "paragraph",
+				text: "Những bức ảnh đẹp nhất thường là những bức ảnh không sắp đặt sẵn:\n41. Cô dâu cười thả ga tự nhiên: Bắt trọn niềm vui sướng ngập tràn của cô dâu.\n42. Chụp từ sau lưng khi cô dâu bước đi: Tôn bờ vai gầy cuốn hút.\n43. Ánh mắt ngập tràn tình cảm khi nhìn chú rể: Khoảnh khắc yêu thương đắt giá.\n44. Cô dâu trêu đùa tinh nghịch bên chú rể: Thể hiện tính cách trẻ trung, vui nhộn.\n45. Nhắm mắt tận hưởng làn gió mát lành: Hòa mình vào không gian dã ngoại thơ mộng.\n46. Chụp bóng lưng cô dâu soi bóng nước: Tạo nét nghệ thuật độc đáo.\n47. Cô dâu ôm thú cưng trong ngày cưới: Sự đáng yêu, dễ thương vô bờ bến.\n48. Đùa nghịch cùng bong bóng xà phòng: Bối cảnh dã ngoại mơ mộng ngập tràn cổ tích.\n49. Đón ánh nắng hoàng hôn qua kẽ lá: Màu nắng ấm áp tô điểm làn da cô dâu.\n50. Khoảnh khắc dâu rể thì thầm to nhỏ bên tai: Những lời nói ngọt ngào kín đáo đầy tình cảm.",
+			},
+			{
+				type: "paragraph",
+				text: "Bí quyết lớn nhất để có những bức ảnh cưới đẹp không nằm ở việc thực hiện đúng các tư thế rập khuôn mà chính là sự thoải mái và tự tin từ bên trong tâm hồn. Tại Harmony Wedding, các nhiếp ảnh gia kiên nhẫn và tận tâm luôn trực tiếp hướng dẫn, gợi mở cảm xúc và pha trò giúp dâu rể gạt bỏ sự ngượng ngùng trước ống kính, sẵn sàng lưu giữ những thước phim chân thật của đôi bạn.",
 			},
 			{
 				type: "list",
