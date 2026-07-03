@@ -100,7 +100,6 @@ export const mauDoImages = [
   "vay-cuoi-070.webp",
   "vay-cuoi-071.webp",
   "vay-cuoi-072.webp",
-  "vay-cuoi-073.webp",
   "vay-cuoi-074.webp",
   "vay-cuoi-076.webp",
   "vay-cuoi-077.webp",
@@ -187,5 +186,6 @@ export const mauDoImages = [
   "vest-019.webp",
   "vest-020.webp",
   "vest-021.webp",
-  "vest-022.webp"
+  "vest-022.webp",
+  "vest-023.webp"
 ];
