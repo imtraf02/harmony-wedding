@@ -19,6 +19,7 @@ export const menuItems: MenuItem[] = [
 	{ label: "Về Chúng Tôi", href: "/about" },
 	{ label: "Dịch Vụ", href: "/services" },
 	{ label: "Tác Phẩm", href: "/portfolio" },
+	{ label: "Mẫu Đồ", href: "/mau-do" },
 	{ label: "Bảng Giá", href: "/pricing" },
 	{ label: "Cẩm Nang", href: "/blog" },
 	{ label: "Liên Hệ", href: "/contact" },
