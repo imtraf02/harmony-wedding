@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 
 import { services } from "@/constants/data";
 import { gsap, useGSAP } from "@/lib/gsap";
@@ -46,8 +47,11 @@ export function ServicesBar() {
       </div>
       <div className="mx-auto grid max-w-[1720px] grid-cols-1 divide-y divide-white/10 px-5 sm:grid-cols-2 sm:divide-y-0 md:px-10 lg:grid-cols-5 lg:gap-y-4 lg:px-16 lg:py-10">
         {services.map((service, index) => (
-          <article
-            className={`service-item flex gap-6 py-8 md:p-6 lg:min-h-36 lg:p-8 ${
+          <Link
+            href="/services"
+            className={`service-item flex gap-6 py-8 md:p-6 lg:min-h-36 lg:p-8 cursor-pointer hover:bg-white/5 transition-all duration-300 ${
+              index >= 4 ? "hidden sm:flex" : "flex"
+            } ${
               index % 5 !== 4 && index !== services.length - 1 ? "lg:border-r lg:border-white/10" : ""
             } ${
               index < 5 ? "lg:border-b lg:border-white/10" : ""
@@ -63,8 +67,18 @@ export function ServicesBar() {
                 {service.description}
               </p>
             </div>
-          </article>
+          </Link>
         ))}
+      </div>
+
+      {/* Mobile view-more button */}
+      <div className="flex sm:hidden justify-center pb-10 px-5">
+        <Link
+          href="/services"
+          className="w-full flex h-12 items-center justify-center border border-white/20 hover:border-white text-xs font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300"
+        >
+          Xem tất cả dịch vụ
+        </Link>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { Footer } from "@/components/home/footer";
 import { Header } from "@/components/home/header";
 import { HeroSection } from "@/components/home/hero-section";
 import { PortfolioSection } from "@/components/home/portfolio-section";
+import { CollectionSection } from "@/components/home/collection-section";
 import { ServicesBar } from "@/components/home/services-bar";
 import { StoryTimeline } from "@/components/home/story-timeline";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
@@ -37,6 +38,7 @@ export function HomePage() {
       <HeroSection />
       <ServicesBar />
       <PortfolioSection />
+      <CollectionSection />
       <AboutSection />
       <StoryTimeline />
       <TestimonialsSection />
