@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "/mau-do",
     images: [
       {
-        url: "/images/mau-do/511309667_122137050176783812_1407719120879040343_n.jpg",
+        url: "/images/mau-do/vay-cuoi-001.webp",
         width: 1200,
         height: 1600,
         alt: "Bộ sưu tập trang phục cưới Harmony Soiree & Veston",

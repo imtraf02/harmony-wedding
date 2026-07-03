@@ -5,15 +5,36 @@ import Image from "next/image";
 import { mauDoImages } from "@/constants/mau-do";
 
 const IMAGES_PER_PAGE = 24;
+const TABS = ["Tất cả", "Váy Cưới", "Veston", "Áo Dài"];
 
 export function MauDoGallery() {
+  const [activeTab, setActiveTab] = useState("Tất cả");
   const [visibleCount, setVisibleCount] = useState(IMAGES_PER_PAGE);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
+  // Filter images based on tab
+  const getFilteredImages = useCallback(() => {
+    return mauDoImages.filter(img => {
+      if (activeTab === "Tất cả") return true;
+      if (activeTab === "Váy Cưới") return img.startsWith("vay-cuoi");
+      if (activeTab === "Veston") return img.startsWith("vest");
+      if (activeTab === "Áo Dài") return img.startsWith("ao-dai");
+      return true;
+    });
+  }, [activeTab]);
+
+  const filteredImages = getFilteredImages();
+
+  // Reset pagination when tab changes
+  useEffect(() => {
+    setVisibleCount(IMAGES_PER_PAGE);
+    setActiveIdx(null);
+  }, [activeTab]);
+
   const loadMore = () => {
-    setVisibleCount(prev => Math.min(prev + IMAGES_PER_PAGE, mauDoImages.length));
+    setVisibleCount(prev => Math.min(prev + IMAGES_PER_PAGE, filteredImages.length));
   };
 
   const closeLightbox = useCallback(() => {
@@ -24,14 +45,14 @@ export function MauDoGallery() {
   const showPrev = useCallback(() => {
     if (activeIdx === null) return;
     setIsZoomed(false);
-    setActiveIdx(prev => (prev !== null && prev > 0 ? prev - 1 : mauDoImages.length - 1));
-  }, [activeIdx]);
+    setActiveIdx(prev => (prev !== null && prev > 0 ? prev - 1 : filteredImages.length - 1));
+  }, [activeIdx, filteredImages.length]);
 
   const showNext = useCallback(() => {
     if (activeIdx === null) return;
     setIsZoomed(false);
-    setActiveIdx(prev => (prev !== null && prev < mauDoImages.length - 1 ? prev + 1 : 0));
-  }, [activeIdx]);
+    setActiveIdx(prev => (prev !== null && prev < filteredImages.length - 1 ? prev + 1 : 0));
+  }, [activeIdx, filteredImages.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -82,48 +103,82 @@ export function MauDoGallery() {
     touchStartX.current = null;
   };
 
-  const visibleImages = mauDoImages.slice(0, visibleCount);
+  const visibleImages = filteredImages.slice(0, visibleCount);
 
   return (
-    <section className="bg-white py-14 lg:py-24">
+    <section className="bg-white py-10 lg:py-16">
       <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
-        {/* Gallery Grid */}
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {visibleImages.map((imgName, idx) => (
-            <article
-              key={imgName}
-              className="group relative cursor-pointer overflow-hidden border border-black/5 bg-neutral-50 shadow-[0_2px_12px_rgba(0,0,0,0.01)] transition-all duration-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
-              onClick={() => setActiveIdx(idx)}
+        
+        {/* Navigation Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10 md:mb-16">
+          {TABS.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`rounded-full px-6 py-2.5 text-[0.7rem] font-bold uppercase tracking-widest transition-all duration-300 ${
+                activeTab === tab
+                  ? "bg-black text-white shadow-md shadow-black/10"
+                  : "bg-neutral-50 text-neutral-500 hover:bg-neutral-100 hover:text-black"
+              }`}
+              type="button"
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
-                <Image
-                  src={`/images/mau-do/${imgName}`}
-                  alt={`Mẫu váy vest thiết kế cao cấp Harmony Wedding - Hình ${idx + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-103"
-                  sizes="(min-width: 1200px) 16vw, (min-width: 992px) 20vw, (min-width: 768px) 25vw, 33vw, 50vw"
-                  loading="lazy"
-                  quality={80}
-                />
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/15 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 text-black text-[0.62rem] font-bold uppercase tracking-[0.2em] px-4 py-2 shadow-sm rounded-full">
-                    Xem Mẫu ↗
-                  </span>
-                </div>
-              </div>
-            </article>
+              {tab} ({mauDoImages.filter(img => {
+                if (tab === "Tất cả") return true;
+                if (tab === "Váy Cưới") return img.startsWith("vay-cuoi");
+                if (tab === "Veston") return img.startsWith("vest");
+                if (tab === "Áo Dài") return img.startsWith("ao-dai");
+                return true;
+              }).length})
+            </button>
           ))}
         </div>
 
+        {/* Gallery Grid */}
+        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          {visibleImages.map((imgName, idx) => {
+            const isSuit = imgName.startsWith("vest");
+            const isAoDai = imgName.startsWith("ao-dai");
+            const tagLabel = isSuit ? "Veston" : isAoDai ? "Áo Dài" : "Váy Cưới";
+            
+            return (
+              <article
+                key={imgName}
+                className="group relative cursor-pointer overflow-hidden border border-black/5 bg-neutral-50 shadow-[0_2px_12px_rgba(0,0,0,0.01)] transition-all duration-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.05)]"
+                onClick={() => setActiveIdx(idx)}
+              >
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+                  <Image
+                    src={`/images/mau-do/${imgName}`}
+                    alt={`Mẫu ${tagLabel.toLowerCase()} thiết kế cao cấp Harmony Wedding - Hình ${idx + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-103"
+                    sizes="(min-width: 1200px) 16vw, (min-width: 992px) 20vw, (min-width: 768px) 25vw, 33vw, 50vw"
+                    loading="lazy"
+                    quality={80}
+                  />
+                  <div className="absolute top-2 left-2 z-10 bg-white/90 backdrop-blur-xs px-2.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-widest text-black">
+                    {tagLabel}
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/15 flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 text-black text-[0.62rem] font-bold uppercase tracking-[0.2em] px-4 py-2 shadow-sm rounded-full">
+                      Xem Chi Tiết ↗
+                    </span>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
         {/* Load More Button */}
-        {visibleCount < mauDoImages.length && (
+        {visibleCount < filteredImages.length && (
           <div className="mt-16 text-center">
             <button
               onClick={loadMore}
               className="inline-flex h-12 items-center justify-center border border-black px-10 text-xs font-semibold uppercase tracking-[0.22em] text-black hover:bg-black hover:text-white transition-all duration-300"
               type="button"
             >
-              Xem Thêm Mẫu Đồ ({mauDoImages.length - visibleCount})
+              Xem Thêm Mẫu Đồ ({filteredImages.length - visibleCount})
             </button>
           </div>
         )}
@@ -139,7 +194,7 @@ export function MauDoGallery() {
           {/* Top Bar */}
           <div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/50 to-transparent">
             <span className="font-sans text-xs tracking-widest uppercase text-white/70">
-              Mẫu {activeIdx + 1} / {mauDoImages.length}
+              Mẫu {activeIdx + 1} / {filteredImages.length}
             </span>
             <div className="flex items-center gap-4">
               <a
@@ -189,8 +244,8 @@ export function MauDoGallery() {
               }}
             >
               <Image
-                src={`/images/mau-do/${mauDoImages[activeIdx]}`}
-                alt={`Mẫu váy vest thiết kế cao cấp Harmony Wedding`}
+                src={`/images/mau-do/${filteredImages[activeIdx]}`}
+                alt={`Mẫu trang phục cưới thiết kế cao cấp Harmony Wedding`}
                 fill={!isZoomed}
                 width={isZoomed ? 900 : undefined}
                 height={isZoomed ? 1200 : undefined}
