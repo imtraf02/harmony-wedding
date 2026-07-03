@@ -7,10 +7,10 @@ import { gsap, useGSAP } from "@/lib/gsap";
 
 const PREVIEW_IMAGES = [
   { src: "vay-cuoi-001.webp", label: "Váy Cưới Signature" },
-  { src: "vest-002.webp", label: "Veston Hàn Quốc" },
-  { src: "ao-dai-003.webp", label: "Áo Dài Cặp Đôi" },
+  { src: "vay-cuoi-002.webp", label: "Váy Cưới Premium" },
+  { src: "ao-dai-003.webp", label: "Áo Dài Thêu Tay" },
   { src: "vay-cuoi-005.webp", label: "Váy Cưới Diamond" },
-  { src: "vest-016.webp", label: "Veston Cao Cấp" },
+  { src: "vay-cuoi-006.webp", label: "Váy Cưới Luxury" },
   { src: "ao-dai-008.webp", label: "Áo Dài Truyền Thống" }
 ];
 
@@ -51,14 +51,14 @@ export function CollectionSection() {
         {/* Section Header */}
         <div className="collection-reveal mb-14 text-center">
           <p className="mb-4 flex items-center justify-center gap-4 text-[0.66rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
-            Harmony Soiree & Veston
+            Harmony Soiree
             <span className="h-px w-8 bg-neutral-300" />
           </p>
           <h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.1] text-black">
-            Kiệt Tác Trang Phục Cho Ngày Trọng Đại
+            Kiệt Tác Váy Cưới Cho Ngày Trọng Đại
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-neutral-600">
-            Khám phá bộ sưu tập váy cưới thiết kế cao cấp, veston chú rể phom dáng Hàn Quốc tinh tế, cùng áo dài truyền thống thêu tay tỉ mỉ.
+            Khám phá bộ sưu tập váy cưới thiết kế cao cấp dòng Harmony Soiree, cùng các mẫu áo dài truyền thống thêu tay tỉ mỉ và sang trọng nhất.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export function CollectionSection() {
             >
               <Image
                 src={`/images/mau-do/${img.src}`}
-                alt={`Mẫu váy vest thiết kế Harmony Wedding - ${img.label}`}
+                alt={`Mẫu váy thiết kế Harmony Wedding - ${img.label}`}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-103"
                 sizes="(min-width: 1200px) 16vw, (min-width: 768px) 33vw, 50vw"
@@ -93,7 +93,7 @@ export function CollectionSection() {
             className="inline-flex items-center justify-center border border-black px-10 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-black hover:bg-black hover:text-white transition-all duration-300"
             href="/mau-do"
           >
-            Xem Tất Cả Mẫu Đồ
+            Xem Thư Viện Váy & Áo Dài
           </Link>
         </div>
 

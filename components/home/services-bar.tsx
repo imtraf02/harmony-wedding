@@ -49,7 +49,7 @@ export function ServicesBar() {
         {services.map((service, index) => (
           <Link
             href="/services"
-            className={`service-item flex gap-6 py-8 md:p-6 lg:min-h-36 lg:p-8 cursor-pointer hover:bg-white/5 transition-all duration-300 ${
+            className={`service-item flex items-center gap-5 py-6 md:p-6 lg:min-h-24 lg:p-8 cursor-pointer hover:bg-white/5 transition-all duration-300 ${
               index >= 4 ? "hidden sm:flex" : "flex"
             } ${
               index % 5 !== 4 && index !== services.length - 1 ? "lg:border-r lg:border-white/10" : ""
@@ -58,14 +58,11 @@ export function ServicesBar() {
             }`}
             key={service.title}
           >
-            <Icon className="mt-1 size-10 shrink-0 text-white" name={service.icon} />
+            <Icon className="size-8 shrink-0 text-white" name={service.icon} />
             <div>
               <h2 className="text-[0.78rem] font-semibold uppercase tracking-[0.24em]">
                 {service.title}
               </h2>
-              <p className="mt-3 max-w-xs text-sm leading-6 text-white/60">
-                {service.description}
-              </p>
             </div>
           </Link>
         ))}
