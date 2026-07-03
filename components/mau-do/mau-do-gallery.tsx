@@ -5,7 +5,7 @@ import Image from "next/image";
 import { mauDoImages } from "@/constants/mau-do";
 
 const IMAGES_PER_PAGE = 24;
-const TABS = ["Tất cả", "Váy Cưới", "Veston", "Áo Dài"];
+const TABS = ["Tất cả", "Váy & Áo Dài", "Veston"];
 
 export function MauDoGallery() {
   const [activeTab, setActiveTab] = useState("Tất cả");
@@ -18,9 +18,8 @@ export function MauDoGallery() {
   const getFilteredImages = useCallback(() => {
     return mauDoImages.filter(img => {
       if (activeTab === "Tất cả") return true;
-      if (activeTab === "Váy Cưới") return img.startsWith("vay-cuoi");
+      if (activeTab === "Váy & Áo Dài") return img.startsWith("vay-cuoi") || img.startsWith("ao-dai");
       if (activeTab === "Veston") return img.startsWith("vest");
-      if (activeTab === "Áo Dài") return img.startsWith("ao-dai");
       return true;
     });
   }, [activeTab]);
@@ -124,9 +123,8 @@ export function MauDoGallery() {
             >
               {tab} ({mauDoImages.filter(img => {
                 if (tab === "Tất cả") return true;
-                if (tab === "Váy Cưới") return img.startsWith("vay-cuoi");
+                if (tab === "Váy & Áo Dài") return img.startsWith("vay-cuoi") || img.startsWith("ao-dai");
                 if (tab === "Veston") return img.startsWith("vest");
-                if (tab === "Áo Dài") return img.startsWith("ao-dai");
                 return true;
               }).length})
             </button>
