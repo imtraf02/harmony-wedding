@@ -9,6 +9,9 @@ import { albumItems } from "@/constants/data";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { siteConfig } from "@/lib/config";
 import type { AlbumDetail } from "@/types/home";
+import { MeshGradient } from "@/components/ui/mesh-gradient";
+import { GlassCard } from "@/components/ui/glass-card";
+import { GlassButton } from "@/components/ui/glass-button";
 
 interface AlbumDetailViewProps {
 	album: AlbumDetail;
@@ -363,9 +366,12 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 	);
 
 	return (
-		<div ref={rootRef} className="bg-[#FAF9F5]">
+		<div ref={rootRef} className="bg-[#fcfbfc] relative overflow-hidden">
+			{/* Light moving mesh gradient background */}
+			<MeshGradient variant="light" className="opacity-75" />
+
 			{/* Breadcrumb Header */}
-			<section className="album-hero-section pt-[5.5rem] lg:pt-24">
+			<section className="album-hero-section pt-[5.5rem] lg:pt-24 relative z-10">
 				<div className="mx-auto max-w-7xl px-5 py-5 text-[0.62rem] font-bold uppercase tracking-[0.25em] text-neutral-400 md:px-10">
 					<Link href="/" className="hover:text-black transition-colors">Trang Chủ</Link>
 					<span className="mx-3 text-neutral-300">/</span>
@@ -410,7 +416,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			</section>
 
 			{/* Section Header for Gallery */}
-			<section className="pt-20 pb-8 border-t border-black/[0.05]" id="gallery">
+			<section className="pt-20 pb-8 border-t border-black/[0.05] relative z-10" id="gallery">
 				<div className="mx-auto max-w-7xl px-5 md:px-10">
 					<p className="mb-4 text-[0.62rem] font-bold uppercase tracking-[0.25em] text-neutral-400">
 						BỘ ALBUM ẢNH
@@ -422,7 +428,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			</section>
 
 			{/* Vertical Lookbook Gallery Grid - Masonry style */}
-			<section className="album-gallery-grid pb-24">
+			<section className="album-gallery-grid pb-24 relative z-10">
 				<div className="mx-auto max-w-7xl px-5 md:px-10">
 					<div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-8 [column-fill:_balance] w-full">
 						{album.gallery.map((item, index) => {
@@ -430,22 +436,27 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 							const height = item.height ?? 2048;
 
 							return (
-								<article
-									className="album-gallery-item break-inside-avoid mb-8 relative w-full overflow-hidden rounded-none bg-neutral-100 cursor-zoom-in group border border-black/[0.04] shadow-[0_4px_30px_rgba(0,0,0,0.01)] hover:shadow-lg transition-shadow duration-700"
+								<GlassCard
 									key={item.image}
+									variant="light"
+									intensity="low"
+									borderStrength="low"
+									className="album-gallery-item break-inside-avoid mb-8 relative w-full border border-white/40 shadow-xs p-1.5 rounded-2xl cursor-zoom-in group hover:shadow-md"
 									onClick={() => setActiveIndex(index)}
 									style={{ aspectRatio: `${width} / ${height}` }}
 								>
-									<Image
-										alt={item.alt}
-										className="object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
-										fill
-										sizes="(min-width: 1280px) 320px, (min-width: 768px) 340px, (min-width: 640px) 384px, 100vw"
-										src={item.image}
-										unoptimized
-										priority={index < 4}
-									/>
-								</article>
+									<div className="relative h-full w-full overflow-hidden rounded-xl bg-neutral-100">
+										<Image
+											alt={item.alt}
+											className="object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+											fill
+											sizes="(min-width: 1280px) 320px, (min-width: 768px) 340px, (min-width: 640px) 384px, 100vw"
+											src={item.image}
+											unoptimized
+											priority={index < 4}
+										/>
+									</div>
+								</GlassCard>
 							);
 						})}
 					</div>
@@ -481,7 +492,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			<AlbumDetailCta image={album.heroImage} />
 
 			{/* Related Albums */}
-			<section className="album-related-section bg-[#FAF9F5] py-20 lg:py-28">
+			<section className="album-related-section bg-transparent py-20 lg:py-28 relative z-10">
 				<div className="mx-auto max-w-7xl px-5 md:px-10">
 					<p className="album-related-title mb-12 flex items-center gap-5 text-[0.62rem] font-bold uppercase tracking-[0.25em] text-neutral-400">
 						Album liên quan khác
@@ -501,16 +512,23 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 								href={`/portfolio/${item.slug}`}
 								key={item.slug}
 							>
-								<div className="relative h-16 overflow-hidden rounded-none bg-neutral-100 border border-black/[0.04]">
-									<Image
-										alt={item.alt}
-										className="object-cover"
-										fill
-										sizes="96px"
-										src={item.image}
-										unoptimized
-									/>
-								</div>
+								<GlassCard
+									variant="light"
+									intensity="low"
+									borderStrength="low"
+									className="relative h-16 w-24 border border-white/40 shadow-xs p-1 rounded-lg shrink-0"
+								>
+									<div className="relative h-full w-full overflow-hidden rounded-md bg-neutral-100">
+										<Image
+											alt={item.alt}
+											className="object-cover"
+											fill
+											sizes="96px"
+											src={item.image}
+											unoptimized
+										/>
+									</div>
+								</GlassCard>
 								<div>
 									<h2 className="font-serif text-lg leading-tight text-neutral-900">
 										{item.title}
@@ -693,21 +711,28 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 				</div>
 			</div>
 
-			<Link
-				className="group/btn mt-10 inline-flex h-13 items-center justify-between bg-black px-8 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white hover:bg-neutral-800 transition-colors w-full sm:w-auto rounded-none"
-				href="/contact"
-			>
-				<span>Xem video highlight</span>
-				<span className="ml-6 font-serif text-sm transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
-			</Link>
+			<div className="mt-10">
+				<GlassButton
+					variant="dark"
+					href="/contact"
+					className="w-full sm:w-auto !py-3 !px-8 text-[0.68rem] tracking-[0.22em]"
+				>
+					Xem video highlight ➔
+				</GlassButton>
+			</div>
 		</div>
 	);
 }
 
 function AlbumDetailCta({ image }: { image: string }) {
 	return (
-		<section className="px-0 py-8 md:px-10 lg:px-16">
-			<div className="album-cta relative mx-auto grid max-w-7xl overflow-hidden bg-neutral-950 p-10 text-white rounded-none md:p-14 lg:grid-cols-[1fr_0.8fr] lg:p-20">
+		<section className="px-5 py-8 md:px-10 lg:px-16 relative z-10">
+			<GlassCard
+				variant="dark"
+				intensity="high"
+				borderStrength="medium"
+				className="album-cta relative mx-auto grid max-w-7xl overflow-hidden p-10 text-white rounded-3xl md:p-14 lg:grid-cols-[1fr_0.8fr] lg:p-20 border border-white/10 shadow-lg"
+			>
 				<Image
 					alt="Nền tư vấn album cưới Harmony Wedding - Liên hệ ngay"
 					className="object-cover opacity-[0.12]"
@@ -720,13 +745,15 @@ function AlbumDetailCta({ image }: { image: string }) {
 					<h2 className="max-w-xl font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.02] tracking-tight">
 						Bạn yêu thích phong cách này? Hãy để chúng tôi kể câu chuyện của bạn.
 					</h2>
-					<Link
-						className="group/btn mt-10 inline-flex h-13 items-center justify-between bg-white px-8 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-black hover:bg-neutral-100 transition-colors w-full sm:w-auto rounded-none"
-						href="/contact"
-					>
-						<span>Tư vấn ngay</span>
-						<span className="font-serif text-xs transition-transform duration-300 group-hover/btn:translate-x-1">→</span>
-					</Link>
+					<div className="mt-10">
+						<GlassButton
+							variant="light"
+							href="/contact"
+							className="w-full sm:w-auto !py-3 !px-8 text-[0.68rem] tracking-[0.22em] hover:text-black border-white/30"
+						>
+							Tư vấn ngay ➔
+						</GlassButton>
+					</div>
 				</div>
 				<div className="relative mt-12 grid gap-6 border-t border-white/10 pt-10 text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-white/50 sm:grid-cols-2 lg:mt-0 lg:border-t-0 lg:border-l lg:pl-16 lg:pt-0">
 					<div className="flex flex-col gap-1.5">
@@ -738,7 +765,7 @@ function AlbumDetailCta({ image }: { image: string }) {
 						<span className="text-white font-bold">{siteConfig.links.phoneSecondary}</span>
 					</div>
 				</div>
-			</div>
+			</GlassCard>
 		</section>
 	);
 }
@@ -755,23 +782,32 @@ function RelatedAlbumCard({ slug }: { slug: string }) {
 			className="group flex flex-col gap-4 text-left"
 			href={`/portfolio/${item.slug}`}
 		>
-			<div className="relative aspect-[3/2] w-full overflow-hidden bg-neutral-100 rounded-none border border-black/[0.04]">
-				<Image
-					alt={item.alt}
-					className="object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
-					fill
-					sizes="(min-width: 1024px) 25vw, 50vw"
-					src={item.image}
-					unoptimized
-				/>
-			</div>
+			<GlassCard
+				variant="light"
+				intensity="low"
+				borderStrength="low"
+				className="relative aspect-[3/2] w-full border border-white/40 shadow-xs p-1.5 rounded-2xl"
+			>
+				<div className="relative h-full w-full overflow-hidden rounded-xl bg-neutral-100">
+					<Image
+						alt={item.alt}
+						className="object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
+						fill
+						sizes="(min-width: 1024px) 25vw, 50vw"
+						src={item.image}
+						unoptimized
+					/>
+				</div>
+			</GlassCard>
 			<div>
 				<span className="text-[0.62rem] font-bold text-neutral-400 tracking-[0.2em] uppercase">
 					{item.category}
 				</span>
 				<h3 className="font-serif text-xl text-neutral-900 mt-1.5 tracking-tight flex items-center justify-between">
 					<span>{item.title}</span>
-					<span className="font-serif text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
+					<span className="font-serif text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+						↗
+					</span>
 				</h3>
 			</div>
 		</Link>

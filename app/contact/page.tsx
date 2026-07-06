@@ -5,6 +5,8 @@ import { Footer } from "@/components/home/footer";
 import { ContactContent } from "@/components/contact/contact-content";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
+import { MeshGradient } from "@/components/ui/mesh-gradient";
+
 export const metadata: Metadata = {
   title: "Liên Hệ Tư Vấn & Đặt Lịch Chụp Ảnh Cưới",
   description:
@@ -22,8 +24,10 @@ export const metadata: Metadata = {
 
 export function ContactPage() {
   return (
-    <main className="bg-[#FAF9F5] text-black min-h-screen relative overflow-hidden" id="top">
+    <main className="bg-[#fcfbfc] text-black min-h-screen relative overflow-hidden" id="top">
       <Header variant="solid" />
+      {/* Light moving mesh gradient background */}
+      <MeshGradient variant="light" className="opacity-75" />
 
       <BreadcrumbJsonLd
         items={[

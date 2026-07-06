@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
+import { GlassCard } from "@/components/ui/glass-card";
+import { GlassButton } from "@/components/ui/glass-button";
+import { MeshGradient } from "@/components/ui/mesh-gradient";
 
 const pricingImages = Array.from({ length: 13 }, (_, i) => ({
   src: `/images/bang-gia/${i + 1}.jpg`,
@@ -18,7 +21,7 @@ const pricingCategories = [
         subTitle: "Trọn Gói 2 Ngày Cưới (Bao gồm Quay Chụp, Trang Phục & Makeup)",
         packages: [
           {
-            name: "Trọn Gói Diamon",
+            name: "Trọn Gói Diamond",
             price: "20.900.000đ",
             details: [
               "2 Váy cưới dòng Signature cao cấp + 2 váy dòng Ruby",
@@ -902,67 +905,71 @@ export function PricingGallery() {
   };
 
   return (
-    <section className="bg-white py-14 lg:py-24">
+    <section className="bg-transparent py-14 lg:py-24 relative z-10">
       <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
-        <p className="mb-6 flex items-center gap-5 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-neutral-700">
+        <p className="mb-6 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
           Catalogue & Bảng Giá
-          <span className="h-px w-16 bg-black" />
+          <span className="h-px w-16 bg-neutral-300" />
         </p>
-        <h2 className="mb-14 font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1] text-black">
+        <h2 className="mb-14 font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1] text-black tracking-tight">
           Bảng Giá Dịch Vụ Cưới Chi Tiết
         </h2>
 
-        {/* Thumbnail Grid */}
+        {/* Thumbnail Grid - Upgraded to Liquid Glass p-1 cards */}
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {pricingImages.map((img, idx) => (
-            <article
+            <GlassCard
               key={img.src}
-              className="group relative cursor-pointer overflow-hidden border border-black/5 bg-neutral-50 shadow-[0_4px_24px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+              variant="light"
+              intensity="low"
+              borderStrength="low"
+              hoverable
+              className="group relative cursor-pointer border border-white/40 shadow-xs p-1 rounded-2xl"
               onClick={() => setActiveIdx(idx)}
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                   loading="lazy"
                   quality={90}
                 />
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
+                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5" />
               </div>
-              <div className="flex items-center justify-between p-5 bg-white border-t border-black/[0.04]">
-                <span className="font-serif text-lg font-medium text-neutral-900">{img.title}</span>
-                <span className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neutral-400 group-hover:text-black transition-colors">
-                  Phóng to ↗
+              <div className="flex items-center justify-between p-4 bg-white/40 border-t border-white/20">
+                <span className="font-serif text-base font-semibold text-neutral-800">{img.title}</span>
+                <span className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-neutral-400 group-hover:text-black transition-colors">
+                  Phóng to ➔
                 </span>
               </div>
-            </article>
+            </GlassCard>
           ))}
         </div>
 
         {/* Text-based Pricing Directory for SEO and UI */}
-        <div className="mt-24 border-t border-black/[0.06] pt-20" id="pricing-details">
+        <div className="mt-24 border-t border-black/[0.05] pt-20" id="pricing-details">
           <div className="max-w-2xl mx-auto text-center mb-16">
-            <h3 className="font-serif text-[2rem] leading-tight text-neutral-900 mb-4">
+            <h3 className="font-serif text-[2.2rem] leading-tight text-neutral-900 mb-4 tracking-tight">
               Chi Tiết Các Gói Dịch Vụ Cưới
             </h3>
-            <p className="text-sm leading-relaxed text-neutral-500">
+            <p className="text-[0.92rem] leading-relaxed text-neutral-500 font-light">
               Harmony Wedding cam kết bảng giá công khai, hợp đồng minh bạch và hoàn toàn không phát sinh chi phí ẩn suốt quá trình thực hiện.
             </p>
           </div>
 
-          {/* Navigation Tabs */}
-          <div className="flex border-b border-black/[0.06] overflow-x-auto scrollbar-none gap-2 pb-px mb-12">
+          {/* Navigation Tabs - Glass pills */}
+          <div className="flex overflow-x-auto scrollbar-none gap-3 mb-14 bg-neutral-100/50 backdrop-blur-xs p-1.5 rounded-full border border-black/[0.03] max-w-fit">
             {pricingCategories.map((cat, idx) => (
               <button
                 key={cat.title}
                 onClick={() => setActiveTab(idx)}
-                className={`whitespace-nowrap pb-4 px-6 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 border-b-2 ${
+                className={`whitespace-nowrap py-3 px-6 text-[0.64rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer ${
                   activeTab === idx
-                    ? "border-black text-black"
-                    : "border-transparent text-neutral-400 hover:text-black"
+                    ? "bg-black text-white shadow-xs"
+                    : "text-neutral-500 hover:text-black"
                 }`}
                 type="button"
               >
@@ -972,58 +979,70 @@ export function PricingGallery() {
           </div>
 
           {/* Active Tab Content */}
-          <div className="space-y-12">
+          <div className="space-y-16">
             <div>
-              <p className="text-xs tracking-wider text-neutral-400 uppercase mb-2">
+              <p className="text-[0.6rem] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">
                 Danh mục hiện tại
               </p>
-              <h4 className="font-serif text-2xl text-neutral-900">{pricingCategories[activeTab].title}</h4>
-              <p className="text-sm leading-relaxed text-neutral-500 mt-2">
+              <h4 className="font-serif text-2xl md:text-3xl text-neutral-900 tracking-tight">{pricingCategories[activeTab].title}</h4>
+              <p className="text-sm leading-relaxed text-neutral-500 mt-3 font-light max-w-2xl">
                 {pricingCategories[activeTab].description}
               </p>
             </div>
 
             {/* Loop through subsections inside current tab */}
             {pricingCategories[activeTab].sections.map((sect) => (
-              <div key={sect.subTitle} className="border-t border-black/[0.04] pt-8 first:border-0 first:pt-0">
-                <h5 className="font-sans text-[0.8rem] font-bold tracking-[0.16em] uppercase text-neutral-800 mb-8 border-l-2 border-black pl-4">
+              <div key={sect.subTitle} className="border-t border-black/[0.04] pt-10 first:border-0 first:pt-0">
+                <h5 className="font-sans text-[0.78rem] font-bold tracking-[0.16em] uppercase text-neutral-800 mb-8 border-l-2 border-amber-600/30 pl-4">
                   {sect.subTitle}
                 </h5>
 
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                   {sect.packages.map((pkg) => (
-                    <div
+                    <GlassCard
                       key={pkg.name}
-                      className="flex flex-col border border-black/5 bg-neutral-50/50 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.01)] transition-all duration-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.03)] hover:bg-white"
+                      variant="light"
+                      intensity="low"
+                      borderStrength="low"
+                      hoverable
+                      className="flex flex-col border border-white/40 shadow-xs rounded-3xl p-8 min-h-[400px]"
                     >
                       <div className="mb-6 flex justify-between items-start gap-4">
-                        <h6 className="font-serif text-lg font-medium text-neutral-900 leading-tight">
+                        <h6 className="font-serif text-[1.12rem] font-bold text-neutral-900 leading-snug">
                           {pkg.name}
                         </h6>
-                        <span className="font-serif text-sm font-semibold text-black bg-neutral-100/80 px-3 py-1 rounded shrink-0">
+                        <GlassCard
+                          variant="light"
+                          intensity="high"
+                          borderStrength="medium"
+                          className="font-serif text-[0.78rem] font-bold text-amber-950 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full shrink-0 shadow-xs"
+                        >
                           {pkg.price}
-                        </span>
+                        </GlassCard>
                       </div>
-                      <div className="h-px bg-black/[0.06] w-full mb-6" />
-                      <ul className="space-y-3.5 flex-1 mb-8">
+                      
+                      <div className="h-px bg-black/[0.04] w-full mb-6" />
+                      
+                      <ul className="space-y-4 flex-1 mb-8">
                         {pkg.details.map((detail) => (
-                          <li key={detail} className="flex items-start gap-3 text-xs text-neutral-600 leading-relaxed">
-                            <svg className="size-4 text-neutral-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                            </svg>
+                          <li key={detail} className="flex items-start gap-3 text-[0.82rem] text-neutral-600 leading-relaxed font-light">
+                            <span className="grid size-4.5 place-items-center rounded-full bg-neutral-100/60 border border-white/30 text-neutral-500 text-[0.55rem] shrink-0 mt-0.5 font-bold">✓</span>
                             <span>{detail}</span>
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href="https://zalo.me/0357256845"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-center w-full bg-black text-white py-3.5 text-[0.66rem] font-semibold uppercase tracking-[0.2em] hover:bg-neutral-800 transition-colors"
-                      >
-                        Nhận tư vấn & Đặt lịch
-                      </a>
-                    </div>
+
+                      <div className="mt-auto pt-6 border-t border-black/[0.03]">
+                        <GlassButton
+                          href="https://zalo.me/0357256845"
+                          onClick={() => window.open("https://zalo.me/0357256845", "_blank")}
+                          variant="dark"
+                          className="w-full !py-3 rounded-xl text-center flex items-center justify-center"
+                        >
+                          Nhận tư vấn & Đặt lịch ➔
+                        </GlassButton>
+                      </div>
+                    </GlassCard>
                   ))}
                 </div>
               </div>
@@ -1035,33 +1054,36 @@ export function PricingGallery() {
       {/* Full-screen Lightbox Modal */}
       {activeIdx !== null && (
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-950/98 backdrop-blur-md transition-opacity duration-300"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* Top bar controls */}
-          <div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/50 to-transparent">
-            <span className="font-sans text-xs tracking-widest uppercase text-white/70">
-              {pricingImages[activeIdx].title} / {String(pricingImages.length).padStart(2, "0")}
+          <div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/60 to-transparent">
+            <span className="font-sans text-[0.62rem] font-bold tracking-[0.24em] uppercase text-white/70">
+              {pricingImages[activeIdx].title} &mdash; {String(pricingImages.length).padStart(2, "0")}
             </span>
             <div className="flex items-center gap-4">
-              <button
+              <GlassCard
+                variant="light"
+                intensity="high"
+                borderStrength="medium"
+                className="hidden md:flex px-4 py-2 text-[0.62rem] font-bold uppercase tracking-[0.18em] border border-white/30 text-white rounded-full hover:bg-white/25 active:scale-95 transition-all cursor-pointer"
                 onClick={() => setIsZoomed(!isZoomed)}
-                className="hidden md:flex px-4 py-2 text-[0.66rem] font-semibold uppercase tracking-[0.2em] bg-white/10 hover:bg-white/20 transition-colors text-white border border-white/10"
-                type="button"
               >
                 {isZoomed ? "Thu Nhỏ" : "Phóng To 1.5x"}
-              </button>
-              <button
+              </GlassCard>
+              <GlassCard
+                variant="light"
+                intensity="high"
+                borderStrength="medium"
+                className="grid size-10 place-items-center border border-white/30 text-white rounded-full hover:bg-white/25 active:scale-95 transition-all cursor-pointer"
                 onClick={closeLightbox}
-                className="grid size-11 place-items-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
-                aria-label="Đóng bảng giá"
-                type="button"
               >
-                <svg className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                <svg className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
-              </button>
+              </GlassCard>
             </div>
           </div>
 
@@ -1074,7 +1096,7 @@ export function PricingGallery() {
           >
             <div
               className={`relative transition-transform duration-300 select-none ${
-                isZoomed ? "scale-135 md:scale-150 origin-center my-auto" : "max-w-full max-h-[78vh] aspect-[3/4] h-full"
+                isZoomed ? "scale-120 md:scale-135 origin-center my-auto" : "max-w-full max-h-[78vh] aspect-[3/4] h-full"
               }`}
               onClick={(e) => {
                 if (isZoomed) {
@@ -1097,32 +1119,35 @@ export function PricingGallery() {
           </div>
 
           {/* Navigation Controls (Desktop) */}
-          <button
+          <GlassCard
+            variant="light"
+            intensity="high"
+            borderStrength="medium"
             onClick={(e) => {
               e.stopPropagation();
               showPrev();
             }}
-            className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 size-14 items-center justify-center bg-white/5 hover:bg-white/10 text-white rounded-full transition-colors border border-white/5"
-            aria-label="Trang trước"
-            type="button"
+            className="hidden md:flex fixed left-6 top-1/2 -translate-y-1/2 size-12 items-center justify-center border border-white/30 text-white rounded-full hover:bg-white/25 active:scale-95 transition-all cursor-pointer shadow-md"
           >
-            <svg className="size-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
-          </button>
-          <button
+          </GlassCard>
+          
+          <GlassCard
+            variant="light"
+            intensity="high"
+            borderStrength="medium"
             onClick={(e) => {
               e.stopPropagation();
               showNext();
             }}
-            className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 size-14 items-center justify-center bg-white/5 hover:bg-white/10 text-white rounded-full transition-colors border border-white/5"
-            aria-label="Trang sau"
-            type="button"
+            className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 size-12 items-center justify-center border border-white/30 text-white rounded-full hover:bg-white/25 active:scale-95 transition-all cursor-pointer shadow-md"
           >
-            <svg className="size-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
-          </button>
+          </GlassCard>
 
           {/* Mobile swipe helper text */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-white/50 text-[0.62rem] tracking-[0.24em] uppercase pointer-events-none">

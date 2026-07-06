@@ -208,10 +208,18 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 				{/* Related Posts */}
 				{relatedPosts.length > 0 && (
 					<footer className="mt-20 border-t border-neutral-100 pt-16">
-						<h2 className="text-center font-serif text-2xl font-light tracking-wide text-neutral-900">
-							Bài Viết Liên Quan
-						</h2>
-						<div className="mt-10 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+						<div className="flex flex-col items-center justify-between gap-4 border-b border-neutral-100 pb-6 sm:flex-row sm:gap-0 mb-10">
+							<h2 className="font-serif text-2xl font-light tracking-wide text-neutral-900">
+								Bài Viết Liên Quan
+							</h2>
+							<Link
+								href="/blog"
+								className="text-xs font-semibold uppercase tracking-wider text-neutral-500 hover:text-black transition-colors"
+							>
+								Xem tất cả bài viết &rarr;
+							</Link>
+						</div>
+						<div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
 							{relatedPosts.map((rPost) => (
 								<article
 									key={rPost.slug}

@@ -3,7 +3,11 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { gsap, useGSAP } from "@/lib/gsap";
+import { GlassCard } from "@/components/ui/glass-card";
+import { GlassButton } from "@/components/ui/glass-button";
+import { MeshGradient } from "@/components/ui/mesh-gradient";
 
 const PREVIEW_IMAGES = [
   { src: "vay-cuoi-001.webp", label: "Váy Cưới Signature" },
@@ -45,7 +49,10 @@ export function CollectionSection() {
   );
 
   return (
-    <section className="bg-neutral-50 py-20 lg:py-28" ref={sectionRef}>
+    <section className="relative isolate overflow-hidden py-20 lg:py-28" ref={sectionRef}>
+      {/* Light moving mesh gradient in background */}
+      <MeshGradient variant="light" className="opacity-80" />
+
       <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
         
         {/* Section Header */}
@@ -63,38 +70,49 @@ export function CollectionSection() {
         </div>
 
         {/* Image Grid */}
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-14">
-          {PREVIEW_IMAGES.map((img, idx) => (
+        <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-14">
+          {PREVIEW_IMAGES.map((img) => (
             <Link
               href="/mau-do"
               key={img.src}
-              className="collection-reveal group relative aspect-[3/4] w-full overflow-hidden border border-black/5 bg-white shadow-xs transition-all duration-500 hover:shadow-md cursor-pointer"
+              className="collection-reveal block"
             >
-              <Image
-                src={`/images/mau-do/${img.src}`}
-                alt={`Mẫu váy thiết kế Harmony Wedding - ${img.label}`}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-103"
-                sizes="(min-width: 1200px) 16vw, (min-width: 768px) 33vw, 50vw"
-                quality={85}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span className="text-[0.62rem] font-bold uppercase tracking-wider text-white">
-                  {img.label} ➔
-                </span>
-              </div>
+              <GlassCard
+                variant="light"
+                intensity="low"
+                borderStrength="low"
+                hoverable
+                className="group relative aspect-[3/4] w-full overflow-hidden border border-white/30 bg-white/20 shadow-xs cursor-pointer rounded-2xl"
+              >
+                <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                  <Image
+                    src={`/images/mau-do/${img.src}`}
+                    alt={`Mẫu váy thiết kế Harmony Wedding - ${img.label}`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 1200px) 16vw, (min-width: 768px) 33vw, 50vw"
+                    quality={85}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                  <span className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white">
+                    {img.label} ➔
+                  </span>
+                </div>
+              </GlassCard>
             </Link>
           ))}
         </div>
 
         {/* CTA Link Button */}
         <div className="collection-reveal text-center">
-          <Link
-            className="inline-flex items-center justify-center border border-black px-10 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-black hover:bg-black hover:text-white transition-all duration-300"
+          <GlassButton
+            variant="light"
             href="/mau-do"
+            className="!px-10 border-black/10 hover:border-black/30"
           >
             Xem Thư Viện Váy & Áo Dài
-          </Link>
+          </GlassButton>
         </div>
 
       </div>

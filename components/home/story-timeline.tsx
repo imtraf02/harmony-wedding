@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { Icon } from "@/components/home/icon";
 import { timelineSteps, weddingImages } from "@/constants/data";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { GlassCard } from "@/components/ui/glass-card";
+import { MeshGradient } from "@/components/ui/mesh-gradient";
 
 export function StoryTimeline() {
 	const sectionRef = useRef<HTMLElement | null>(null);
@@ -178,13 +180,23 @@ export function StoryTimeline() {
 							{ scaleY: 0 },
 							{ duration: 1.05, scaleY: 1 },
 							"desktopSteps",
-						)
-						.fromTo(
-							progress,
-							{ scaleY: 0 },
-							{ duration: 1.1, ease: "power3.out", scaleY: 1 },
-							"desktopSteps+=0.08",
 						);
+
+					// Dynamic vertical scroll scrub for the timeline progress line
+					gsap.fromTo(
+						progress,
+						{ scaleY: 0 },
+						{
+							scaleY: 1,
+							ease: "none",
+							scrollTrigger: {
+								trigger: ".desktop-process-grid",
+								start: "top 35%",
+								end: "bottom 65%",
+								scrub: 0.5,
+							},
+						}
+					);
 
 					nodes.forEach((node, index) => {
 						desktopTimeline.fromTo(
@@ -236,119 +248,169 @@ export function StoryTimeline() {
 	);
 
 	return (
-		<section className="bg-white py-24 md:py-32" id="packages" ref={sectionRef}>
-			<div className="desktop-process-grid mx-auto grid max-w-[1720px] gap-12 px-5 md:px-10 lg:grid-cols-[0.44fr_5.5rem_0.56fr] lg:gap-12 lg:px-16 xl:gap-16">
+		<section className="relative isolate overflow-hidden bg-[#fcfbfc] py-24 md:py-32" id="packages" ref={sectionRef}>
+			{/* Light moving mesh gradient background */}
+			<MeshGradient variant="light" className="opacity-80" />
+
+			<div className="desktop-process-grid mx-auto grid max-w-[1720px] gap-12 px-5 md:px-10 lg:grid-cols-[0.42fr_0.58fr] lg:gap-12 lg:px-16 xl:gap-16">
+				{/* Left Sticky Panel */}
 				<div className="lg:sticky lg:top-28 lg:h-fit">
-					<p className="process-kicker mb-8 flex items-center gap-5 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-neutral-700">
+					<p className="process-kicker mb-8 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
 						Quy trình làm việc
-						<span className="h-px w-16 bg-black" />
+						<span className="h-px w-16 bg-neutral-300" />
 					</p>
 					<h2 className="process-heading max-w-[650px] font-serif text-[clamp(3rem,5.5vw,6.4rem)] leading-[0.96] text-black">
 						Một Hành Trình Được Dẫn Dắt Bằng Sự Tinh Tế
 					</h2>
-					<span className="process-copy mt-8 block h-px w-16 bg-black/25" />
+					<span className="process-copy mt-8 block h-px w-16 bg-neutral-300" />
 					<p className="process-copy mt-7 max-w-md text-base leading-8 text-neutral-600">
 						Chúng tôi giữ nhịp làm việc chậm, rõ ràng và riêng tư để mỗi quyết
 						định đều phục vụ cảm xúc thật của hai bạn.
 					</p>
 
-					<div className="process-image relative mt-14 min-h-[440px] overflow-hidden bg-neutral-100 lg:min-h-[520px]">
-						<Image
-							alt="Cặp đôi trong quy trình chuẩn bị album cưới Harmony Wedding"
-							className="object-cover"
-							fill
-							sizes="(min-width: 1024px) 44vw, 100vw"
-							src={weddingImages.process}
-							unoptimized
-						/>
-						<div className="process-card absolute bottom-0 left-0 border border-black/10 bg-white/92 p-8 md:p-10 md:backdrop-blur-sm">
-							<p className="font-serif text-6xl leading-none text-black md:text-7xl">
-								05
-							</p>
-							<p className="mt-5 max-w-[150px] text-[0.68rem] font-semibold uppercase leading-6 tracking-[0.28em] text-neutral-700">
-								bước hoàn thiện để tạo nên ký ức trọn vẹn
-							</p>
-						</div>
+					{/* Image card encased in GlassCard border wrapper */}
+					<div className="process-image relative mt-14">
+						<GlassCard
+							variant="light"
+							intensity="low"
+							borderStrength="low"
+							className="relative min-h-[440px] lg:min-h-[520px] shadow-lg p-1 rounded-3xl"
+						>
+							<div className="relative h-full w-full min-h-[416px] lg:min-h-[496px] overflow-hidden rounded-2xl">
+								<Image
+									alt="Cặp đôi trong quy trình chuẩn bị album cưới Harmony Wedding"
+									className="object-cover"
+									fill
+									sizes="(min-width: 1024px) 44vw, 100vw"
+									src={weddingImages.process}
+									unoptimized
+								/>
+							</div>
+							<GlassCard
+								variant="light"
+								intensity="medium"
+								borderStrength="low"
+								className="process-card absolute bottom-4 left-4 right-4 border border-white/30 p-8 shadow-md rounded-2xl"
+							>
+								<p className="font-serif text-5xl leading-none text-black md:text-6xl">
+									05
+								</p>
+								<p className="mt-4 text-[0.68rem] font-bold uppercase leading-5 tracking-[0.24em] text-neutral-700">
+									bước hoàn thiện để tạo nên ký ức trọn vẹn
+								</p>
+							</GlassCard>
+						</GlassCard>
 					</div>
 				</div>
 
+				{/* Right Side: Timeline Steps list with integrated nodes (Desktop) */}
 				<div className="relative hidden lg:block">
-					<div className="process-rule absolute bottom-0 left-1/2 top-0 w-px origin-top bg-black/18">
-						<div className="process-progress h-full w-px origin-top bg-black" />
+					{/* The vertical glass timeline track. Positioned precisely in the center of the nodes */}
+					<div className="process-rule absolute bottom-20 left-[2.75rem] top-20 w-1.5 -translate-x-1/2 origin-top rounded-full bg-white/40 border border-white/20 shadow-[inset_0_1px_1px_rgba(0,0,0,0.03)]">
+						<div className="process-progress h-full w-full origin-top rounded-full bg-linear-to-b from-amber-500/20 via-rose-500/20 to-neutral-800/20" />
 					</div>
-					<div className="relative flex h-full min-h-[980px] flex-col justify-between py-12">
+
+					<div className="flex flex-col gap-8">
 						{timelineSteps.map((step, index) => (
 							<div
-								className="process-node relative z-10 mx-auto grid size-14 place-items-center bg-black font-serif text-xl text-white shadow-[0_18px_35px_rgba(0,0,0,0.16)]"
 								key={step.title}
+								className="process-step-container relative grid grid-cols-[5.5rem_1fr] gap-6 items-center"
 							>
-								{String(index + 1).padStart(2, "0")}
+								{/* Circular glass node, perfectly centered next to the card */}
+								<div className="relative z-10 flex justify-center">
+									<GlassCard
+										variant="light"
+										intensity="high"
+										borderStrength="high"
+										className="process-node grid size-14 place-items-center rounded-full font-serif text-lg text-black border border-white/50 shadow-md font-bold"
+									>
+										{String(index + 1).padStart(2, "0")}
+									</GlassCard>
+								</div>
+
+								{/* Step Card */}
+								<GlassCard
+									variant="light"
+									intensity="low"
+									borderStrength="low"
+									hoverable
+									className="process-step grid gap-8 p-6 lg:grid-cols-[170px_1fr_64px] lg:items-center xl:grid-cols-[190px_1fr_72px] border border-white/40 shadow-xs hover:shadow-md rounded-2xl"
+								>
+									<div>
+										<div className="process-thumb relative h-36 flex-1 overflow-hidden bg-neutral-100 md:h-[8.5rem] rounded-xl border border-white/20">
+											<Image
+												alt={step.alt}
+												className="object-cover"
+												fill
+												sizes="(min-width: 1024px) 190px, 42vw"
+												src={step.image}
+												unoptimized
+											/>
+										</div>
+									</div>
+
+									<div className="process-content">
+										<h3 className="font-serif text-[clamp(1.8rem,2.5vw,3rem)] leading-none text-black">
+											{step.title}
+										</h3>
+										<p className="mt-4 max-w-md text-[0.95rem] leading-7 text-neutral-600">
+											{step.description}
+										</p>
+									</div>
+
+									<GlassCard
+										variant="light"
+										intensity="low"
+										borderStrength="low"
+										className="process-icon grid size-14 place-items-center border border-white/40 text-black md:justify-self-end rounded-full shadow-xs"
+									>
+										<Icon className="size-6" name={step.icon} />
+									</GlassCard>
+								</GlassCard>
 							</div>
 						))}
 					</div>
 				</div>
 
-				<div className="mobile-process-list relative border-y border-black/10 lg:hidden">
-					<div className="absolute bottom-9 left-[4.75rem] top-9 w-px bg-black/12">
-						<div className="mobile-process-line-progress h-full w-px origin-top bg-black" />
+				{/* Mobile Step Cards List */}
+				<div className="mobile-process-list relative lg:hidden mt-8">
+					<div className="absolute bottom-9 left-[2.25rem] top-9 w-px bg-neutral-200">
+						<div className="mobile-process-line-progress h-full w-px origin-top bg-black/60" />
 					</div>
 
 					{timelineSteps.map((step, index) => (
 						<article
-							className="mobile-process-step relative grid grid-cols-[2rem_3.5rem_1fr] gap-4 border-b border-black/10 py-9 last:border-b-0"
+							className="mobile-process-step relative grid grid-cols-[4.5rem_1fr] gap-4 py-6"
 							key={step.title}
 						>
-							<span className="pt-3 font-serif text-xl leading-none text-black">
-								{String(index + 1).padStart(2, "0")}
-							</span>
 							<div className="relative z-10 flex justify-center">
-								<span className="mobile-process-node grid size-12 place-items-center rounded-full bg-neutral-200 text-neutral-500 transition-transform">
+								<GlassCard
+									variant="light"
+									intensity="high"
+									borderStrength="medium"
+									className="mobile-process-node grid size-12 place-items-center rounded-full text-neutral-800 border border-white/45 shadow-xs font-bold"
+								>
 									<Icon className="mobile-process-icon size-6" name={step.icon} />
-								</span>
+								</GlassCard>
 							</div>
-							<div className="min-w-0">
-								<h3 className="font-serif text-[clamp(1.9rem,10vw,3.1rem)] leading-none text-black">
-									{step.title}
-								</h3>
-								<p className="mt-5 text-[0.95rem] leading-8 text-neutral-600">
-									{step.description}
-								</p>
-							</div>
-						</article>
-					))}
-				</div>
-
-				<div className="hidden border-y border-black/10 lg:block">
-					{timelineSteps.map((step) => (
-						<article
-							className="process-step grid min-h-[196px] gap-8 border-b border-black/10 py-6 last:border-b-0 lg:grid-cols-[170px_1fr_76px] lg:items-center xl:grid-cols-[190px_1fr_86px]"
-							key={step.title}
-						>
-							<div>
-								<div className="process-thumb relative h-36 flex-1 overflow-hidden bg-neutral-100 md:h-[8.5rem]">
-									<Image
-										alt={step.alt}
-										className="object-cover"
-										fill
-										sizes="(min-width: 1024px) 190px, 42vw"
-										src={step.image}
-										unoptimized
-									/>
+							<GlassCard
+								variant="light"
+								intensity="low"
+								borderStrength="low"
+								className="p-6 border border-white/30 shadow-xs rounded-2xl"
+							>
+								<div className="flex items-center gap-3">
+									<span className="font-serif text-lg leading-none text-neutral-400">
+										{String(index + 1).padStart(2, "0")}
+									</span>
+									<h3 className="font-serif text-[1.4rem] leading-none text-black">
+										{step.title}
+									</h3>
 								</div>
-							</div>
-
-							<div className="process-content">
-								<h3 className="font-serif text-[clamp(2rem,3vw,3.7rem)] leading-none text-black">
-									{step.title}
-								</h3>
-								<p className="mt-5 max-w-md text-base leading-8 text-neutral-600">
+								<p className="mt-4 text-[0.92rem] leading-7 text-neutral-600">
 									{step.description}
 								</p>
-							</div>
-
-							<div className="process-icon grid size-16 place-items-center border border-black/12 text-black md:justify-self-end">
-								<Icon className="size-8" name={step.icon} />
-							</div>
+							</GlassCard>
 						</article>
 					))}
 				</div>

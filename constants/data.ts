@@ -226,16 +226,6 @@ export const albumFilters = [
 
 export const albumItems: AlbumItem[] = [
 	{
-		slug: "studio-phong-trang-tron",
-		title: "Studio Phông Trắng Trơn",
-		category: "Studio",
-		location: "Studio",
-		image: localImage("studio-phong-trang-tron/1.webp"),
-		alt: "Album ảnh cưới Studio Phòng Trắng Tròn - Harmony Wedding",
-		width: 1365,
-		height: 2048,
-	},
-	{
 		slug: "sunny-garden",
 		title: "Sunny Garden",
 		category: "Sunny Garden",
@@ -244,6 +234,16 @@ export const albumItems: AlbumItem[] = [
 		alt: "Album ảnh cưới Sunny Garden - Harmony Wedding",
 		width: 1706,
 		height: 2560,
+	},
+	{
+		slug: "studio-phong-trang-tron",
+		title: "Studio Phông Trắng Trơn",
+		category: "Studio",
+		location: "Studio",
+		image: localImage("studio-phong-trang-tron/1.webp"),
+		alt: "Album ảnh cưới Studio Phòng Trắng Tròn - Harmony Wedding",
+		width: 1365,
+		height: 2048,
 	},
 	{
 		slug: "duong-pho-ho-chi-minh-2",

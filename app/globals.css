@@ -12,6 +12,47 @@
   --color-muted: var(--muted);
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: -apple-system-serif, "New York", "Times New Roman", Times, serif;
+
+  /* Floating mesh gradient keyframes & animations */
+  --animate-float-slow: float-slow 28s infinite alternate ease-in-out;
+  --animate-float-medium: float-medium 22s infinite alternate-reverse ease-in-out;
+  --animate-float-fast: float-fast 18s infinite alternate ease-in-out;
+
+  @keyframes float-slow {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(6%, 8%) scale(1.05);
+    }
+    100% {
+      transform: translate(-4%, -6%) scale(0.95);
+    }
+  }
+
+  @keyframes float-medium {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-8%, 5%) scale(1.03);
+    }
+    100% {
+      transform: translate(6%, -8%) scale(0.97);
+    }
+  }
+
+  @keyframes float-fast {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-4%, -6%) scale(1.04);
+    }
+    100% {
+      transform: translate(5%, 5%) scale(0.96);
+    }
+  }
 }
 
 * {

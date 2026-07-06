@@ -9,6 +9,8 @@ import { Header } from "@/components/home/header";
 import { BreadcrumbJsonLd, ImageGalleryJsonLd } from "@/components/seo/json-ld";
 import { albumItems } from "@/constants/data";
 
+import { MeshGradient } from "@/components/ui/mesh-gradient";
+
 export const metadata: Metadata = {
   title: "Album Ảnh Cưới Đẹp - Tác Phẩm Ngoại Cảnh & Studio",
   description:
@@ -34,8 +36,10 @@ export const metadata: Metadata = {
 
 export function AlbumPage() {
   return (
-    <main className="bg-white text-black" id="top">
+    <main className="bg-[#fcfbfc] text-black min-h-screen relative overflow-hidden" id="top">
       <Header variant="solid" />
+      {/* Light moving mesh gradient background */}
+      <MeshGradient variant="light" className="opacity-75" />
 
       <BreadcrumbJsonLd
         items={[
