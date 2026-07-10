@@ -10,8 +10,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: -apple-system-serif, "New York", "Times New Roman", Times, serif;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-serif), -apple-system-serif, "New York", "Times New Roman", Times, serif;
 
   /* Floating mesh gradient keyframes & animations */
   --animate-float-slow: float-slow 28s infinite alternate ease-in-out;

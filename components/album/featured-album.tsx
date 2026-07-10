@@ -14,16 +14,16 @@ export function FeaturedAlbum() {
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
 					<h2 className="font-serif text-[clamp(2.6rem,4vw,4.8rem)] leading-[1.02] text-black">
-						Đà Lạt - Bản Tình Ca Mùa Đông
+						Sunny Garden - Sắc Hoa Lãng Mạn
 					</h2>
 					<p className="mt-8 max-w-sm text-base leading-8 text-neutral-600">
-						Giữa sương mờ và rừng thông, chúng tôi lưu giữ những cảm xúc trong
-						trẻo nhất của tình yêu.
+						Không gian đồng quê châu Âu yên bình, ngập tràn ánh nắng ấm áp và
+						sắc hoa rực rỡ bốn mùa.
 					</p>
 					<div className="mt-10">
 						<GlassButton
 							variant="dark"
-							href="#album-grid"
+							href="/portfolio/sunny-garden"
 							className="!py-3 !px-8 text-[0.68rem] tracking-[0.22em]"
 						>
 							Xem toàn bộ album ➔

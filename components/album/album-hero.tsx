@@ -3,6 +3,7 @@ import { albumHero, albumStats } from "@/constants/data";
 import { Icon } from "@/components/home/icon";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import { AnimatedArrowRight } from "@/components/ui/animated-icons";
 
 export function AlbumHero() {
 	return (
@@ -72,50 +73,94 @@ export function AlbumHero() {
 			</div>
 
 			{/* Desktop layout */}
-			<div className="mx-auto hidden max-w-[1720px] min-h-[460px] grid-cols-1 items-center gap-12 px-5 py-16 md:px-10 lg:grid lg:grid-cols-[0.45fr_0.55fr] lg:px-16 lg:py-12">
+			<div className="mx-auto hidden max-w-6xl min-h-[520px] grid-cols-1 items-center gap-16 px-8 py-16 md:px-10 lg:grid lg:grid-cols-[1.2fr_1fr] lg:py-16">
 				<div className="relative z-10">
 					<p className="mb-8 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
 						Album cưới
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
-					<h1 className="max-w-2xl font-serif text-[clamp(3rem,7vw,6.7rem)] leading-[0.96] text-black">
-						Những Câu Chuyện Tình Yêu
+					<h1 className="max-w-2xl font-serif text-[clamp(2.8rem,4.5vw,4.5rem)] leading-[1.08] text-neutral-900">
+						Những Câu Chuyện <span className="font-light italic text-neutral-500 block sm:inline">Tình Yêu</span>
 					</h1>
-					<p className="mt-8 max-w-md text-base leading-8 text-neutral-600">
-						Mỗi bộ ảnh là một hành trình cảm xúc, được kể bằng ánh sáng,
-						khoảnh khắc và tình yêu chân thật.
+					<p className="mt-8 max-w-md text-[0.92rem] leading-8 text-neutral-500 font-light">
+						Mỗi bộ ảnh là một hành trình cảm xúc tinh tế, được kể lại bằng ngôn ngữ của ánh sáng, góc máy tự nhiên và những khoảnh khắc chân thật nhất của hai bạn.
 					</p>
 					<div className="mt-10">
 						<GlassButton
 							variant="dark"
 							href="#album-grid"
-							className="!py-3 !px-8 text-[0.7rem] tracking-[0.22em]"
+							className="!py-3 !px-8 text-[0.7rem] tracking-[0.22em] flex items-center gap-2"
 						>
-							Xem video giới thiệu ➔
+							<span>Khám phá các album</span>
+							<AnimatedArrowRight className="size-4 shrink-0" />
 						</GlassButton>
 					</div>
 				</div>
 
-				<div className="relative">
-					<GlassCard
-						variant="light"
-						intensity="low"
-						borderStrength="low"
-						className="relative h-[430px] border border-white/40 shadow-lg p-3 rounded-3xl"
-					>
-						<div className="relative h-full w-full overflow-hidden rounded-2xl">
-							<Image
-								alt={albumHero.alt}
-								className="object-cover animate-pan"
-								fill
-								priority
-								sizes="55vw"
-								src={albumHero.image}
-								unoptimized
-							/>
-							<div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white/30 to-transparent" />
-						</div>
-					</GlassCard>
+				<div className="relative w-[480px] h-[550px] ml-auto mr-6 flex items-center justify-center">
+					{/* Photo 3: Back Right */}
+					<div className="absolute top-8 -right-8 z-10 aspect-[3/4] h-[460px] rotate-[6deg] opacity-75 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:z-40 hover:opacity-100 cursor-pointer">
+						<GlassCard
+							variant="light"
+							intensity="low"
+							borderStrength="low"
+							className="relative h-full w-full border border-white/40 shadow-lg p-2.5 rounded-3xl"
+						>
+							<div className="relative h-full w-full overflow-hidden rounded-2xl bg-neutral-100">
+								<Image
+									alt="Sunny Garden Chi tiết 3"
+									className="object-cover"
+									fill
+									sizes="25vw"
+									src="/images/wedding/sunny-garden/15.webp"
+									unoptimized
+								/>
+							</div>
+						</GlassCard>
+					</div>
+
+					{/* Photo 2: Back Left */}
+					<div className="absolute top-12 -left-8 z-20 aspect-[3/4] h-[460px] -rotate-[6deg] opacity-85 transition-all duration-500 hover:rotate-0 hover:scale-105 hover:z-40 hover:opacity-100 cursor-pointer">
+						<GlassCard
+							variant="light"
+							intensity="low"
+							borderStrength="low"
+							className="relative h-full w-full border border-white/40 shadow-lg p-2.5 rounded-3xl"
+						>
+							<div className="relative h-full w-full overflow-hidden rounded-2xl bg-neutral-100">
+								<Image
+									alt="Sunny Garden Chi tiết 2"
+									className="object-cover"
+									fill
+									sizes="25vw"
+									src="/images/wedding/sunny-garden/10.webp"
+									unoptimized
+								/>
+							</div>
+						</GlassCard>
+					</div>
+
+					{/* Photo 1: Front Center */}
+					<div className="absolute top-0 z-30 aspect-[3/4] h-[520px] transition-all duration-500 hover:scale-[1.03] hover:z-40 cursor-pointer">
+						<GlassCard
+							variant="light"
+							intensity="low"
+							borderStrength="low"
+							className="relative h-full w-full border border-white/40 shadow-2xl p-3 rounded-3xl"
+						>
+							<div className="relative h-full w-full overflow-hidden rounded-2xl bg-neutral-100">
+								<Image
+									alt={albumHero.alt}
+									className="object-cover"
+									fill
+									priority
+									sizes="35vw"
+									src={albumHero.image}
+									unoptimized
+								/>
+							</div>
+						</GlassCard>
+					</div>
 				</div>
 			</div>
 		</section>

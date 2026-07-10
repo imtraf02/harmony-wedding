@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/home/header";
 import { Footer } from "@/components/home/footer";
 import { ContactContent } from "@/components/contact/contact-content";
+import { BookingForm } from "@/components/contact/booking-form";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 import { MeshGradient } from "@/components/ui/mesh-gradient";
@@ -43,21 +44,22 @@ export function ContactPage() {
 
       <div className="pt-32 pb-16 md:pt-44 md:pb-24 relative z-10">
         <div className="mx-auto max-w-[1720px] px-5 md:px-10 lg:px-16">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end border-b border-black/[0.05] pb-16">
+          <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-start border-b border-black/[0.05] pb-20">
             <div>
               <p className="mb-5 flex items-center gap-4 text-[0.66rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
                 Kênh liên lạc trực tiếp
                 <span className="h-px w-10 bg-neutral-300" />
               </p>
-              <h1 className="font-serif text-[clamp(3rem,10vw,5.5rem)] leading-[0.9] text-neutral-900 tracking-tight">
+              <h1 className="font-serif text-[clamp(3rem,8vw,5rem)] leading-[0.98] text-neutral-900 tracking-tight mb-8">
                 Trao Đổi Ý Tưởng <br />
                 & Báo Giá
               </h1>
-            </div>
-            <div className="lg:max-w-md">
-              <p className="text-[0.98rem] leading-8 text-neutral-600 font-light">
-                Harmony Wedding không sử dụng các biểu mẫu liên hệ tự động để đảm bảo trải nghiệm tư vấn riêng tư, nhanh chóng và trực tiếp nhất. Hãy kết nối trực tiếp với chúng tôi qua hotline hoặc các ứng dụng nhắn tin dưới đây.
+              <p className="text-[0.96rem] leading-8 text-neutral-500 font-light max-w-lg mb-10">
+                Harmony Wedding trân trọng cơ hội đồng hành và ghi dấu những khoảnh khắc đẹp trong cuộc đời hai bạn. Hãy kết nối trực tiếp với chúng tôi qua các kênh hotline, mạng xã hội, hoặc gửi yêu cầu tư vấn nhanh bên cạnh để nhận concept và báo giá chi tiết.
               </p>
+            </div>
+            <div>
+              <BookingForm formName="Form Trang Liên Hệ" />
             </div>
           </div>
         </div>

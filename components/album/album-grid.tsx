@@ -98,7 +98,6 @@ export function AlbumGrid() {
 										fill
 										sizes="(min-width: 1024px) 31vw, (min-width: 768px) 50vw, 100vw"
 										src={album.image}
-										unoptimized
 									/>
 									{/* Dark ambient vignetting overlay */}
 									<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_35%,rgba(0,0,0,0.85)_100%)]" />

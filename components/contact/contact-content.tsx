@@ -6,6 +6,8 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { siteConfig } from "@/lib/config";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import { trackContactChannel } from "@/lib/tracking";
+import { AnimatedPhone, AnimatedMessageCircle } from "@/components/ui/animated-icons";
 
 export function ContactContent() {
 	const sectionRef = useRef<HTMLElement | null>(null);
@@ -21,18 +23,13 @@ export function ContactContent() {
 			href: siteConfig.links.messenger,
 			actionText: "Nhắn tin trực tiếp",
 			icon: (
-				<svg
+				<AnimatedMessageCircle
 					className="size-5 text-neutral-800 transition-transform duration-500 group-hover:scale-110"
-					fill="none"
-					stroke="currentColor"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth="1.4"
-					viewBox="0 0 24 24"
-				>
-					<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-					<path d="M8.5 10l3 3 4-4" />
-				</svg>
+					style={{
+						color: "rgba(0,0,0,0.72)",
+						filter: "drop-shadow(0 1px 1px rgba(255,255,255,0.6))",
+					}}
+				/>
 			),
 		},
 		{
@@ -84,17 +81,13 @@ export function ContactContent() {
 			description:
 				"Dành cho các liên hệ khẩn cấp, đặt lịch chụp gấp hoặc cần giải đáp nhanh từ Trưởng bộ phận nhiếp ảnh của Harmony.",
 			icon: (
-				<svg
+				<AnimatedPhone
 					className="size-5 text-neutral-800 transition-transform duration-500 group-hover:scale-110"
-					fill="none"
-					stroke="currentColor"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					strokeWidth="1.4"
-					viewBox="0 0 24 24"
-				>
-					<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-				</svg>
+					style={{
+						color: "rgba(0,0,0,0.72)",
+						filter: "drop-shadow(0 1px 1px rgba(255,255,255,0.6))",
+					}}
+				/>
 			),
 		},
 	];
@@ -155,6 +148,7 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={`tel:${siteConfig.links.phone}`}
+											onClick={() => trackContactChannel("Hotline", siteConfig.links.phone)}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Gia Hân (Số chính)</span>
@@ -163,6 +157,7 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={`tel:${siteConfig.links.phoneSecondary}`}
+											onClick={() => trackContactChannel("Hotline", siteConfig.links.phoneSecondary)}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Hiếu Trần</span>
@@ -174,7 +169,10 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={siteConfig.links.zalo}
-											onClick={() => window.open(siteConfig.links.zalo, "_blank")}
+											onClick={() => {
+												trackContactChannel("Zalo", siteConfig.links.zalo);
+												window.open(siteConfig.links.zalo, "_blank");
+											}}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Gia Hân (Số chính)</span>
@@ -183,7 +181,10 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={siteConfig.links.zaloSecondary}
-											onClick={() => window.open(siteConfig.links.zaloSecondary, "_blank")}
+											onClick={() => {
+												trackContactChannel("Zalo", siteConfig.links.zaloSecondary);
+												window.open(siteConfig.links.zaloSecondary, "_blank");
+											}}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Hiếu Trần</span>
@@ -195,7 +196,10 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={method.href || "#"}
-											onClick={() => window.open(method.href || "#", "_blank")}
+											onClick={() => {
+												trackContactChannel("Facebook", method.href || "");
+												window.open(method.href || "#", "_blank");
+											}}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Trang Fanpage</span>
@@ -204,7 +208,10 @@ export function ContactContent() {
 										<GlassButton
 											variant="light"
 											href={siteConfig.links.facebookSecondary}
-											onClick={() => window.open(siteConfig.links.facebookSecondary, "_blank")}
+											onClick={() => {
+												trackContactChannel("Facebook", siteConfig.links.facebookSecondary);
+												window.open(siteConfig.links.facebookSecondary, "_blank");
+											}}
 											className="w-full !py-2.5 !px-5 border-black/10 hover:border-black/30 hover:bg-black/5 text-[0.64rem] tracking-[0.16em] rounded-xl flex items-center justify-between"
 										>
 											<span className="text-left flex-1">Founder Hiếu Trần</span>
@@ -214,7 +221,10 @@ export function ContactContent() {
 								) : (
 									<GlassButton
 										href={method.href || "#"}
-										onClick={() => window.open(method.href || "#", "_blank")}
+										onClick={() => {
+											trackContactChannel("Messenger", method.href || "");
+											window.open(method.href || "#", "_blank");
+										}}
 										variant="dark"
 										className="w-full !py-3 rounded-xl flex items-center justify-between"
 									>

@@ -77,30 +77,8 @@ export function PortfolioSection() {
               }
             );
 
-            // Horizontal Parallax ScrollTrigger for mobile swiper
-            const cards = gsap.utils.toArray<HTMLElement>(".portfolio-card");
-            cards.forEach((card) => {
-              const img = card.querySelector("img");
-              if (img) {
-                gsap.fromTo(
-                  img,
-                  { scale: 1.12, xPercent: -7 },
-                  {
-                    scale: 1.12,
-                    xPercent: 7,
-                    ease: "none",
-                    scrollTrigger: {
-                      trigger: card,
-                      scroller: ".portfolio-viewport",
-                      horizontal: true,
-                      scrub: 0.1, // extremely responsive on mobile to avoid lag
-                      start: "left right",
-                      end: "right left",
-                    },
-                  }
-                );
-              }
-            });
+            // Simply set initial scale without complex ScrollTrigger trackers on mobile
+            gsap.set(".portfolio-card img", { scale: 1.05 });
 
             return;
           }
@@ -272,7 +250,6 @@ export function PortfolioSection() {
                       sizes="(min-width: 1024px) 52vw, 100vw"
                       src={item.image}
                       priority={index < 3}
-                      unoptimized
                     />
                   </div>
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />

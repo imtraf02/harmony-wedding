@@ -10,6 +10,7 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
+import { trackContactChannel } from "@/lib/tracking";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -26,7 +27,7 @@ export function HeroSection() {
       }
 
       const media = gsap.matchMedia();
-      const listeners: Array<{ btn: HTMLElement; type: string; handler: any }> = [];
+      const listeners: Array<{ btn: HTMLElement; type: string; handler: EventListenerOrEventListenerObject }> = [];
 
       media.add(
         {
@@ -85,12 +86,12 @@ export function HeroSection() {
                 yTo(0);
               };
 
-              btn.addEventListener("mousemove", onMouseMove);
-              btn.addEventListener("mouseleave", onMouseLeave);
+              btn.addEventListener("mousemove", onMouseMove as EventListener);
+              btn.addEventListener("mouseleave", onMouseLeave as EventListener);
 
               listeners.push(
-                { btn, type: "mousemove", handler: onMouseMove },
-                { btn, type: "mouseleave", handler: onMouseLeave }
+                { btn, type: "mousemove", handler: onMouseMove as EventListener },
+                { btn, type: "mouseleave", handler: onMouseLeave as EventListener }
               );
             });
           }
@@ -139,12 +140,6 @@ export function HeroSection() {
             borderStrength="medium"
             className="w-full px-6 py-8 md:px-12 md:py-14 border border-white/30 shadow-[0_24px_50px_rgba(0,0,0,0.06)] rounded-3xl"
           >
-            <div className="hero-fade mb-5 flex items-center gap-4 font-serif text-sm text-neutral-800">
-              <span>01</span>
-              <span className="h-px w-8 bg-neutral-800/40" />
-              <span>04</span>
-            </div>
-            
             <p className="hero-fade mb-5 flex items-center gap-6 text-[0.68rem] font-bold uppercase tracking-[0.32em] text-neutral-700">
               Harmony Wedding
               <span className="h-px w-14 bg-neutral-400" />
@@ -152,48 +147,37 @@ export function HeroSection() {
             
             <RevealText
               as="h1"
-              className="font-serif text-[clamp(2.5rem,10vw,4rem)] md:text-[clamp(3.2rem,14vw,5.5rem)] lg:text-[clamp(3.8rem,6.5vw,7rem)] leading-[0.98] tracking-normal text-black pb-1"
-              lines={["Timeless", "Love Stories"]}
+              className="font-serif text-[clamp(1.85rem,7.5vw,3rem)] md:text-[clamp(3.2rem,14vw,5.5rem)] lg:text-[clamp(3.8rem,6.5vw,7rem)] leading-[0.98] tracking-normal text-black pb-1"
+              lines={["Khoảnh Khắc Cưới", "Tự Nhiên & Tinh Tế"]}
             />
             
             <span className="hero-fade mt-5 block h-px w-16 bg-neutral-300" />
             
             <p className="hero-fade mt-6 max-w-[28rem] text-[0.92rem] leading-7 text-neutral-600 md:text-[0.98rem] md:leading-8">
-              Chúng tôi lưu giữ những khoảnh khắc khiến bạn nghẹn ngào và biến chúng thành ký ức vượt thời gian.
+              Tụi mình chụp theo cách hai bạn thật sự sống — không pose cứng, không cảm xúc giả tạo. Chỉ là hai bạn, đúng như ngày đó.
             </p>
             
-            <div className="hero-fade mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <GlassButton variant="dark" href="#portfolio" className="hero-magnetic-btn w-full sm:w-auto">
-                Xem Album
+            <div className="hero-fade mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
+              <GlassButton
+                variant="dark"
+                href="https://m.me/61550358332202?ref=tu_van_15phut"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-magnetic-btn w-full sm:w-auto !py-3.5 !px-8 !whitespace-normal !tracking-wider text-center"
+                onClick={() => trackContactChannel("Messenger", "https://m.me/61550358332202?ref=tu_van_15phut")}
+              >
+                Đặt lịch tư vấn 15 phút
               </GlassButton>
-              <GlassButton variant="light" href="/contact" className="hero-magnetic-btn w-full sm:w-auto">
-                Tư Vấn Ngay
-              </GlassButton>
+              <Link
+                href="#portfolio"
+                className="group/link hero-magnetic-btn flex items-center justify-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-neutral-800 hover:text-neutral-500 transition-colors py-3"
+              >
+                Xem album tác phẩm
+                <span className="font-serif text-sm transition-transform duration-300 group-hover/link:translate-x-1">➔</span>
+              </Link>
             </div>
           </GlassCard>
         </div>
-      </div>
-
-      <div className="pointer-events-none absolute left-5 top-1/2 hidden -translate-y-1/2 flex-col gap-5 text-[0.72rem] text-neutral-400 md:flex lg:left-10">
-        {["01", "02", "03", "04"].map((item, index) => (
-          <span
-            className={
-              index === 0
-                ? "text-black before:block before:h-9 before:w-px before:bg-black/60 before:content-['']"
-                : ""
-            }
-            key={item}
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-
-      <div className="hero-fade absolute bottom-8 left-5 flex flex-col items-center gap-3 text-[0.62rem] font-bold uppercase tracking-[0.24em] text-neutral-700 md:left-10 lg:left-16 lg:flex-row lg:gap-5">
-        Cuộn xuống
-        <span className="grid size-8 place-items-center rounded-full border border-black/10 backdrop-blur-xs">
-          <span className="h-3 w-px bg-black after:mt-2 after:block after:size-1.5 after:-translate-x-[3px] after:rotate-45 after:border-b after:border-r after:border-black after:content-['']" />
-        </span>
       </div>
     </section>
   );

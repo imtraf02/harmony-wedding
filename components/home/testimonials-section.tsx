@@ -1,64 +1,170 @@
 "use client";
 
 import { useRef } from "react";
-
+import Image from "next/image";
+import Link from "next/link";
 import { testimonials } from "@/constants/data";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { GlassCard } from "@/components/ui/glass-card";
-import { MeshGradient } from "@/components/ui/mesh-gradient";
+import { trackEvent } from "@/lib/tracking";
 
 export function TestimonialsSection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
+	const sectionRef = useRef<HTMLElement | null>(null);
+	useScrollReveal(sectionRef);
 
-  useScrollReveal(sectionRef);
+	return (
+		<section
+			className="relative isolate overflow-hidden bg-[#faf9f6] py-24 text-black md:py-32"
+			ref={sectionRef}
+			id="testimonials"
+		>
+			<div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
+				{/* Section Header */}
+				<div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-16" data-reveal>
+					<div>
+						<p className="mb-6 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
+							Các cặp đôi nói gì
+							<span className="h-px w-16 bg-neutral-300" />
+						</p>
+						<h2 className="font-serif text-[clamp(2.45rem,4.5vw,4.8rem)] leading-[0.98] text-neutral-900 tracking-tight">
+							Không Phải Quảng Cáo
+						</h2>
+					</div>
+					<div className="md:max-w-md">
+						<p className="text-[0.92rem] leading-7 text-neutral-500 font-light">
+							Dưới đây là những gì các bạn nhắn lại sau ngày cưới — tụi mình giữ nguyên, không sửa chữ nào.
+						</p>
+					</div>
+				</div>
 
-  return (
-    <section className="relative isolate overflow-hidden bg-neutral-950 py-24 text-white md:py-32" ref={sectionRef}>
-      {/* Dark moving mesh gradient in background */}
-      <MeshGradient variant="dark" className="opacity-45" />
+				{/* Testimonials Grid */}
+				<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+					{testimonials.map((item) => (
+						<article
+							key={item.name}
+							className="flex flex-col justify-between bg-white border border-black/[0.04] hover:border-black/10 hover:shadow-lg transition-all duration-500 rounded-3xl p-6 sm:p-8"
+							data-reveal
+						>
+							<span className="block font-serif text-4xl leading-none text-neutral-200 mb-2">“</span>
+							<blockquote className="font-serif text-[1.08rem] font-light leading-relaxed text-neutral-700 italic mb-6">
+								{item.quote}
+							</blockquote>
 
-      <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
-        <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
-          <div data-reveal>
-            <p className="mb-8 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-white/50">
-              Cảm nhận
-              <span className="h-px w-16 bg-white/20" />
-            </p>
-            <h2 className="max-w-3xl font-serif text-[clamp(2.45rem,4.5vw,5rem)] leading-[0.98]">
-              Khi Kỷ Niệm Được Nhìn Lại Bằng Sự An Tâm
-            </h2>
-          </div>
-        </div>
+							<div className="mt-4 border-t border-black/[0.05] pt-6 flex items-center justify-between">
+								<div>
+									<cite className="font-serif text-[1.1rem] not-italic font-medium text-neutral-900 block">
+										{item.name}
+									</cite>
+									<span className="mt-1 block text-[0.62rem] font-bold uppercase tracking-[0.16em] text-neutral-400">
+										{item.role}
+									</span>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((item) => (
-            <GlassCard
-              key={item.name}
-              variant="dark"
-              intensity="medium"
-              borderStrength="low"
-              hoverable
-              className="flex flex-col justify-between p-8 border border-white/8 hover:border-white/18 shadow-lg rounded-2xl"
-              data-reveal
-            >
-              <div>
-                <span className="block font-serif text-5xl leading-none text-white/20 mb-4">“</span>
-                <blockquote className="font-serif text-[1.12rem] font-light leading-relaxed text-white/90 italic">
-                  {item.quote}
-                </blockquote>
-              </div>
-              <div className="mt-8 border-t border-white/8 pt-5">
-                <cite className="font-serif text-[1.1rem] not-italic font-medium text-white block">
-                  {item.name}
-                </cite>
-                <span className="mt-1 block text-[0.62rem] font-bold uppercase tracking-[0.2em] text-neutral-400">
-                  {item.role}
-                </span>
-              </div>
-            </GlassCard>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+				{/* Video / Behind the Scenes Sub-Section */}
+				<div className="mt-24 pt-20 border-t border-black/[0.05]">
+					<div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-12" data-reveal>
+						<div>
+							<p className="mb-4 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
+								Hình ảnh thực tế
+								<span className="h-px w-16 bg-neutral-300" />
+							</p>
+							<h3 className="font-serif text-2xl md:text-3xl text-neutral-900 tracking-tight">
+								Hậu Trường & Cảm Nhận
+							</h3>
+						</div>
+						<div className="md:max-w-xs">
+							<p className="text-xs leading-5 text-neutral-500 font-light">
+								Không cần đọc review dài — xem thẳng các bạn ấy nói nhé.
+							</p>
+						</div>
+					</div>
+
+					<div className="grid gap-5 sm:grid-cols-2 max-w-2xl mx-auto md:max-w-none">
+						{/* Reel Card 1 */}
+						<Link
+							href="https://www.facebook.com/share/r/1Evh8USj1D/"
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/1Evh8USj1D/", title: "Phỏng vấn dâu rể Đà Lạt" })}
+							className="group relative flex aspect-[9/16] w-full overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							data-reveal
+						>
+							<Image
+								src="/images/reel-an-garden.png"
+								alt="Hậu trường chụp cưới An Garden - Harmony Wedding"
+								fill
+								className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] brightness-75 group-hover:brightness-[0.82]"
+								sizes="(min-width: 640px) 50vw, 100vw"
+								quality={90}
+							/>
+							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 pointer-events-none" />
+							<div className="absolute top-4 left-4">
+								<div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+									<svg className="size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+									<span className="text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
+								</div>
+							</div>
+							<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+								<div className="absolute size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
+								<div className="size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
+									<svg className="size-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+								</div>
+							</div>
+							<div className="absolute inset-x-0 bottom-0 p-5">
+								<p className="text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">Hậu trường phóng vấn</p>
+								<h4 className="font-serif text-base font-medium text-white leading-snug">Cảm nhận sau buổi chụp tại An Garden</h4>
+								<div className="mt-3 flex items-center gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
+									<span className="text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
+									<span className="text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
+								</div>
+							</div>
+						</Link>
+
+						{/* Reel Card 2 */}
+						<Link
+							href="https://www.facebook.com/share/r/18vgz2W7gA/"
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/18vgz2W7gA/", title: "Cảm nhận dâu rể ngày cưới" })}
+							className="group relative flex aspect-[9/16] w-full overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							data-reveal
+						>
+							<Image
+								src="/images/reel-wedding-day.png"
+								alt="Hậu trường ngày cưới - Harmony Wedding"
+								fill
+								className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] brightness-75 group-hover:brightness-[0.82]"
+								sizes="(min-width: 640px) 50vw, 100vw"
+								quality={90}
+							/>
+							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 pointer-events-none" />
+							<div className="absolute top-4 left-4">
+								<div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+									<svg className="size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+									<span className="text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
+								</div>
+							</div>
+							<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+								<div className="absolute size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
+								<div className="size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
+									<svg className="size-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+								</div>
+							</div>
+							<div className="absolute inset-x-0 bottom-0 p-5">
+								<p className="text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">Cảm nhận ngày cưới</p>
+								<h4 className="font-serif text-base font-medium text-white leading-snug">Dịch vụ trọn gói — thật sự như thế nào?</h4>
+								<div className="mt-3 flex items-center gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
+									<span className="text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
+									<span className="text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
+								</div>
+							</div>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }

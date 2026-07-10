@@ -210,8 +210,8 @@ export const portfolioItems: PortfolioItem[] = [
 ];
 
 export const albumHero = {
-	image: localImage("da-lat/2.webp"),
-	alt: "Album ảnh cưới Harmony Wedding - Cặp đôi tại Đà Lạt",
+	image: localImage("sunny-garden/1.webp"),
+	alt: "Album ảnh cưới Harmony Wedding - Cặp đôi tại Sunny Garden",
 };
 
 export const albumFilters = [
@@ -389,29 +389,29 @@ export const albumDetails: AlbumDetail[] = [
 
 export const featuredAlbumImages: AlbumFeatureImage[] = [
 	{
-		image: localImage("da-lat/1.webp"),
-		alt: "Ảnh cưới cặp đôi trong rừng thông Đà Lạt - Harmony Wedding",
+		image: localImage("sunny-garden/1.webp"),
+		alt: "Cặp đôi ngọt ngào tại phim trường Sunny Garden - Harmony Wedding",
 		featured: true,
-		width: 1366,
-		height: 2048,
+		width: 1706,
+		height: 2560,
 	},
 	{
-		image: localImage("da-lat/7.webp"),
-		alt: "Cặp đôi bên xe cổ trong album ảnh cưới Đà Lạt - Harmony Wedding",
-		width: 2048,
-		height: 1366,
+		image: localImage("sunny-garden/16.webp"),
+		alt: "Cô dâu chú rể tay trong tay giữa lối hoa phim trường Sunny Garden",
+		width: 2560,
+		height: 1706,
 	},
 	{
-		image: localImage("da-lat/10.webp"),
-		alt: "Cặp đôi trao nhẫn cưới trong buổi chụp hình cưới Đà Lạt",
-		width: 1366,
-		height: 2048,
+		image: localImage("sunny-garden/22.webp"),
+		alt: "Góc chụp lãng mạn phong cách đồng quê châu Âu tại Sunny Garden",
+		width: 2560,
+		height: 1706,
 	},
 	{
-		image: localImage("da-lat/15.webp"),
-		alt: "Cô dâu trong váy cưới nhìn về thung lũng Đà Lạt",
-		width: 2048,
-		height: 1366,
+		image: localImage("sunny-garden/23.webp"),
+		alt: "Nụ cười rạng rỡ của cặp đôi dưới nắng nhẹ Sunny Garden",
+		width: 2560,
+		height: 1706,
 	},
 ];
 
@@ -510,40 +510,34 @@ export const timelineSteps: TimelineStep[] = [
 
 export const testimonials: TestimonialItem[] = [
 	{
-		name: "Thuỳ Linh",
-		role: "Cô dâu · Album Đà Lạt",
-		quote:
-			"Ekip của Harmony làm việc vô cùng chuyên nghiệp. Từng khoảnh khắc tự nhiên, những cái chạm tay khẽ khàng đều được ghi lại trọn vẹn và đầy tinh tế.",
+		name: "Thùy Linh & Hoàng Nam",
+		role: "Cặp đôi · Album Đà Lạt",
+		image: "/images/wedding/da-lat/2.webp",
+		alt: "Cặp đôi cười rạng rỡ giữa rừng thông Đà Lạt - Harmony Wedding",
+		quote: "Ekip của Harmony làm việc vô cùng chuyên nghiệp. Từng khoảnh khắc tự nhiên, những cái chạm tay khẽ khàng đều được ghi lại trọn vẹn và đầy tinh tế. Album ảnh cưới in ra màu sắc rất sang và sắc nét.",
+		albumSlug: "da-lat",
+		source: "Facebook",
+		reviewLink: "https://www.facebook.com/profile.php?id=61550358332202",
 	},
 	{
-		name: "Minh Anh",
-		role: "Cô dâu · Album Sunny Garden",
-		quote:
-			"Không hề có cảm giác gượng gạo trước ống kính. Ekip đã dẫn dắt chúng tôi tìm lại cảm xúc thật và biến nó thành những kỷ niệm vượt thời gian.",
+		name: "Minh Anh & Quốc Anh",
+		role: "Cặp đôi · Album Sunny Garden",
+		image: "/images/wedding/sunny-garden/1.webp",
+		alt: "Cô dâu chú rể hạnh phúc tại phim trường Sunny Garden - Harmony Wedding",
+		quote: "Không hề có cảm giác gượng gạo trước ống kính. Ekip đã dẫn dắt chúng tôi tìm lại cảm xúc thật và biến nó thành những kỷ niệm vượt thời gian. Cực kỳ an tâm từ khâu làm việc ban đầu tới bàn giao.",
+		albumSlug: "sunny-garden",
+		source: "Google",
+		reviewLink: "https://maps.app.goo.gl/6vtiHihaavy7YF6F6",
 	},
 	{
-		name: "Hoàng Nam",
-		role: "Chú rể · Album Concept Studio",
-		quote:
-			"Tinh tế trong từng khung hình, chỉn chu trong từng chi tiết hậu kỳ. Harmony thực sự đã mang lại một trải nghiệm hình ảnh tuyệt vời.",
-	},
-	{
-		name: "Bích Phương",
-		role: "Cô dâu · Album Phố Sài Gòn",
-		quote:
-			"Một trải nghiệm chụp ảnh cưới nhẹ nhàng và lãng mạn. Ekip rất nhiệt tình, chu đáo và biết cách khai thác những góc mặt đẹp nhất.",
-	},
-	{
-		name: "Quốc Khánh",
-		role: "Chú rể · Album Vũ Garden",
-		quote:
-			"Sự tinh tế, tự nhiên trong màu ảnh của Harmony là điều làm chúng tôi ấn tượng nhất. Cảm ơn ekip đã ghi lại những ký ức trọn đời tuyệt vời.",
-	},
-	{
-		name: "Lan Anh",
-		role: "Cô dâu · Album Ngày Cưới",
-		quote:
-			"Gói chụp trọn gói rất tiện lợi và chỉn chu. Layout makeup tự nhiên, tone màu ảnh ấm áp đúng gu. Rất hài lòng và an tâm khi chọn Harmony.",
+		name: "Bích Phương & Minh Hải",
+		role: "Cặp đôi · Album Phố Sài Gòn",
+		image: "/images/wedding/duong-pho-ho-chi-minh/2.webp",
+		alt: "Cặp đôi lãng mạn tại phố cổ Sài Gòn - Harmony Wedding",
+		quote: "Một trải nghiệm chụp ảnh cưới nhẹ nhàng và lãng mạn. Ekip rất nhiệt tình, chu đáo và biết cách khai thác những góc mặt tự nhiên nhất. Tone màu ảnh cổ điển đúng gu hai vợ chồng.",
+		albumSlug: "duong-pho-ho-chi-minh",
+		source: "Facebook",
+		reviewLink: "https://www.facebook.com/profile.php?id=61550358332202",
 	},
 ];
 

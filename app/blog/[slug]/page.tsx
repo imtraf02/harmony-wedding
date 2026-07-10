@@ -129,10 +129,13 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 
 				{/* Cover Image */}
 				<div className="relative mb-12 w-full overflow-hidden border border-neutral-100 bg-neutral-50 flex items-center justify-center">
-					<img
+					<Image
 						src={post.coverImage}
 						alt={post.title}
+						width={1200}
+						height={630}
 						className="max-h-[550px] w-auto object-contain"
+						priority
 					/>
 				</div>
 
@@ -186,9 +189,11 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
 								return (
 									<figure key={index} className="my-10 text-center">
 										<div className="relative w-full overflow-hidden border border-neutral-100 bg-neutral-50 flex items-center justify-center">
-											<img
+											<Image
 												src={block.src}
 												alt={block.alt}
+												width={1200}
+												height={800}
 												className="max-h-[500px] w-auto object-contain"
 											/>
 										</div>
@@ -274,7 +279,7 @@ function parseMarkdownLinks(text: string) {
 	let match;
 
 	while ((match = regex.exec(text)) !== null) {
-		const [fullMatch, linkText, url] = match;
+		const [, linkText, url] = match;
 		const matchIndex = match.index;
 
 		if (matchIndex > lastIndex) {

@@ -65,9 +65,9 @@ export function AboutPage() {
             <div className="grid gap-8 md:grid-cols-[1.5fr_1fr] items-center">
               <div>
                 <p className="font-serif text-xl md:text-2xl leading-relaxed text-neutral-800 italic">
-                  "Chúng tôi tin rằng, bức ảnh đẹp nhất không phải là bức ảnh được
+                  “Chúng tôi tin rằng, bức ảnh đẹp nhất không phải là bức ảnh được
                   tạo dáng hoàn hảo nhất, mà là bức ảnh lưu giữ được nhiều cảm
-                  xúc thật nhất."
+                  xúc thật nhất.”
                 </p>
               </div>
               <div>

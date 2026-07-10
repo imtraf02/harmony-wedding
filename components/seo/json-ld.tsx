@@ -57,13 +57,6 @@ export function LocalBusinessJsonLd() {
       siteConfig.links.tiktok,
       siteConfig.links.youtube,
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "100",
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 
   return <JsonLd data={data} />;

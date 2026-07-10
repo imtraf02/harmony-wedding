@@ -7,7 +7,6 @@ import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { MeshGradient } from "@/components/ui/mesh-gradient";
 
 const PREVIEW_IMAGES = [
   { src: "vay-cuoi-001.webp", label: "Váy Cưới Signature" },
@@ -49,9 +48,7 @@ export function CollectionSection() {
   );
 
   return (
-    <section className="relative isolate overflow-hidden py-20 lg:py-28" ref={sectionRef}>
-      {/* Light moving mesh gradient in background */}
-      <MeshGradient variant="light" className="opacity-80" />
+    <section className="relative isolate overflow-hidden py-20 lg:py-28 bg-[#faf9f6]" ref={sectionRef}>
 
       <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
         

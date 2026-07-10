@@ -11,6 +11,8 @@ interface GlassButtonProps {
   type?: "button" | "submit" | "reset";
   variant?: "light" | "dark" | "gold";
   disabled?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 export function GlassButton({
@@ -21,6 +23,8 @@ export function GlassButton({
   type = "button",
   variant = "light",
   disabled = false,
+  target,
+  rel,
 }: GlassButtonProps) {
   const baseClasses =
     "group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-3.5 text-[0.72rem] font-bold uppercase tracking-[0.22em] whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus:outline-hidden active:scale-[0.96] disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
@@ -46,7 +50,13 @@ export function GlassButton({
     return (
       <Link
         href={href}
-        onClick={onClick as any}
+        target={target}
+        rel={rel}
+        onClick={(e) => {
+          if (onClick) {
+            onClick(e);
+          }
+        }}
         className={`${baseClasses} ${variantClasses} ${className}`}
       >
         {content}

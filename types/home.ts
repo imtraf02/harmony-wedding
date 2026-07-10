@@ -46,6 +46,9 @@ export interface TestimonialItem {
   alt?: string;
   quote?: string;
   role?: string;
+  albumSlug?: string;
+  reviewLink?: string;
+  source?: "Facebook" | "Google" | "Zalo";
 }
 
 export interface StatItem {

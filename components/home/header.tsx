@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { menuItems } from "@/constants/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassButton } from "@/components/ui/glass-button";
+import { trackContactChannel } from "@/lib/tracking";
 
 interface HeaderProps {
 	variant?: "home" | "solid";
@@ -186,7 +187,10 @@ export function Header({ variant = "home" }: HeaderProps) {
 							<GlassButton
 								variant="dark"
 								className="hidden md:flex !py-2.5 !px-6"
-								href="/contact"
+								href="https://m.me/61550358332202?ref=tu_van_ngay"
+								target="_blank"
+								rel="noopener noreferrer"
+								onClick={() => trackContactChannel("Messenger", "https://m.me/61550358332202?ref=tu_van_ngay")}
 							>
 								Tư Vấn Ngay
 							</GlassButton>

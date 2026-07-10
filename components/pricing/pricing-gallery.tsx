@@ -4,7 +4,6 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { MeshGradient } from "@/components/ui/mesh-gradient";
 
 const pricingImages = Array.from({ length: 13 }, (_, i) => ({
   src: `/images/bang-gia/${i + 1}.jpg`,

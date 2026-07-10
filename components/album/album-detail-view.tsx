@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Icon } from "@/components/home/icon";
 import { albumItems } from "@/constants/data";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { siteConfig } from "@/lib/config";
@@ -12,6 +11,7 @@ import type { AlbumDetail } from "@/types/home";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import { trackContactChannel } from "@/lib/tracking";
 
 interface AlbumDetailViewProps {
 	album: AlbumDetail;
@@ -26,6 +26,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const dragStart = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const isDragging = useRef<boolean>(false);
+	const [isInteracting, setIsInteracting] = useState(false);
 
 	const startDistance = useRef<number | null>(null);
 	const startScale = useRef<number>(1);
@@ -36,12 +37,8 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 	const resetZoom = useCallback(() => {
 		setScale(1);
 		setPosition({ x: 0, y: 0 });
+		setIsInteracting(false);
 	}, []);
-
-	// Reset zoom when activeIndex changes
-	useEffect(() => {
-		resetZoom();
-	}, [activeIndex, resetZoom]);
 
 	// Close lightbox
 	const closeLightbox = useCallback(() => {
@@ -54,7 +51,8 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 		setActiveIndex((prev) =>
 			prev !== null && prev < album.gallery.length - 1 ? prev + 1 : 0,
 		);
-	}, [activeIndex, album.gallery.length]);
+		resetZoom();
+	}, [activeIndex, album.gallery.length, resetZoom]);
 
 	// Prev image
 	const showPrev = useCallback(() => {
@@ -62,7 +60,8 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 		setActiveIndex((prev) =>
 			prev !== null && prev > 0 ? prev - 1 : album.gallery.length - 1,
 		);
-	}, [activeIndex, album.gallery.length]);
+		resetZoom();
+	}, [activeIndex, album.gallery.length, resetZoom]);
 
 	// Touch handlers supporting swipe (only when scale=1) and pinch-zoom / pan (when scale > 1)
 	const handleTouchStart = (e: React.TouchEvent) => {
@@ -74,6 +73,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 
 			if (scale > 1) {
 				isDragging.current = true;
+				setIsInteracting(true);
 				dragStart.current = {
 					x: e.touches[0].clientX - position.x,
 					y: e.touches[0].clientY - position.y,
@@ -81,6 +81,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			}
 		} else if (e.touches.length === 2) {
 			isPinching.current = true;
+			setIsInteracting(true);
 			const dist = Math.hypot(
 				e.touches[0].clientX - e.touches[1].clientX,
 				e.touches[0].clientY - e.touches[1].clientY,
@@ -128,12 +129,14 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			if (e.touches.length < 2) {
 				isPinching.current = false;
 				startDistance.current = null;
+				setIsInteracting(false);
 			}
 			return;
 		}
 
 		if (scale > 1) {
 			isDragging.current = false;
+			setIsInteracting(false);
 			return;
 		}
 
@@ -160,6 +163,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 		if (scale > 1) {
 			e.preventDefault();
 			isDragging.current = true;
+			setIsInteracting(true);
 			dragStart.current = {
 				x: e.clientX - position.x,
 				y: e.clientY - position.y,
@@ -184,6 +188,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 
 	const handleMouseUp = () => {
 		isDragging.current = false;
+		setIsInteracting(false);
 	};
 
 	// Double click to toggle zoom
@@ -442,7 +447,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 									intensity="low"
 									borderStrength="low"
 									className="album-gallery-item break-inside-avoid mb-8 relative w-full border border-white/40 shadow-xs p-1.5 rounded-2xl cursor-zoom-in group hover:shadow-md"
-									onClick={() => setActiveIndex(index)}
+									onClick={() => { resetZoom(); setActiveIndex(index); }}
 									style={{ aspectRatio: `${width} / ${height}` }}
 								>
 									<div className="relative h-full w-full overflow-hidden rounded-xl bg-neutral-100">
@@ -489,7 +494,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 			</section>
 
 			{/* Immersive Editorial CTA */}
-			<AlbumDetailCta image={album.heroImage} />
+			<AlbumDetailCta image={album.heroImage} title={album.title} />
 
 			{/* Related Albums */}
 			<section className="album-related-section bg-transparent py-20 lg:py-28 relative z-10">
@@ -597,7 +602,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 								style={{
 									aspectRatio: `${album.gallery[activeIndex].width ?? 1366} / ${album.gallery[activeIndex].height ?? 2048}`,
 									transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-									transition: isDragging.current || isPinching.current ? "none" : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+									transition: isInteracting ? "none" : "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
 								}}
 								onClick={(e) => e.stopPropagation()}
 								onDoubleClick={handleDoubleClick}
@@ -724,7 +729,7 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 	);
 }
 
-function AlbumDetailCta({ image }: { image: string }) {
+function AlbumDetailCta({ image, title }: { image: string; title: string }) {
 	return (
 		<section className="px-5 py-8 md:px-10 lg:px-16 relative z-10">
 			<GlassCard
@@ -748,8 +753,11 @@ function AlbumDetailCta({ image }: { image: string }) {
 					<div className="mt-10">
 						<GlassButton
 							variant="light"
-							href="/contact"
+							href={`https://m.me/61550358332202?ref=${encodeURIComponent("Album_" + title.replace(/\s+/g, "_"))}`}
+							target="_blank"
+							rel="noopener noreferrer"
 							className="w-full sm:w-auto !py-3 !px-8 text-[0.68rem] tracking-[0.22em] hover:text-black border-white/30"
+							onClick={() => trackContactChannel("Messenger", `https://m.me/61550358332202?ref=${encodeURIComponent("Album_" + title.replace(/\s+/g, "_"))}`)}
 						>
 							Tư vấn ngay ➔
 						</GlassButton>

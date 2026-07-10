@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import { siteConfig } from "@/lib/config";
+import { trackContactChannel } from "@/lib/tracking";
+import { AnimatedPhone, AnimatedMessageCircle } from "@/components/ui/animated-icons";
 
 /* ═══════════════════════════════════════════════════════════════════
    iOS 26 / visionOS  —  AUTHENTIC LIQUID GLASS
@@ -60,42 +62,6 @@ function ZaloGlassIcon() {
   );
 }
 
-// Inline MessageCircle icon to match the visionOS design
-function MessageCircleIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
-  return (
-    <svg
-      className={className}
-      style={style}
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-      viewBox="0 0 24 24"
-    >
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-    </svg>
-  );
-}
-
-// Inline Phone icon to match the visionOS design
-function PhoneIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
-  return (
-    <svg
-      className={className}
-      style={style}
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-      viewBox="0 0 24 24"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  );
-}
-
 // The single shared glass shadow — no colour tint, pure iOS
 const GLASS_SHADOW = [
   // specular rim — the #1 signature of iOS liquid glass
@@ -124,12 +90,14 @@ function LiquidOrb({
   icon,
   delay,
   isPrimary,
+  onClick,
 }: {
   href: string;
   label: string;
   icon: React.ReactNode;
   delay: number;
   isPrimary?: boolean;
+  onClick?: () => void;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const rawX = useMotionValue(0.35);
@@ -160,6 +128,7 @@ function LiquidOrb({
       aria-label={label}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
+      onClick={onClick}
       initial={{ opacity: 0, x: 28, scale: 0.68 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
       transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -257,7 +226,7 @@ export function FloatingContact() {
     {
       id: "messenger",
       icon: (
-        <MessageCircleIcon
+        <AnimatedMessageCircle
           className="size-5"
           style={{
             color: "rgba(0,0,0,0.72)",
@@ -272,7 +241,7 @@ export function FloatingContact() {
     {
       id: "phone",
       icon: (
-        <PhoneIcon
+        <AnimatedPhone
           className="size-5"
           style={{
             color: "rgba(0,0,0,0.72)",
@@ -304,6 +273,11 @@ export function FloatingContact() {
           icon={item.icon}
           delay={idx * 0.13}
           isPrimary={item.isPrimary}
+          onClick={() => {
+            if (item.id === "zalo") trackContactChannel("Zalo", siteConfig.links.zalo);
+            if (item.id === "phone") trackContactChannel("Hotline", siteConfig.links.phone);
+            if (item.id === "messenger") trackContactChannel("Messenger", siteConfig.links.messenger);
+          }}
         />
       ))}
     </nav>

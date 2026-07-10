@@ -28,11 +28,7 @@ export function MauDoGallery() {
 
   const filteredImages = getFilteredImages();
 
-  // Reset pagination when tab changes
-  useEffect(() => {
-    setVisibleCount(IMAGES_PER_PAGE);
-    setActiveIdx(null);
-  }, [activeTab]);
+
 
   const loadMore = () => {
     setVisibleCount(prev => Math.min(prev + IMAGES_PER_PAGE, filteredImages.length));
@@ -116,7 +112,11 @@ export function MauDoGallery() {
             {TABS.map((tab) => (
               <button
                 key={tab}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setVisibleCount(IMAGES_PER_PAGE);
+                  setActiveIdx(null);
+                }}
                 className={`whitespace-nowrap py-2 px-5 text-[0.66rem] md:text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer shrink-0 ${
                   activeTab === tab
                     ? "bg-black text-white shadow-xs"

@@ -65,9 +65,9 @@ export function ServicesBar() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="flex gap-4 overflow-x-auto pt-2 pb-4 scrollbar-none -mx-5 px-5 sm:grid sm:grid-cols-2 sm:mx-0 sm:px-0 lg:grid-cols-5">
           {displayServices.map((service) => (
-            <Link href="/services" key={service.title} className="service-item block">
+            <Link href="/services" key={service.title} className="service-item block shrink-0 w-[285px] sm:w-auto">
               <GlassCard
                 variant="dark"
                 intensity="low"
