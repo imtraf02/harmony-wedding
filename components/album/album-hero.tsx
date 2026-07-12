@@ -88,7 +88,7 @@ export function AlbumHero({ heroImage, heroAlt, leftImage, rightImage }: AlbumHe
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
 					<h1 className="max-w-2xl font-serif text-[clamp(2.8rem,4.5vw,4.5rem)] leading-[1.18] text-neutral-900">
-						Những Câu Chuyện <span className="font-light italic text-neutral-500 block sm:inline">Tình Yêu</span>
+						Những Câu Chuyện <span className="font-light text-neutral-500 block sm:inline">Tình Yêu</span>
 					</h1>
 					<p className="mt-8 max-w-md text-[0.92rem] leading-8 text-neutral-500 font-light">
 						Mỗi bộ ảnh là một hành trình cảm xúc tinh tế, được kể lại bằng ngôn ngữ của ánh sáng, góc máy tự nhiên và những khoảnh khắc chân thật nhất của hai bạn.

@@ -675,7 +675,7 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 				{album.title}
 			</h1>
 			{album.scriptTitle && (
-				<p className="mt-2.5 font-serif text-[clamp(2rem,5vw,3rem)] italic leading-[1.1] text-neutral-500">
+				<p className="mt-2.5 font-serif text-[clamp(2rem,5vw,3rem)] leading-[1.1] text-neutral-500">
 					{album.scriptTitle}
 				</p>
 			)}
