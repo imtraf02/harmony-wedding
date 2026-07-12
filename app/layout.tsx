@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
-import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 
 import { FloatingContact } from "@/components/home/floating-contact";
 import { CookieConsent } from "@/components/ui/cookie-consent";
@@ -11,10 +11,11 @@ import "./globals.css";
 
 const SITE_URL = siteConfig.url;
 
-const beVietnamPro = Be_Vietnam_Pro({
+const playfairDisplay = Playfair_Display({
 	subsets: ["vietnamese", "latin"],
 	variable: "--font-serif",
-	weight: ["300", "400", "500", "600"],
+	weight: ["400", "500", "600", "700"],
+	style: ["normal", "italic"],
 	display: "swap",
 });
 
@@ -145,7 +146,7 @@ export function RootLayout({
 }>) {
 	return (
 		<html className="h-full scroll-smooth antialiased" lang="vi">
-			<body className={`${plusJakarta.variable} ${beVietnamPro.variable} min-h-full bg-white font-sans text-[#111111]`}>
+			<body className={`${plusJakarta.variable} ${playfairDisplay.variable} min-h-full bg-white font-sans text-[#111111]`}>
 				<WebsiteJsonLd />
 				<LocalBusinessJsonLd />
 				{children}
