@@ -3,12 +3,12 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { Icon } from "@/components/home/icon";
-import { timelineSteps, weddingImages } from "@/constants/data";
+import { type TimelineStep } from "@/types/home";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 
-export function StoryTimeline() {
+export function StoryTimeline({ processImage, steps }: { processImage: string; steps: TimelineStep[] }) {
 	const sectionRef = useRef<HTMLElement | null>(null);
 
 	useGSAP(
@@ -282,7 +282,7 @@ export function StoryTimeline() {
 									className="object-cover"
 									fill
 									sizes="(min-width: 1024px) 44vw, 100vw"
-									src={weddingImages.process}
+									src={processImage}
 									unoptimized
 								/>
 							</div>
@@ -311,7 +311,7 @@ export function StoryTimeline() {
 					</div>
 
 					<div className="flex flex-col gap-8">
-						{timelineSteps.map((step, index) => (
+						{steps.map((step, index) => (
 							<div
 								key={step.title}
 								className="process-step-container relative grid grid-cols-[5.5rem_1fr] gap-6 items-center"
@@ -378,7 +378,7 @@ export function StoryTimeline() {
 						<div className="mobile-process-line-progress h-full w-px origin-top bg-black/60" />
 					</div>
 
-					{timelineSteps.map((step, index) => (
+					{steps.map((step, index) => (
 						<article
 							className="mobile-process-step relative grid grid-cols-[4.5rem_1fr] gap-4 py-6"
 							key={step.title}

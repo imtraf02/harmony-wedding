@@ -4,16 +4,18 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { albumFilters, albumItems } from "@/constants/data";
+import portfolioData from "@/data/portfolio.json";
+const albumFilters = portfolioData.albumFilters;
 import { GlassCard } from "@/components/ui/glass-card";
+import type { AlbumItem } from "@/types/home";
 
-export function AlbumGrid() {
+export function AlbumGrid({ items }: { items: AlbumItem[] }) {
 	const [selectedFilter, setSelectedFilter] = useState("Tất cả album");
 
 	const filteredItems =
 		selectedFilter === "Tất cả album"
-			? albumItems
-			: albumItems.filter((item) => item.category === selectedFilter);
+			? items
+			: items.filter((item) => item.category === selectedFilter);
 
 	return (
 		<section className="bg-transparent py-14 lg:py-16 relative z-10" id="album-grid">

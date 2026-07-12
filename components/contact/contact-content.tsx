@@ -275,13 +275,13 @@ export function ContactContent() {
 									</p>
 									<p className="font-light text-neutral-500 mt-1.5 break-all">
 										<span className="font-medium text-neutral-700">Email 1:</span>{" "}
-										<a href={`mailto:${siteConfig.email}`} className="hover:underline text-neutral-600">
+										<a href={`mailto:${siteConfig.email}`} className="hover:text-black transition-colors text-neutral-600">
 											{siteConfig.email}
 										</a>
 									</p>
 									<p className="font-light text-neutral-500 mt-1 break-all">
 										<span className="font-medium text-neutral-700">Email 2:</span>{" "}
-										<a href={`mailto:${siteConfig.emailSecondary}`} className="hover:underline text-neutral-600">
+										<a href={`mailto:${siteConfig.emailSecondary}`} className="hover:text-black transition-colors text-neutral-600">
 											{siteConfig.emailSecondary}
 										</a>
 									</p>

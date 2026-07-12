@@ -1,0 +1,81 @@
+{
+  "about": {
+    "eyebrow": "Câu chuyện thương hiệu",
+    "title": "Gìn Giữ Từng Nhịp Thở Của Tình Yêu & Những Cảm Xúc Nguyên Bản",
+    "quote": "“Chúng tôi tin rằng, bức ảnh đẹp nhất không phải là bức ảnh được tạo dáng hoàn hảo nhất, mà là bức ảnh lưu giữ được nhiều cảm xúc thật nhất.”",
+    "extendedBio": "Harmony được thành lập với mong muốn lưu giữ trọn vẹn những nhịp thở của tình yêu, những khoảnh khắc nhẹ nhàng mà sâu lắng nhất. Chúng tôi không chụp những nụ cười công nghiệp hay những tư thế cứng nhắc, mà đi tìm sự mộc mạc và chân thực vốn có của hai bạn.",
+    "team": [
+      {
+        "name": "Hiếu Trần",
+        "role": "Founder & Lead Photographer",
+        "bio": "Người định hình phong cách nghệ thuật cho Harmony. Với hơn 13 năm kinh nghiệm, anh đi tìm vẻ đẹp trong sự tự nhiên, mộc mạc và những cái chạm khẽ khàng.",
+        "fbLink": "https://www.facebook.com/hieutranharmonymedia"
+      },
+      {
+        "name": "Gia Hân",
+        "role": "Lead Makeup Artist",
+        "bio": "Chuyên gia trang điểm cô dâu với triết lý tôn vinh vẻ đẹp nguyên bản, tự nhiên và bền màu trong suốt buổi chụp cưới ngoại cảnh hay tiệc chính.",
+        "fbLink": "https://www.facebook.com/gia.hann.36890"
+      },
+      {
+        "name": "Harmony Studio",
+        "role": "Official Studio Profile",
+        "bio": "Không gian sáng tạo đặt tại Đồng Nai. Nơi kết nối cảm xúc, cùng các cặp đôi thảo luận ý tưởng và chuẩn bị phục trang cho ngày trọng đại.",
+        "fbLink": "https://www.facebook.com/profile.php?id=61550358332202"
+      }
+    ],
+    "seo": {
+      "title": "Về Chúng Tôi - Đội Ngũ Harmony Wedding",
+      "description": "Tìm hiểu về Harmony Wedding - Studio chụp ảnh cưới nghệ thuật tại Đồng Nai với hơn 13 năm kinh nghiệm. Đội ngũ nhiếp ảnh gia, quay phim và makeup chuyên nghiệp."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Chính Sách Bảo Mật Thông Tin",
+    "lastUpdated": "Ngày 10 tháng 07 năm 2026",
+    "sections": [
+      {
+        "heading": "1. Giới thiệu chung",
+        "content": "Chào mừng bạn đến với Harmony Wedding. Chúng tôi tôn trọng quyền riêng tư của bạn và cam kết bảo vệ thông tin cá nhân của khách hàng. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin khi bạn truy cập website hoặc sử dụng dịch vụ của chúng tôi."
+      },
+      {
+        "heading": "2. Thông tin chúng tôi thu thập",
+        "content": "Khi bạn điền biểu mẫu tư vấn trên website hoặc kết nối với chúng tôi qua các kênh liên lạc trực tiếp, chúng tôi có thể thu thập các thông tin bao gồm:",
+        "bullets": [
+          "Họ và tên của bạn và bạn đời.",
+          "Số điện thoại, tài khoản Zalo hoặc Facebook để liên hệ.",
+          "Ngày cưới dự kiến và địa điểm/khu vực chụp hình mong muốn.",
+          "Các gói dịch vụ cưới mà bạn đang quan tâm.",
+          "Ý kiến, ghi chú hoặc yêu cầu đặc biệt của bạn."
+        ]
+      },
+      {
+        "heading": "3. Cách chúng tôi sử dụng thông tin",
+        "content": "Chúng tôi chỉ sử dụng thông tin thu thập được cho các mục đích:",
+        "bullets": [
+          "Tư vấn ý tưởng chụp ảnh, lên moodboard và gửi báo giá dịch vụ cưới phù hợp nhất.",
+          "Đặt lịch hẹn làm việc trực tiếp tại studio hoặc xếp lịch chụp hình ngoại cảnh/phim trường.",
+          "Cải thiện chất lượng dịch vụ chăm sóc khách hàng và trải nghiệm trên website.",
+          "Đo lường, tối ưu hóa các chiến dịch quảng cáo trên các nền tảng số (như TikTok và Facebook) dựa trên sự đồng ý của bạn."
+        ]
+      },
+      {
+        "heading": "4. Sử dụng Cookie và Công cụ đo lường",
+        "content": "Website của chúng tôi sử dụng cookie để lưu trữ thông tin duyệt web và tối ưu hóa tính năng hiển thị. Đồng thời, chúng tôi tích hợp TikTok Pixel để hỗ trợ đo lường hiệu quả quảng cáo.",
+        "extendedContent": "Chúng tôi tôn trọng quyền lựa chọn của bạn. Pixel sẽ không kích hoạt thu thập thông tin cho đến khi bạn nhấn chọn “Đồng ý” trên Banner Cookie Consent hiển thị trên trang web. Bạn hoàn toàn có thể từ chối mà không ảnh hưởng đến bất kỳ trải nghiệm duyệt ảnh nào khác trên site."
+      },
+      {
+        "heading": "5. Bảo mật thông tin dữ liệu",
+        "content": "Harmony Wedding áp dụng các phương thức kỹ thuật và bảo mật phù hợp để ngăn chặn việc truy cập trái phép, tiết lộ, thay đổi hoặc phá hủy dữ liệu cá nhân của bạn. Thông tin của bạn được lưu trữ nội bộ và chỉ nhân viên được phân công phục vụ lịch trình cưới của bạn mới có quyền tiếp cận. Chúng tôi cam kết tuyệt đối không bán hoặc chia sẻ thông tin cá nhân của bạn cho bên thứ ba vì mục đích thương mại."
+      },
+      {
+        "heading": "6. Liên hệ và Yêu cầu xóa dữ liệu",
+        "content": "Nếu bạn có bất kỳ câu hỏi nào về Chính sách bảo mật này hoặc muốn yêu cầu chỉnh sửa, xóa bỏ toàn bộ thông tin đã đăng ký trên website, vui lòng liên hệ với điều phối viên của chúng tôi qua:",
+        "contactDetails": true
+      }
+    ],
+    "seo": {
+      "title": "Chính Sách Bảo Mật - Harmony Wedding",
+      "description": "Chính sách bảo mật thông tin khách hàng, sử dụng cookie và pixel theo dõi tại Harmony Wedding Studio."
+    }
+  }
+}

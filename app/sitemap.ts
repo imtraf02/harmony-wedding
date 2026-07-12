@@ -1,17 +1,13 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
-import { blogPosts } from "@/constants/blog";
-import { albumItems, albumDetails } from "@/constants/data";
+import { getSitemapContent } from "@/lib/content";
 
 const BASE_URL = siteConfig.url;
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const albumSlugs = new Set([
-    ...albumItems.map((a) => a.slug),
-    ...albumDetails.map((a) => a.slug),
-  ]);
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const { albums: albumSlugs, posts } = await getSitemapContent();
 
-  const albumRoutes: MetadataRoute.Sitemap = Array.from(albumSlugs).map(
+  const albumRoutes: MetadataRoute.Sitemap = albumSlugs.map(
     (slug) => ({
       url: `${BASE_URL}/portfolio/${slug}`,
       lastModified: new Date(),
@@ -20,10 +16,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map(
+  const blogRoutes: MetadataRoute.Sitemap = posts.map(
     (post) => ({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: new Date(),
+      lastModified: new Date(post.updatedAt),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     }),

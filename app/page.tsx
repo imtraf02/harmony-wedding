@@ -12,39 +12,66 @@ import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { PricingSection } from "@/components/home/pricing-section";
 import { BookingSection } from "@/components/home/booking-section";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title:
-      "Harmony Wedding | Chụp Ảnh Cưới Đồng Nai - Khoảnh Khắc Trọn Đời",
-    description:
-      "Studio cưới cao cấp tại Đồng Nai. Chuyên chụp ảnh cưới nghệ thuật, quay phim cưới, trang điểm cô dâu, thuê vest & váy cưới và tổ chức tiệc cưới trọn gói.",
-    url: "/",
-    images: [
-      {
-        url: "/images/home/hero-banner.webp",
-        width: 1920,
-        height: 1080,
-        alt: "Harmony Wedding - Studio chụp ảnh cưới cao cấp tại Đồng Nai",
-      },
-    ],
-  },
-};
+import { getShowcaseItems, getTimelineSteps, getHomeData } from "@/lib/content";
+import type { TestimonialItem } from "@/types/home";
 
-export function HomePage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const homeData = await getHomeData();
+  return {
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      title: homeData.seo.title,
+      description: homeData.seo.description,
+      url: "/",
+      images: [
+        {
+          url: homeData.hero.image,
+          width: 1920,
+          height: 1080,
+          alt: "Harmony Wedding - Studio chụp ảnh cưới cao cấp tại Đồng Nai",
+        },
+      ],
+    },
+  };
+}
+
+const rawPreviewImages = [
+  { src: "/images/mau-do/vay-cuoi-001.webp", label: "Váy Cưới Signature" },
+  { src: "/images/mau-do/vay-cuoi-002.webp", label: "Váy Cưới Premium" },
+  { src: "/images/mau-do/ao-dai-003.webp", label: "Áo Dài Thêu Tay" },
+  { src: "/images/mau-do/vay-cuoi-005.webp", label: "Váy Cưới Diamond" },
+  { src: "/images/mau-do/vay-cuoi-006.webp", label: "Váy Cưới Luxury" },
+  { src: "/images/mau-do/ao-dai-008.webp", label: "Áo Dài Truyền Thống" }
+];
+
+export async function HomePage() {
+  const homeData = await getHomeData();
+  const portfolioItems = await getShowcaseItems("portfolio_item");
+  const timelineSteps = await getTimelineSteps();
+
+  const heroImage = homeData.hero.image;
+  const aboutImage = homeData.about.image;
+  const processImage = homeData.timeline.processImage;
+  const reelAnGardenImage = "/images/reel-an-garden.png";
+  const reelWeddingDayImage = "/images/reel-wedding-day.png";
+
   return (
     <main className="bg-white text-neutral-950">
       <Header />
-      <HeroSection />
+      <HeroSection heroImage={heroImage} />
       <ServicesBar />
-      <PortfolioSection />
-      <CollectionSection />
-      <AboutSection />
-      <StoryTimeline />
+      <PortfolioSection items={portfolioItems} />
+      <CollectionSection previewImages={rawPreviewImages} />
+      <AboutSection aboutImage={aboutImage} />
+      <StoryTimeline processImage={processImage} steps={timelineSteps} />
       <PricingSection />
-      <TestimonialsSection />
+      <TestimonialsSection
+        items={homeData.testimonials as TestimonialItem[]}
+        reelAnGardenImage={reelAnGardenImage}
+        reelWeddingDayImage={reelWeddingDayImage}
+      />
       <BookingSection />
       <Footer />
     </main>

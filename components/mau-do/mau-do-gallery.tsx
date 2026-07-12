@@ -4,12 +4,20 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { mauDoImages } from "@/constants/mau-do";
 
 const IMAGES_PER_PAGE = 24;
 const TABS = ["Tất cả", "Váy & Áo Dài", "Veston"];
 
-export function MauDoGallery() {
+export interface MauDoItem {
+  src: string;
+  name: string;
+}
+
+interface MauDoGalleryProps {
+  items: MauDoItem[];
+}
+
+export function MauDoGallery({ items }: MauDoGalleryProps) {
   const [activeTab, setActiveTab] = useState("Tất cả");
   const [visibleCount, setVisibleCount] = useState(IMAGES_PER_PAGE);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -18,17 +26,16 @@ export function MauDoGallery() {
 
   // Filter images based on tab
   const getFilteredImages = useCallback(() => {
-    return mauDoImages.filter(img => {
+    return items.filter(img => {
+      const name = img.name.toLowerCase();
       if (activeTab === "Tất cả") return true;
-      if (activeTab === "Váy & Áo Dài") return img.startsWith("vay-cuoi") || img.startsWith("ao-dai");
-      if (activeTab === "Veston") return img.startsWith("vest");
+      if (activeTab === "Váy & Áo Dài") return name.startsWith("vay-cuoi") || name.startsWith("ao-dai");
+      if (activeTab === "Veston") return name.startsWith("vest");
       return true;
     });
-  }, [activeTab]);
+  }, [activeTab, items]);
 
   const filteredImages = getFilteredImages();
-
-
 
   const loadMore = () => {
     setVisibleCount(prev => Math.min(prev + IMAGES_PER_PAGE, filteredImages.length));
@@ -124,10 +131,11 @@ export function MauDoGallery() {
                 }`}
                 type="button"
               >
-                {tab} ({mauDoImages.filter(img => {
+                {tab} ({items.filter(img => {
+                  const name = img.name.toLowerCase();
                   if (tab === "Tất cả") return true;
-                  if (tab === "Váy & Áo Dài") return img.startsWith("vay-cuoi") || img.startsWith("ao-dai");
-                  if (tab === "Veston") return img.startsWith("vest");
+                  if (tab === "Váy & Áo Dài") return name.startsWith("vay-cuoi") || name.startsWith("ao-dai");
+                  if (tab === "Veston") return name.startsWith("vest");
                   return true;
                 }).length})
               </button>
@@ -137,14 +145,14 @@ export function MauDoGallery() {
 
         {/* Gallery Grid - Upgraded to Liquid Glass p-1 cards */}
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {visibleImages.map((imgName, idx) => {
-            const isSuit = imgName.startsWith("vest");
-            const isAoDai = imgName.startsWith("ao-dai");
+          {visibleImages.map((img, idx) => {
+            const isSuit = img.name.toLowerCase().startsWith("vest");
+            const isAoDai = img.name.toLowerCase().startsWith("ao-dai");
             const tagLabel = isSuit ? "Veston" : isAoDai ? "Áo Dài" : "Váy Cưới";
             
             return (
               <GlassCard
-                key={imgName}
+                key={img.src}
                 variant="light"
                 intensity="low"
                 borderStrength="low"
@@ -154,7 +162,7 @@ export function MauDoGallery() {
               >
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
                   <Image
-                    src={`/images/mau-do/${imgName}`}
+                    src={img.src}
                     alt={`Mẫu ${tagLabel.toLowerCase()} thiết kế cao cấp Harmony Wedding - Hình ${idx + 1}`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -260,7 +268,7 @@ export function MauDoGallery() {
               }}
             >
               <Image
-                src={`/images/mau-do/${filteredImages[activeIdx]}`}
+                src={filteredImages[activeIdx].src}
                 alt={`Mẫu trang phục cưới thiết kế cao cấp Harmony Wedding`}
                 fill={!isZoomed}
                 width={isZoomed ? 900 : undefined}

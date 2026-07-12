@@ -4,12 +4,12 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { portfolioItems } from "@/constants/data";
+import type { PortfolioItem } from "@/types/home";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 
-export function PortfolioSection() {
+export function PortfolioSection({ items }: { items: PortfolioItem[] }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -236,7 +236,7 @@ export function PortfolioSection() {
             className="flex gap-5 pb-4 lg:w-max lg:flex-row lg:gap-8 lg:pb-0"
             ref={trackRef}
           >
-            {portfolioItems.map((item, index) => {
+            {items.map((item, index) => {
               const cardClasses =
                 "portfolio-card group relative block aspect-[1365/2048] w-[78vw] shrink-0 snap-start overflow-hidden rounded-2xl bg-neutral-900 md:w-[45vw] md:max-w-[400px] lg:h-[72vh] lg:w-[48vh] lg:max-w-none lg:shrink-0 cursor-pointer border border-white/8 hover:border-white/20 shadow-lg transition-all duration-500";
 

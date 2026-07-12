@@ -1,23 +1,31 @@
 import Image from "next/image";
-import { albumHero, albumStats } from "@/constants/data";
+import portfolioData from "@/data/portfolio.json";
+const albumStats = portfolioData.albumStats;
 import { Icon } from "@/components/home/icon";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { AnimatedArrowRight } from "@/components/ui/animated-icons";
 
-export function AlbumHero() {
+export interface AlbumHeroProps {
+	heroImage: string;
+	heroAlt: string;
+	leftImage: string;
+	rightImage: string;
+}
+
+export function AlbumHero({ heroImage, heroAlt, leftImage, rightImage }: AlbumHeroProps) {
 	return (
 		<section className="bg-transparent pt-[5.5rem] lg:pt-24 relative z-10">
 			{/* Mobile layout */}
 			<div className="lg:hidden">
 				<div className="relative min-h-[70vh] overflow-hidden bg-neutral-900">
 					<Image
-						alt={albumHero.alt}
+						alt={heroAlt}
 						className="object-cover"
 						fill
 						priority
 						sizes="100vw"
-						src={albumHero.image}
+						src={heroImage}
 						unoptimized
 					/>
 					<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_18%,rgba(0,0,0,0.82)_100%)]" />
@@ -60,7 +68,7 @@ export function AlbumHero() {
 								key={stat.description}
 							>
 								<div className="grid size-10 place-items-center rounded-full bg-neutral-100/60 mx-auto mb-3 border border-white/30">
-									<Icon className="size-5 text-black" name={stat.icon} />
+									<Icon className="size-5 text-black" name={stat.icon as any} />
 								</div>
 								<h2 className="text-base font-bold text-black">{stat.title}</h2>
 								<p className="mt-1 text-[0.62rem] leading-4 text-neutral-500 uppercase tracking-wider">
@@ -112,7 +120,7 @@ export function AlbumHero() {
 									className="object-cover"
 									fill
 									sizes="25vw"
-									src="/images/wedding/sunny-garden/15.webp"
+									src={rightImage}
 									unoptimized
 								/>
 							</div>
@@ -133,7 +141,7 @@ export function AlbumHero() {
 									className="object-cover"
 									fill
 									sizes="25vw"
-									src="/images/wedding/sunny-garden/10.webp"
+									src={leftImage}
 									unoptimized
 								/>
 							</div>
@@ -150,12 +158,12 @@ export function AlbumHero() {
 						>
 							<div className="relative h-full w-full overflow-hidden rounded-2xl bg-neutral-100">
 								<Image
-									alt={albumHero.alt}
+									alt={heroAlt}
 									className="object-cover"
 									fill
 									priority
 									sizes="35vw"
-									src={albumHero.image}
+									src={heroImage}
 									unoptimized
 								/>
 							</div>

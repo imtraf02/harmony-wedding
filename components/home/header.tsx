@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { menuItems } from "@/constants/data";
+import siteData from "@/data/site.json";
+const menuItems = siteData.menuItems;
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassButton } from "@/components/ui/glass-button";
 import { trackContactChannel } from "@/lib/tracking";
@@ -276,13 +277,13 @@ export function Header({ variant = "home" }: HeaderProps) {
 								Hotline & Zalo
 							</span>
 							<a
-								className="mt-1 block text-sm font-semibold text-neutral-900 hover:underline"
+								className="mt-1 block text-sm font-semibold text-neutral-900 hover:text-neutral-500 transition-colors"
 								href="tel:0357256845"
 							>
 								0357.256.845
 							</a>
 							<a
-								className="mt-0.5 block text-sm font-semibold text-neutral-900 hover:underline"
+								className="mt-0.5 block text-sm font-semibold text-neutral-900 hover:text-neutral-500 transition-colors"
 								href="tel:0388660678"
 							>
 								0388.660.678

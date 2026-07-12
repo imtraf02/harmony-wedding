@@ -8,16 +8,12 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 
-const PREVIEW_IMAGES = [
-  { src: "vay-cuoi-001.webp", label: "Váy Cưới Signature" },
-  { src: "vay-cuoi-002.webp", label: "Váy Cưới Premium" },
-  { src: "ao-dai-003.webp", label: "Áo Dài Thêu Tay" },
-  { src: "vay-cuoi-005.webp", label: "Váy Cưới Diamond" },
-  { src: "vay-cuoi-006.webp", label: "Váy Cưới Luxury" },
-  { src: "ao-dai-008.webp", label: "Áo Dài Truyền Thống" }
-];
+export interface CollectionPreviewImage {
+  src: string;
+  label: string;
+}
 
-export function CollectionSection() {
+export function CollectionSection({ previewImages }: { previewImages: CollectionPreviewImage[] }) {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useGSAP(
@@ -68,7 +64,7 @@ export function CollectionSection() {
 
         {/* Image Grid */}
         <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-14">
-          {PREVIEW_IMAGES.map((img) => (
+          {previewImages.map((img) => (
             <Link
               href="/mau-do"
               key={img.src}
@@ -83,7 +79,7 @@ export function CollectionSection() {
               >
                 <div className="absolute inset-0 overflow-hidden rounded-2xl">
                   <Image
-                    src={`/images/mau-do/${img.src}`}
+                    src={img.src}
                     alt={`Mẫu váy thiết kế Harmony Wedding - ${img.label}`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"

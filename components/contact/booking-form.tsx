@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { trackFormSubmission } from "@/lib/tracking";
+import { trackFormSubmission, trackContactChannel } from "@/lib/tracking";
+import { siteConfig } from "@/lib/config";
 
 interface BookingFormData {
 	name: string;
@@ -76,26 +77,12 @@ export function BookingForm({ formName = "Đặt lịch tư vấn" }: { formName
 		setIsSubmitting(true);
 		setSubmitStatus("idle");
 
-		try {
-			const res = await fetch("/api/booking", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ ...formData, formName }),
-			});
-
-			if (res.ok) {
-				setSubmitStatus("success");
-				setFormData(INITIAL_STATE);
-				trackFormSubmission(formName);
-			} else {
-				setSubmitStatus("error");
-			}
-		} catch (err) {
-			console.error("Booking form submission error:", err);
-			setSubmitStatus("error");
-		} finally {
+		// Simulate client-side validation success and transition
+		setTimeout(() => {
 			setIsSubmitting(false);
-		}
+			setSubmitStatus("success");
+			trackFormSubmission(formName);
+		}, 600);
 	};
 
 	return (
@@ -109,7 +96,7 @@ export function BookingForm({ formName = "Đặt lịch tư vấn" }: { formName
 				Nhận Concept & Báo Giá Chi Tiết
 			</h3>
 			<p className="text-[0.78rem] leading-6 text-neutral-500 font-light mb-8">
-				Để lại thông tin ngắn dưới đây, điều phối viên của Harmony sẽ liên hệ gửi concept mẫu kèm báo giá chi tiết sau 5 - 10 phút.
+				Để lại thông tin ngắn dưới đây và kết nối trực tiếp với Harmony để nhận concept mẫu kèm báo giá nhanh chóng.
 			</p>
 
 			{submitStatus === "success" ? (
@@ -118,17 +105,42 @@ export function BookingForm({ formName = "Đặt lịch tư vấn" }: { formName
 						✓
 					</div>
 					<h4 className="font-serif text-lg font-medium text-emerald-900 mb-2">
-						Gửi thông tin thành công!
+						Thông tin hợp lệ!
 					</h4>
-					<p className="text-xs leading-5 text-emerald-700 font-light">
-						Cảm ơn hai bạn đã tin tưởng chọn Harmony. Đội ngũ của chúng tôi sẽ kết nối qua số điện thoại/Zalo bạn cung cấp trong vòng ít phút nữa.
+					<p className="text-xs leading-5 text-emerald-700 font-light mb-6">
+						Để nhận báo giá và concept tư vấn nhanh nhất từ điều phối viên Harmony, hai bạn vui lòng nhấn nút liên hệ Zalo hoặc gọi Hotline bên dưới:
 					</p>
+
+					<div className="flex flex-col gap-3 sm:flex-row justify-center sm:items-center">
+						<GlassButton
+							variant="dark"
+							href={siteConfig.links.zalo}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="!py-2.5 !px-6 text-xs w-full sm:w-auto text-center"
+							onClick={() => trackContactChannel("Zalo", siteConfig.links.zalo)}
+						>
+							Chat Zalo Ngay
+						</GlassButton>
+						<GlassButton
+							variant="light"
+							href={`tel:${siteConfig.links.phone}`}
+							className="!py-2.5 !px-6 text-xs w-full sm:w-auto border border-black/10 text-center"
+							onClick={() => trackContactChannel("Hotline", `tel:${siteConfig.links.phone}`)}
+						>
+							Gọi Hotline: {siteConfig.links.phone}
+						</GlassButton>
+					</div>
+
 					<button
-						onClick={() => setSubmitStatus("idle")}
-						className="mt-6 text-[0.66rem] font-bold uppercase tracking-widest text-emerald-800 hover:underline"
+						onClick={() => {
+							setFormData(INITIAL_STATE);
+							setSubmitStatus("idle");
+						}}
+						className="mt-6 text-[0.66rem] font-bold uppercase tracking-widest text-emerald-800 hover:text-emerald-950 transition-colors cursor-pointer block mx-auto"
 						type="button"
 					>
-						Gửi thêm một yêu cầu mới
+						Nhập lại thông tin
 					</button>
 				</div>
 			) : (
@@ -248,7 +260,7 @@ export function BookingForm({ formName = "Đặt lịch tư vấn" }: { formName
 
 					{submitStatus === "error" && (
 						<div className="text-[0.7rem] text-red-500 leading-relaxed">
-							Có lỗi xảy ra khi gửi thông tin. Xin vui lòng liên hệ trực tiếp qua số hotline Zalo hoặc Messenger để được tư vấn nhanh nhất.
+							Có lỗi xảy ra khi xử lý thông tin. Xin vui lòng liên hệ trực tiếp qua số hotline Zalo hoặc Messenger để được tư vấn nhanh nhất.
 						</div>
 					)}
 
@@ -256,7 +268,6 @@ export function BookingForm({ formName = "Đặt lịch tư vấn" }: { formName
 					<div className="pt-2">
 						<GlassButton
 							type="submit"
-							variant="dark"
 							disabled={isSubmitting}
 							className="w-full !py-3 rounded-xl flex items-center justify-center gap-2 !whitespace-normal !tracking-wider text-center"
 						>

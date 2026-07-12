@@ -1,0 +1,157 @@
+{
+  "hero": {
+    "title": "Khoảnh Khắc Cưới\nTự Nhiên & Tinh Tế",
+    "description": "Tụi mình chụp theo cách hai bạn thật sự sống — không pose cứng, không cảm xúc giả tạo. Chỉ là hai bạn, đúng như ngày đó.",
+    "image": "/images/home/hero-banner.webp"
+  },
+  "about": {
+    "title": "Về Chúng Tôi",
+    "image": "/images/home/about-us.webp"
+  },
+  "services": [
+    {
+      "title": "Chụp Ảnh Cưới",
+      "description": "Những khung hình tĩnh lặng, giàu cảm xúc và có chiều sâu.",
+      "icon": "camera"
+    },
+    {
+      "title": "Quay Phim Cưới",
+      "description": "Thước phim điện ảnh được dựng theo nhịp câu chuyện của bạn.",
+      "icon": "film"
+    },
+    {
+      "title": "Trang Điểm Cô Dâu",
+      "description": "Vẻ đẹp thanh lịch, tự nhiên và bền vững trong từng khoảnh khắc.",
+      "icon": "dress"
+    },
+    {
+      "title": "Thuê Vest & Váy Cưới",
+      "description": "Các mẫu vest và váy cưới thiết kế cao cấp, tinh tế và thanh lịch.",
+      "icon": "dress-rental"
+    },
+    {
+      "title": "Tổ Chức Tiệc Cưới",
+      "description": "Kịch bản chỉn chu, tinh giản và trọn vẹn cho ngày trọng đại.",
+      "icon": "calendar"
+    },
+    {
+      "title": "Chụp Beauty",
+      "description": "Tôn vinh đường nét cá nhân qua ảnh chân dung nghệ thuật.",
+      "icon": "moodboard"
+    },
+    {
+      "title": "Chụp Baby",
+      "description": "Lưu giữ nét thơ ngây và khoảnh khắc đầu đời đáng yêu của bé.",
+      "icon": "heart"
+    },
+    {
+      "title": "Chụp Sinh Nhật",
+      "description": "Ghi lại niềm vui đón tuổi mới bên bạn bè và người thân.",
+      "icon": "calendar"
+    },
+    {
+      "title": "Đào Tạo Quay Chụp",
+      "description": "Khóa học nhiếp ảnh và quay phim thực chiến từ cơ bản đến nâng cao.",
+      "icon": "aperture"
+    },
+    {
+      "title": "Đào Tạo Makeup",
+      "description": "Khóa học trang điểm cá nhân và chuyên nghiệp chuẩn xu hướng.",
+      "icon": "edit"
+    }
+  ],
+  "timeline": {
+    "title": "Hành Trình Ghi Dấu",
+    "processImage": "/images/home/timeline.webp",
+    "steps": [
+      {
+        "title": "Tư Vấn",
+        "description": "Lắng nghe mong muốn, gu thẩm mỹ và nhịp sống của hai bạn.",
+        "icon": "chat",
+        "image": "/images/home/timeline-tuvan.webp",
+        "alt": "Bước 1: Bàn tay ghi chú trong buổi tư vấn ảnh cưới Harmony Wedding"
+      },
+      {
+        "title": "Lên Ý Tưởng",
+        "description": "Xây dựng moodboard, bối cảnh, phục trang và tinh thần hình ảnh.",
+        "icon": "moodboard",
+        "image": "/images/home/timeline-lenytuong.webp",
+        "alt": "Bước 2: Moodboard lên ý tưởng chụp ảnh cưới Harmony Wedding"
+      },
+      {
+        "title": "Chụp Hình",
+        "description": "Dẫn dắt tự nhiên để cảm xúc thật xuất hiện trong từng khung hình.",
+        "icon": "aperture",
+        "image": "/images/home/timeline-chupanh.webp",
+        "alt": "Bước 3: Máy ảnh trong buổi chụp hình cưới chuyên nghiệp"
+      },
+      {
+        "title": "Hậu Kỳ",
+        "description": "Xử lý màu sắc tinh tế, giữ lại chất liệu và vẻ đẹp nguyên bản.",
+        "icon": "edit",
+        "image": "/images/home/timeline-hauky.webp",
+        "alt": "Bước 4: Không gian hậu kỳ chỉnh sửa ảnh cưới Harmony Wedding"
+      },
+      {
+        "title": "Bàn Giao",
+        "description": "Trao album, phim và thư viện số với trải nghiệm riêng tư.",
+        "icon": "package",
+        "image": "/images/home/timeline-bangiao.webp",
+        "alt": "Bước 5: Album cưới được bàn giao cho khách hàng Harmony Wedding"
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "Thùy Linh & Hoàng Nam",
+      "role": "Cặp đôi · Album Đà Lạt",
+      "image": "/images/wedding/da-lat/2.webp",
+      "alt": "Cặp đôi cười rạng rỡ giữa rừng thông Đà Lạt - Harmony Wedding",
+      "quote": "Ekip của Harmony làm việc vô cùng chuyên nghiệp. Từng khoảnh khắc tự nhiên, những cái chạm tay khẽ khàng đều được ghi lại trọn vẹn và đầy tinh tế. Album ảnh cưới in ra màu sắc rất sang và sắc nét.",
+      "albumSlug": "da-lat",
+      "source": "Facebook",
+      "reviewLink": "https://www.facebook.com/profile.php?id=61550358332202"
+    },
+    {
+      "name": "Minh Anh & Quốc Anh",
+      "role": "Cặp đôi · Album Sunny Garden",
+      "image": "/images/wedding/sunny-garden/1.webp",
+      "alt": "Cô dâu chú rể hạnh phúc tại phim trường Sunny Garden - Harmony Wedding",
+      "quote": "Không hề có cảm giác gượng gạo trước ống kính. Ekip đã dẫn dắt chúng tôi tìm lại cảm xúc thật và biến nó thành những kỷ niệm vượt thời gian. Cực kỳ an tâm từ khâu làm việc ban đầu tới bàn giao.",
+      "albumSlug": "sunny-garden",
+      "source": "Google",
+      "reviewLink": "https://maps.app.goo.gl/6vtiHihaavy7YF6F6"
+    },
+    {
+      "name": "Bích Phương & Minh Hải",
+      "role": "Cặp đôi · Album Phố Sài Gòn",
+      "image": "/images/wedding/duong-pho-ho-chi-minh/2.webp",
+      "alt": "Cặp đôi lãng mạn tại phố cổ Sài Gòn - Harmony Wedding",
+      "quote": "Một trải nghiệm chụp ảnh cưới nhẹ nhàng và lãng mạn. Ekip rất nhiệt tình, chu đáo và biết cách khai thác những góc mặt tự nhiên nhất. Tone màu ảnh cổ điển đúng gu hai vợ chồng.",
+      "albumSlug": "duong-pho-ho-chi-minh",
+      "source": "Facebook",
+      "reviewLink": "https://www.facebook.com/profile.php?id=61550358332202"
+    }
+  ],
+  "stats": [
+    {
+      "value": 100,
+      "suffix": "+",
+      "label": "Bộ Ảnh Cưới"
+    },
+    {
+      "value": 13,
+      "suffix": "+",
+      "label": "Năm Kinh Nghiệm"
+    },
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "Khách Hàng Hài Lòng"
+    }
+  ],
+  "seo": {
+    "title": "Harmony Wedding | Chụp Ảnh Cưới Đồng Nai - Khoảnh Khắc Trọn Đời",
+    "description": "Studio cưới cao cấp tại Đồng Nai. Chuyên chụp ảnh cưới nghệ thuật, quay phim cưới, trang điểm cô dâu, thuê vest & váy cưới và tổ chức tiệc cưới trọn gói."
+  }
+}

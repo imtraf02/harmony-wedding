@@ -7,38 +7,45 @@ import { AlbumValues } from "@/components/album/album-values";
 import { FeaturedAlbum } from "@/components/album/featured-album";
 import { Header } from "@/components/home/header";
 import { BreadcrumbJsonLd, ImageGalleryJsonLd } from "@/components/seo/json-ld";
-import { albumItems } from "@/constants/data";
 
+import { getAlbums, getShowcaseItems } from "@/lib/content";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
+import portfolioData from "@/data/portfolio.json";
 
-export const metadata: Metadata = {
-  title: "Album Ảnh Cưới Đẹp - Tác Phẩm Ngoại Cảnh & Studio",
-  description:
-    "Bộ sưu tập album ảnh cưới đẹp của Harmony Wedding: ảnh cưới ngoại cảnh Đà Lạt, Sunny Garden, An Garden, studio concept và đường phố Hồ Chí Minh.",
-  alternates: {
-    canonical: "/portfolio",
-  },
-  openGraph: {
-    title: "Album Ảnh Cưới Đẹp | Harmony Wedding",
-    description:
-      "Bộ sưu tập album ảnh cưới cao cấp: ngoại cảnh Đà Lạt, Sunny Garden, studio concept và đường phố Sài Gòn.",
-    url: "/portfolio",
-    images: [
-      {
-        url: "/images/home/album-1.webp",
-        width: 1200,
-        height: 630,
-        alt: "Album ảnh cưới Harmony Wedding - Bộ sưu tập tác phẩm",
-      },
-    ],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: portfolioData.seo.title,
+    description: portfolioData.seo.description,
+    alternates: {
+      canonical: "/portfolio",
+    },
+    openGraph: {
+      title: "Album Ảnh Cưới Đẹp | Harmony Wedding",
+      description: "Bộ sưu tập album ảnh cưới cao cấp: ngoại cảnh Đà Lạt, Sunny Garden, An Garden, studio concept và đường phố Sài Gòn.",
+      url: "/portfolio",
+      images: [
+        {
+          url: portfolioData.hero.image,
+          width: 1200,
+          height: 630,
+          alt: portfolioData.hero.alt,
+        },
+      ],
+    },
+  };
+}
 
-export function AlbumPage() {
+export async function AlbumPage() {
+  const resolvedAlbums = await getAlbums();
+  const resolvedFeaturedImages = await getShowcaseItems("featured_album_image");
+
+  const heroImage = portfolioData.hero.image;
+  const leftImage = portfolioData.hero.leftImage;
+  const rightImage = portfolioData.hero.rightImage;
+
   return (
     <main className="bg-[#fcfbfc] text-black min-h-screen relative overflow-hidden" id="top">
       <Header variant="solid" />
-      {/* Light moving mesh gradient background */}
       <MeshGradient variant="light" className="opacity-75" />
 
       <BreadcrumbJsonLd
@@ -50,15 +57,20 @@ export function AlbumPage() {
       <ImageGalleryJsonLd
         name="Album Ảnh Cưới Harmony Wedding"
         description="Bộ sưu tập album ảnh cưới nghệ thuật từ Harmony Wedding"
-        images={albumItems.map((item) => ({
+        images={resolvedAlbums.map((item) => ({
           url: item.image,
           caption: item.alt,
         }))}
       />
 
-      <AlbumHero />
-      <AlbumGrid />
-      <FeaturedAlbum />
+      <AlbumHero
+        heroImage={heroImage}
+        heroAlt={portfolioData.hero.alt}
+        leftImage={leftImage}
+        rightImage={rightImage}
+      />
+      <AlbumGrid items={resolvedAlbums} />
+      <FeaturedAlbum images={resolvedFeaturedImages} />
       <AlbumValues />
       <Footer />
     </main>

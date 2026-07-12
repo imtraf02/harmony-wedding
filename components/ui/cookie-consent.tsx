@@ -54,7 +54,7 @@ export function CookieConsent() {
 						Chúng tôi sử dụng cookie để mang lại trải nghiệm tốt nhất trên website và tối ưu hóa quảng cáo. Bằng cách nhấn “Đồng ý”, bạn cho phép Harmony Wedding sử dụng cookie và pixel theo{" "}
 						<Link
 							href="/chinh-sach-bao-mat"
-							className="text-neutral-800 font-medium underline hover:text-neutral-500 transition-colors"
+							className="text-neutral-800 font-semibold hover:text-neutral-500 transition-colors"
 						>
 							Chính sách bảo mật
 						</Link>{" "}

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { menuItems } from "@/constants/data";
+import siteData from "@/data/site.json";
+const menuItems = siteData.menuItems;
 import { siteConfig } from "@/lib/config";
 
 export function Footer() {
@@ -161,7 +162,7 @@ export function Footer() {
 									href={siteConfig.links.googleMaps}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="mt-2 inline-flex items-center gap-1 text-xs text-white hover:underline font-normal"
+									className="mt-2 inline-flex items-center gap-1 text-xs text-white hover:text-neutral-300 font-normal transition-colors"
 								>
 									Chỉ đường trên Google Maps
 									<span className="font-serif">↗</span>
@@ -175,13 +176,13 @@ export function Footer() {
 								<div className="leading-6 grid gap-1">
 									<a
 										href={`tel:${siteConfig.links.phone}`}
-										className="hover:underline hover:text-white block w-fit"
+										className="hover:text-white transition-colors block w-fit"
 									>
 										0357.256.845 (CSKH chính)
 									</a>
 									<a
 										href={`tel:${siteConfig.links.phoneSecondary}`}
-										className="hover:underline hover:text-white block w-fit"
+										className="hover:text-white transition-colors block w-fit"
 									>
 										0388.660.678 (Hotline phụ)
 									</a>
@@ -195,13 +196,13 @@ export function Footer() {
 								<div className="leading-6 grid gap-1">
 									<a
 										href={`mailto:${siteConfig.email}`}
-										className="hover:underline hover:text-white block break-all w-fit"
+										className="hover:text-white transition-colors block break-all w-fit"
 									>
 										{siteConfig.email}
 									</a>
 									<a
 										href={`mailto:${siteConfig.emailSecondary}`}
-										className="hover:underline hover:text-white block break-all w-fit"
+										className="hover:text-white transition-colors block break-all w-fit"
 									>
 										{siteConfig.emailSecondary}
 									</a>

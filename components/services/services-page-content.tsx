@@ -4,164 +4,39 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 
 import { Icon } from "@/components/home/icon";
-import { contactInfo, services, timelineSteps } from "@/constants/data";
+import { siteConfig } from "@/lib/config";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
+import type { ServiceItem, TimelineStep } from "@/types/home";
 
-const serviceDetails = [
-	{
-		title: "Chụp Ảnh Cưới",
-		description:
-			"Bộ ảnh cưới được lên concept theo câu chuyện, địa điểm và phong cách riêng của từng cặp đôi.",
-		image: "/images/services/photography.webp",
-		alt: "Dịch vụ chụp ảnh cưới ngoại cảnh Đà Lạt Harmony Wedding",
-		deliverables: [
-			"Tư vấn concept",
-			"Chụp ngoại cảnh hoặc studio",
-			"Retouch ảnh chọn lọc",
-			"Thư viện ảnh online",
-		],
-	},
-	{
-		title: "Quay Phim Cưới",
-		description:
-			"Thước phim highlight giàu cảm xúc, dựng nhịp điện ảnh và giữ lại không khí thật của ngày cưới.",
-		image: "/images/services/videography.webp",
-		alt: "Dịch vụ quay phim cưới ngoại cảnh Harmony Wedding",
-		deliverables: [
-			"Kịch bản quay",
-			"Highlight film",
-			"Full ceremony",
-			"Bàn giao file gốc theo gói",
-		],
-	},
-	{
-		title: "Trang Điểm Cô Dâu",
-		description:
-			"Makeup tự nhiên, thanh lịch, bền màu và phù hợp gương mặt, váy cưới, ánh sáng chụp.",
-		image: "/images/services/makeup.webp",
-		alt: "Dịch vụ trang điểm cô dâu Harmony Wedding",
-		deliverables: [
-			"Tư vấn layout",
-			"Makeup thử theo lịch",
-			"Làm tóc cô dâu",
-			"Dặm chỉnh trong buổi chụp",
-		],
-	},
-	{
-		title: "Thuê Vest & Váy Cưới",
-		description:
-			"Cung cấp các mẫu vest chú rể lịch lãm và váy cưới thiết kế cao cấp, tôn vinh vóc dáng và phong cách riêng.",
-		image: "/images/services/suit-dress-rental.webp",
-		alt: "Dịch vụ thuê vest và váy cưới thiết kế cao cấp Harmony Wedding",
-		deliverables: [
-			"Thử váy & vest không giới hạn",
-			"Chỉnh sửa số đo theo form dáng",
-			"Giặt ủi khử khuẩn chuyên nghiệp",
-			"Phụ kiện đi kèm trọn gói",
-		],
-	},
-	{
-		title: "Tổ Chức Tiệc Cưới",
-		description:
-			"Đồng hành điều phối timeline, hình ảnh, không gian và trải nghiệm trong ngày trọng đại.",
-		image: "/images/services/wedding-planning.webp",
-		alt: "Dịch vụ tổ chức tiệc cưới Harmony Wedding",
-		deliverables: [
-			"Timeline ngày cưới",
-			"Điều phối ekip",
-			"Concept trang trí",
-			"Tư vấn trải nghiệm khách mời",
-		],
-	},
-	{
-		title: "Chụp Beauty",
-		description:
-			"Bộ ảnh chân dung nghệ thuật làm nổi bật đường nét thanh tú và biểu cảm tự nhiên của riêng bạn.",
-		image: "/images/services/beauty.webp",
-		alt: "Dịch vụ chụp ảnh chân dung nghệ thuật Beauty Harmony Wedding",
-		deliverables: [
-			"Tư vấn layout trang điểm",
-			"Chụp cận cảnh với ánh sáng studio",
-			"Hậu kỳ da chuyên nghiệp",
-			"Bàn giao file chất lượng cao",
-		],
-	},
-	{
-		title: "Chụp Baby",
-		description:
-			"Ghi lại những khoảnh khắc trong trẻo, hồn nhiên và đáng yêu nhất của các bé trong không gian tự nhiên ấm áp.",
-		image: "/images/services/baby.webp",
-		alt: "Dịch vụ chụp ảnh cho bé Baby Portrait Harmony Wedding",
-		deliverables: [
-			"Chuẩn bị phụ kiện & bối cảnh",
-			"Ekip kiên nhẫn và giàu kinh nghiệm",
-			"Hỗ trợ thay trang phục cho bé",
-			"Bàn giao album ảnh hoàn thiện",
-		],
-	},
-	{
-		title: "Chụp Sinh Nhật",
-		description:
-			"Lưu giữ nụ cười rạng rỡ và những khoảnh khắc ý nghĩa bên người thân, bạn bè trong ngày đón tuổi mới.",
-		image: "/images/services/birthday.webp",
-		alt: "Dịch vụ chụp ảnh sinh nhật sự kiện Harmony Wedding",
-		deliverables: [
-			"Chụp tiệc hoặc chụp ngoại cảnh",
-			"Ghi trọn khoảnh khắc thổi nến & cắt bánh",
-			"Chụp ảnh tập thể sắc nét",
-			"Hậu kỳ nhanh chóng và bàn giao file",
-		],
-	},
-	{
-		title: "Đào Tạo Quay Chụp",
-		description:
-			"Khóa học thực chiến giúp bạn làm chủ thiết bị, tư duy bố cục, ánh sáng và kỹ năng quay phim, chụp ảnh từ cơ bản đến nâng cao.",
-		image: "/images/services/teaching-media.webp",
-		alt: "Khóa đào tạo quay phim chụp ảnh chuyên nghiệp Harmony Wedding",
-		deliverables: [
-			"Giáo trình lý thuyết bố cục & ánh sáng",
-			"Thực hành trực tiếp với người mẫu",
-			"Hướng dẫn setup thiết bị chuyên sâu",
-			"Kỹ thuật hậu kỳ hình ảnh & video",
-		],
-	},
-	{
-		title: "Đào Tạo Makeup",
-		description:
-			"Khóa học trang điểm cá nhân hoặc chuyên nghiệp giúp bạn tự tin làm đẹp cho bản thân hoặc trở thành chuyên viên makeup thực thụ.",
-		image: "/images/services/teaching-makeup.webp",
-		alt: "Khóa đào tạo trang điểm chuyên nghiệp Harmony Wedding",
-		deliverables: [
-			"Nhận diện dáng khuôn mặt & loại da",
-			"Kỹ thuật tạo lớp nền trong suốt",
-			"Kỹ năng trang điểm mắt & phối màu",
-			"Thực hành trên mẫu thật chuẩn studio",
-		],
-	},
-];
+export interface ServiceDetail {
+	title: string;
+	description: string;
+	image: string;
+	alt: string;
+	deliverables: string[];
+}
 
-const faqs = [
-	{
-		question: "Nên đặt lịch trước bao lâu?",
-		answer:
-			"Tối thiểu 4-6 tuần để có đủ thời gian tư vấn concept, chọn lịch chụp và chuẩn bị trang phục.",
-	},
-	{
-		question: "Có hỗ trợ chọn địa điểm chụp không?",
-		answer:
-			"Có. Ekip sẽ đề xuất studio, ngoại cảnh hoặc địa điểm riêng theo phong cách bạn muốn.",
-	},
-	{
-		question: "Khi nào nhận ảnh hoàn thiện?",
-		answer:
-			"Thời gian bàn giao phụ thuộc gói dịch vụ, thông thường từ 1-2 tuần sau khi chọn ảnh.",
-	},
-];
+interface FaqItem {
+	question: string;
+	answer: string;
+}
 
-export function ServicesPageContent() {
+export function ServicesPageContent({
+	serviceDetails,
+	services,
+	timelineSteps,
+	servicesHeroImage,
+	faqs,
+}: {
+	serviceDetails: ServiceDetail[];
+	services: ServiceItem[];
+	timelineSteps: TimelineStep[];
+	servicesHeroImage: string;
+	faqs: FaqItem[];
+}) {
 	const rootRef = useRef<HTMLDivElement | null>(null);
 	const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
@@ -204,7 +79,7 @@ export function ServicesPageContent() {
 						<div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4" data-reveal>
 							<GlassButton
 								variant="dark"
-								href={`tel:${contactInfo.hotline.split(" - ")[0].replace(/\./g, "")}`}
+								href={`tel:${siteConfig.links.phone}`}
 								className="w-full sm:w-auto"
 							>
 								Tư vấn dịch vụ
@@ -234,7 +109,7 @@ export function ServicesPageContent() {
 									fill
 									priority
 									sizes="(min-width: 1024px) 58vw, 100vw"
-									src="/images/services/services-hero.webp"
+									src={servicesHeroImage}
 								/>
 							</div>
 						</GlassCard>
@@ -257,7 +132,7 @@ export function ServicesPageContent() {
 							key={service.title}
 						>
 							<div className="grid size-11 place-items-center rounded-full bg-white/5 text-white/80 border border-white/8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
-								<Icon className="size-5" name={service.icon} />
+								<Icon className="size-5" name={service.icon as any} />
 							</div>
 							<h2 className="text-[0.72rem] font-bold uppercase tracking-[0.22em] text-white/90">
 								{service.title}
@@ -378,7 +253,7 @@ export function ServicesPageContent() {
 											borderStrength="medium"
 											className="grid size-12 place-items-center rounded-full border border-white/50 text-neutral-800 shadow-xs"
 										>
-											<Icon className="size-6" name={step.icon} />
+											<Icon className="size-6" name={step.icon as any} />
 										</GlassCard>
 										<span className="font-serif text-lg leading-none text-neutral-400 font-bold">
 											0{index + 1}
@@ -398,70 +273,72 @@ export function ServicesPageContent() {
 			</section>
 
 			{/* FAQ Section styled inside a Glass Board */}
-			<section className="relative isolate overflow-hidden bg-white py-20 lg:py-28">
-				<MeshGradient variant="light" className="opacity-70" />
+			{faqs && faqs.length > 0 && (
+				<section className="relative isolate overflow-hidden bg-white py-20 lg:py-28">
+					<MeshGradient variant="light" className="opacity-70" />
 
-				<div className="mx-auto max-w-[960px] px-5 md:px-10">
-					<div className="mb-14 text-center" data-reveal>
-						<p className="mb-4 flex items-center justify-center gap-4 text-[0.66rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
-							Hỏi đáp
-							<span className="h-px w-8 bg-neutral-300" />
-						</p>
-						<h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-none text-black">
-							Những Câu Hỏi Thường Gặp
-						</h2>
-					</div>
+					<div className="mx-auto max-w-[960px] px-5 md:px-10">
+						<div className="mb-14 text-center" data-reveal>
+							<p className="mb-4 flex items-center justify-center gap-4 text-[0.66rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
+								Hỏi đáp
+								<span className="h-px w-8 bg-neutral-300" />
+							</p>
+							<h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-none text-black">
+								Những Câu Hỏi Thường Gặp
+							</h2>
+						</div>
 
-					<GlassCard
-						variant="light"
-						intensity="medium"
-						borderStrength="medium"
-						className="border border-white/30 shadow-lg rounded-3xl p-6 md:p-10 divide-y divide-black/[0.04]"
-						data-reveal
-					>
-						{faqs.map((item, index) => {
-							const isOpen = openFaqIndex === index;
-							return (
-								<article
-									className={`py-5 first:pt-0 last:pb-0`}
-									key={item.question}
-								>
-									<button
-										aria-expanded={isOpen}
-										className="flex w-full items-center justify-between py-2 text-left focus:outline-none group cursor-pointer"
-										onClick={() => toggleFaq(index)}
-										type="button"
+						<GlassCard
+							variant="light"
+							intensity="medium"
+							borderStrength="medium"
+							className="border border-white/30 shadow-lg rounded-3xl p-6 md:p-10 divide-y divide-black/[0.04]"
+							data-reveal
+						>
+							{faqs.map((item, index) => {
+								const isOpen = openFaqIndex === index;
+								return (
+									<article
+										className={`py-5 first:pt-0 last:pb-0`}
+										key={item.question}
 									>
-										<h3 className="font-serif text-[1.12rem] font-medium text-neutral-900 md:text-[1.2rem] transition-colors group-hover:text-amber-700">
-											{item.question}
-										</h3>
-										<span
-											className={`grid size-8 place-items-center rounded-full border border-black/5 bg-black/5 text-sm transition-transform duration-300 ${
-												isOpen ? "rotate-45 bg-black text-white" : "text-black group-hover:bg-black/10"
+										<button
+											aria-expanded={isOpen}
+											className="flex w-full items-center justify-between py-2 text-left focus:outline-none group cursor-pointer"
+											onClick={() => toggleFaq(index)}
+											type="button"
+										>
+											<h3 className="font-serif text-[1.12rem] font-medium text-neutral-900 md:text-[1.2rem] transition-colors group-hover:text-amber-700">
+												{item.question}
+											</h3>
+											<span
+												className={`grid size-8 place-items-center rounded-full border border-black/5 bg-black/5 text-sm transition-transform duration-300 ${
+													isOpen ? "rotate-45 bg-black text-white" : "text-black group-hover:bg-black/10"
+												}`}
+											>
+												＋
+											</span>
+										</button>
+										<div
+											className={`grid transition-all duration-300 ease-in-out ${
+												isOpen
+													? "grid-rows-[1fr] opacity-100 mt-4"
+													: "grid-rows-[0fr] opacity-0 mt-0"
 											}`}
 										>
-											＋
-										</span>
-									</button>
-									<div
-										className={`grid transition-all duration-300 ease-in-out ${
-											isOpen
-												? "grid-rows-[1fr] opacity-100 mt-4"
-												: "grid-rows-[0fr] opacity-0 mt-0"
-										}`}
-									>
-										<div className="overflow-hidden">
-											<p className="pb-2 text-[0.95rem] leading-7 text-neutral-600 pl-2 border-l-2 border-amber-500/30">
-												{item.answer}
-											</p>
+											<div className="overflow-hidden">
+												<p className="pb-2 text-[0.95rem] leading-7 text-neutral-600 pl-2 border-l-2 border-amber-500/30">
+													{item.answer}
+												</p>
+											</div>
 										</div>
-									</div>
-								</article>
-							);
-						})}
-					</GlassCard>
-				</div>
-			</section>
+									</article>
+								);
+							})}
+						</GlassCard>
+					</div>
+				</section>
+			)}
 		</div>
 	);
 }

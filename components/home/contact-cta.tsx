@@ -1,10 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-
 import Link from "next/link";
-
-import { contactInfo } from "@/constants/data";
+import { siteConfig } from "@/lib/config";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export function ContactCta() {
@@ -30,7 +28,7 @@ export function ContactCta() {
           </h2>
           <Link
             className="mt-10 inline-flex h-14 w-full items-center justify-center bg-white px-9 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-black transition-colors hover:bg-neutral-200 sm:w-auto"
-            href={`tel:${contactInfo.hotline.split(" - ")[0].replace(/\./g, "")}`}
+            href={`tel:${siteConfig.links.phone}`}
           >
             Đặt Lịch Tư Vấn
           </Link>
@@ -44,25 +42,25 @@ export function ContactCta() {
             <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-white/38">
               Hotline
             </span>
-            {contactInfo.hotline}
+            {siteConfig.links.phone} · {siteConfig.links.phoneSecondary}
           </p>
           <p className="mt-7">
             <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-white/38">
               Zalo
             </span>
-            {contactInfo.zalo}
+            {siteConfig.links.phone} (Gia Hân)
           </p>
           <p className="mt-7">
             <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-white/38">
               Facebook
             </span>
-            {contactInfo.facebook}
+            Harmony Wedding
           </p>
           <p className="mt-7">
             <span className="block text-[0.66rem] font-semibold uppercase tracking-[0.24em] text-white/38">
               Studio
             </span>
-            {contactInfo.address}
+            {siteConfig.address}
           </p>
         </div>
       </div>

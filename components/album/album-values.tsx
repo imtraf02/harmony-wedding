@@ -1,4 +1,5 @@
-import { albumValues } from "@/constants/data";
+import portfolioData from "@/data/portfolio.json";
+const albumValues = portfolioData.albumValues;
 import { Icon } from "@/components/home/icon";
 import { GlassCard } from "@/components/ui/glass-card";
 
@@ -17,7 +18,7 @@ export function AlbumValues() {
 							className="flex items-center gap-6 p-6 border border-white/40 shadow-xs hover:shadow-md rounded-2xl"
 						>
 							<div className="grid size-12 place-items-center rounded-full bg-neutral-100/60 border border-white/40 shadow-xs shrink-0">
-								<Icon className="size-6 text-black" name={value.icon} />
+								<Icon className="size-6 text-black" name={value.icon as any} />
 							</div>
 							<div>
 								<h2 className="text-[0.74rem] font-bold uppercase tracking-[0.18em] text-black">

@@ -5,11 +5,7 @@ import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 
-const pricingImages = Array.from({ length: 13 }, (_, i) => ({
-  src: `/images/bang-gia/${i + 1}.jpg`,
-  alt: `Bảng giá dịch vụ Harmony Wedding - Trang ${i + 1}`,
-  title: `Trang ${String(i + 1).padStart(2, "0")}`,
-}));
+// pricingImages is loaded from props in PricingGallery below
 
 const pricingCategories = [
   {
@@ -829,7 +825,14 @@ const pricingCategories = [
   }
 ];
 
-export function PricingGallery() {
+export interface PricingImage {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+export function PricingGallery({ images }: { images: PricingImage[] }) {
+  const pricingImages = images;
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
@@ -1014,7 +1017,7 @@ export function PricingGallery() {
                           variant="light"
                           intensity="high"
                           borderStrength="medium"
-                          className="font-serif text-[0.78rem] font-bold text-amber-950 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full shrink-0 shadow-xs"
+                          className="font-serif text-[0.95rem] font-bold text-amber-950 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full shrink-0 shadow-xs"
                         >
                           {pkg.price}
                         </GlassCard>

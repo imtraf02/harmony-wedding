@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 
-import { services } from "@/constants/data";
+import homeData from "@/data/home.json";
+const services = homeData.services;
 import { gsap, useGSAP } from "@/lib/gsap";
 import { Icon } from "@/components/home/icon";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -76,7 +77,7 @@ export function ServicesBar() {
                 className="flex items-center gap-5 p-6 h-24 border border-white/8 hover:border-white/20 hover:bg-white/10 group cursor-pointer"
               >
                 <div className="grid size-12 shrink-0 place-items-center rounded-full bg-white/5 text-white/80 group-hover:bg-white/15 group-hover:text-white transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                  <Icon className="size-6 transition-transform duration-500 group-hover:scale-108" name={service.icon} />
+                  <Icon className="size-6 transition-transform duration-500 group-hover:scale-108" name={service.icon as any} />
                 </div>
                 <div>
                   <h3 className="text-[0.72rem] font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-white transition-colors">

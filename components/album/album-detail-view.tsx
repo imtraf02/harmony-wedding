@@ -4,10 +4,12 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { albumItems } from "@/constants/data";
+import portfolioData from "@/data/portfolio.json";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { siteConfig } from "@/lib/config";
 import type { AlbumDetail } from "@/types/home";
+
+const albumItems = portfolioData.albumItems;
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";

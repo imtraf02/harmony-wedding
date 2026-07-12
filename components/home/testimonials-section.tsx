@@ -3,11 +3,19 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { testimonials } from "@/constants/data";
+import { type TestimonialItem } from "@/types/home";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { trackEvent } from "@/lib/tracking";
 
-export function TestimonialsSection() {
+export function TestimonialsSection({
+	items,
+	reelAnGardenImage,
+	reelWeddingDayImage,
+}: {
+	items: TestimonialItem[];
+	reelAnGardenImage: string;
+	reelWeddingDayImage: string;
+}) {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	useScrollReveal(sectionRef);
 
@@ -38,7 +46,7 @@ export function TestimonialsSection() {
 
 				{/* Testimonials Grid */}
 				<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-					{testimonials.map((item) => (
+					{items.map((item) => (
 						<article
 							key={item.name}
 							className="flex flex-col justify-between bg-white border border-black/[0.04] hover:border-black/10 hover:shadow-lg transition-all duration-500 rounded-3xl p-6 sm:p-8"
@@ -93,7 +101,7 @@ export function TestimonialsSection() {
 							data-reveal
 						>
 							<Image
-								src="/images/reel-an-garden.png"
+								src={reelAnGardenImage}
 								alt="Hậu trường chụp cưới An Garden - Harmony Wedding"
 								fill
 								className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] brightness-75 group-hover:brightness-[0.82]"
@@ -133,7 +141,7 @@ export function TestimonialsSection() {
 							data-reveal
 						>
 							<Image
-								src="/images/reel-wedding-day.png"
+								src={reelWeddingDayImage}
 								alt="Hậu trường ngày cưới - Harmony Wedding"
 								fill
 								className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] brightness-75 group-hover:brightness-[0.82]"

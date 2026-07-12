@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
-import { stats, weddingImages } from "@/constants/data";
+import homeData from "@/data/home.json";
+const stats = homeData.stats;
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { gsap, useGSAP } from "@/lib/gsap";
 
-export function AboutSection() {
+export function AboutSection({ aboutImage }: { aboutImage: string }) {
 	const sectionRef = useRef<HTMLElement | null>(null);
 
 	useScrollReveal(sectionRef);
@@ -58,7 +59,7 @@ export function AboutSection() {
 						className="object-cover"
 						fill
 						sizes="(min-width: 1024px) 50vw, 100vw"
-						src={weddingImages.about}
+						src={aboutImage}
 						unoptimized
 					/>
 				</div>

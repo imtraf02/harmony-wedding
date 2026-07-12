@@ -1,5 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Cloudflare deployment
+
+1. Run `npx wrangler login` once on the deployment machine.
+2. In Cloudflare Workers & Pages, add production variables `CF_ACCESS_TEAM_DOMAIN` and `CF_ACCESS_AUD`. Do not add `CF_ACCESS_LOCAL_BYPASS` to production.
+3. Apply D1 migrations with `npm run db:migrate:prod`.
+4. Deploy with `npm run cf:deploy`.
+
+Use `npm run cf:preview` for a local OpenNext/Cloudflare preview. Local-only Access bypass belongs in `.dev.vars` as `CF_ACCESS_LOCAL_BYPASS=true`.
+
+To work on the CMS locally, run `npm run db:migrate:local` once, then `npm run dev:cms`. Do not use `npm run dev` for CMS CRUD: standard Next development mode does not expose the D1 and R2 bindings.
+
 ## Getting Started
 
 First, run the development server:

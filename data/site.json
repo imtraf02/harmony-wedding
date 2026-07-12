@@ -1,0 +1,64 @@
+{
+  "name": "Harmony Wedding",
+  "tagline": "Khoảnh Khắc Trọn Đời",
+  "url": "https://harmonywedding.com.vn",
+  "ogImage": "https://harmonywedding.com.vn/og.jpg",
+  "description": "Studio cưới cao cấp tại Việt Nam, chuyên chụp ảnh cưới, phim cưới và trải nghiệm hình ảnh tinh tế.",
+  "email": "giahan6845@gmail.com",
+  "emailSecondary": "studiohieutrancanon@gmail.com",
+  "address": "45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai",
+  "workingHours": "8:00 - 21:00 (T2 - CN)",
+  "links": {
+    "facebook": "https://www.facebook.com/profile.php?id=61550358332202",
+    "facebookSecondary": "https://www.facebook.com/hieutranharmonymedia",
+    "messenger": "https://m.me/61550358332202",
+    "tiktok": "https://www.tiktok.com/@harmonywedding45",
+    "youtube": "https://youtube.com/@harmonywedding?si=6RUlWkJauLb1nHwd",
+    "zalo": "https://zalo.me/0357256845",
+    "zaloSecondary": "https://zalo.me/0388660678",
+    "phone": "0357256845",
+    "phoneSecondary": "0388660678",
+    "googleMaps": "https://maps.app.goo.gl/6vtiHihaavy7YF6F6"
+  },
+  "menuItems": [
+    {
+      "label": "Trang Chủ",
+      "href": "/"
+    },
+    {
+      "label": "Về Chúng Tôi",
+      "href": "/about"
+    },
+    {
+      "label": "Dịch Vụ",
+      "href": "/services"
+    },
+    {
+      "label": "Tác Phẩm",
+      "href": "/portfolio"
+    },
+    {
+      "label": "Mẫu Đồ",
+      "href": "/mau-do"
+    },
+    {
+      "label": "Bảng Giá",
+      "href": "/pricing"
+    },
+    {
+      "label": "Cẩm Nang",
+      "href": "/blog"
+    },
+    {
+      "label": "Liên Hệ",
+      "href": "/contact"
+    }
+  ],
+  "contactInfo": {
+    "hotline": "0357.256.845 - 0388.660.678",
+    "zalo": "0357.256.845 - 0388.660.678",
+    "facebook": "Harmony Wedding / Hiếu Trần",
+    "address": "45 Đường Cuối Chợ Đông Hoà, Trảng Bom, Đồng Nai",
+    "email": "giahan6845@gmail.com / studiohieutrancanon@gmail.com"
+  }
+}

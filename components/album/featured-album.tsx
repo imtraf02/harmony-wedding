@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { featuredAlbumImages } from "@/constants/data";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import type { AlbumFeatureImage } from "@/types/home";
 
-export function FeaturedAlbum() {
+export function FeaturedAlbum({ images }: { images: AlbumFeatureImage[] }) {
 	return (
 		<section className="bg-transparent py-16 lg:py-24 relative z-10" id="featured-album">
 			<div className="mx-auto grid max-w-[1720px] gap-12 px-5 md:px-10 lg:grid-cols-[0.34fr_0.66fr] lg:items-center lg:px-16">
@@ -33,7 +33,7 @@ export function FeaturedAlbum() {
 
 				{/* Mobile Images (Grid layout wrapped in GlassCards) */}
 				<div className="grid grid-cols-2 gap-4 md:hidden">
-					{featuredAlbumImages.map((item, index) => (
+					{images.map((item, index) => (
 						<div
 							className={
 								index === 0
@@ -76,7 +76,7 @@ export function FeaturedAlbum() {
 
 				{/* Desktop Images layout wrapped in premium GlassCard structures */}
 				<div className="hidden gap-4 md:grid md:grid-cols-[1.2fr_1fr]">
-					{featuredAlbumImages.map((item) => (
+					{images.map((item) => (
 						<div
 							className={
 								item.featured

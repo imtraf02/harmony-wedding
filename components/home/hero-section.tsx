@@ -5,14 +5,13 @@ import Link from "next/link";
 
 import { RevealText } from "@/animations/reveal-text";
 import { ParallaxImage } from "@/animations/parallax-image";
-import { weddingImages } from "@/constants/data";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 import { trackContactChannel } from "@/lib/tracking";
 
-export function HeroSection() {
+export function HeroSection({ heroImage }: { heroImage: string }) {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useGSAP(
@@ -122,7 +121,7 @@ export function HeroSection() {
           imageClassName="object-cover object-[63%_center]"
           priority
           sizes="100vw"
-          src={weddingImages.hero}
+          src={heroImage}
         />
         {/* Ambient champagne blush mesh overlaying the photography */}
         <MeshGradient variant="light" className="opacity-35 mix-blend-color-burn" />

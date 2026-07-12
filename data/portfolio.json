@@ -1,0 +1,1550 @@
+{
+  "hero": {
+    "image": "/images/wedding/sunny-garden/1.webp",
+    "alt": "Album ảnh cưới Harmony Wedding - Cặp đôi tại Sunny Garden",
+    "leftImage": "/images/wedding/sunny-garden/10.webp",
+    "rightImage": "/images/wedding/sunny-garden/15.webp"
+  },
+  "albumFilters": [
+    "Tất cả album",
+    "An Garden",
+    "Đà Lạt",
+    "Đường Phố Hồ Chí Minh",
+    "Studio",
+    "Sunny Garden",
+    "Vũ Garden"
+  ],
+  "albumItems": [
+    {
+      "slug": "sunny-garden",
+      "title": "Sunny Garden",
+      "category": "Sunny Garden",
+      "location": "Sunny Garden",
+      "image": "/images/wedding/sunny-garden/1.webp",
+      "alt": "Album ảnh cưới Sunny Garden - Harmony Wedding",
+      "width": 1706,
+      "height": 2560
+    },
+    {
+      "slug": "studio-phong-trang-tron",
+      "title": "Studio Phông Trắng Trơn",
+      "category": "Studio",
+      "location": "Studio",
+      "image": "/images/wedding/studio-phong-trang-tron/1.webp",
+      "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Harmony Wedding",
+      "width": 1365,
+      "height": 2048
+    },
+    {
+      "slug": "duong-pho-ho-chi-minh-2",
+      "title": "Đường Phố Hồ Chí Minh - Bộ 2",
+      "category": "Đường Phố Hồ Chí Minh",
+      "location": "Đường Phố Hồ Chí Minh",
+      "image": "/images/wedding/duong-pho-ho-chi-minh-2/1.webp",
+      "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Harmony Wedding",
+      "width": 1706,
+      "height": 2560
+    },
+    {
+      "slug": "duong-pho-ho-chi-minh",
+      "title": "Đường Phố Hồ Chí Minh",
+      "category": "Đường Phố Hồ Chí Minh",
+      "location": "Đường Phố Hồ Chí Minh",
+      "image": "/images/wedding/duong-pho-ho-chi-minh/2.webp",
+      "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Harmony Wedding",
+      "width": 5472,
+      "height": 3648
+    },
+    {
+      "slug": "da-lat",
+      "title": "Đà Lạt",
+      "category": "Đà Lạt",
+      "location": "Đà Lạt",
+      "image": "/images/wedding/da-lat/7.webp",
+      "alt": "Album ảnh cưới Đà Lạt - Harmony Wedding",
+      "width": 2048,
+      "height": 1366
+    },
+    {
+      "slug": "an-garden",
+      "title": "An Garden",
+      "category": "An Garden",
+      "location": "An Garden",
+      "image": "/images/wedding/an-garden/1.webp",
+      "alt": "Album ảnh cưới An Garden - Harmony Wedding",
+      "width": 6720,
+      "height": 4480
+    },
+    {
+      "slug": "studio-phong-hoa-do-trang",
+      "title": "Studio Phông Hoa Đỏ Trắng",
+      "category": "Studio",
+      "location": "Studio",
+      "image": "/images/wedding/studio-phong-hoa-do-trang/1.webp",
+      "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Harmony Wedding",
+      "width": 1366,
+      "height": 2048
+    },
+    {
+      "slug": "vu-garden",
+      "title": "Vũ Garden",
+      "category": "Vũ Garden",
+      "location": "Vũ Garden",
+      "image": "/images/wedding/vu-garden/1.webp",
+      "alt": "Album ảnh cưới Vũ Garden - Harmony Wedding",
+      "width": 1365,
+      "height": 2048
+    },
+    {
+      "slug": "studio-phong-vai-lanh-trang",
+      "title": "Studio Phông Vải Lạnh Trắng",
+      "category": "Studio",
+      "location": "Studio",
+      "image": "/images/wedding/studio-phong-vai-lanh-trang/1.webp",
+      "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Harmony Wedding",
+      "width": 1365,
+      "height": 2048
+    },
+    {
+      "slug": "studio-han-quoc",
+      "title": "Studio Phong Cách Hàn Quốc",
+      "category": "Studio",
+      "location": "Studio",
+      "image": "/images/wedding/studio-han-quoc/1.webp",
+      "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Harmony Wedding",
+      "width": 1365,
+      "height": 2048
+    }
+  ],
+  "featuredAlbum": {
+    "title": "Sunny Garden",
+    "description": "Bộ ảnh tiêu biểu thực hiện tại phim trường Sunny Garden",
+    "images": [
+      {
+        "image": "/images/wedding/sunny-garden/1.webp",
+        "alt": "Cặp đôi ngọt ngào tại phim trường Sunny Garden - Harmony Wedding",
+        "featured": true,
+        "width": 1706,
+        "height": 2560
+      },
+      {
+        "image": "/images/wedding/sunny-garden/16.webp",
+        "alt": "Cô dâu chú rể tay trong tay giữa lối hoa phim trường Sunny Garden",
+        "width": 2560,
+        "height": 1706
+      },
+      {
+        "image": "/images/wedding/sunny-garden/22.webp",
+        "alt": "Góc chụp lãng mạn phong cách đồng quê châu Âu tại Sunny Garden",
+        "width": 2560,
+        "height": 1706
+      },
+      {
+        "image": "/images/wedding/sunny-garden/23.webp",
+        "alt": "Nụ cười rạng rỡ của cặp đôi dưới nắng nhẹ Sunny Garden",
+        "width": 2560,
+        "height": 1706
+      }
+    ]
+  },
+  "albumValues": [
+    {
+      "title": "Ảnh Chất Luyên Cao",
+      "description": "Thiết bị hiện đại, hình ảnh sắc nét",
+      "icon": "camera"
+    },
+    {
+      "title": "Cảm Xúc Chân Thật",
+      "description": "Lưu giữ khoảnh khắc tự nhiên nhất",
+      "icon": "heart"
+    },
+    {
+      "title": "Phong Cách Đa Dạng",
+      "description": "Phù hợp với mọi cá tính của cặp đôi",
+      "icon": "diamond"
+    },
+    {
+      "title": "Hậu Kỳ Chỉn Chu",
+      "description": "Màu sắc tinh tế, hoàn thiện tỉ mỉ",
+      "icon": "clock"
+    }
+  ],
+  "albumStats": [
+    {
+      "title": "100+",
+      "description": "Bộ ảnh cưới",
+      "icon": "camera"
+    },
+    {
+      "title": "1000+",
+      "description": "Khoảnh khắc đẹp",
+      "icon": "heart"
+    },
+    {
+      "title": "13+",
+      "description": "Năm kinh nghiệm",
+      "icon": "diamond"
+    },
+    {
+      "title": "100%",
+      "description": "Khách hàng hài lòng",
+      "icon": "clock"
+    }
+  ],
+  "albumDetails": [
+    {
+      "slug": "sunny-garden",
+      "eyebrow": "Sunny Garden",
+      "title": "Sunny Garden",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Sunny Garden được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "76 ảnh",
+      "location": "Sunny Garden",
+      "heroImage": "/images/wedding/sunny-garden/1.webp",
+      "heroAlt": "Album ảnh cưới Sunny Garden - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/sunny-garden/1.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 1",
+          "featured": true,
+          "width": 1706,
+          "height": 2560
+        },
+        {
+          "image": "/images/wedding/sunny-garden/2.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/3.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/4.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/5.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/6.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/7.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/8.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/9.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/10.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/11.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/12.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/13.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 13",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/14.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 14",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/15.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 15",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/16.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 16",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/17.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 17",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/18.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 18",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/19.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 19",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/20.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 20",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/21.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 21",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/22.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 22",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/23.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 23",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/24.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 24",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/25.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 25",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/26.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 26",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/27.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 27",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/28.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 28",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/29.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 29",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/30.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 30",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/31.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 31",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/32.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 32",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/33.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 33",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/34.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 34",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/35.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 35",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/36.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 36",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/37.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 37",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/38.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 38",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/39.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 39",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/40.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 40",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/41.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 41",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/42.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 42",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/43.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 43",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/44.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 44",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/45.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 45",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/46.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 46",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/47.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 47",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/48.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 48",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/49.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 49",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/50.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 50",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/51.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 51",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/52.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 52",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/53.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 53",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/54.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 54",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/55.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 55",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/56.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 56",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/57.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 57",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/58.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 58",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/59.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 59",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/60.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 60",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/61.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 61",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/62.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 62",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/63.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 63",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/64.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 64",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/65.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 65",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/66.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 66",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/67.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 67",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/68.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 68",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/69.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 69",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/70.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 70",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/71.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 71",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/72.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 72",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/73.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 73",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/74.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 74",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/75.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 75",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/sunny-garden/76.webp",
+          "alt": "Album ảnh cưới Sunny Garden - Ảnh 76",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Sunny Garden",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Sunny Garden",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "studio-phong-trang-tron",
+      "eyebrow": "Studio",
+      "title": "Studio Phông Trắng Trơn",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Studio Phông Trắng Trơn được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "10 ảnh",
+      "location": "Studio",
+      "heroImage": "/images/wedding/studio-phong-trang-tron/1.webp",
+      "heroAlt": "Album ảnh cưới Studio Phòng Trắng Tròn - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/1.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 1",
+          "featured": true,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/2.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/3.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/4.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/5.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/6.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/7.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/8.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/9.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-trang-tron/10.webp",
+          "alt": "Album ảnh cưới Studio Phòng Trắng Tròn - Ảnh 10",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Studio",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Studio",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "duong-pho-ho-chi-minh-2",
+      "eyebrow": "Đường Phố Hồ Chí Minh",
+      "title": "Đường Phố Hồ Chí Minh - Bộ 2",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Đường Phố Hồ Chí Minh - Bộ 2 được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "19 ảnh",
+      "location": "Đường Phố Hồ Chí Minh",
+      "heroImage": "/images/wedding/duong-pho-ho-chi-minh-2/1.webp",
+      "heroAlt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/1.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 1",
+          "featured": true,
+          "width": 1706,
+          "height": 2560
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/2.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/3.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/4.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/5.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/6.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/7.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/8.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/9.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/10.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/11.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/12.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/13.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 13",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/14.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 14",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/15.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 15",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/16.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 16",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/17.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 17",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/18.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 18",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh-2/19.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh Bộ 2 - Ảnh 19",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Đường Phố Hồ Chí Minh",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Đường Phố Hồ Chí Minh",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "duong-pho-ho-chi-minh",
+      "eyebrow": "Đường Phố Hồ Chí Minh",
+      "title": "Đường Phố Hồ Chí Minh",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Đường Phố Hồ Chí Minh được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "8 ảnh",
+      "location": "Đường Phố Hồ Chí Minh",
+      "heroImage": "/images/wedding/duong-pho-ho-chi-minh/2.webp",
+      "heroAlt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/1.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 1",
+          "featured": true,
+          "width": 5472,
+          "height": 3648
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/2.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/3.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/4.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/5.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/6.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/7.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/duong-pho-ho-chi-minh/8.webp",
+          "alt": "Album ảnh cưới Đường Phố Hồ Chí Minh - Ảnh 8",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Đường Phố Hồ Chí Minh",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Đường Phố Hồ Chí Minh",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "da-lat",
+      "eyebrow": "Đà Lạt",
+      "title": "Đà Lạt",
+      "scriptTitle": "Thiên Đường Tình Yêu",
+      "description": "Đà Lạt luôn có một sức hút đặc biệt bởi không khí se lạnh, khung cảnh thơ mộng và những khoảnh khắc lãng mạn.",
+      "imageCount": "21 ảnh",
+      "location": "Đà Lạt",
+      "heroImage": "/images/wedding/da-lat/2.webp",
+      "heroAlt": "Cặp đôi cưới trong rừng thông Đà Lạt",
+      "gallery": [
+        {
+          "image": "/images/wedding/da-lat/1.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 1",
+          "featured": true,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/da-lat/2.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/3.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/4.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/5.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/6.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/7.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/8.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/9.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/10.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/11.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/12.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/13.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 13",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/14.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 14",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/15.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 15",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/16.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 16",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/17.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 17",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/18.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 18",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/19.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 19",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/20.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 20",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/da-lat/21.webp",
+          "alt": "Album ảnh cưới Đà Lạt - Ảnh 21",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Đà Lạt, Lâm Đồng",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Tự nhiên, Lãng mạn",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "an-garden",
+      "eyebrow": "An Garden",
+      "title": "An Garden",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới An Garden được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "37 ảnh",
+      "location": "An Garden",
+      "heroImage": "/images/wedding/an-garden/1.webp",
+      "heroAlt": "Album ảnh cưới An Garden - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/an-garden/1.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 1",
+          "featured": true,
+          "width": 6720,
+          "height": 4480
+        },
+        {
+          "image": "/images/wedding/an-garden/2.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/3.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/4.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/5.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/6.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/7.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/8.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/9.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/10.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/11.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/12.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/13.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 13",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/14.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 14",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/15.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 15",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/16.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 16",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/17.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 17",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/18.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 18",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/19.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 19",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/20.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 20",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/21.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 21",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/22.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 22",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/23.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 23",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/24.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 24",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/25.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 25",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/26.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 26",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/27.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 27",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/28.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 28",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/29.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 29",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/30.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 30",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/31.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 31",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/32.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 32",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/33.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 33",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/34.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 34",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/35.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 35",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/36.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 36",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/an-garden/37.webp",
+          "alt": "Album ảnh cưới An Garden - Ảnh 37",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "An Garden",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "An Garden",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "studio-phong-hoa-do-trang",
+      "eyebrow": "Studio",
+      "title": "Studio Phông Hoa Đỏ Trắng",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Studio Phông Hoa Đỏ Trắng được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "5 ảnh",
+      "location": "Studio",
+      "heroImage": "/images/wedding/studio-phong-hoa-do-trang/1.webp",
+      "heroAlt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/studio-phong-hoa-do-trang/1.webp",
+          "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Ảnh 1",
+          "featured": true,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/studio-phong-hoa-do-trang/2.webp",
+          "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-hoa-do-trang/3.webp",
+          "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-hoa-do-trang/4.webp",
+          "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-hoa-do-trang/5.webp",
+          "alt": "Album ảnh cưới Studio Phòng Hoa Đỏ Trắng - Ảnh 5",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Studio",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Studio",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "vu-garden",
+      "eyebrow": "Vũ Garden",
+      "title": "Vũ Garden",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Vũ Garden được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "17 ảnh",
+      "location": "Vũ Garden",
+      "heroImage": "/images/wedding/vu-garden/1.webp",
+      "heroAlt": "Album ảnh cưới Vũ Garden - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/vu-garden/1.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 1",
+          "featured": true,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vu-garden/2.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/3.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/4.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/5.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/6.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/7.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/8.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/9.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/10.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/11.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/12.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/13.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 13",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/14.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 14",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/15.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 15",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/16.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 16",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/vu-garden/17.webp",
+          "alt": "Album ảnh cưới Vũ Garden - Ảnh 17",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Vũ Garden",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Vũ Garden",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "studio-phong-vai-lanh-trang",
+      "eyebrow": "Studio",
+      "title": "Studio Phông Vải Lạnh Trắng",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Studio Phông Vải Lạnh Trắng được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "10 ảnh",
+      "location": "Studio",
+      "heroImage": "/images/wedding/studio-phong-vai-lanh-trang/1.webp",
+      "heroAlt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/1.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 1",
+          "featured": true,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/2.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/3.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/4.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/5.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/6.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/7.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/8.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/9.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-phong-vai-lanh-trang/10.webp",
+          "alt": "Album ảnh cưới Studio Phông Vải Lạnh Trắng - Ảnh 10",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Studio",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Studio",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "studio-han-quoc",
+      "eyebrow": "Studio",
+      "title": "Studio Phong Cách Hàn Quốc",
+      "scriptTitle": "Tình Yêu",
+      "description": "Bộ ảnh cưới Studio Phong Cách Hàn Quốc được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những cảm xúc tự nhiên của dâu rể.",
+      "imageCount": "13 ảnh",
+      "location": "Studio",
+      "heroImage": "/images/wedding/studio-han-quoc/1.webp",
+      "heroAlt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/studio-han-quoc/1.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 1",
+          "featured": true,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/2.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 2",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/3.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 3",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/4.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 4",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/5.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 5",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/6.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 6",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/7.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 7",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/8.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 8",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/9.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 9",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/10.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 10",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/11.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 11",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/12.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 12",
+          "featured": false
+        },
+        {
+          "image": "/images/wedding/studio-han-quoc/13.webp",
+          "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Ảnh 13",
+          "featured": false
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Studio",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Studio",
+          "icon": "heart"
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Album Ảnh Cưới Đẹp - Tác Phẩm Ngoại Cảnh & Studio",
+    "description": "Bộ sưu tập album ảnh cưới đẹp của Harmony Wedding: ảnh cưới ngoại cảnh Đà Lạt, Sunny Garden, An Garden, studio concept và đường phố Hồ Chí Minh."
+  }
+}

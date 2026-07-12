@@ -1,0 +1,154 @@
+{
+  "title": "Dịch Vụ Cưới Trọn Gói",
+  "description": "Từ pre-wedding chụp ảnh phóng sự đến váy cưới vest thiết kế và ngày tiệc chính, Harmony đồng hành trọn vẹn cùng bạn.",
+  "services": [
+    {
+      "title": "Chụp Ảnh Cưới",
+      "description": "Bộ ảnh cưới được lên concept theo câu chuyện, địa điểm và phong cách riêng của từng cặp đôi.",
+      "image": "/images/services/photography.webp",
+      "alt": "Dịch vụ chụp ảnh cưới ngoại cảnh Đà Lạt Harmony Wedding",
+      "deliverables": [
+        "Tư vấn concept",
+        "Chụp ngoại cảnh hoặc studio",
+        "Retouch ảnh chọn lọc",
+        "Thư viện ảnh online"
+      ],
+      "icon": "camera"
+    },
+    {
+      "title": "Quay Phim Cưới",
+      "description": "Thước phim highlight giàu cảm xúc, dựng nhịp điện ảnh và giữ lại không khí thật của ngày cưới.",
+      "image": "/images/services/videography.webp",
+      "alt": "Dịch vụ quay phim cưới ngoại cảnh Harmony Wedding",
+      "deliverables": [
+        "Kịch bản quay",
+        "Highlight film",
+        "Full ceremony",
+        "Bàn giao file gốc theo gói"
+      ],
+      "icon": "film"
+    },
+    {
+      "title": "Trang Điểm Cô Dâu",
+      "description": "Makeup tự nhiên, thanh lịch, bền màu và phù hợp gương mặt, váy cưới, ánh sáng chụp.",
+      "image": "/images/services/makeup.webp",
+      "alt": "Dịch vụ trang điểm cô dâu Harmony Wedding",
+      "deliverables": [
+        "Tư vấn layout",
+        "Makeup thử theo lịch",
+        "Làm tóc cô dâu",
+        "Dặm chỉnh trong buổi chụp"
+      ],
+      "icon": "dress"
+    },
+    {
+      "title": "Thuê Vest & Váy Cưới",
+      "description": "Cung cấp các mẫu vest chú rể lịch lãm và váy cưới thiết kế cao cấp, tôn vinh vóc dáng và phong cách riêng.",
+      "image": "/images/services/suit-dress-rental.webp",
+      "alt": "Dịch vụ thuê vest và váy cưới thiết kế cao cấp Harmony Wedding",
+      "deliverables": [
+        "Thử váy & vest không giới hạn",
+        "Chỉnh sửa số đo theo form dáng",
+        "Giặt ủi khử khuẩn chuyên nghiệp",
+        "Phụ kiện đi kèm trọn gói"
+      ],
+      "icon": "dress-rental"
+    },
+    {
+      "title": "Tổ Chức Tiệc Cưới",
+      "description": "Đồng hành điều phối timeline, hình ảnh, không gian và trải nghiệm trong ngày trọng đại.",
+      "image": "/images/services/wedding-planning.webp",
+      "alt": "Dịch vụ tổ chức tiệc cưới Harmony Wedding",
+      "deliverables": [
+        "Timeline ngày cưới",
+        "Điều phối ekip",
+        "Concept trang trí",
+        "Tư vấn trải nghiệm khách mời"
+      ],
+      "icon": "calendar"
+    },
+    {
+      "title": "Chụp Beauty",
+      "description": "Bộ ảnh chân dung nghệ thuật làm nổi bật đường nét thanh tú và biểu cảm tự nhiên của riêng bạn.",
+      "image": "/images/services/beauty.webp",
+      "alt": "Dịch vụ chụp ảnh chân dung nghệ thuật Beauty Harmony Wedding",
+      "deliverables": [
+        "Tư vấn layout trang điểm",
+        "Chụp cận cảnh với ánh sáng studio",
+        "Hậu kỳ da chuyên nghiệp",
+        "Bàn giao file chất lượng cao"
+      ],
+      "icon": "moodboard"
+    },
+    {
+      "title": "Chụp Baby",
+      "description": "Ghi lại những khoảnh khắc trong trẻo, hồn nhiên và đáng yêu nhất của các bé trong không gian tự nhiên ấm áp.",
+      "image": "/images/services/baby.webp",
+      "alt": "Dịch vụ chụp ảnh cho bé Baby Portrait Harmony Wedding",
+      "deliverables": [
+        "Chuẩn bị phụ kiện & bối cảnh",
+        "Ekip kiên nhẫn và giàu kinh nghiệm",
+        "Hỗ trợ thay trang phục cho bé",
+        "Bàn giao album ảnh hoàn thiện"
+      ],
+      "icon": "heart"
+    },
+    {
+      "title": "Chụp Sinh Nhật",
+      "description": "Lưu giữ nụ cười rạng rỡ và những khoảnh khắc ý nghĩa bên người thân, bạn bè trong ngày đón tuổi mới.",
+      "image": "/images/services/birthday.webp",
+      "alt": "Dịch vụ chụp ảnh sinh nhật sự kiện Harmony Wedding",
+      "deliverables": [
+        "Chụp tiệc hoặc chụp ngoại cảnh",
+        "Ghi trọn khoảnh khắc thổi nến & cắt bánh",
+        "Chụp ảnh tập thể sắc nét",
+        "Hậu kỳ nhanh chóng và bàn giao file"
+      ],
+      "icon": "calendar"
+    },
+    {
+      "title": "Đào Tạo Quay Chụp",
+      "description": "Khóa học thực chiến giúp bạn làm chủ thiết bị, tư duy bố cục, ánh sáng và kỹ năng quay phim, chụp ảnh từ cơ bản đến nâng cao.",
+      "image": "/images/services/teaching-media.webp",
+      "alt": "Khóa đào tạo quay phim chụp ảnh chuyên nghiệp Harmony Wedding",
+      "deliverables": [
+        "Giáo trình lý thuyết bố cục & ánh sáng",
+        "Thực hành trực tiếp với người mẫu",
+        "Hướng dẫn setup thiết bị chuyên sâu",
+        "Kỹ thuật hậu kỳ hình ảnh & video"
+      ],
+      "icon": "aperture"
+    },
+    {
+      "title": "Đào Tạo Makeup",
+      "description": "Khóa học trang điểm cá nhân hoặc chuyên nghiệp giúp bạn tự tin làm đẹp cho bản thân hoặc trở thành chuyên viên makeup thực thụ.",
+      "image": "/images/services/teaching-makeup.webp",
+      "alt": "Khóa đào tạo trang điểm chuyên nghiệp Harmony Wedding",
+      "deliverables": [
+        "Nhận diện dáng khuôn mặt & loại da",
+        "Kỹ thuật tạo lớp nền trong suốt",
+        "Kỹ năng trang điểm mắt & phối màu",
+        "Thực hành trên mẫu thật chuẩn studio"
+      ],
+      "icon": "edit"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Nên đặt lịch trước bao lâu?",
+      "answer": "Tối thiểu 4-6 tuần để có đủ thời gian tư vấn concept, chọn lịch chụp và chuẩn bị trang phục."
+    },
+    {
+      "question": "Có hỗ trợ chọn địa điểm chụp không?",
+      "answer": "Có. Ekip sẽ đề xuất studio, ngoại cảnh hoặc địa điểm riêng theo phong cách bạn muốn."
+    },
+    {
+      "question": "Khi nào nhận ảnh hoàn thiện?",
+      "answer": "Thời gian bàn giao phụ thuộc gói dịch vụ, thông thường từ 1-2 tuần sau khi chọn ảnh."
+    }
+  ],
+  "seo": {
+    "title": "Dịch Vụ Cưới Trọn Gói - Chụp Ảnh, Quay Phim, Makeup, Thuê Vest & Váy",
+    "description": "Dịch vụ cưới trọn gói Harmony Wedding: chụp ảnh cưới nghệ thuật, quay phim highlight, trang điểm cô dâu, thuê vest & váy cưới cao cấp, tổ chức tiệc cưới tại Đồng Nai."
+  }
+}

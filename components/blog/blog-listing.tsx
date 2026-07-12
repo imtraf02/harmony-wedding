@@ -6,13 +6,13 @@ import { useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 
-import { blogCategories, blogPosts } from "@/constants/blog";
+import type { BlogPost } from "@/types/blog";
 
-export function BlogListing() {
+export function BlogListing({ posts, categories }: { posts: BlogPost[]; categories: string[] }) {
 	const [activeCategory, setActiveCategory] = useState("Tất cả");
 	const [searchQuery, setSearchQuery] = useState("");
 
-	const filteredPosts = blogPosts.filter((post) => {
+	const filteredPosts = posts.filter((post) => {
 		const matchesCategory =
 			activeCategory === "Tất cả" || post.category === activeCategory;
 		const matchesSearch =
@@ -32,7 +32,7 @@ export function BlogListing() {
 			<div className="mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-center md:justify-between border-b border-black/[0.05] pb-8">
 				{/* Categories - Swipeable Glass pills style */}
 				<div className="flex items-center gap-2 overflow-x-auto scrollbar-none bg-neutral-100/50 p-1 rounded-full border border-black/[0.03] max-w-full flex-nowrap px-1.5 py-1.5 shrink-0">
-					{blogCategories.map((category) => (
+					{categories.map((category) => (
 						<button
 							key={category}
 							onClick={() => setActiveCategory(category)}
