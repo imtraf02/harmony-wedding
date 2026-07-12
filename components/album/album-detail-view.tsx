@@ -470,30 +470,7 @@ export function AlbumDetailView({ album }: AlbumDetailViewProps) {
 				</div>
 			</section>
 
-			{/* Architectural Specs Matrix (2-columns layout) */}
-			<section className="px-5 pb-20 md:px-10 lg:pb-32">
-				<div className="album-info-grid mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 border-t border-black/[0.08]">
-					{album.info.map((item, index) => (
-						<article
-							className={`album-info-card py-12 pr-8 flex flex-col justify-between ${
-								index === 0
-									? "md:border-r md:border-black/[0.08] border-b border-black/[0.08] md:border-b-0"
-									: "md:pl-8"
-							}`}
-							key={item.title}
-						>
-							<div>
-								<span className="text-[0.62rem] font-bold text-neutral-400 tracking-[0.2em] uppercase">
-									0{index + 1} / {item.title}
-								</span>
-								<p className="font-serif text-[1.45rem] text-neutral-900 leading-tight mt-6 tracking-tight">
-									{item.description}
-								</p>
-							</div>
-						</article>
-					))}
-				</div>
-			</section>
+
 
 			{/* Immersive Editorial CTA */}
 			<AlbumDetailCta image={album.heroImage} title={album.title} />
@@ -706,17 +683,7 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 				{album.description}
 			</p>
 			
-			{/* Architectural Specs Summary */}
-			<div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-black/[0.06] pt-10 text-[0.66rem] font-bold uppercase tracking-[0.2em] text-neutral-800">
-				<div className="flex flex-col gap-1.5">
-					<span className="text-neutral-400 font-medium tracking-[0.16em]">Bản Giao</span>
-					<span>{album.imageCount}</span>
-				</div>
-				<div className="flex flex-col gap-1.5">
-					<span className="text-neutral-400 font-medium tracking-[0.16em]">Địa Điểm</span>
-					<span>{album.location}</span>
-				</div>
-			</div>
+
 
 			<div className="mt-10">
 				<GlassButton
