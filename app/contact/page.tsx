@@ -50,7 +50,7 @@ export function ContactPage() {
                 Kênh liên lạc trực tiếp
                 <span className="h-px w-10 bg-neutral-300" />
               </p>
-              <h1 className="font-serif text-[clamp(3rem,8vw,5rem)] leading-[0.98] text-neutral-900 tracking-tight mb-8">
+              <h1 className="font-serif text-[clamp(3rem,8vw,5rem)] leading-[1.15] text-neutral-900 tracking-tight mb-8">
                 Trao Đổi Ý Tưởng <br />
                 & Báo Giá
               </h1>

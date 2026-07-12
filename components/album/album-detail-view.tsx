@@ -694,7 +694,7 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 			<p className="mb-6 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
 				{album.eyebrow}
 			</p>
-			<h1 className="font-serif text-[clamp(3.6rem,8vw,6.5rem)] uppercase leading-[0.84] text-neutral-900 tracking-tighter">
+			<h1 className="font-serif text-[clamp(3.6rem,8vw,6.5rem)] uppercase leading-[1.08] text-neutral-900 tracking-tighter">
 				{album.title}
 			</h1>
 			{album.scriptTitle && (

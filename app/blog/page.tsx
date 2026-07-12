@@ -51,7 +51,7 @@ export async function BlogPage() {
           <span className="text-[0.68rem] font-bold uppercase tracking-[0.25em] text-neutral-400">
             Harmony Journal
           </span>
-          <h1 className="mt-3 font-serif text-[clamp(2.5rem,8vw,5.5rem)] leading-none text-white tracking-tight">
+          <h1 className="mt-3 font-serif text-[clamp(2.5rem,8vw,5.5rem)] leading-[1.1] text-white tracking-tight">
             Cẩm Nang Cưới
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-xs leading-relaxed tracking-wider text-neutral-300 uppercase md:text-sm font-light">

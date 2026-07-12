@@ -23,7 +23,7 @@ export function ContactCta() {
             Liên hệ với chúng tôi
             <span className="h-px w-16 bg-white" />
           </p>
-          <h2 className="max-w-5xl font-serif text-[clamp(2.7rem,12vw,4.6rem)] leading-[0.96] lg:text-[clamp(3rem,7vw,8.2rem)] lg:leading-[0.9]">
+          <h2 className="max-w-5xl font-serif text-[clamp(2.7rem,12vw,4.6rem)] leading-[1.15] lg:text-[clamp(3rem,7vw,8.2rem)] lg:leading-[1.1]">
             Chúng Tôi Luôn Sẵn Sàng Lắng Nghe Và Đồng Hành Cùng Bạn
           </h2>
           <Link

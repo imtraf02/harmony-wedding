@@ -50,7 +50,7 @@ export async function PricingPage() {
 
       <div className="pt-32 md:pt-44 bg-transparent relative z-10">
         <div className="mx-auto max-w-[1500px] px-5 py-12 md:px-10 lg:px-16 text-center">
-          <h1 className="font-serif text-[clamp(3.2rem,14vw,6.5rem)] leading-[0.86] text-black tracking-tight">
+          <h1 className="font-serif text-[clamp(3.2rem,14vw,6.5rem)] leading-[1.1] text-black tracking-tight">
             {pricingData.title}
           </h1>
           <p className="mt-6 mx-auto max-w-lg text-[0.92rem] leading-7 text-neutral-600 font-light">

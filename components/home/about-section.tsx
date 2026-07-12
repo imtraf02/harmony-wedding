@@ -73,7 +73,7 @@ export function AboutSection({ aboutImage }: { aboutImage: string }) {
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
 					<h2
-						className="font-serif text-[clamp(2.55rem,12vw,4rem)] leading-[0.98] text-black lg:text-[clamp(2.45rem,4.5vw,5.3rem)]"
+						className="font-serif text-[clamp(2.55rem,12vw,4rem)] leading-[1.18] text-black lg:text-[clamp(2.45rem,4.5vw,5.3rem)]"
 						data-reveal
 					>
 						Hơn 13 Năm, Vẫn Đang Làm Việc Mình Yêu Thích

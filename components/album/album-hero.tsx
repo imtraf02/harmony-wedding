@@ -34,7 +34,7 @@ export function AlbumHero({ heroImage, heroAlt, leftImage, rightImage }: AlbumHe
 							Album cưới
 							<span className="h-px w-12 bg-white/50" />
 						</p>
-						<h1 className="max-w-xs font-serif text-[clamp(3.2rem,16vw,5rem)] leading-[0.92]">
+						<h1 className="max-w-xs font-serif text-[clamp(3.2rem,16vw,5rem)] leading-[1.15]">
 							Những Câu Chuyện Tình Yêu
 						</h1>
 						<p className="mt-6 max-w-sm text-sm leading-7 text-white/80">
@@ -87,7 +87,7 @@ export function AlbumHero({ heroImage, heroAlt, leftImage, rightImage }: AlbumHe
 						Album cưới
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
-					<h1 className="max-w-2xl font-serif text-[clamp(2.8rem,4.5vw,4.5rem)] leading-[1.08] text-neutral-900">
+					<h1 className="max-w-2xl font-serif text-[clamp(2.8rem,4.5vw,4.5rem)] leading-[1.18] text-neutral-900">
 						Những Câu Chuyện <span className="font-light italic text-neutral-500 block sm:inline">Tình Yêu</span>
 					</h1>
 					<p className="mt-8 max-w-md text-[0.92rem] leading-8 text-neutral-500 font-light">

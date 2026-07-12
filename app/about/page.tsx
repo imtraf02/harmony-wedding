@@ -56,7 +56,7 @@ export async function AboutPage() {
             {about.eyebrow}
             <span className="h-px w-16 bg-neutral-300" />
           </p>
-          <h1 className="font-serif text-[clamp(3.2rem,10vw,5.5rem)] leading-[0.9] text-black max-w-4xl tracking-tight">
+          <h1 className="font-serif text-[clamp(3.2rem,10vw,5.5rem)] leading-[1.12] text-black max-w-4xl tracking-tight">
             {about.title}
           </h1>
 

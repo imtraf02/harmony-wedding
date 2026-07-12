@@ -21,7 +21,7 @@ export function BookingSection() {
 							Liên hệ đặt lịch
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
-						<h2 className="font-serif text-[clamp(2.45rem,4.5vw,4.8rem)] leading-[0.98] text-neutral-900 tracking-tight mb-8">
+						<h2 className="font-serif text-[clamp(2.45rem,4.5vw,4.8rem)] leading-[1.18] text-neutral-900 tracking-tight mb-8">
 							Khởi Đầu Hành Trình Cưới Của Bạn
 						</h2>
 						<p className="text-[0.92rem] leading-8 text-neutral-500 font-light max-w-md mb-8">

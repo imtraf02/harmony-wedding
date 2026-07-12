@@ -63,7 +63,7 @@ export function ServicesPageContent({
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
 						<h1
-							className="font-serif text-[clamp(3.4rem,14vw,6rem)] leading-[0.88] lg:text-[clamp(4.4rem,7vw,8rem)]"
+							className="font-serif text-[clamp(3.4rem,14vw,6rem)] leading-[1.1] lg:text-[clamp(4.4rem,7vw,8rem)]"
 							data-reveal
 						>
 							Trọn Vẹn Cho Ngày Cưới
@@ -226,7 +226,7 @@ export function ServicesPageContent({
 							Quy trình
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
-						<h2 className="font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1] text-black">
+						<h2 className="font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1.18] text-black">
 							Làm việc rõ ràng từ đầu đến cuối
 						</h2>
 						<p className="mt-6 text-sm leading-7 text-neutral-600">

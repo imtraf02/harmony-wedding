@@ -146,7 +146,7 @@ export function HeroSection({ heroImage }: { heroImage: string }) {
             
             <RevealText
               as="h1"
-              className="font-serif text-[clamp(1.85rem,7.5vw,3rem)] md:text-[clamp(3.2rem,14vw,5.5rem)] lg:text-[clamp(3.8rem,6.5vw,7rem)] leading-[0.98] tracking-normal text-black pb-1"
+              className="font-serif text-[clamp(1.85rem,7.5vw,3rem)] md:text-[clamp(3.2rem,14vw,5.5rem)] lg:text-[clamp(3.8rem,6.5vw,7rem)] leading-[1.15] tracking-normal text-black pb-1"
               lines={["Khoảnh Khắc Cưới", "Tự Nhiên & Tinh Tế"]}
             />
             

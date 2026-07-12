@@ -51,7 +51,7 @@ export async function PrivacyPolicyPage() {
 							Thông tin pháp lý
 							<span className="h-px w-10 bg-neutral-300" />
 						</p>
-						<h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] leading-[0.98] text-neutral-900 tracking-tight">
+						<h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.15] text-neutral-900 tracking-tight">
 							{policy.title.split(" ").slice(0, 2).join(" ")} <br />
 							{policy.title.split(" ").slice(2).join(" ")}
 						</h1>
