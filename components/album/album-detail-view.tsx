@@ -685,15 +685,7 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 			
 
 
-			<div className="mt-10">
-				<GlassButton
-					variant="dark"
-					href="/contact"
-					className="w-full sm:w-auto !py-3 !px-8 text-[0.68rem] tracking-[0.22em]"
-				>
-					Xem video highlight ➔
-				</GlassButton>
-			</div>
+
 		</div>
 	);
 }
