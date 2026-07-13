@@ -11,6 +11,7 @@
     "Đà Lạt",
     "Đường Phố Hồ Chí Minh",
     "Studio",
+    "Ngày Cưới",
     "Sunny Garden",
     "Vũ Garden"
   ],
@@ -122,6 +123,16 @@
       "location": "Studio",
       "image": "/images/wedding/studio-han-quoc/1.webp",
       "alt": "Album ảnh cưới Studio Phong Cách Hàn Quốc - Harmony Wedding",
+      "width": 1365,
+      "height": 2048
+    },
+    {
+      "slug": "ngay-cuoi",
+      "title": "Ngày Cưới",
+      "category": "Ngày Cưới",
+      "location": "Ngày Cưới",
+      "image": "/images/wedding/ngay-cuoi/1.webp",
+      "alt": "Album ảnh phóng sự ngày cưới - Harmony Wedding",
       "width": 1365,
       "height": 2048
     }
@@ -1985,6 +1996,101 @@
         {
           "title": "Phong cách",
           "description": "Studio",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "slug": "ngay-cuoi",
+      "eyebrow": "Phóng Sự Cưới",
+      "title": "Ngày Cưới",
+      "scriptTitle": "Khoảnh Khắc Vàng",
+      "description": "Bộ ảnh phóng sự ngày cưới trọn vẹn cảm xúc tự nhiên, ghi lại những nụ cười, giọt nước mắt hạnh phúc của dâu rể và hai bên gia đình.",
+      "imageCount": "10 ảnh",
+      "location": "Đồng Nai",
+      "heroImage": "/images/wedding/ngay-cuoi/1.webp",
+      "heroAlt": "Album ảnh phóng sự ngày cưới - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/ngay-cuoi/1.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 1",
+          "featured": true,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/2.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 2",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/3.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 3",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/4.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 4",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/5.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 5",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/6.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 6",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/7.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 7",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/8.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 8",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/9.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 9",
+          "featured": false,
+          "width": 1365,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/ngay-cuoi/10.webp",
+          "alt": "Album ảnh phóng sự ngày cưới - Ảnh 10",
+          "featured": false,
+          "width": 2048,
+          "height": 1365
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Đồng Nai",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Phóng sự tự nhiên",
           "icon": "heart"
         }
       ]

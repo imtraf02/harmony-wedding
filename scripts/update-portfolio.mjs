@@ -16,7 +16,7 @@ if (!fs.existsSync(portfolioPath)) {
 // Load current data
 const data = JSON.parse(fs.readFileSync(portfolioPath, "utf8"));
 
-// 1. Define moved images details
+// 1. Define moved images details for Vũ Garden 2
 const movedNumbers = [2, 3, 8, 10, 12, 16, 20, 22, 26, 27, 29, 31];
 const movedNumbersSet = new Set(movedNumbers);
 
@@ -32,16 +32,14 @@ const remainingAnGardenGallery = [];
 const movedToVuGarden2Gallery = [];
 
 for (const item of originalAnGardenGallery) {
-  // Extract number from path, e.g. "/images/wedding/an-garden/2.webp" -> 2
   const match = item.image.match(/\/(\d+)\.webp$/);
   if (match) {
     const num = parseInt(match[1], 10);
     if (movedNumbersSet.has(num)) {
-      // Create new gallery item object for Vũ Garden 2
       const newItem = {
         image: `/images/wedding/vu-garden-2/${num}.webp`,
         alt: `Album ảnh cưới Vũ Garden 2 - Ảnh ${num}`,
-        featured: num === 2 // Let's make the first one (2.webp) the featured one
+        featured: num === 2
       };
       movedToVuGarden2Gallery.push(newItem);
       continue;
@@ -50,12 +48,10 @@ for (const item of originalAnGardenGallery) {
   remainingAnGardenGallery.push(item);
 }
 
-// Ensure remaining items have exactly one featured image
 remainingAnGardenGallery.forEach((item, index) => {
   item.featured = (index === 0);
 });
 
-// Update An Garden gallery and image count
 anGardenDetail.gallery = remainingAnGardenGallery;
 anGardenDetail.imageCount = `${remainingAnGardenGallery.length} ảnh`;
 console.log(`Updated An Garden album. Remaining images: ${remainingAnGardenGallery.length}`);
@@ -67,7 +63,6 @@ if (!vuGardenDetail) {
   process.exit(1);
 }
 
-// Sort movedToVuGarden2Gallery by numerical order of the image name
 movedToVuGarden2Gallery.sort((a, b) => {
   const numA = parseInt(a.image.match(/\/(\d+)\.webp$/)[1], 10);
   const numB = parseInt(b.image.match(/\/(\d+)\.webp$/)[1], 10);
@@ -99,16 +94,14 @@ const vuGarden2Detail = {
   ]
 };
 
-// Insert Vũ Garden 2 right after Vũ Garden in details list
 const vuGardenIndex = data.albumDetails.findIndex(album => album.slug === "vu-garden");
 if (data.albumDetails.some(album => album.slug === "vu-garden-2")) {
-  console.log("Vũ Garden 2 detail already exists. Skipping insertion.");
+  console.log("Vũ Garden 2 detail already exists.");
 } else {
   data.albumDetails.splice(vuGardenIndex + 1, 0, vuGarden2Detail);
   console.log("Inserted Vũ Garden 2 details.");
 }
 
-// 4. Create Vũ Garden 2 item block in albumItems
 const vuGardenItem = data.albumItems.find(item => item.slug === "vu-garden");
 const vuGarden2Item = {
   slug: "vu-garden-2",
@@ -121,10 +114,88 @@ const vuGarden2Item = {
 
 const vuGardenItemIndex = data.albumItems.findIndex(item => item.slug === "vu-garden");
 if (data.albumItems.some(item => item.slug === "vu-garden-2")) {
-  console.log("Vũ Garden 2 item already exists in albumItems. Skipping insertion.");
+  console.log("Vũ Garden 2 item already exists in albumItems.");
 } else {
   data.albumItems.splice(vuGardenItemIndex + 1, 0, vuGarden2Item);
   console.log("Inserted Vũ Garden 2 item.");
+}
+
+// 4. Create structure for "Ngày Cưới" Album
+console.log("Processing Ngày Cưới album structure...");
+
+// Add "Ngày Cưới" filter
+if (!data.albumFilters.includes("Ngày Cưới")) {
+  // Let's insert in alphabetical-like order (e.g. after Studio)
+  const studioIdx = data.albumFilters.indexOf("Studio");
+  if (studioIdx !== -1) {
+    data.albumFilters.splice(studioIdx + 1, 0, "Ngày Cưới");
+  } else {
+    data.albumFilters.push("Ngày Cưới");
+  }
+  console.log("Added 'Ngày Cưới' to albumFilters.");
+} else {
+  console.log("'Ngày Cưới' already in albumFilters.");
+}
+
+// Add "Ngày Cưới" item in albumItems
+const existingNgayCuoiItem = data.albumItems.find(item => item.slug === "ngay-cuoi");
+if (!existingNgayCuoiItem) {
+  const ngayCuoiItem = {
+    slug: "ngay-cuoi",
+    title: "Ngày Cưới",
+    category: "Ngày Cưới",
+    location: "Ngày Cưới",
+    image: "/images/wedding/ngay-cuoi/1.webp",
+    alt: "Album ảnh phóng sự ngày cưới - Harmony Wedding"
+  };
+  // Append to the end or insert at appropriate place
+  data.albumItems.push(ngayCuoiItem);
+  console.log("Added 'ngay-cuoi' to albumItems.");
+} else {
+  console.log("'ngay-cuoi' item already in albumItems.");
+}
+
+// Add "Ngày Cưới" detail block
+const existingNgayCuoiDetail = data.albumDetails.find(album => album.slug === "ngay-cuoi");
+if (!existingNgayCuoiDetail) {
+  const ngayCuoiGallery = [];
+  for (let i = 1; i <= 10; i++) {
+    ngayCuoiGallery.push({
+      image: `/images/wedding/ngay-cuoi/${i}.webp`,
+      alt: `Album ảnh phóng sự ngày cưới - Ảnh ${i}`,
+      featured: i === 1
+    });
+  }
+
+  const ngayCuoiDetail = {
+    slug: "ngay-cuoi",
+    eyebrow: "Phóng Sự Cưới",
+    title: "Ngày Cưới",
+    scriptTitle: "Khoảnh Khắc Vàng",
+    description: "Bộ ảnh phóng sự ngày cưới trọn vẹn cảm xúc tự nhiên, ghi lại những nụ cười, giọt nước mắt hạnh phúc của dâu rể và hai bên gia đình.",
+    imageCount: "10 ảnh",
+    location: "Đồng Nai",
+    heroImage: "/images/wedding/ngay-cuoi/1.webp",
+    heroAlt: "Album ảnh phóng sự ngày cưới - Harmony Wedding",
+    gallery: ngayCuoiGallery,
+    info: [
+      {
+        title: "Địa điểm",
+        description: "Đồng Nai",
+        icon: "location"
+      },
+      {
+        title: "Phong cách",
+        description: "Phóng sự tự nhiên",
+        icon: "heart"
+      }
+    ]
+  };
+
+  data.albumDetails.push(ngayCuoiDetail);
+  console.log("Added 'ngay-cuoi' details to albumDetails.");
+} else {
+  console.log("'ngay-cuoi' detail already in albumDetails.");
 }
 
 // 5. Helper function to read image dimensions
@@ -153,7 +224,6 @@ function getImageDimensions(imagePath) {
 // 6. Update dimensions for all image fields in JSON data
 console.log("Updating dimensions...");
 
-// Update albumItems
 for (const item of data.albumItems) {
   const dims = getImageDimensions(item.image);
   if (dims) {
@@ -162,7 +232,6 @@ for (const item of data.albumItems) {
   }
 }
 
-// Update featuredAlbum.images
 if (data.featuredAlbum && data.featuredAlbum.images) {
   for (const img of data.featuredAlbum.images) {
     const dims = getImageDimensions(img.image);
@@ -173,12 +242,8 @@ if (data.featuredAlbum && data.featuredAlbum.images) {
   }
 }
 
-// Update gallery lists in albumDetails
 for (const album of data.albumDetails) {
   console.log(`Processing dimensions for album: ${album.slug}`);
-  const heroDims = getImageDimensions(album.heroImage);
-  // We can add width/height to hero if needed, but it's not present in structure usually.
-  
   if (album.gallery) {
     for (const item of album.gallery) {
       const dims = getImageDimensions(item.image);
