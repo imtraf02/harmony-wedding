@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
+import { useRef } from "react";
+import { AnimatedArrowRight } from "@/components/ui/animated-icons";
 import { GlassButton } from "@/components/ui/glass-button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { trackContactChannel } from "@/lib/tracking";
-import { AnimatedArrowRight } from "@/components/ui/animated-icons";
 
 const CORE_PACKAGES = [
 	{
@@ -52,8 +52,6 @@ const CORE_PACKAGES = [
 	},
 ];
 
-
-
 export function PricingSection() {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	useScrollReveal(sectionRef);
@@ -66,7 +64,10 @@ export function PricingSection() {
 		>
 			<div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
 				{/* Section Header */}
-				<div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-16" data-reveal>
+				<div
+					className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-16"
+					data-reveal
+				>
 					<div>
 						<p className="mb-6 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
 							Báo giá chụp ảnh cưới
@@ -78,14 +79,17 @@ export function PricingSection() {
 					</div>
 					<div className="md:max-w-md">
 						<p className="text-[0.92rem] leading-7 text-neutral-500 font-light mb-4">
-							Giá niêm yết rõ ràng, không phát sinh. Bao gồm vé vào cổng, xe đưa đón ekip và toàn bộ trang phục — tụi mình lo hết.
+							Giá niêm yết rõ ràng, không phát sinh. Bao gồm vé vào cổng, xe đưa
+							đón ekip và toàn bộ trang phục — tụi mình lo hết.
 						</p>
 						<Link
 							href="/pricing"
 							className="group/link inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-900 hover:text-neutral-500 transition-colors"
 						>
 							Xem tất cả các gói dịch vụ
-							<span className="font-serif text-sm transition-transform duration-300 group-hover/link:translate-x-1">➔</span>
+							<span className="font-serif text-sm transition-transform duration-300 group-hover/link:translate-x-1">
+								➔
+							</span>
 						</Link>
 					</div>
 				</div>
@@ -119,27 +123,37 @@ export function PricingSection() {
 										{pkg.price}
 									</span>
 								</div>
-								
+
 								<h4 className="text-[0.62rem] font-bold uppercase tracking-widest text-neutral-400 mb-4">
 									Chi tiết gói dịch vụ:
 								</h4>
 								<ul className="space-y-3.5 mb-8">
 									{pkg.highlights.map((item, idx) => (
-										<li key={idx} className="flex items-start gap-3 text-[0.8rem] leading-6 text-neutral-600 font-light">
-											<span className="text-neutral-400 select-none mt-0.5">•</span>
+										<li
+											key={idx}
+											className="flex items-start gap-3 text-[0.8rem] leading-6 text-neutral-600 font-light"
+										>
+											<span className="text-neutral-400 select-none mt-0.5">
+												•
+											</span>
 											<span>{item}</span>
 										</li>
 									))}
 								</ul>
 							</div>
-							
+
 							<GlassButton
 								href={`https://m.me/61550358332202?ref=${encodeURIComponent(pkg.name.replace(/\s+/g, "_"))}`}
 								target="_blank"
 								rel="noopener noreferrer"
 								variant={pkg.popular ? "dark" : "light"}
 								className="w-full !py-3 rounded-xl flex items-center justify-center gap-2 !whitespace-normal !tracking-wider text-center"
-								onClick={() => trackContactChannel("Messenger", `https://m.me/61550358332202?ref=${encodeURIComponent(pkg.name.replace(/\s+/g, "_"))}`)}
+								onClick={() =>
+									trackContactChannel(
+										"Messenger",
+										`https://m.me/61550358332202?ref=${encodeURIComponent(pkg.name.replace(/\s+/g, "_"))}`,
+									)
+								}
 							>
 								<span>Nhận tư vấn gói này</span>
 								<AnimatedArrowRight className="size-4 shrink-0" />
@@ -159,7 +173,9 @@ export function PricingSection() {
 								Tặng Standee Ảnh Cưới Thiết Kế Cao Cấp
 							</h3>
 							<p className="text-xs leading-6 text-neutral-500 font-light max-w-xl">
-								Tất cả các cặp đôi đặt cọc gói chụp ảnh cưới Studio, Phim trường hoặc Ngoại cảnh tại Harmony đều được thiết kế và tặng ngay 01 Standee composite kèm giá đỡ gỗ mộc trị giá 1.200.000đ.
+								Tất cả các cặp đôi đặt cọc gói chụp ảnh cưới Studio, Phim trường
+								hoặc Ngoại cảnh tại Harmony đều được thiết kế và tặng ngay 01
+								Standee composite kèm giá đỡ trị giá 1.200.000đ.
 							</p>
 						</div>
 						<div className="relative z-10 shrink-0">
