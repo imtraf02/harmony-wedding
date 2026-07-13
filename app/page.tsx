@@ -7,7 +7,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { PortfolioSection } from "@/components/home/portfolio-section";
 import { CollectionSection } from "@/components/home/collection-section";
 import { ServicesBar } from "@/components/home/services-bar";
-import { ConceptShowcase } from "@/components/home/concept-showcase";
+import { ServicePosters } from "@/components/home/service-posters";
 import { StoryTimeline } from "@/components/home/story-timeline";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { PricingSection } from "@/components/home/pricing-section";
@@ -64,7 +64,7 @@ export async function HomePage() {
       <HeroSection heroImage={heroImage} />
       <ServicesBar />
       <PortfolioSection items={portfolioItems} />
-      <ConceptShowcase />
+      <ServicePosters />
       <CollectionSection previewImages={rawPreviewImages} />
       <AboutSection aboutImage={aboutImage} />
       <StoryTimeline processImage={processImage} steps={timelineSteps} />
