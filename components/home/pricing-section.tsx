@@ -159,7 +159,7 @@ export function PricingSection() {
 								Tặng Standee Ảnh Cưới Thiết Kế Cao Cấp
 							</h3>
 							<p className="text-xs leading-6 text-neutral-500 font-light max-w-xl">
-								Tất cả các cặp đôi đặt cọc gói chụp pre-wedding trong tháng này đều được Harmony thiết kế và tặng ngay 01 Standee composite khổ 60x90cm kèm giá đỡ gỗ mộc trị giá 800.000đ.
+								Tất cả các cặp đôi đặt cọc gói chụp pre-wedding trong tháng này đều được Harmony thiết kế và tặng ngay 01 Standee composite khổ 60x90cm kèm giá đỡ gỗ mộc trị giá 1.200.000đ.
 							</p>
 						</div>
 						<div className="relative z-10 shrink-0">

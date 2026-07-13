@@ -265,29 +265,13 @@ export function LandingPageContent() {
 						</div>
 					</div>
 
-					{/* Image Column */}
-					<div className="relative">
-						<GlassCard
-							variant="light"
-							intensity="low"
-							borderStrength="medium"
-							className="relative w-full shadow-lg p-2 rounded-3xl"
-						>
-							<div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-neutral-100">
-								<Image
-									alt="Wedding Photo Standee Model - Harmony Wedding"
-									className="object-cover"
-									fill
-									priority
-									sizes="(min-width: 1024px) 45vw, 100vw"
-									src="/images/promo/standee-hero.webp"
-								/>
-							</div>
-						</GlassCard>
+					{/* Image Column: Coded Interactive Standee Mockup */}
+					<div className="relative flex justify-center items-center">
+						<WeddingStandee />
 						{/* Floating badge */}
-						<div className="absolute -bottom-4 -right-4 bg-amber-500 text-white rounded-full size-20 sm:size-24 flex flex-col items-center justify-center p-3 text-center shadow-lg font-serif animate-float-fast rotate-6 select-none border-2 border-white/20">
+						<div className="absolute bottom-16 -right-2 sm:-right-4 bg-amber-500 text-white rounded-full size-20 sm:size-24 flex flex-col items-center justify-center p-3 text-center shadow-lg font-serif animate-float-fast rotate-6 select-none border-2 border-white/20 z-30">
 							<span className="text-[0.6rem] uppercase tracking-wider leading-none">Trị giá</span>
-							<span className="text-sm font-bold leading-none mt-1">800.000đ</span>
+							<span className="text-sm font-bold leading-none mt-1">1.200.000đ</span>
 							<span className="text-[0.55rem] font-sans leading-none mt-1 opacity-80">FREE</span>
 						</div>
 					</div>
@@ -783,6 +767,104 @@ export function LandingPageContent() {
 					</div>
 				</div>
 			</footer>
+		</div>
+	);
+}
+
+function WeddingStandee() {
+	return (
+		<div className="relative mx-auto max-w-[320px] sm:max-w-[350px] w-full pb-8 select-none">
+			{/* Metal Top Rail (Roll-up Banner Top) */}
+			<div className="h-1.5 bg-linear-to-r from-neutral-400 via-neutral-300 to-neutral-500 w-[96%] mx-auto rounded-t-xs shadow-xs relative z-20" />
+			
+			{/* Standee Body (Fabric/Banner Sheet) */}
+			<div className="bg-white border-x border-neutral-200/80 shadow-2xl p-3.5 pb-5 flex flex-col justify-between aspect-[1/2.35] relative z-10 w-[96%] mx-auto border-b border-neutral-200/50">
+				{/* Top Image: Landscape */}
+				<div className="relative aspect-[3/2] w-full overflow-hidden bg-neutral-100 rounded-xs">
+					<Image
+						alt="Ảnh cưới ngang mẫu - Harmony Wedding"
+						src="/images/wedding/sunny-garden/16.webp"
+						fill
+						className="object-cover"
+						priority
+						sizes="350px"
+					/>
+				</div>
+
+				{/* Middle Typography Section */}
+				<div className="text-center py-2.5 border-y border-black/[0.04] my-2">
+					<span className="block text-[0.4rem] tracking-[0.25em] text-neutral-400 font-bold uppercase mb-0.5">
+						OUR WEDDING DAY
+					</span>
+					<h3 className="font-serif text-xs sm:text-sm tracking-[0.16em] text-amber-800 uppercase font-medium leading-none py-1">
+						Minh Đức & Khánh Linh
+					</h3>
+					<span className="block text-[0.38rem] tracking-[0.2em] text-neutral-400 uppercase">
+						WELCOME TO OUR WEDDING
+					</span>
+				</div>
+
+				{/* Middle Grid: 2x2 Portrait Images */}
+				<div className="grid grid-cols-2 gap-1.5 flex-1 my-1">
+					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+						<Image
+							alt="Ảnh cưới dọc mẫu 1"
+							src="/images/wedding/sunny-garden/1.webp"
+							fill
+							className="object-cover"
+							sizes="150px"
+						/>
+					</div>
+					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+						<Image
+							alt="Ảnh cưới dọc mẫu 2"
+							src="/images/wedding/vu-garden/1.webp"
+							fill
+							className="object-cover"
+							sizes="150px"
+						/>
+					</div>
+					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+						<Image
+							alt="Ảnh cưới dọc mẫu 3"
+							src="/images/wedding/an-garden/1.webp"
+							fill
+							className="object-cover"
+							sizes="150px"
+						/>
+					</div>
+					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+						<Image
+							alt="Ảnh cưới dọc mẫu 4"
+							src="/images/wedding/studio-han-quoc/1.webp"
+							fill
+							className="object-cover"
+							sizes="150px"
+						/>
+					</div>
+				</div>
+
+				{/* Bottom Typography Section */}
+				<div className="text-center pt-3">
+					<p className="font-serif italic text-neutral-400 text-[0.62rem] sm:text-[0.72rem] leading-none">
+						Welcome to our
+					</p>
+					<h4 className="font-serif text-xs tracking-[0.2em] text-neutral-800 uppercase font-medium mt-0.5">
+						Story
+					</h4>
+					<p className="text-[0.34rem] tracking-[0.25em] text-amber-700/60 uppercase font-bold mt-0.5">
+						Harmony Wedding
+					</p>
+				</div>
+			</div>
+
+			{/* Metal Roll-up Base */}
+			<div className="h-3.5 bg-linear-to-r from-neutral-400 via-neutral-300 to-neutral-500 w-full rounded-t-xs shadow-md relative z-20 -mt-0.5" />
+			{/* Base Feet (2 small black legs pointing forward) */}
+			<div className="flex justify-between px-10 relative z-0 -mt-1">
+				<div className="w-12 h-1.5 bg-neutral-800 rounded-b-md shadow-sm transform -skew-x-12" />
+				<div className="w-12 h-1.5 bg-neutral-800 rounded-b-md shadow-sm transform skew-x-12" />
+			</div>
 		</div>
 	);
 }

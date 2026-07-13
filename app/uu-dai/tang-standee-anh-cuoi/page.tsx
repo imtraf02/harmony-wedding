@@ -5,14 +5,14 @@ import { LandingPageContent } from "./landing-page-content";
 export const metadata: Metadata = {
 	title: "Ưu Đãi Đặc Biệt: Tặng Standee Ảnh Cưới Thiết Kế | Harmony Wedding",
 	description:
-		"Nhận ngay Standee ảnh cưới cao cấp trị giá 800.000đ khi đăng ký gói chụp ảnh cưới trọn gói tại Harmony. Chương trình ưu đãi giới hạn cho 20 cặp đôi đăng ký sớm nhất.",
+		"Nhận ngay Standee ảnh cưới cao cấp trị giá 1.200.000đ khi đăng ký gói chụp ảnh cưới trọn gói tại Harmony. Chương trình ưu đãi giới hạn cho 20 cặp đôi đăng ký sớm nhất.",
 	alternates: {
 		canonical: "/uu-dai/tang-standee-anh-cuoi",
 	},
 	openGraph: {
 		title: "Ưu Đãi Đặc Biệt: Tặng Standee Ảnh Cưới Thiết Kế | Harmony Wedding",
 		description:
-			"Đăng ký gói chụp ảnh cưới trọn gói tại Harmony để nhận ngay Standee ảnh cưới cao cấp trị giá 800.000đ. Áp dụng giới hạn cho 20 cặp đôi đăng ký sớm nhất.",
+			"Đăng ký gói chụp ảnh cưới trọn gói tại Harmony để nhận ngay Standee ảnh cưới cao cấp trị giá 1.200.000đ. Áp dụng giới hạn cho 20 cặp đôi đăng ký sớm nhất.",
 		url: "/uu-dai/tang-standee-anh-cuoi",
 		images: [
 			{
