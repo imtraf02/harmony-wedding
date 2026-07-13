@@ -670,7 +670,7 @@ export function LandingPageContent() {
 						{/* Messenger */}
 						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
 							<div>
-								<div className="size-10 bg-blue-500/15 text-blue-400 rounded-full flex items-center justify-center mb-5">
+							<div className="size-10 bg-blue-500/20 text-blue-300 rounded-full flex items-center justify-center mb-5">
 									<MessageCircle className="size-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.75} />
 								</div>
 								<h3 className="font-serif text-base text-white mb-2">Messenger</h3>
@@ -693,7 +693,7 @@ export function LandingPageContent() {
 						{/* Zalo */}
 						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
 							<div>
-								<div className="size-10 bg-teal-500/15 text-teal-400 rounded-full flex items-center justify-center mb-5">
+							<div className="size-10 bg-teal-500/20 text-teal-300 rounded-full flex items-center justify-center mb-5">
 									<Smartphone className="size-5 group-hover:animate-bounce" strokeWidth={1.75} />
 								</div>
 								<h3 className="font-serif text-base text-white mb-2">Zalo Chat</h3>
