@@ -457,12 +457,6 @@ export function LandingPageContent() {
 					{/* Image Column: Coded Interactive Standee Mockup */}
 					<div className="relative flex justify-center items-center">
 						<WeddingStandee />
-						{/* Floating badge */}
-						<div className="absolute bottom-16 -right-2 sm:-right-4 bg-amber-500 text-white rounded-full size-20 sm:size-24 flex flex-col items-center justify-center p-3 text-center shadow-lg font-serif animate-float-fast rotate-6 select-none border-2 border-white/20 z-30">
-							<span className="text-[0.6rem] uppercase tracking-wider leading-none">Trị giá</span>
-							<span className="text-sm font-bold leading-none mt-1">1.200.000đ</span>
-							<span className="text-[0.55rem] font-sans leading-none mt-1 opacity-80">FREE</span>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -809,7 +803,15 @@ export function LandingPageContent() {
 					100% { transform: scale(1); opacity: 1; }
 				}
 				.animate-success-icon {
-					animation: success-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+				animation: success-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+			}
+
+				@keyframes starburst-spin {
+					from { transform: rotate(0deg); }
+					to   { transform: rotate(360deg); }
+				}
+				.starburst-badge svg {
+					animation: starburst-spin 18s linear infinite;
 				}
 			`}} />
 		</div>
@@ -858,6 +860,21 @@ function WeddingStandee() {
 
 	return (
 		<div ref={standeeRef} className="relative mx-auto max-w-[320px] sm:max-w-[350px] w-full pb-8 select-none">
+			{/* Starburst discount badge — moves with standee sway */}
+			<div className="absolute -right-5 top-[22%] z-40 starburst-badge select-none pointer-events-none">
+				<div className="relative size-[72px] sm:size-[84px] flex items-center justify-center">
+					{/* Starburst SVG background */}
+					<svg viewBox="0 0 100 100" className="absolute inset-0 size-full drop-shadow-lg" aria-hidden>
+						<polygon points="50,2 61,35 97,35 68,57 79,91 50,70 21,91 32,57 3,35 39,35" fill="#0a0a0a" />
+					</svg>
+					{/* Text on top */}
+					<div className="relative z-10 flex flex-col items-center justify-center text-center leading-none gap-[2px]">
+						<span className="text-[0.45rem] sm:text-[0.5rem] font-bold uppercase tracking-[0.12em] text-white/70">Trị giá</span>
+						<span className="text-[0.6rem] sm:text-[0.65rem] font-bold text-white font-serif">1.200.000đ</span>
+						<span className="text-[0.55rem] sm:text-[0.6rem] font-black uppercase tracking-widest text-amber-400">FREE</span>
+					</div>
+				</div>
+			</div>
 			{/* Canvas Wrapper */}
 			<div ref={wrapperRef} className="overflow-hidden w-[96%] mx-auto relative z-10">
 				{/* Metal Top Rail (Roll-up Banner Top) */}
