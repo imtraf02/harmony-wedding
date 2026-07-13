@@ -12,7 +12,7 @@ declare global {
 	}
 }
 
-export type ContactMethod = "Zalo" | "Hotline" | "Messenger" | "Facebook" | "GoogleMaps";
+export type ContactMethod = "Zalo" | "Hotline" | "Messenger" | "Facebook" | "GoogleMaps" | "Email";
 
 // Central tracking event trigger
 export function trackEvent(eventName: string, parameters: Record<string, unknown> = {}) {
