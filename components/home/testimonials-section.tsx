@@ -90,14 +90,14 @@ export function TestimonialsSection({
 						</div>
 					</div>
 
-					<div className="grid gap-5 sm:grid-cols-2 max-w-2xl mx-auto md:max-w-none">
+					<div className="grid grid-cols-2 gap-3 sm:gap-5 max-w-2xl mx-auto md:max-w-none">
 						{/* Reel Card 1 */}
 						<Link
 							href="https://www.facebook.com/share/r/1Evh8USj1D/"
 							target="_blank"
 							rel="noopener noreferrer"
 							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/1Evh8USj1D/", title: "Phỏng vấn dâu rể Đà Lạt" })}
-							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-900 shadow-lg sm:shadow-xl"
 							data-reveal
 						>
 							<Image
@@ -108,25 +108,25 @@ export function TestimonialsSection({
 								sizes="(min-width: 640px) 50vw, 100vw"
 								quality={90}
 							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 pointer-events-none" />
-							<div className="absolute top-4 left-4">
-								<div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
-									<svg className="size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-									<span className="text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
+							<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-black/20 pointer-events-none" />
+							<div className="absolute top-2 left-2 sm:top-4 sm:left-4">
+								<div className="flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+									<svg className="size-2 sm:size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+									<span className="text-[0.4rem] sm:text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
 								</div>
 							</div>
 							<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-								<div className="absolute size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
-								<div className="size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
-									<svg className="size-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+								<div className="absolute size-14 sm:size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
+								<div className="size-10 sm:size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
+									<svg className="size-4 sm:size-6 fill-white ml-0.5 sm:ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
 								</div>
 							</div>
-							<div className="absolute inset-x-0 bottom-0 p-5">
-								<p className="text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">Hậu trường phóng vấn</p>
-								<h4 className="font-serif text-base font-medium text-white leading-snug">Cảm nhận sau buổi chụp tại An Garden</h4>
-								<div className="mt-3 flex items-center gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
-									<span className="text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
-									<span className="text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
+							<div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
+								<p className="text-[0.45rem] sm:text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-0.5 sm:mb-1">Hậu trường phỏng vấn</p>
+								<h4 className="font-serif text-[0.7rem] sm:text-base font-medium text-white leading-snug">Cảm nhận sau buổi chụp tại An Garden</h4>
+								<div className="mt-1.5 sm:mt-3 flex items-center gap-1 sm:gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
+									<span className="text-[0.5rem] sm:text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
+									<span className="text-[10px] sm:text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
 								</div>
 							</div>
 						</Link>
@@ -137,7 +137,7 @@ export function TestimonialsSection({
 							target="_blank"
 							rel="noopener noreferrer"
 							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/18vgz2W7gA/", title: "Cảm nhận dâu rể ngày cưới" })}
-							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-2xl sm:rounded-3xl bg-neutral-900 shadow-lg sm:shadow-xl"
 							data-reveal
 						>
 							<Image
@@ -148,25 +148,25 @@ export function TestimonialsSection({
 								sizes="(min-width: 640px) 50vw, 100vw"
 								quality={90}
 							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20 pointer-events-none" />
-							<div className="absolute top-4 left-4">
-								<div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
-									<svg className="size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-									<span className="text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
+							<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-black/20 pointer-events-none" />
+							<div className="absolute top-2 left-2 sm:top-4 sm:left-4">
+								<div className="flex items-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full">
+									<svg className="size-2 sm:size-2.5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+									<span className="text-[0.4rem] sm:text-[0.5rem] font-bold uppercase tracking-[0.15em] text-white">Reel</span>
 								</div>
 							</div>
 							<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-								<div className="absolute size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
-								<div className="size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
-									<svg className="size-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+								<div className="absolute size-14 sm:size-20 rounded-full border border-white/30 animate-ping opacity-30 group-hover:opacity-0 transition-opacity duration-300" />
+								<div className="size-10 sm:size-16 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:bg-white/30">
+									<svg className="size-4 sm:size-6 fill-white ml-0.5 sm:ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
 								</div>
 							</div>
-							<div className="absolute inset-x-0 bottom-0 p-5">
-								<p className="text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-1">Cảm nhận ngày cưới</p>
-								<h4 className="font-serif text-base font-medium text-white leading-snug">Dịch vụ trọn gói — thật sự như thế nào?</h4>
-								<div className="mt-3 flex items-center gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
-									<span className="text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
-									<span className="text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
+							<div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
+								<p className="text-[0.45rem] sm:text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 mb-0.5 sm:mb-1">Cảm nhận ngày cưới</p>
+								<h4 className="font-serif text-[0.7rem] sm:text-base font-medium text-white leading-snug">Dịch vụ trọn gói — thật sự như thế nào?</h4>
+								<div className="mt-1.5 sm:mt-3 flex items-center gap-1 sm:gap-1.5 text-white/60 group-hover:text-white/90 transition-colors duration-300">
+									<span className="text-[0.5rem] sm:text-[0.62rem] font-semibold tracking-wider">Xem trên Facebook</span>
+									<span className="text-[10px] sm:text-xs transition-transform duration-300 group-hover:translate-x-1">→</span>
 								</div>
 							</div>
 						</Link>
