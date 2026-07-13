@@ -97,7 +97,7 @@ export function TestimonialsSection({
 							target="_blank"
 							rel="noopener noreferrer"
 							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/1Evh8USj1D/", title: "Phỏng vấn dâu rể Đà Lạt" })}
-							className="group relative flex aspect-[9/16] w-full overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
 							data-reveal
 						>
 							<Image
@@ -137,7 +137,7 @@ export function TestimonialsSection({
 							target="_blank"
 							rel="noopener noreferrer"
 							onClick={() => trackEvent("WatchVideo", { url: "https://www.facebook.com/share/r/18vgz2W7gA/", title: "Cảm nhận dâu rể ngày cưới" })}
-							className="group relative flex aspect-[9/16] w-full overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
+							className="group relative flex aspect-[3/4] w-full max-w-[340px] mx-auto overflow-hidden rounded-3xl bg-neutral-900 shadow-xl"
 							data-reveal
 						>
 							<Image
