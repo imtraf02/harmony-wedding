@@ -783,7 +783,7 @@ function WeddingStandee() {
 				<div className="relative aspect-[3/2] w-full overflow-hidden bg-neutral-100 rounded-xs">
 					<Image
 						alt="Ảnh cưới ngang mẫu - Harmony Wedding"
-						src="/images/wedding/sunny-garden/16.webp"
+						src="/images/wedding/studio-han-quoc/8.webp"
 						fill
 						className="object-cover"
 						priority
@@ -797,7 +797,7 @@ function WeddingStandee() {
 						OUR WEDDING DAY
 					</span>
 					<h3 className="font-serif text-xs sm:text-sm tracking-[0.16em] text-amber-800 uppercase font-medium leading-none py-1">
-						Minh Đức & Khánh Linh
+						Bá Quyền & Thùy Linh
 					</h3>
 					<span className="block text-[0.38rem] tracking-[0.2em] text-neutral-400 uppercase">
 						WELCOME TO OUR WEDDING
@@ -809,7 +809,7 @@ function WeddingStandee() {
 					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
 						<Image
 							alt="Ảnh cưới dọc mẫu 1"
-							src="/images/wedding/sunny-garden/1.webp"
+							src="/images/wedding/studio-han-quoc/1.webp"
 							fill
 							className="object-cover"
 							sizes="150px"
@@ -818,7 +818,7 @@ function WeddingStandee() {
 					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
 						<Image
 							alt="Ảnh cưới dọc mẫu 2"
-							src="/images/wedding/vu-garden/1.webp"
+							src="/images/wedding/studio-han-quoc/2.webp"
 							fill
 							className="object-cover"
 							sizes="150px"
@@ -827,7 +827,7 @@ function WeddingStandee() {
 					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
 						<Image
 							alt="Ảnh cưới dọc mẫu 3"
-							src="/images/wedding/an-garden/1.webp"
+							src="/images/wedding/studio-han-quoc/3.webp"
 							fill
 							className="object-cover"
 							sizes="150px"
@@ -836,7 +836,7 @@ function WeddingStandee() {
 					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
 						<Image
 							alt="Ảnh cưới dọc mẫu 4"
-							src="/images/wedding/studio-han-quoc/1.webp"
+							src="/images/wedding/studio-han-quoc/4.webp"
 							fill
 							className="object-cover"
 							sizes="150px"
