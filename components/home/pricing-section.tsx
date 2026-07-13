@@ -147,6 +147,32 @@ export function PricingSection() {
 						</article>
 					))}
 				</div>
+
+				{/* Special Promotion Banner */}
+				<div className="mt-16" data-reveal>
+					<div className="relative overflow-hidden p-8 md:p-12 rounded-3xl border border-amber-500/20 bg-amber-500/[0.02] backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+						<div className="relative z-10 flex-1">
+							<span className="inline-block mb-3 rounded-full bg-amber-500/10 px-3 py-0.5 text-[0.55rem] font-bold uppercase tracking-widest text-amber-950">
+								Ưu đãi giới hạn tháng này
+							</span>
+							<h3 className="font-serif text-2xl md:text-3xl text-neutral-900 mb-2 tracking-tight">
+								Tặng Standee Ảnh Cưới Thiết Kế Cao Cấp
+							</h3>
+							<p className="text-xs leading-6 text-neutral-500 font-light max-w-xl">
+								Tất cả các cặp đôi đặt cọc gói chụp pre-wedding trong tháng này đều được Harmony thiết kế và tặng ngay 01 Standee composite khổ 60x90cm kèm giá đỡ gỗ mộc trị giá 800.000đ.
+							</p>
+						</div>
+						<div className="relative z-10 shrink-0">
+							<GlassButton
+								variant="dark"
+								href="/uu-dai/tang-standee-anh-cuoi"
+								className="w-full md:w-auto !py-3.5 !px-6 text-[0.68rem] text-center font-bold tracking-[0.22em]"
+							>
+								Xem chi tiết ưu đãi ➔
+							</GlassButton>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	);

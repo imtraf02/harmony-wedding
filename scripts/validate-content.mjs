@@ -141,7 +141,8 @@ const validFixedRoutes = new Set([
   "/blog",
   "/mau-do",
   "/contact",
-  "/chinh-sach-bao-mat"
+  "/chinh-sach-bao-mat",
+  "/uu-dai/tang-standee-anh-cuoi"
 ]);
 
 for (const link of internalLinks) {
