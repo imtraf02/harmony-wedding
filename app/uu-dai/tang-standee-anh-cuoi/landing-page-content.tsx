@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
@@ -361,7 +362,7 @@ export function LandingPageContent() {
 			<header className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.03] bg-white/40 backdrop-blur-md select-none">
 				<div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between md:px-10">
 					{/* Small Logo branding */}
-					<div className="flex items-center gap-2">
+					<Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
 						<Image
 							alt="Harmony Wedding Logo"
 							className="object-contain"
@@ -369,10 +370,7 @@ export function LandingPageContent() {
 							width={32}
 							src="/logo.png"
 						/>
-						<span className="font-serif text-sm tracking-widest font-bold text-neutral-800 uppercase">
-							Harmony
-						</span>
-					</div>
+					</Link>
 					{/* Primary single Action */}
 					<GlassButton
 						variant="dark"
@@ -400,7 +398,7 @@ export function LandingPageContent() {
 
 			{/* 1. HERO SECTION */}
 			<section className="pt-28 pb-16 md:pt-36 md:pb-24 px-5 hero-section">
-				<div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center md:px-10">
+				<div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start md:px-10">
 					{/* Copy Column */}
 					<div className="text-left">
 						<span className="inline-block mb-4 rounded-full bg-amber-500/10 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest text-amber-950 hero-badge-anim opacity-0">
