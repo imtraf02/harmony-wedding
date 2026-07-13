@@ -357,12 +357,17 @@ export function LandingPageContent() {
 			<header className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.03] bg-white/40 backdrop-blur-md select-none">
 				<div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between md:px-10">
 					{/* Small Logo branding */}
-					<Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+					<Link
+						aria-label="Harmony Wedding"
+						className="relative block h-7 w-[124px] md:h-9 md:w-[158px] hover:opacity-80 transition-opacity"
+						href="/"
+					>
 						<Image
-							alt="Harmony Wedding Logo"
-							className="object-contain"
-							height={32}
-							width={32}
+							alt="Harmony Wedding - Studio ảnh cưới"
+							className="object-contain object-left"
+							fill
+							priority
+							sizes="(min-width: 768px) 158px, 124px"
 							src="/logo.png"
 						/>
 					</Link>
