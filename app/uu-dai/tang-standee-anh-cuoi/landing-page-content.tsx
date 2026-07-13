@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { MessageCircle, Smartphone, PhoneCall, Mail, Timer } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
@@ -76,17 +77,11 @@ export function LandingPageContent() {
 		}
 	}, [utmSource, utmMedium, utmCampaign, utmContent, utmTerm]);
 
-	// Countdown timer state
+	// Countdown timer — client-only to prevent SSR/client hydration mismatch
 	const calculateTimeLeft = () => {
-		// Target date is end of July 2026
 		const targetDate = new Date("2026-07-31T23:59:59+07:00").getTime();
-		const now = Date.now();
-		const difference = targetDate - now;
-
-		if (difference <= 0) {
-			return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-		}
-
+		const difference = targetDate - Date.now();
+		if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
 		return {
 			days: Math.floor(difference / (1000 * 60 * 60 * 24)),
 			hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -95,12 +90,12 @@ export function LandingPageContent() {
 		};
 	};
 
-	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+	// null on server → real value after mount (avoids hydration mismatch)
+	const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
 	useEffect(() => {
-		const timer = setInterval(() => {
-			setTimeLeft(calculateTimeLeft());
-		}, 1000);
+		setTimeLeft(calculateTimeLeft());
+		const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
 		return () => clearInterval(timer);
 	}, []);
 
@@ -362,7 +357,7 @@ export function LandingPageContent() {
 			<header className="fixed top-0 left-0 right-0 z-50 border-b border-black/[0.03] bg-white/40 backdrop-blur-md select-none">
 				<div className="mx-auto max-w-7xl px-5 h-16 flex items-center justify-between md:px-10">
 					{/* Small Logo branding */}
-					<Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+					<Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
 						<Image
 							alt="Harmony Wedding Logo"
 							className="object-contain"
@@ -536,40 +531,40 @@ export function LandingPageContent() {
 							<div className="relative z-10 flex justify-center items-center gap-2 sm:gap-4 md:gap-8 text-white select-none">
 								<div className="flex flex-col items-center min-w-16">
 									<span 
-										key={timeLeft.days} 
+										key={timeLeft?.days} 
 										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
 									>
-										{String(timeLeft.days).padStart(2, "0")}
+										{timeLeft ? String(timeLeft.days).padStart(2, "0") : "--"}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Ngày</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
 								<div className="flex flex-col items-center min-w-16">
 									<span 
-										key={timeLeft.hours} 
+										key={timeLeft?.hours} 
 										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
 									>
-										{String(timeLeft.hours).padStart(2, "0")}
+										{timeLeft ? String(timeLeft.hours).padStart(2, "0") : "--"}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Giờ</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
 								<div className="flex flex-col items-center min-w-16">
 									<span 
-										key={timeLeft.minutes} 
+										key={timeLeft?.minutes} 
 										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
 									>
-										{String(timeLeft.minutes).padStart(2, "0")}
+										{timeLeft ? String(timeLeft.minutes).padStart(2, "0") : "--"}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Phút</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
 								<div className="flex flex-col items-center min-w-16">
 									<span 
-										key={timeLeft.seconds} 
+										key={timeLeft?.seconds} 
 										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
 									>
-										{String(timeLeft.seconds).padStart(2, "0")}
+										{timeLeft ? String(timeLeft.seconds).padStart(2, "0") : "--"}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Giây</span>
 								</div>
@@ -655,195 +650,111 @@ export function LandingPageContent() {
 				</div>
 			</section>
 
-			{/* 7. Lead Form Section (CTA Cuối Trang) */}
+			{/* 7. Direct Contact Section (CTA Cuối Trang) */}
 			<section ref={formRef} className="py-20 bg-neutral-900 text-white relative px-5 form-section">
 				<div className="absolute inset-0 bg-radial-gradient(circle, rgba(180, 120, 50, 0.1) 0%, rgba(0, 0, 0, 0) 70%) pointer-events-none" />
-				<div className="mx-auto max-w-3xl relative z-10">
-					<div className="text-center max-w-2xl mx-auto mb-10 form-header opacity-0">
+				<div className="mx-auto max-w-5xl relative z-10">
+					<div className="text-center max-w-2xl mx-auto mb-12 form-header opacity-0">
 						<h2 className="font-serif text-3xl md:text-4xl tracking-tight text-white">
-							Đăng Ký Nhận Ưu Đãi Ngay
+							Liên Hệ Đăng Ký Ngay
 						</h2>
 						<p className="mt-3 text-[0.62rem] font-bold uppercase tracking-[0.25em] text-amber-500">
-							Nhận Standee & Nhận Báo Giá Tư Vấn
+							Giữ suất quà tặng Standee & Nhận tư vấn chi tiết
 						</p>
 						<p className="mt-4 text-xs leading-6 text-white/50 font-light">
-							Chỉ còn 8 suất ưu đãi cuối cùng áp dụng cho cặp đôi hoàn thành đặt cọc cọc trước 31/07/2026. Hãy để lại thông tin để giữ quà tặng ngay.
+							Chỉ còn 8 suất ưu đãi cuối cùng áp dụng cho cặp đôi hoàn thành đặt cọc trước ngày 31/07/2026. Chọn kênh liên hệ tiện lợi nhất dưới đây để kết nối trực tiếp với ekip.
 						</p>
 					</div>
 
-					{submitStatus === "success" ? (
-						<div className="bg-white/5 border border-white/10 p-8 rounded-3xl text-center backdrop-blur-md animate-success-card">
-							<div className="size-14 bg-amber-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-2xl font-bold animate-success-icon">
-								✓
+					<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch form-container-card opacity-0">
+						{/* Messenger */}
+						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
+							<div>
+								<div className="size-10 bg-blue-500/15 text-blue-400 rounded-full flex items-center justify-center mb-5">
+									<MessageCircle className="size-5 group-hover:scale-110 transition-transform duration-300" strokeWidth={1.75} />
+								</div>
+								<h3 className="font-serif text-base text-white mb-2">Messenger</h3>
+								<p className="text-[0.7rem] leading-5 text-white/50 font-light mb-6">
+									Nhận báo giá chi tiết các gói chụp và đăng ký giữ quà tặng nhanh nhất.
+								</p>
 							</div>
-							<h3 className="font-serif text-xl font-medium text-white mb-3">
-								Ghi nhận thông tin thành công!
-							</h3>
-							<p className="text-xs leading-6 text-white/60 font-light mb-8 max-w-md mx-auto">
-								Cảm ơn hai bạn đã đăng ký chương trình khuyến mãi. Để giữ suất quà tặng Standee và nhận ngay báo giá concept nhanh nhất, vui lòng kết nối trực tiếp với Harmony qua:
-							</p>
-
-							<div className="flex flex-col gap-3 sm:flex-row justify-center sm:items-center">
-								<GlassButton
-									variant="gold"
-									href={zaloUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center btn-shimmer-glow"
-									onClick={() => trackContactChannel("Zalo", zaloUrl)}
-								>
-									Liên Hệ Qua Zalo
-								</GlassButton>
-								<GlassButton
-									variant="light"
-									href={messengerUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center border-white/20 text-white hover:text-black btn-shimmer-glow"
-									onClick={() => trackContactChannel("Messenger", messengerUrl)}
-								>
-									Liên Hệ Qua Messenger
-								</GlassButton>
-							</div>
-
-							<button
-								onClick={() => {
-									setFormData(INITIAL_FORM);
-									setSubmitStatus("idle");
-								}}
-								className="mt-8 text-[0.6rem] font-bold uppercase tracking-widest text-neutral-400 hover:text-white transition-colors cursor-pointer block mx-auto"
-								type="button"
+							<GlassButton
+								variant="gold"
+								href={messengerUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="w-full !py-2.5 text-[0.65rem] text-center font-bold tracking-wider btn-shimmer-glow"
+								onClick={() => trackContactChannel("Messenger", messengerUrl)}
 							>
-								Nhập Lại Thông Tin
-							</button>
-						</div>
-					) : (
-						<GlassCard
-							variant="dark"
-							intensity="high"
-							borderStrength="medium"
-							className="p-6 sm:p-8 md:p-10 border-white/10 rounded-3xl form-container-card opacity-0"
-						>
-							<form onSubmit={handleFormSubmit} className="space-y-5">
-								<div className="grid gap-5 sm:grid-cols-2">
-									{/* Name */}
-									<div className="flex flex-col gap-1.5 text-left">
-										<label htmlFor="name" className="text-[0.62rem] font-bold uppercase tracking-widest text-white/60">
-											Họ và tên của bạn *
-										</label>
-										<input
-											type="text"
-											id="name"
-											name="name"
-											value={formData.name}
-											onChange={handleFormChange}
-											placeholder="Ví dụ: Nguyễn Văn A"
-											className={`w-full rounded-xl border bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/25 focus:border-white focus:bg-white/10 focus:outline-hidden transition-all ${
-												errors.name ? "border-red-400" : "border-white/10"
-											}`}
-										/>
-										{errors.name && <span className="text-[0.6rem] text-red-400">{errors.name}</span>}
-									</div>
-
-									{/* Phone */}
-									<div className="flex flex-col gap-1.5 text-left">
-										<label htmlFor="phone" className="text-[0.62rem] font-bold uppercase tracking-widest text-white/60">
-											Số điện thoại / Zalo liên hệ *
-										</label>
-										<input
-											type="text"
-											id="phone"
-											name="phone"
-											value={formData.phone}
-											onChange={handleFormChange}
-											placeholder="Ví dụ: 0357256845"
-											className={`w-full rounded-xl border bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/25 focus:border-white focus:bg-white/10 focus:outline-hidden transition-all ${
-												errors.phone ? "border-red-400" : "border-white/10"
-											}`}
-										/>
-										{errors.phone && <span className="text-[0.6rem] text-red-400">{errors.phone}</span>}
-									</div>
-								</div>
-
-								<div className="grid gap-5 sm:grid-cols-2">
-									{/* Wedding Date */}
-									<div className="flex flex-col gap-1.5 text-left">
-										<label htmlFor="weddingDate" className="text-[0.62rem] font-bold uppercase tracking-widest text-white/60">
-											Ngày cưới dự kiến (nếu có)
-										</label>
-										<input
-											type="date"
-											id="weddingDate"
-											name="weddingDate"
-											value={formData.weddingDate}
-											onChange={handleFormChange}
-											className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white focus:border-white focus:bg-white/10 focus:outline-hidden transition-all"
-										/>
-									</div>
-
-									{/* Location */}
-									<div className="flex flex-col gap-1.5 text-left">
-										<label htmlFor="packageInterest" className="text-[0.62rem] font-bold uppercase tracking-widest text-white/60">
-											Dịch vụ cưới quan tâm
-										</label>
-										<select
-											id="packageInterest"
-											name="packageInterest"
-											value={formData.packageInterest}
-											onChange={handleFormChange}
-											className="w-full rounded-xl border border-white/10 bg-neutral-900 px-4 py-2.5 text-xs text-white focus:border-white focus:outline-hidden transition-all"
-										>
-											<option value="combo-chup-anh-tang-standee">Combo Chụp Cưới + Standee Tặng Kèm</option>
-											<option value="chup-anh-phong-su-ngay-cuoi">Chụp Ảnh Phóng Sự Ngày Cưới</option>
-											<option value="quay-phim-phong-su-cuoi">Quay Phim Phóng Sự Cưới</option>
-											<option value="dich-vu-cuoi-tron-goi">Dịch Vụ Cưới Trọn Gói</option>
-										</select>
-									</div>
-								</div>
-
-								{/* Message */}
-								<div className="flex flex-col gap-1.5 text-left">
-									<label htmlFor="notes" className="text-[0.62rem] font-bold uppercase tracking-widest text-white/60">
-										Gu ảnh cưới hoặc lưu ý cho Ekip (nếu có)
-									</label>
-									<textarea
-										id="notes"
-										name="notes"
-										value={formData.notes}
-										onChange={handleFormChange}
-										rows={3}
-										placeholder="Ví dụ: Hai bọn mình thích chụp phong cách lãng mạn nhẹ nhàng Hàn Quốc..."
-										className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-xs text-white placeholder-white/25 focus:border-white focus:bg-white/10 focus:outline-hidden transition-all resize-none"
-									/>
-								</div>
-
-								{submitStatus === "error" && (
-									<div className="text-[0.7rem] text-red-400 text-left">
-										Có lỗi xảy ra trong quá trình gửi thông tin. Bạn có thể nhấn trực tiếp vào liên kết Zalo hoặc gọi Hotline để giữ suất nhanh nhất.
-									</div>
-								)}
-
-								{/* Submit Button */}
-								<div className="pt-2">
-									<GlassButton
-										type="submit"
-										variant="gold"
-										disabled={isSubmitting}
-										className="w-full !py-3.5 text-xs rounded-xl flex items-center justify-center gap-2 tracking-widest btn-shimmer-glow"
-									>
-										{isSubmitting ? (
-											<>
-												<span className="size-3.5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
-												Đang gửi đăng ký...
-											</>
-										) : (
-											<>Gửi đăng ký giữ suất standee cưới ➔</>
-										)}
-									</GlassButton>
-								</div>
-							</form>
+								Chat Messenger
+							</GlassButton>
 						</GlassCard>
-					)}
+
+						{/* Zalo */}
+						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
+							<div>
+								<div className="size-10 bg-teal-500/15 text-teal-400 rounded-full flex items-center justify-center mb-5">
+									<Smartphone className="size-5 group-hover:animate-bounce" strokeWidth={1.75} />
+								</div>
+								<h3 className="font-serif text-base text-white mb-2">Zalo Chat</h3>
+								<p className="text-[0.7rem] leading-5 text-white/50 font-light mb-6">
+									Tư vấn chi tiết và gửi mẫu ảnh cổng, mẫu standee thực tế cho dâu rể.
+								</p>
+							</div>
+							<GlassButton
+								variant="gold"
+								href={zaloUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="w-full !py-2.5 text-[0.65rem] text-center font-bold tracking-wider btn-shimmer-glow"
+								onClick={() => trackContactChannel("Zalo", zaloUrl)}
+							>
+								Chat Zalo
+							</GlassButton>
+						</GlassCard>
+
+						{/* Hotline */}
+						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
+							<div>
+								<div className="size-10 bg-amber-500/15 text-amber-400 rounded-full flex items-center justify-center mb-5">
+									<PhoneCall className="size-5 icon-ring" strokeWidth={1.75} />
+								</div>
+								<h3 className="font-serif text-base text-white mb-2">Hotline 24/7</h3>
+								<p className="text-[0.7rem] leading-5 text-white/50 font-light mb-6">
+									Gọi điện trực tiếp để được hỗ trợ cọc giữ suất ưu đãi standee nhanh chóng.
+								</p>
+							</div>
+							<GlassButton
+								variant="light"
+								href={`tel:${siteConfig.links.phone}`}
+								className="w-full !py-2.5 text-[0.65rem] text-center font-bold tracking-wider border-white/10 text-white hover:text-black btn-shimmer-glow"
+								onClick={() => trackContactChannel("Hotline", `tel:${siteConfig.links.phone}`)}
+							>
+								Gọi Hotline
+							</GlassButton>
+						</GlassCard>
+
+						{/* Email */}
+						<GlassCard variant="dark" intensity="high" className="p-6 rounded-2xl flex flex-col justify-between border-white/10 hover:border-amber-500/30 transition-colors group">
+							<div>
+								<div className="size-10 bg-rose-500/15 text-rose-400 rounded-full flex items-center justify-center mb-5">
+									<Mail className="size-5 group-hover:scale-110 group-hover:-translate-y-0.5 transition-transform duration-300" strokeWidth={1.75} />
+								</div>
+								<h3 className="font-serif text-base text-white mb-2">Email</h3>
+								<p className="text-[0.7rem] leading-5 text-white/50 font-light mb-6">
+									Gửi yêu cầu thiết kế riêng hoặc hợp tác truyền thông với Harmony.
+								</p>
+							</div>
+							<GlassButton
+								variant="light"
+								href={`mailto:${siteConfig.contactInfo.email}`}
+								className="w-full !py-2.5 text-[0.65rem] text-center font-bold tracking-wider border-white/10 text-white hover:text-black btn-shimmer-glow"
+								onClick={() => trackContactChannel("Email", `mailto:${siteConfig.contactInfo.email}`)}
+							>
+								Gửi Email
+							</GlassButton>
+						</GlassCard>
+					</div>
 				</div>
 			</section>
 
@@ -875,6 +786,21 @@ export function LandingPageContent() {
 				.animate-number-change {
 					animation: number-change 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 				}
+
+				@keyframes phone-ring {
+					0%, 100% { transform: rotate(0deg); }
+					15% { transform: rotate(-18deg); }
+					30% { transform: rotate(18deg); }
+					45% { transform: rotate(-14deg); }
+					60% { transform: rotate(14deg); }
+					75% { transform: rotate(-8deg); }
+					90% { transform: rotate(8deg); }
+				}
+				.icon-ring {
+					animation: phone-ring 2.4s ease-in-out infinite;
+					transform-origin: bottom left;
+				}
+				.icon-ring:hover { animation-play-state: paused; }
 				
 				.btn-shimmer-glow {
 					position: relative;
