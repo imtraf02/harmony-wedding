@@ -860,18 +860,25 @@ function WeddingStandee() {
 
 	return (
 		<div ref={standeeRef} className="relative mx-auto max-w-[320px] sm:max-w-[350px] w-full pb-8 select-none">
-			{/* Starburst discount badge — moves with standee sway */}
-			<div className="absolute -right-5 top-[22%] z-40 starburst-badge select-none pointer-events-none">
-				<div className="relative size-[72px] sm:size-[84px] flex items-center justify-center">
-					{/* Starburst SVG background */}
-					<svg viewBox="0 0 100 100" className="absolute inset-0 size-full drop-shadow-lg" aria-hidden>
-						<polygon points="50,2 61,35 97,35 68,57 79,91 50,70 21,91 32,57 3,35 39,35" fill="#0a0a0a" />
+			{/* Redesigned Premium Starburst discount badge — moves with standee sway */}
+			<div className="absolute -right-6 sm:-right-8 top-[18%] z-40 starburst-badge select-none pointer-events-none">
+				<div className="relative size-[92px] sm:size-[108px] flex items-center justify-center">
+					{/* 24-point premium starburst SVG background with golden border */}
+					<svg viewBox="0 0 100 100" className="absolute inset-0 size-full drop-shadow-2xl" aria-hidden>
+						<polygon 
+							points="50,2 55,10 62,5 65,14 72,11 74,21 80,20 80,30 86,31 84,41 89,44 86,53 89,58 84,65 86,72 80,77 80,85 73,88 71,96 64,96 61,100 54,99 50,100 46,99 39,100 36,96 29,96 27,88 20,85 20,77 14,72 16,65 11,58 14,53 11,44 16,41 14,31 20,30 20,20 27,21 28,11 35,14 38,5 45,10" 
+							fill="#000000" 
+							stroke="#d97706" 
+							strokeWidth="2.2"
+							strokeLinejoin="miter"
+						/>
 					</svg>
-					{/* Text on top */}
-					<div className="relative z-10 flex flex-col items-center justify-center text-center leading-none gap-[2px]">
-						<span className="text-[0.45rem] sm:text-[0.5rem] font-bold uppercase tracking-[0.12em] text-white/70">Trị giá</span>
-						<span className="text-[0.6rem] sm:text-[0.65rem] font-bold text-white font-serif">1.200.000đ</span>
-						<span className="text-[0.55rem] sm:text-[0.6rem] font-black uppercase tracking-widest text-amber-400">FREE</span>
+					{/* Premium text arrangement */}
+					<div className="relative z-10 flex flex-col items-center justify-center text-center leading-none gap-[1px]">
+						<span className="text-[0.5rem] sm:text-[0.6rem] font-bold uppercase tracking-[0.15em] text-white/60">Trị giá</span>
+						<span className="text-[0.75rem] sm:text-[0.9rem] font-bold text-white font-serif tracking-tight my-[2px] drop-shadow-xs">1.200.000đ</span>
+						<div className="h-[1px] w-6 bg-amber-500/30 my-[1px]" />
+						<span className="text-[0.65rem] sm:text-[0.75rem] font-black uppercase tracking-widest text-amber-500 font-sans drop-shadow-sm">FREE</span>
 					</div>
 				</div>
 			</div>
