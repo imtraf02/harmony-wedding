@@ -219,7 +219,21 @@ export function LandingPageContent() {
 					<GlassButton
 						variant="dark"
 						className="!py-2 !px-5 text-[0.62rem] tracking-wider"
-						onClick={scrollToForm}
+						href={messengerUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						onClick={() => {
+							trackContactChannel("Messenger", messengerUrl);
+							trackEvent("Lead", {
+								content_type: "standee_promo_click",
+								content_name: "Header_Nhan_Qua_Ngay_Click",
+								utm_source: utmSource,
+								utm_medium: utmMedium,
+								utm_campaign: utmCampaign,
+								utm_content: utmContent,
+								utm_term: utmTerm,
+							});
+						}}
 					>
 						Nhận Quà Ngay
 					</GlassButton>
@@ -248,9 +262,23 @@ export function LandingPageContent() {
 							<GlassButton
 								variant="dark"
 								className="w-full sm:w-auto !py-3.5 !px-8 text-xs text-center font-bold tracking-widest"
-								onClick={scrollToForm}
+								href={messengerUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								onClick={() => {
+									trackContactChannel("Messenger", messengerUrl);
+									trackEvent("Lead", {
+										content_type: "standee_promo_click",
+										content_name: "Hero_Nhan_Qua_Ngay_Click",
+										utm_source: utmSource,
+										utm_medium: utmMedium,
+										utm_campaign: utmCampaign,
+										utm_content: utmContent,
+										utm_term: utmTerm,
+									});
+								}}
 							>
-								Đăng ký nhận standee ➔
+								Nhận Quà Ngay ➔
 							</GlassButton>
 							<GlassButton
 								variant="light"
