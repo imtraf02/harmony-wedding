@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { MessageCircle, Smartphone, PhoneCall, Mail, Timer } from "lucide-react";
+import { MessageCircle, Smartphone, PhoneCall, Mail, Timer, Gift, CalendarClock } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
@@ -479,10 +479,10 @@ export function LandingPageContent() {
 						</p>
 					</div>
 
-					<div className="grid gap-8 md:grid-cols-3 promo-cards-container">
+					<div className="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto promo-cards-container">
 						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
-							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
-								🎁
+							<div className="size-10 bg-amber-500/10 text-amber-600 rounded-full flex items-center justify-center mb-6">
+								<Gift className="size-5" strokeWidth={1.75} />
 							</div>
 							<h3 className="font-serif text-lg text-neutral-900 mb-3">
 								Gói Chụp Áp Dụng
@@ -493,20 +493,8 @@ export function LandingPageContent() {
 						</GlassCard>
 
 						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
-							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
-								📐
-							</div>
-							<h3 className="font-serif text-lg text-neutral-900 mb-3">
-								Chất Liệu Standee
-							</h3>
-							<p className="text-xs leading-6 text-neutral-500 font-light">
-								Standee composite chất lượng cao cấp. Tấm ảnh cưới của hai bạn được ép màng bảo vệ chống xước, chống lóa, đi kèm giá đỡ gỗ mộc tự nhiên chắc chắn, thẩm mỹ và tinh tế.
-							</p>
-						</GlassCard>
-
-						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
-							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
-								⏳
+							<div className="size-10 bg-amber-500/10 text-amber-600 rounded-full flex items-center justify-center mb-6">
+								<CalendarClock className="size-5" strokeWidth={1.75} />
 							</div>
 							<h3 className="font-serif text-lg text-neutral-900 mb-3">
 								Thời Hạn Đăng Ký
