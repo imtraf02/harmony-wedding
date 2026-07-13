@@ -8,6 +8,12 @@ import { GlassButton } from "@/components/ui/glass-button";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
 import { trackFormSubmission, trackContactChannel, trackEvent } from "@/lib/tracking";
 import { siteConfig } from "@/lib/config";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+if (typeof window !== "undefined") {
+	gsap.registerPlugin(useGSAP);
+}
 
 interface LeadFormData {
 	name: string;
@@ -772,89 +778,114 @@ export function LandingPageContent() {
 }
 
 function WeddingStandee() {
+	const standeeRef = useRef<HTMLDivElement>(null);
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	useGSAP(() => {
+		const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+
+		// 1. Roll up animation: animate height from 0 to auto
+		tl.fromTo(
+			wrapperRef.current,
+			{ height: 0, opacity: 0.8 },
+			{ height: "auto", opacity: 1, duration: 2.2, delay: 0.5 }
+		);
+
+		// 2. Staggered fade in of the items inside the standee
+		tl.fromTo(
+			".standee-item",
+			{ opacity: 0, y: 15 },
+			{ opacity: 1, y: 0, duration: 1.2, stagger: 0.12, ease: "power2.out" },
+			"-=1.6" // overlaps with the height reveal
+		);
+	}, { scope: standeeRef });
+
 	return (
-		<div className="relative mx-auto max-w-[320px] sm:max-w-[350px] w-full pb-8 select-none">
-			{/* Metal Top Rail (Roll-up Banner Top) */}
-			<div className="h-1.5 bg-linear-to-r from-neutral-400 via-neutral-300 to-neutral-500 w-[96%] mx-auto rounded-t-xs shadow-xs relative z-20" />
-			
-			{/* Standee Body (Fabric/Banner Sheet) */}
-			<div className="bg-white border-x border-neutral-200/80 shadow-2xl p-3.5 pb-5 flex flex-col justify-between aspect-[1/2.35] relative z-10 w-[96%] mx-auto border-b border-neutral-200/50">
-				{/* Top Image: Landscape */}
-				<div className="relative aspect-[3/2] w-full overflow-hidden bg-neutral-100 rounded-xs">
-					<Image
-						alt="Ảnh cưới ngang mẫu - Harmony Wedding"
-						src="/images/wedding/studio-han-quoc/8.webp"
-						fill
-						className="object-cover"
-						priority
-						sizes="350px"
-					/>
-				</div>
+		<div ref={standeeRef} className="relative mx-auto max-w-[320px] sm:max-w-[350px] w-full pb-8 select-none">
+			{/* Canvas Wrapper */}
+			<div ref={wrapperRef} className="overflow-hidden w-[96%] mx-auto relative z-10">
+				{/* Metal Top Rail (Roll-up Banner Top) */}
+				<div className="h-1.5 bg-linear-to-r from-neutral-400 via-neutral-300 to-neutral-500 w-full rounded-t-xs shadow-xs" />
+				
+				{/* Standee Body (Fabric/Banner Sheet) */}
+				<div className="bg-white border-x border-neutral-200/80 shadow-2xl p-3.5 pb-5 flex flex-col justify-between aspect-[1/2.35] border-b border-neutral-200/50">
+					{/* Top Image: Landscape */}
+					<div className="relative aspect-[3/2] w-full overflow-hidden bg-neutral-100 rounded-xs standee-item">
+						<Image
+							alt="Ảnh cưới ngang mẫu - Harmony Wedding"
+							src="/images/wedding/studio-han-quoc/8.webp"
+							fill
+							className="object-cover"
+							priority
+							sizes="350px"
+						/>
+					</div>
 
-				{/* Middle Typography Section */}
-				<div className="text-center py-2.5 border-y border-black/[0.04] my-2">
-					<span className="block text-[0.4rem] tracking-[0.25em] text-neutral-400 font-bold uppercase mb-0.5">
-						OUR WEDDING DAY
-					</span>
-					<h3 className="font-serif text-xs sm:text-sm tracking-[0.16em] text-amber-800 uppercase font-medium leading-none py-1">
-						Bá Quyền & Thùy Linh
-					</h3>
-					<span className="block text-[0.38rem] tracking-[0.2em] text-neutral-400 uppercase">
-						WELCOME TO OUR WEDDING
-					</span>
-				</div>
+					{/* Middle Typography Section */}
+					<div className="text-center py-2.5 border-y border-black/[0.04] my-2 standee-item">
+						<span className="block text-[0.4rem] tracking-[0.25em] text-neutral-400 font-bold uppercase mb-0.5">
+							OUR WEDDING DAY
+						</span>
+						<h3 className="font-serif text-xs sm:text-sm tracking-[0.16em] text-amber-800 uppercase font-medium leading-none py-1">
+							Bá Quyền & Thùy Linh
+						</h3>
+						<span className="block text-[0.38rem] tracking-[0.2em] text-neutral-400 uppercase">
+							WELCOME TO OUR WEDDING
+						</span>
+					</div>
 
-				{/* Middle Grid: 2x2 Portrait Images */}
-				<div className="grid grid-cols-2 gap-1.5 flex-1 my-1">
-					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
-						<Image
-							alt="Ảnh cưới dọc mẫu 1"
-							src="/images/wedding/studio-han-quoc/1.webp"
-							fill
-							className="object-cover"
-							sizes="150px"
-						/>
+					{/* Middle Grid: 2x2 Portrait Images */}
+					<div className="grid grid-cols-2 gap-1.5 flex-1 my-1 standee-item">
+						<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+							<Image
+								alt="Ảnh cưới dọc mẫu 1"
+								src="/images/wedding/studio-han-quoc/1.webp"
+								fill
+								className="object-cover"
+								sizes="150px"
+							/>
+						</div>
+						<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+							<Image
+								alt="Ảnh cưới dọc mẫu 2"
+								src="/images/wedding/studio-han-quoc/2.webp"
+								fill
+								className="object-cover"
+								sizes="150px"
+							/>
+						</div>
+						<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+							<Image
+								alt="Ảnh cưới dọc mẫu 3"
+								src="/images/wedding/studio-han-quoc/3.webp"
+								fill
+								className="object-cover"
+								sizes="150px"
+							/>
+						</div>
+						<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
+							<Image
+								alt="Ảnh cưới dọc mẫu 4"
+								src="/images/wedding/studio-han-quoc/4.webp"
+								fill
+								className="object-cover"
+								sizes="150px"
+							/>
+						</div>
 					</div>
-					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
-						<Image
-							alt="Ảnh cưới dọc mẫu 2"
-							src="/images/wedding/studio-han-quoc/2.webp"
-							fill
-							className="object-cover"
-							sizes="150px"
-						/>
-					</div>
-					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
-						<Image
-							alt="Ảnh cưới dọc mẫu 3"
-							src="/images/wedding/studio-han-quoc/3.webp"
-							fill
-							className="object-cover"
-							sizes="150px"
-						/>
-					</div>
-					<div className="relative aspect-[3/4] w-full overflow-hidden bg-neutral-100 rounded-xs">
-						<Image
-							alt="Ảnh cưới dọc mẫu 4"
-							src="/images/wedding/studio-han-quoc/4.webp"
-							fill
-							className="object-cover"
-							sizes="150px"
-						/>
-					</div>
-				</div>
 
-				{/* Bottom Typography Section */}
-				<div className="text-center pt-3">
-					<p className="font-serif italic text-neutral-400 text-[0.62rem] sm:text-[0.72rem] leading-none">
-						Welcome to our
-					</p>
-					<h4 className="font-serif text-xs tracking-[0.2em] text-neutral-800 uppercase font-medium mt-0.5">
-						Story
-					</h4>
-					<p className="text-[0.34rem] tracking-[0.25em] text-amber-700/60 uppercase font-bold mt-0.5">
-						Harmony Wedding
-					</p>
+					{/* Bottom Typography Section */}
+					<div className="text-center pt-3 standee-item">
+						<p className="font-serif italic text-neutral-400 text-[0.62rem] sm:text-[0.72rem] leading-none">
+							Welcome to our
+						</p>
+						<h4 className="font-serif text-xs tracking-[0.2em] text-neutral-800 uppercase font-medium mt-0.5">
+							Story
+						</h4>
+						<p className="text-[0.34rem] tracking-[0.25em] text-amber-700/60 uppercase font-bold mt-0.5">
+							Harmony Wedding
+						</p>
+					</div>
 				</div>
 			</div>
 
