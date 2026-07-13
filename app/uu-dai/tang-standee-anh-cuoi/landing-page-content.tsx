@@ -10,9 +10,10 @@ import { trackFormSubmission, trackContactChannel, trackEvent } from "@/lib/trac
 import { siteConfig } from "@/lib/config";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") {
-	gsap.registerPlugin(useGSAP);
+	gsap.registerPlugin(useGSAP, ScrollTrigger);
 }
 
 interface LeadFormData {
@@ -31,34 +32,23 @@ const INITIAL_FORM: LeadFormData = {
 	notes: "",
 };
 
-const TESTIMONIALS = [
+const FAQS = [
 	{
-		quote: "Gói chụp của Harmony đã rất đẹp rồi, lại được tặng thêm 1 standee in ảnh cổng để bàn gallery nữa nên đám cưới của bọn mình rất trọn vẹn. Standee dày dặn, in sắc nét, ai đi qua cũng khen tấm hình này.",
-		author: "Khánh Linh & Minh Đức",
-		package: "Đã chụp tại Sunny Garden",
-		avatar: "/images/wedding/sunny-garden/16.webp",
+		q: "Standee có giá đỡ chân đứng đi kèm không?",
+		a: "Có, sản phẩm standee được làm từ chất liệu composite cao cấp bền đẹp, đi kèm giá đỡ ba chân bằng gỗ mộc tự nhiên chắc chắn và tinh tế, giúp trưng bày hoàn hảo tại sảnh đón tiệc cưới."
 	},
 	{
-		quote: "Mình rất ưng ý với Standee composite mà Harmony tặng. Cầm rất chắc tay, không sợ bị trầy xước hay thấm nước như ảnh gỗ ngày xưa. Thiết kế chữ và màu sắc theo đúng gu của hai vợ chồng.",
-		author: "Quỳnh Anh & Quốc Bảo",
-		package: "Đã chụp tại Vũ Garden",
-		avatar: "/images/wedding/vu-garden/1.webp",
+		q: "Tôi có được chọn bức ảnh in standee theo ý thích không?",
+		a: "Có, hai bạn hoàn toàn tự do lựa chọn bức ảnh ưng ý nhất trong toàn bộ album ảnh cưới đã chỉnh sửa của mình. Ekip thiết kế của Harmony sẽ tiến hành dàn trang, chèn text chúc mừng (tên dâu rể + ngày cưới) theo mẫu thiết kế riêng trước khi in."
 	},
 	{
-		quote: "Ban đầu hai vợ chồng lăn tăn vì sợ standee to cồng kềnh, nhưng được Harmony làm cho kích thước 60x90cm rất vừa vặn, chân đỡ chắc chắn, mang lên nhà hàng hay trưng ở phòng khách sau cưới đều đẹp.",
-		author: "Phương Thảo & Hoàng Nam",
-		package: "Đã chụp tại Studio",
-		avatar: "/images/wedding/an-garden/1.webp",
+		q: "Nếu tôi đặt cọc bây giờ nhưng 2-3 tháng sau mới chụp thì sao?",
+		a: "Chương trình này hỗ trợ tối đa cho các cặp đôi. Bạn chỉ cần liên hệ cọc giữ ưu đãi trong tháng này để nhận suất quà tặng. Lịch chụp thực tế có thể linh hoạt sắp xếp vào thời gian sau (lên tới 6 tháng kể từ thời điểm cọc)."
 	},
-];
-
-const GALLERIES = [
-	{ src: "/images/wedding/sunny-garden/1.webp", label: "Phong cách châu Âu lãng mạn" },
-	{ src: "/images/wedding/vu-garden/1.webp", label: "Nhà kính thơ mộng cổ điển" },
-	{ src: "/images/wedding/an-garden/1.webp", label: "Mộc mạc kiểu Hàn Quốc" },
-	{ src: "/images/wedding/da-lat/1.webp", label: "Ngoại cảnh thông ngàn thơ mộng" },
-	{ src: "/images/wedding/studio-han-quoc/1.webp", label: "Studio thanh lịch tối giản" },
-	{ src: "/images/wedding/ngay-cuoi/1.webp", label: "Khoảnh khắc phóng sự ngày cưới" },
+	{
+		q: "Có tốn thêm chi phí thiết kế hay gia công standee không?",
+		a: "Gói quà tặng đã bao gồm trọn gói chi phí thiết kế chữ nghệ thuật, chỉnh màu sắc theo mong muốn, chi phí in ấn công nghệ cao chống trầy xước và chân gỗ đi kèm. Bạn hoàn toàn không cần chi trả thêm bất kỳ chi phí phát sinh nào."
+	}
 ];
 
 export function LandingPageContent() {
@@ -194,8 +184,176 @@ export function LandingPageContent() {
 		`utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}&utm_content=${utmContent}`,
 	)}`;
 
+	const pageContainerRef = useRef<HTMLDivElement>(null);
+
+	useGSAP(() => {
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		if (prefersReducedMotion) {
+			gsap.set([
+				".hero-badge-anim",
+				".hero-desc-anim",
+				".hero-ctas-anim",
+				".hero-urgency-anim",
+				".promo-header",
+				".promo-card",
+				".countdown-banner",
+				".faq-section-header",
+				".faq-item-card",
+				".form-header",
+				".form-container-card"
+			], { opacity: 1 });
+			gsap.set(".hero-title-line", { yPercent: 0 });
+			return;
+		}
+
+		// Create master animation timeline
+		const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+		// 1. Hero Badge scale + fade-in
+		tl.fromTo(
+			".hero-badge-anim",
+			{ scale: 0.8, opacity: 0 },
+			{ scale: 1, opacity: 1, duration: 1.2, ease: "back.out(1.7)" }
+		);
+
+		// 2. Hero Title reveal line-by-line
+		tl.fromTo(
+			".hero-title-line",
+			{ yPercent: 105 },
+			{ yPercent: 0, duration: 1.2, stagger: 0.15 },
+			"-=0.9"
+		);
+
+		// 3. Hero Description, CTA Buttons, Urgency Tag
+		tl.fromTo(
+			[".hero-desc-anim", ".hero-ctas-anim", ".hero-urgency-anim"],
+			{ y: 15, opacity: 0 },
+			{ y: 0, opacity: 1, duration: 1, stagger: 0.12 },
+			"-=0.8"
+		);
+
+		// 4. Scroll reveals for other sections
+		// Section 2: Promo Detail Cards
+		gsap.fromTo(
+			".promo-header",
+			{ y: 20, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.85,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: ".promo-section",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		gsap.fromTo(
+			".promo-card",
+			{ y: 30, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.9,
+				stagger: 0.15,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: ".promo-cards-container",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		// Countdown Timer Banner
+		gsap.fromTo(
+			".countdown-banner",
+			{ y: 30, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.95,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: ".countdown-banner",
+					start: "top 85%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		// Section 3: FAQ Grid
+		gsap.fromTo(
+			".faq-section-header",
+			{ y: 20, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.85,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: ".faq-section",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		gsap.fromTo(
+			".faq-item-card",
+			{ y: 25, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.85,
+				stagger: 0.12,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: ".faq-grid-container",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		// Section 4: Form
+		gsap.fromTo(
+			".form-header",
+			{ y: 20, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 0.85,
+				ease: "power2.out",
+				scrollTrigger: {
+					trigger: ".form-section",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+
+		gsap.fromTo(
+			".form-container-card",
+			{ y: 35, opacity: 0 },
+			{
+				y: 0,
+				opacity: 1,
+				duration: 1,
+				ease: "power3.out",
+				scrollTrigger: {
+					trigger: ".form-container-card",
+					start: "top 80%",
+					toggleActions: "play none none none"
+				}
+			}
+		);
+	}, { scope: pageContainerRef });
+
 	return (
-		<div className="relative">
+		<div className="relative" ref={pageContainerRef}>
 			{/* Color Mesh Background */}
 			<MeshGradient variant="light" className="opacity-75" />
 
@@ -218,7 +376,7 @@ export function LandingPageContent() {
 					{/* Primary single Action */}
 					<GlassButton
 						variant="dark"
-						className="!py-2 !px-5 text-[0.62rem] tracking-wider"
+						className="!py-2 !px-5 text-[0.62rem] tracking-wider btn-shimmer-glow"
 						href={messengerUrl}
 						target="_blank"
 						rel="noopener noreferrer"
@@ -241,27 +399,31 @@ export function LandingPageContent() {
 			</header>
 
 			{/* 1. HERO SECTION */}
-			<section className="pt-28 pb-16 md:pt-36 md:pb-24 px-5">
+			<section className="pt-28 pb-16 md:pt-36 md:pb-24 px-5 hero-section">
 				<div className="mx-auto max-w-7xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center md:px-10">
 					{/* Copy Column */}
 					<div className="text-left">
-						<span className="inline-block mb-4 rounded-full bg-amber-500/10 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest text-amber-950">
+						<span className="inline-block mb-4 rounded-full bg-amber-500/10 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest text-amber-950 hero-badge-anim opacity-0">
 							Quà tặng đặc biệt tháng này
 						</span>
 						<h1 className="font-serif text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] text-neutral-900 tracking-tight">
-							Đặt Lịch Chụp Cưới <br className="hidden sm:inline" />
-							<span className="text-amber-700 font-medium">Tặng Ngay Standee</span>
+							<span className="block overflow-hidden pb-1">
+								<span className="hero-title-line block">Đặt Lịch Chụp Cưới</span>
+							</span>
+							<span className="block overflow-hidden pb-1">
+								<span className="hero-title-line block text-amber-700 font-medium">Tặng Ngay Standee</span>
+							</span>
 						</h1>
-						<p className="mt-6 text-sm md:text-base leading-8 text-neutral-500 font-light max-w-xl">
+						<p className="mt-6 text-sm md:text-base leading-8 text-neutral-500 font-light max-w-xl hero-desc-anim opacity-0">
 							Món quà kỷ niệm tinh tế trưng bày bàn gallery tiệc cưới và góc nhỏ gia đình.
 							Harmony dành tặng ngay 01 Standee thiết kế cao cấp cho tất cả các cặp đôi đặt gói
 							chụp pre-wedding trong thời gian ưu đãi này.
 						</p>
 
-						<div className="mt-8 flex flex-col sm:flex-row gap-4">
+						<div className="mt-8 flex flex-col sm:flex-row gap-4 hero-ctas-anim opacity-0">
 							<GlassButton
 								variant="dark"
-								className="w-full sm:w-auto !py-3.5 !px-8 text-xs text-center font-bold tracking-widest"
+								className="w-full sm:w-auto !py-3.5 !px-8 text-xs text-center font-bold tracking-widest btn-shimmer-glow"
 								href={messengerUrl}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -293,7 +455,7 @@ export function LandingPageContent() {
 						</div>
 
 						{/* Urgency tag line */}
-						<div className="mt-6 flex items-center gap-3 text-[0.66rem] font-bold uppercase tracking-wider text-neutral-400">
+						<div className="mt-6 flex items-center gap-3 text-[0.66rem] font-bold uppercase tracking-wider text-neutral-400 hero-urgency-anim opacity-0">
 							<span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
 							Số lượng quà tặng giới hạn: Chỉ còn 8 suất trống
 						</div>
@@ -313,9 +475,9 @@ export function LandingPageContent() {
 			</section>
 
 			{/* 2. EXPLANATION OF PROMO */}
-			<section className="py-16 bg-white/30 backdrop-blur-xs border-y border-black/[0.03] px-5">
+			<section className="py-16 bg-white/30 backdrop-blur-xs border-y border-black/[0.03] px-5 promo-section">
 				<div className="mx-auto max-w-7xl md:px-10">
-					<div className="text-center max-w-2xl mx-auto mb-12">
+					<div className="text-center max-w-2xl mx-auto mb-12 promo-header opacity-0">
 						<h2 className="font-serif text-3xl md:text-4xl text-neutral-900 tracking-tight">
 							Chi Tiết Chương Trình Quà Tặng
 						</h2>
@@ -324,8 +486,8 @@ export function LandingPageContent() {
 						</p>
 					</div>
 
-					<div className="grid gap-8 md:grid-cols-3">
-						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs">
+					<div className="grid gap-8 md:grid-cols-3 promo-cards-container">
+						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
 							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
 								🎁
 							</div>
@@ -337,7 +499,7 @@ export function LandingPageContent() {
 							</p>
 						</GlassCard>
 
-						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs">
+						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
 							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
 								📐
 							</div>
@@ -349,7 +511,7 @@ export function LandingPageContent() {
 							</p>
 						</GlassCard>
 
-						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs">
+						<GlassCard variant="light" intensity="medium" className="p-6 sm:p-8 rounded-2xl text-left border-white/40 shadow-xs promo-card opacity-0">
 							<div className="size-10 bg-amber-500/10 text-amber-800 rounded-full flex items-center justify-center font-bold text-lg mb-6">
 								⏳
 							</div>
@@ -363,7 +525,7 @@ export function LandingPageContent() {
 					</div>
 
 					{/* 3. countdown timer banner */}
-					<div className="mt-14 max-w-3xl mx-auto">
+					<div className="mt-14 max-w-3xl mx-auto countdown-banner opacity-0">
 						<GlassCard
 							variant="dark"
 							intensity="high"
@@ -373,30 +535,42 @@ export function LandingPageContent() {
 							<h4 className="relative z-10 text-[0.62rem] font-bold tracking-[0.25em] uppercase text-amber-400 mb-4">
 								Thời hạn nhận ưu đãi còn lại
 							</h4>
-							<div className="relative z-10 flex justify-center items-center gap-4 md:gap-8 text-white">
-								<div className="flex flex-col items-center">
-									<span className="font-serif text-2xl md:text-4xl font-bold tracking-tight">
+							<div className="relative z-10 flex justify-center items-center gap-2 sm:gap-4 md:gap-8 text-white select-none">
+								<div className="flex flex-col items-center min-w-16">
+									<span 
+										key={timeLeft.days} 
+										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
+									>
 										{String(timeLeft.days).padStart(2, "0")}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Ngày</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
-								<div className="flex flex-col items-center">
-									<span className="font-serif text-2xl md:text-4xl font-bold tracking-tight">
+								<div className="flex flex-col items-center min-w-16">
+									<span 
+										key={timeLeft.hours} 
+										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
+									>
 										{String(timeLeft.hours).padStart(2, "0")}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Giờ</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
-								<div className="flex flex-col items-center">
-									<span className="font-serif text-2xl md:text-4xl font-bold tracking-tight">
+								<div className="flex flex-col items-center min-w-16">
+									<span 
+										key={timeLeft.minutes} 
+										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
+									>
 										{String(timeLeft.minutes).padStart(2, "0")}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Phút</span>
 								</div>
 								<span className="text-xl md:text-3xl text-white/30 font-serif leading-none">:</span>
-								<div className="flex flex-col items-center">
-									<span className="font-serif text-2xl md:text-4xl font-bold tracking-tight">
+								<div className="flex flex-col items-center min-w-16">
+									<span 
+										key={timeLeft.seconds} 
+										className="font-serif text-xl sm:text-2xl md:text-4xl font-bold tracking-tight inline-block animate-number-change"
+									>
 										{String(timeLeft.seconds).padStart(2, "0")}
 									</span>
 									<span className="text-[0.55rem] uppercase tracking-wider text-white/50 mt-1">Giây</span>
@@ -407,12 +581,10 @@ export function LandingPageContent() {
 				</div>
 			</section>
 
-
-
 			{/* 6. FAQ SECTION */}
-			<section className="py-20 px-5">
-				<div className="mx-auto max-w-3xl md:px-10">
-					<div className="text-center mb-12">
+			<section className="py-20 px-5 faq-section">
+				<div className="mx-auto max-w-[1200px] md:px-10">
+					<div className="text-center mb-12 faq-section-header opacity-0">
 						<h2 className="font-serif text-3xl text-neutral-900 tracking-tight">
 							Câu Hỏi Thường Gặp
 						</h2>
@@ -421,91 +593,75 @@ export function LandingPageContent() {
 						</p>
 					</div>
 
-					<div className="space-y-4">
-						{/* FAQ 1 */}
-						<GlassCard variant="light" intensity="low" className="rounded-xl border-white/30">
-							<button
-								onClick={() => toggleFaq(0)}
-								className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
-								type="button"
-							>
-								<span>Standee có giá đỡ chân đứng đi kèm không?</span>
-								<span className="font-serif text-xs transition-transform duration-300 ml-4">
-									{activeFaq === 0 ? "▲" : "▼"}
-								</span>
-							</button>
-							{activeFaq === 0 && (
-								<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
-									Có, sản phẩm standee được làm từ chất liệu composite cao cấp bền đẹp, đi kèm giá đỡ ba chân bằng gỗ mộc tự nhiên chắc chắn và tinh tế, giúp trưng bày hoàn hảo tại sảnh đón tiệc cưới.
-								</div>
-							)}
-						</GlassCard>
+					<div className="grid gap-6 lg:grid-cols-2 items-start faq-grid-container">
+						{/* Column 1: FAQ 1 & 2 */}
+						<div className="space-y-4">
+							{FAQS.slice(0, 2).map((item, idx) => {
+								const globalIdx = idx;
+								const isOpen = activeFaq === globalIdx;
+								return (
+									<GlassCard key={globalIdx} variant="light" intensity="low" className="rounded-xl border-white/30 faq-item-card overflow-hidden">
+										<button
+											onClick={() => toggleFaq(globalIdx)}
+											className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
+											type="button"
+										>
+											<span className="text-[0.88rem] sm:text-[0.92rem] leading-6 font-medium pr-4">{item.q}</span>
+											<svg className={`size-4 text-neutral-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-amber-600" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+											</svg>
+										</button>
+										
+										<div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+											<div className="overflow-hidden">
+												<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
+													{item.a}
+												</div>
+											</div>
+										</div>
+									</GlassCard>
+								);
+							})}
+						</div>
 
-						{/* FAQ 2 */}
-						<GlassCard variant="light" intensity="low" className="rounded-xl border-white/30">
-							<button
-								onClick={() => toggleFaq(1)}
-								className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
-								type="button"
-							>
-								<span>Tôi có được chọn bức ảnh in standee theo ý thích không?</span>
-								<span className="font-serif text-xs transition-transform duration-300 ml-4">
-									{activeFaq === 1 ? "▲" : "▼"}
-								</span>
-							</button>
-							{activeFaq === 1 && (
-								<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
-									Có, hai bạn hoàn toàn tự do lựa chọn bức ảnh ưng ý nhất trong toàn bộ album ảnh cưới đã chỉnh sửa của mình. Ekip thiết kế của Harmony sẽ tiến hành dàn trang, chèn text chúc mừng (tên dâu rể + ngày cưới) theo mẫu thiết kế riêng trước khi in.
-								</div>
-							)}
-						</GlassCard>
-
-						{/* FAQ 3 */}
-						<GlassCard variant="light" intensity="low" className="rounded-xl border-white/30">
-							<button
-								onClick={() => toggleFaq(2)}
-								className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
-								type="button"
-							>
-								<span>Nếu tôi đặt cọc bây giờ nhưng 2-3 tháng sau mới chụp thì sao?</span>
-								<span className="font-serif text-xs transition-transform duration-300 ml-4">
-									{activeFaq === 2 ? "▲" : "▼"}
-								</span>
-							</button>
-							{activeFaq === 2 && (
-								<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
-									Chương trình này hỗ trợ tối đa cho các cặp đôi. Bạn chỉ cần liên hệ cọc giữ ưu đãi trong tháng này để nhận suất quà tặng. Lịch chụp thực tế có thể linh hoạt sắp xếp vào thời gian sau (lên tới 6 tháng kể từ thời điểm cọc).
-								</div>
-							)}
-						</GlassCard>
-
-						{/* FAQ 4 */}
-						<GlassCard variant="light" intensity="low" className="rounded-xl border-white/30">
-							<button
-								onClick={() => toggleFaq(3)}
-								className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
-								type="button"
-							>
-								<span>Có tốn thêm chi phí thiết kế hay gia công standee không?</span>
-								<span className="font-serif text-xs transition-transform duration-300 ml-4">
-									{activeFaq === 3 ? "▲" : "▼"}
-								</span>
-							</button>
-							{activeFaq === 3 && (
-								<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
-									Gói quà tặng đã bao gồm trọn gói chi phí thiết kế chữ nghệ thuật, chỉnh màu sắc theo mong muốn, chi phí in ấn công nghệ cao chống trầy xước và chân gỗ đi kèm. Bạn hoàn toàn không cần chi trả thêm bất kỳ chi phí phát sinh nào.
-								</div>
-							)}
-						</GlassCard>
+						{/* Column 2: FAQ 3 & 4 */}
+						<div className="space-y-4">
+							{FAQS.slice(2, 4).map((item, idx) => {
+								const globalIdx = idx + 2;
+								const isOpen = activeFaq === globalIdx;
+								return (
+									<GlassCard key={globalIdx} variant="light" intensity="low" className="rounded-xl border-white/30 faq-item-card overflow-hidden">
+										<button
+											onClick={() => toggleFaq(globalIdx)}
+											className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
+											type="button"
+										>
+											<span className="text-[0.88rem] sm:text-[0.92rem] leading-6 font-medium pr-4">{item.q}</span>
+											<svg className={`size-4 text-neutral-400 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-amber-600" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+											</svg>
+										</button>
+										
+										<div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+											<div className="overflow-hidden">
+												<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
+													{item.a}
+												</div>
+											</div>
+										</div>
+									</GlassCard>
+								);
+							})}
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* 7. Lead Form Section (CTA Cuối Trang) */}
-			<section ref={formRef} className="py-20 bg-neutral-900 text-white relative px-5">
+			<section ref={formRef} className="py-20 bg-neutral-900 text-white relative px-5 form-section">
 				<div className="absolute inset-0 bg-radial-gradient(circle, rgba(180, 120, 50, 0.1) 0%, rgba(0, 0, 0, 0) 70%) pointer-events-none" />
 				<div className="mx-auto max-w-3xl relative z-10">
-					<div className="text-center max-w-2xl mx-auto mb-10">
+					<div className="text-center max-w-2xl mx-auto mb-10 form-header opacity-0">
 						<h2 className="font-serif text-3xl md:text-4xl tracking-tight text-white">
 							Đăng Ký Nhận Ưu Đãi Ngay
 						</h2>
@@ -518,8 +674,8 @@ export function LandingPageContent() {
 					</div>
 
 					{submitStatus === "success" ? (
-						<div className="bg-white/5 border border-white/10 p-8 rounded-3xl text-center backdrop-blur-md">
-							<div className="size-14 bg-amber-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-2xl font-bold">
+						<div className="bg-white/5 border border-white/10 p-8 rounded-3xl text-center backdrop-blur-md animate-success-card">
+							<div className="size-14 bg-amber-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 text-2xl font-bold animate-success-icon">
 								✓
 							</div>
 							<h3 className="font-serif text-xl font-medium text-white mb-3">
@@ -535,7 +691,7 @@ export function LandingPageContent() {
 									href={zaloUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center"
+									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center btn-shimmer-glow"
 									onClick={() => trackContactChannel("Zalo", zaloUrl)}
 								>
 									Liên Hệ Qua Zalo
@@ -545,7 +701,7 @@ export function LandingPageContent() {
 									href={messengerUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center border-white/20 text-white hover:text-black"
+									className="!py-3 !px-8 text-xs w-full sm:w-auto text-center border-white/20 text-white hover:text-black btn-shimmer-glow"
 									onClick={() => trackContactChannel("Messenger", messengerUrl)}
 								>
 									Liên Hệ Qua Messenger
@@ -568,7 +724,7 @@ export function LandingPageContent() {
 							variant="dark"
 							intensity="high"
 							borderStrength="medium"
-							className="p-6 sm:p-8 md:p-10 border-white/10 rounded-3xl"
+							className="p-6 sm:p-8 md:p-10 border-white/10 rounded-3xl form-container-card opacity-0"
 						>
 							<form onSubmit={handleFormSubmit} className="space-y-5">
 								<div className="grid gap-5 sm:grid-cols-2">
@@ -675,7 +831,7 @@ export function LandingPageContent() {
 										type="submit"
 										variant="gold"
 										disabled={isSubmitting}
-										className="w-full !py-3.5 text-xs rounded-xl flex items-center justify-center gap-2 tracking-widest"
+										className="w-full !py-3.5 text-xs rounded-xl flex items-center justify-center gap-2 tracking-widest btn-shimmer-glow"
 									>
 										{isSubmitting ? (
 											<>
@@ -710,6 +866,40 @@ export function LandingPageContent() {
 					</div>
 				</div>
 			</footer>
+
+			{/* Inject micro-animations via standard CSS */}
+			<style dangerouslySetInnerHTML={{ __html: `
+				@keyframes number-change {
+					0% { transform: scale(0.85); opacity: 0.7; }
+					50% { transform: scale(1.06); }
+					100% { transform: scale(1); opacity: 1; }
+				}
+				.animate-number-change {
+					animation: number-change 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+				}
+				
+				.btn-shimmer-glow {
+					position: relative;
+					overflow: hidden;
+					transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+				}
+				.btn-shimmer-glow:hover {
+					transform: translateY(-2.5px) scale(1.02);
+					box-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
+				}
+				.btn-shimmer-glow:active {
+					transform: translateY(0) scale(0.98);
+				}
+				
+				@keyframes success-pop {
+					0% { transform: scale(0); opacity: 0; }
+					70% { transform: scale(1.2); }
+					100% { transform: scale(1); opacity: 1; }
+				}
+				.animate-success-icon {
+					animation: success-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+				}
+			`}} />
 		</div>
 	);
 }
@@ -719,6 +909,13 @@ function WeddingStandee() {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		if (prefersReducedMotion) {
+			gsap.set(wrapperRef.current, { height: "auto", opacity: 1 });
+			gsap.set(".standee-item", { opacity: 1, y: 0 });
+			return;
+		}
+
 		const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
 
 		// 1. Roll up animation: animate height from 0 to auto
@@ -735,6 +932,16 @@ function WeddingStandee() {
 			{ opacity: 1, y: 0, duration: 1.2, stagger: 0.12, ease: "power2.out" },
 			"-=1.6" // overlaps with the height reveal
 		);
+
+		// 3. Subtle floating sway loop on wrapperRef after entrance finishes
+		tl.to(wrapperRef.current, {
+			y: -6,
+			rotation: 0.35,
+			duration: 3,
+			ease: "sine.inOut",
+			repeat: -1,
+			yoyo: true
+		});
 	}, { scope: standeeRef });
 
 	return (
