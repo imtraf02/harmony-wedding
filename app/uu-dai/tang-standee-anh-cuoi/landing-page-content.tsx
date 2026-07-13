@@ -299,7 +299,7 @@ export function LandingPageContent() {
 								Gói Chụp Áp Dụng
 							</h3>
 							<p className="text-xs leading-6 text-neutral-500 font-light">
-								Ưu đãi áp dụng khi đặt bất cứ gói chụp ngoại cảnh hoặc phim trường cưới từ <strong>6.900.000đ</strong> trở lên (bao gồm các phim trường nổi tiếng như Sunny Garden, Vũ Garden, hoặc An Garden).
+								Ưu đãi áp dụng khi đặt bất cứ gói chụp ảnh cưới <strong>Studio, Phim trường hoặc Ngoại cảnh</strong> nào tại Harmony (bao gồm các concept thiết kế đa dạng và điểm chụp nổi tiếng).
 							</p>
 						</GlassCard>
 
@@ -308,10 +308,10 @@ export function LandingPageContent() {
 								📐
 							</div>
 							<h3 className="font-serif text-lg text-neutral-900 mb-3">
-								Thông Số Kỹ Thuật
+								Chất Liệu Standee
 							</h3>
 							<p className="text-xs leading-6 text-neutral-500 font-light">
-								Standee composite chất lượng cao kích thước <strong>60x90cm</strong>. Tấm ảnh cưới của hai bạn được ép màng bảo vệ chống xước, chống lóa, đi kèm giá đỡ gỗ mộc tự nhiên chắc chắn và tinh tế.
+								Standee composite chất lượng cao cấp. Tấm ảnh cưới của hai bạn được ép màng bảo vệ chống xước, chống lóa, đi kèm giá đỡ gỗ mộc tự nhiên chắc chắn, thẩm mỹ và tinh tế.
 							</p>
 						</GlassCard>
 
@@ -486,14 +486,14 @@ export function LandingPageContent() {
 								className="w-full text-left px-6 py-4 flex items-center justify-between text-neutral-900 font-serif text-base focus:outline-hidden cursor-pointer"
 								type="button"
 							>
-								<span>Kích thước của standee là bao nhiêu? Có chân đứng không?</span>
+								<span>Standee có giá đỡ chân đứng đi kèm không?</span>
 								<span className="font-serif text-xs transition-transform duration-300 ml-4">
 									{activeFaq === 0 ? "▲" : "▼"}
 								</span>
 							</button>
 							{activeFaq === 0 && (
 								<div className="px-6 pb-5 pt-1 text-xs leading-6 text-neutral-500 font-light border-t border-black/[0.03]">
-									Standee có kích thước chuẩn là 60x90cm (khổ ảnh cổng vừa vặn nhất cho không gian sảnh). Sản phẩm được đính kèm giá đỡ ba chân bằng gỗ mộc cao cấp tự nhiên, đảm bảo độ vững chãi và thẩm mỹ tối đa khi đặt tại tiệc cưới.
+									Có, sản phẩm standee được làm từ chất liệu composite cao cấp bền đẹp, đi kèm giá đỡ ba chân bằng gỗ mộc tự nhiên chắc chắn và tinh tế, giúp trưng bày hoàn hảo tại sảnh đón tiệc cưới.
 								</div>
 							)}
 						</GlassCard>
