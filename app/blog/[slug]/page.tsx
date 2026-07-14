@@ -149,7 +149,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
               case "paragraph":
                 return (
                   <p key={index} className="mb-6 font-sans whitespace-pre-line">
-                    {parseMarkdownLinks(block.text)}
+                    {parseMarkdown(block.text)}
                   </p>
                 );
               case "heading":
@@ -184,7 +184,7 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
                     className="list-disc pl-6 mb-6 space-y-3 text-neutral-700"
                   >
                     {block.items.map((item, itemIdx) => (
-                      <li key={itemIdx}>{parseMarkdownLinks(item)}</li>
+                      <li key={itemIdx}>{parseMarkdown(item)}</li>
                     ))}
                   </ul>
                 );
@@ -275,40 +275,37 @@ export async function BlogPostPage({ params }: BlogPostPageProps) {
   );
 }
 
-function parseMarkdownLinks(text: string) {
-  const regex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
-  const parts = [];
-  let lastIndex = 0;
-  let match;
-
-  while ((match = regex.exec(text)) !== null) {
-    const [, linkText, url] = match;
-    const matchIndex = match.index;
-
-    if (matchIndex > lastIndex) {
-      parts.push(text.substring(lastIndex, matchIndex));
+function parseMarkdown(text: string) {
+  const regex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g;
+  const parts = text.split(regex);
+  
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      const boldText = part.slice(2, -2);
+      return <strong key={index} className="font-semibold text-neutral-900">{boldText}</strong>;
     }
-
-    parts.push(
-      <a
-        key={matchIndex}
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-neutral-900 font-medium hover:text-neutral-500 transition-colors"
-      >
-        {linkText}
-      </a>
-    );
-
-    lastIndex = regex.lastIndex;
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex));
-  }
-
-  return parts.length > 0 ? parts : text;
+    
+    if (part.startsWith('[') && part.includes('](')) {
+      const match = part.match(/\[(.*?)\]\((.*?)\)/);
+      if (match) {
+        const linkText = match[1];
+        const url = match[2];
+        return (
+          <a
+            key={index}
+            href={url}
+            target={url.startsWith('http') ? "_blank" : undefined}
+            rel={url.startsWith('http') ? "noopener noreferrer" : undefined}
+            className="text-neutral-900 font-medium hover:text-neutral-500 transition-colors"
+          >
+            {linkText}
+          </a>
+        );
+      }
+    }
+    
+    return part;
+  });
 }
 
 export default BlogPostPage;
