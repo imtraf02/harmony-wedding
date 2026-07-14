@@ -54,7 +54,7 @@ export function CollectionSection({ previewImages }: { previewImages: Collection
             Harmony Soiree
             <span className="h-px w-8 bg-neutral-300" />
           </p>
-          <h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.1] text-black">
+          <h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.2] text-black">
             Kiệt Tác Váy Cưới Cho Ngày Trọng Đại
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-neutral-600">

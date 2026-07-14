@@ -671,11 +671,11 @@ function AlbumIntro({ album, compact = false }: AlbumIntroProps) {
 			<p className="mb-6 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-neutral-400">
 				{album.eyebrow}
 			</p>
-			<h1 className="font-serif text-[clamp(3.6rem,8vw,6.5rem)] uppercase leading-[1.08] text-neutral-900 tracking-tighter">
+			<h1 className="font-serif text-[clamp(3.6rem,8vw,6.5rem)] uppercase leading-[1.18] text-neutral-900 tracking-tighter">
 				{album.title}
 			</h1>
 			{album.scriptTitle && (
-				<p className="mt-2.5 font-serif text-[clamp(2rem,5vw,3rem)] leading-[1.1] text-neutral-500">
+				<p className="mt-2.5 font-serif text-[clamp(2rem,5vw,3rem)] leading-[1.18] text-neutral-500">
 					{album.scriptTitle}
 				</p>
 			)}
@@ -708,7 +708,7 @@ function AlbumDetailCta({ image, title }: { image: string; title: string }) {
 					unoptimized
 				/>
 				<div className="relative">
-					<h2 className="max-w-xl font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.02] tracking-tight">
+					<h2 className="max-w-xl font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[1.15] tracking-tight">
 						Bạn yêu thích phong cách này? Hãy để chúng tôi kể câu chuyện của bạn.
 					</h2>
 					<div className="mt-10">

@@ -437,7 +437,7 @@ export function LandingPageContent() {
 						<span className="inline-block mb-4 rounded-full bg-amber-500/10 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest text-amber-950 hero-badge-anim opacity-0">
 							Quà tặng đặc biệt tháng này
 						</span>
-						<h1 className="font-serif text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.08] text-neutral-900 tracking-tight">
+						<h1 className="font-serif text-[clamp(2.4rem,5.5vw,4.5rem)] leading-[1.18] text-neutral-900 tracking-tight">
 							<span className="block overflow-hidden pb-1">
 								<span className="hero-title-line block">
 									Đặt Lịch Chụp Cưới

@@ -25,7 +25,7 @@ export function TeamGrid({ members }: { members: TeamMember[] }) {
 						Đội ngũ sáng lập
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
-					<h2 className="font-serif text-[clamp(2.4rem,6vw,4rem)] leading-[1.1] text-black">
+					<h2 className="font-serif text-[clamp(2.4rem,6vw,4rem)] leading-[1.18] text-black">
 						Những Người Kể Chuyện Bằng Ánh Sáng
 					</h2>
 					<p className="mt-6 text-sm leading-7 text-neutral-600 font-light">

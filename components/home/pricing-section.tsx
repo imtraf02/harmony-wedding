@@ -73,7 +73,7 @@ export function PricingSection() {
 							Báo giá chụp ảnh cưới
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
-						<h2 className="font-serif text-[clamp(2.45rem,4.5vw,4.8rem)] leading-[0.98] text-neutral-900 tracking-tight">
+						<h2 className="font-serif text-[clamp(2.45rem,4.5vw,4.8rem)] leading-[1.15] text-neutral-900 tracking-tight">
 							Gói Chụp Ảnh Phim Trường
 						</h2>
 					</div>

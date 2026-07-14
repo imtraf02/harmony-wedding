@@ -39,12 +39,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const rawPreviewImages = [
-  { src: "/images/mau-do/vay-cuoi-010.webp", label: "Váy Cưới Signature" },
-  { src: "/images/mau-do/vay-cuoi-020.webp", label: "Váy Cưới Premium" },
-  { src: "/images/mau-do/ao-dai-010.webp", label: "Áo Dài Thêu Tay" },
-  { src: "/images/mau-do/vay-cuoi-030.webp", label: "Váy Cưới Diamond" },
-  { src: "/images/mau-do/vay-cuoi-040.webp", label: "Váy Cưới Luxury" },
-  { src: "/images/mau-do/ao-dai-020.webp", label: "Áo Dài Truyền Thống" }
+  { src: "/images/mau-do/vay-cuoi-037.webp", label: "Váy Cưới Signature" },
+  { src: "/images/mau-do/vay-cuoi-148.webp", label: "Váy Cưới Premium" },
+  { src: "/images/mau-do/vay-cuoi-149.webp", label: "Váy Cưới Diamond" },
+  { src: "/images/mau-do/vay-cuoi-150.webp", label: "Váy Cưới Luxury" },
+  { src: "/images/mau-do/vay-cuoi-151.webp", label: "Váy Cưới Royal" },
+  { src: "/images/mau-do/vay-cuoi-152.webp", label: "Váy Cưới Limited" }
 ];
 
 export async function HomePage() {

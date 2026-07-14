@@ -54,7 +54,7 @@ export async function MauDoPage() {
           <p className="mb-4 flex items-center justify-center gap-4 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
             {wardrobe.subtitle}
           </p>
-          <h1 className="font-serif text-[clamp(2.8rem,10vw,5.5rem)] leading-[1.12] text-black tracking-tight">
+          <h1 className="font-serif text-[clamp(2.8rem,10vw,5.5rem)] leading-[1.18] text-black tracking-tight">
             {wardrobe.title}
           </h1>
           <p className="mt-6 mx-auto max-w-2xl text-[0.92rem] leading-7 text-neutral-600 font-light">

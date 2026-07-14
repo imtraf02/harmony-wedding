@@ -63,7 +63,7 @@ export function ServicesPageContent({
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
 						<h1
-							className="font-serif text-[clamp(3.4rem,14vw,6rem)] leading-[1.1] lg:text-[clamp(4.4rem,7vw,8rem)]"
+							className="font-serif text-[clamp(3.4rem,14vw,6rem)] leading-[1.18] lg:text-[clamp(4.4rem,7vw,8rem)]"
 							data-reveal
 						>
 							Trọn Vẹn Cho Ngày Cưới
@@ -152,7 +152,7 @@ export function ServicesPageContent({
 							Chi tiết dịch vụ
 							<span className="h-px w-16 bg-neutral-300" />
 						</p>
-						<h2 className="font-serif text-[clamp(2.7rem,8vw,5rem)] leading-[0.98]">
+						<h2 className="font-serif text-[clamp(2.7rem,8vw,5rem)] leading-[1.15]">
 							Một ekip, một tinh thần hình ảnh
 						</h2>
 					</div>
@@ -169,7 +169,7 @@ export function ServicesPageContent({
 									<span className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-neutral-400">
 										0{index + 1}
 									</span>
-									<h3 className="mt-4 font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-none text-black">
+									<h3 className="mt-4 font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.15] text-black">
 										{service.title}
 									</h3>
 									<p className="mt-6 max-w-xl text-base leading-8 text-neutral-600">
@@ -283,7 +283,7 @@ export function ServicesPageContent({
 								Hỏi đáp
 								<span className="h-px w-8 bg-neutral-300" />
 							</p>
-							<h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-none text-black">
+							<h2 className="font-serif text-[clamp(2.2rem,6vw,3.6rem)] leading-[1.18] text-black">
 								Những Câu Hỏi Thường Gặp
 							</h2>
 						</div>

@@ -244,7 +244,7 @@ export function ContactContent() {
 							<p className="text-[0.62rem] font-bold uppercase tracking-[0.25em] text-neutral-400 mb-6">
 								STUDIO & GIỜ LÀM VIỆC
 							</p>
-							<h2 className="font-serif text-3xl md:text-4xl text-neutral-900 leading-[1.1] mb-10 tracking-tight">
+							<h2 className="font-serif text-3xl md:text-4xl text-neutral-900 leading-[1.2] mb-10 tracking-tight">
 								Không Gian Tư Vấn <br />
 								Trực Tiếp Tại Studio
 							</h2>

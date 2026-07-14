@@ -13,7 +13,7 @@ export function FeaturedAlbum({ images }: { images: AlbumFeatureImage[] }) {
 						Album nổi bật
 						<span className="h-px w-16 bg-neutral-300" />
 					</p>
-					<h2 className="font-serif text-[clamp(2.6rem,4vw,4.8rem)] leading-[1.02] text-black">
+					<h2 className="font-serif text-[clamp(2.6rem,4vw,4.8rem)] leading-[1.15] text-black">
 						Sunny Garden - Sắc Hoa Lãng Mạn
 					</h2>
 					<p className="mt-8 max-w-sm text-base leading-8 text-neutral-600">

@@ -214,7 +214,7 @@ export function PortfolioSection({ items }: { items: PortfolioItem[] }) {
             Album cưới
             <span className="h-px w-16 bg-white/20" />
           </p>
-          <h2 className="font-serif text-[clamp(2.5rem,12vw,4.2rem)] leading-[0.98] text-white lg:text-[clamp(2.5rem,4vw,5rem)]">
+          <h2 className="font-serif text-[clamp(2.5rem,12vw,4.2rem)] leading-[1.15] text-white lg:text-[clamp(2.5rem,4vw,5rem)]">
             Những Câu Chuyện Tình Yêu Được Kể Bằng Hình Ảnh
           </h2>
           <p className="mt-8 max-w-sm text-base leading-8 text-white/70">
