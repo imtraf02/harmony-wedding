@@ -148,14 +148,24 @@ export function Header({ variant = "home" }: HeaderProps) {
 		isScrolled
 			? "h-16 border-transparent border-b-black/[0.04] bg-white/80 backdrop-blur-xl shadow-xs md:rounded-[32px] md:border-white/20 md:shadow-[0_12px_32px_rgba(0,0,0,0.05)] md:px-8"
 			: variant === "solid"
-				? "h-[5.5rem] border-transparent border-b-black/[0.04] bg-white/90 backdrop-blur-lg md:h-20 md:rounded-[0px] md:px-10 lg:px-16 shadow-xs"
-				: "h-[5.5rem] border-transparent border-b-black/[0.03] bg-white/20 backdrop-blur-md md:h-24 md:rounded-[0px] md:px-10 lg:px-16"
+				? "h-[5.5rem] border-transparent md:h-20 md:rounded-[0px] md:px-10 lg:px-16"
+				: "h-[5.5rem] border-transparent md:h-24 md:rounded-[0px] md:px-10 lg:px-16"
 	}`;
 
 	return (
 		<>
 			<header ref={headerRef} className={outerHeaderClasses}>
-				<div className={`mx-auto max-w-[1720px] transition-all duration-500`}>
+				{/* Full-width background bar for non-scrolled state */}
+				<div 
+					className={`absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-b ${
+						isScrolled 
+							? "opacity-0 pointer-events-none" 
+							: variant === "solid"
+								? "bg-white/90 backdrop-blur-lg border-black/[0.04]"
+								: "bg-white/20 backdrop-blur-md border-black/[0.03]"
+					}`} 
+				/>
+				<div className={`mx-auto max-w-[1720px] transition-all duration-500 relative z-10`}>
 					<div className={innerContainerClasses}>
 						<Link
 							aria-label="Harmony Wedding"
