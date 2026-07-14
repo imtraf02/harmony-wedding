@@ -140,11 +140,11 @@ export function Header({ variant = "home" }: HeaderProps) {
 	);
 
 	// Responsive header styles to prevent mobile spacing bugs
-	const outerHeaderClasses = `fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none ${
+	const outerHeaderClasses = `fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
 		isScrolled ? "md:top-3 md:px-6 lg:px-8" : "top-0 px-0"
 	}`;
 
-	const innerContainerClasses = `w-full px-5 flex items-center justify-between pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border ${
+	const innerContainerClasses = `w-full px-5 flex items-center justify-between pointer-events-auto transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border ${
 		isScrolled
 			? "h-16 border-transparent border-b-black/[0.04] bg-white/80 backdrop-blur-xl shadow-xs md:rounded-[32px] md:border-white/20 md:shadow-[0_12px_32px_rgba(0,0,0,0.05)] md:px-8"
 			: variant === "solid"
@@ -157,7 +157,7 @@ export function Header({ variant = "home" }: HeaderProps) {
 			<header ref={headerRef} className={outerHeaderClasses}>
 				{/* Full-width background bar for non-scrolled state */}
 				<div 
-					className={`absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-b ${
+					className={`absolute inset-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] border-b ${
 						isScrolled 
 							? "opacity-0 pointer-events-none" 
 							: variant === "solid"
@@ -165,7 +165,7 @@ export function Header({ variant = "home" }: HeaderProps) {
 								: "bg-white/20 backdrop-blur-md border-black/[0.03]"
 					}`} 
 				/>
-				<div className={`mx-auto max-w-[1720px] transition-all duration-500 relative z-10`}>
+				<div className={`mx-auto max-w-[1720px] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] relative z-10`}>
 					<div className={innerContainerClasses}>
 						<Link
 							aria-label="Harmony Wedding"
