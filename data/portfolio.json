@@ -11,11 +11,22 @@
     "Đà Lạt",
     "Đường Phố Hồ Chí Minh",
     "Studio",
+    "Vũng Tàu",
     "Ngày Cưới",
     "Sunny Garden",
     "Vũ Garden"
   ],
   "albumItems": [
+    {
+      "slug": "vung-tau",
+      "title": "Vũng Tàu",
+      "category": "Vũng Tàu",
+      "location": "Vũng Tàu",
+      "image": "/images/wedding/vung-tau/5.webp",
+      "alt": "Album ảnh cưới Vũng Tàu - Harmony Wedding",
+      "width": 1366,
+      "height": 2048
+    },
     {
       "slug": "sunny-garden",
       "title": "Sunny Garden",
@@ -213,6 +224,164 @@
     }
   ],
   "albumDetails": [
+    {
+      "slug": "vung-tau",
+      "eyebrow": "Ngoại Cảnh Biển",
+      "title": "Vũng Tàu",
+      "scriptTitle": "Làn Gió Biển",
+      "description": "Bộ ảnh cưới ngoại cảnh biển Vũng Tàu được thực hiện bởi đội ngũ Harmony Wedding, lưu giữ trọn vẹn những khoảnh khắc lãng mạn giữa nắng vàng và biển xanh.",
+      "imageCount": "19 ảnh",
+      "location": "Biển Vũng Tàu",
+      "heroImage": "/images/wedding/vung-tau/5.webp",
+      "heroAlt": "Album ảnh cưới Vũng Tàu - Harmony Wedding",
+      "gallery": [
+        {
+          "image": "/images/wedding/vung-tau/1.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 1",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/2.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 2",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/3.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 3",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/4.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 4",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/5.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 5",
+          "featured": true,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/6.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 6",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/7.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 7",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/8.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 8",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/9.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 9",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/10.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 10",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/11.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 11",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/12.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 12",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/13.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 13",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/14.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 14",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/15.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 15",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/16.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 16",
+          "featured": false,
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "image": "/images/wedding/vung-tau/17.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 17",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/18.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 18",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        },
+        {
+          "image": "/images/wedding/vung-tau/19.webp",
+          "alt": "Album ảnh cưới Vũng Tàu - Ảnh 19",
+          "featured": false,
+          "width": 1366,
+          "height": 2048
+        }
+      ],
+      "info": [
+        {
+          "title": "Địa điểm",
+          "description": "Biển Vũng Tàu",
+          "icon": "location"
+        },
+        {
+          "title": "Phong cách",
+          "description": "Ngoại cảnh tự nhiên",
+          "icon": "heart"
+        }
+      ]
+    },
     {
       "slug": "sunny-garden",
       "eyebrow": "Sunny Garden",

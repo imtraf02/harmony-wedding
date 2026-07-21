@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
@@ -22,7 +23,12 @@ export function MauDoGallery({ items }: MauDoGalleryProps) {
   const [visibleCount, setVisibleCount] = useState(IMAGES_PER_PAGE);
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Filter images based on tab
   const getFilteredImages = useCallback(() => {
@@ -110,110 +116,112 @@ export function MauDoGallery({ items }: MauDoGalleryProps) {
   const visibleImages = filteredImages.slice(0, visibleCount);
 
   return (
-    <section className="bg-transparent py-10 lg:py-16 relative z-10">
-      <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
-        
-        {/* Navigation Tabs - Swipeable Glass pills */}
-        <div className="flex justify-center mb-10 md:mb-16">
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none bg-neutral-100/50 p-1.5 rounded-full border border-black/[0.03] max-w-full flex-nowrap px-1.5 py-1.5 shrink-0">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                  setVisibleCount(IMAGES_PER_PAGE);
-                  setActiveIdx(null);
-                }}
-                className={`whitespace-nowrap py-2 px-5 text-[0.66rem] md:text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer shrink-0 ${
-                  activeTab === tab
-                    ? "bg-black text-white shadow-xs"
-                    : "text-neutral-500 hover:text-black"
-                }`}
-                type="button"
-              >
-                {tab} ({items.filter(img => {
-                  const name = img.name.toLowerCase();
-                  if (tab === "Tất cả") return true;
-                  if (tab === "Váy & Áo Dài") return name.startsWith("vay-cuoi") || name.startsWith("ao-dai");
-                  if (tab === "Veston") return name.startsWith("vest");
-                  return true;
-                }).length})
-              </button>
-            ))}
+    <>
+      <section className="bg-transparent py-10 lg:py-16 relative z-10">
+        <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
+          
+          {/* Navigation Tabs - Swipeable Glass pills */}
+          <div className="flex justify-center mb-10 md:mb-16">
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none bg-neutral-100/50 p-1.5 rounded-full border border-black/[0.03] max-w-full flex-nowrap px-1.5 py-1.5 shrink-0">
+              {TABS.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setVisibleCount(IMAGES_PER_PAGE);
+                    setActiveIdx(null);
+                  }}
+                  className={`whitespace-nowrap py-2 px-5 text-[0.66rem] md:text-[0.72rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer shrink-0 ${
+                    activeTab === tab
+                      ? "bg-black text-white shadow-xs"
+                      : "text-neutral-500 hover:text-black"
+                  }`}
+                  type="button"
+                >
+                  {tab} ({items.filter(img => {
+                    const name = img.name.toLowerCase();
+                    if (tab === "Tất cả") return true;
+                    if (tab === "Váy & Áo Dài") return name.startsWith("vay-cuoi") || name.startsWith("ao-dai");
+                    if (tab === "Veston") return name.startsWith("vest");
+                    return true;
+                  }).length})
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Gallery Grid - Upgraded to Liquid Glass p-1 cards */}
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {visibleImages.map((img, idx) => {
-            const isSuit = img.name.toLowerCase().startsWith("vest");
-            const isAoDai = img.name.toLowerCase().startsWith("ao-dai");
-            const tagLabel = isSuit ? "Veston" : isAoDai ? "Áo Dài" : "Váy Cưới";
-            
-            return (
-              <GlassCard
-                key={img.src}
-                variant="light"
-                intensity="low"
-                borderStrength="low"
-                hoverable
-                className="group relative cursor-pointer shadow-xs p-1 rounded-2xl"
-                onClick={() => setActiveIdx(idx)}
-              >
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
-                  <Image
-                    src={img.src}
-                    alt={`Mẫu ${tagLabel.toLowerCase()} thiết kế cao cấp Harmony Wedding - Hình ${idx + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(min-width: 1200px) 16vw, (min-width: 992px) 20vw, (min-width: 768px) 25vw, 33vw, 50vw"
-                    loading="lazy"
-                    quality={80}
-                  />
-                  {/* Category overlay - w-fit capsule glass badge */}
-                  <GlassCard
-                    variant="light"
-                    intensity="high"
-                    borderStrength="medium"
-                    className="absolute top-2 left-2 w-fit px-2.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.2em] text-neutral-800 rounded-full shadow-xs border border-white/40"
-                  >
-                    {tagLabel}
-                  </GlassCard>
-                  {/* Frosted glass "Xem chi tiết" hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/70 backdrop-blur-md text-neutral-800 text-[0.62rem] font-bold uppercase tracking-[0.2em] px-4 py-2 shadow-xs rounded-full border border-white/40">
-                      Phóng to ↗
-                    </span>
+          {/* Gallery Grid - Upgraded to Liquid Glass p-1 cards */}
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            {visibleImages.map((img, idx) => {
+              const isSuit = img.name.toLowerCase().startsWith("vest");
+              const isAoDai = img.name.toLowerCase().startsWith("ao-dai");
+              const tagLabel = isSuit ? "Veston" : isAoDai ? "Áo Dài" : "Váy Cưới";
+              
+              return (
+                <GlassCard
+                  key={img.src}
+                  variant="light"
+                  intensity="low"
+                  borderStrength="low"
+                  hoverable
+                  className="group relative cursor-pointer shadow-xs p-1 rounded-2xl"
+                  onClick={() => setActiveIdx(idx)}
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
+                    <Image
+                      src={img.src}
+                      alt={`Mẫu ${tagLabel.toLowerCase()} thiết kế cao cấp Harmony Wedding - Hình ${idx + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      sizes="(min-width: 1200px) 16vw, (min-width: 992px) 20vw, (min-width: 768px) 25vw, 33vw, 50vw"
+                      loading="lazy"
+                      quality={80}
+                    />
+                    {/* Category overlay - w-fit capsule glass badge */}
+                    <GlassCard
+                      variant="light"
+                      intensity="high"
+                      borderStrength="medium"
+                      className="absolute top-2 left-2 w-fit px-2.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.2em] text-neutral-800 rounded-full shadow-xs border border-white/40"
+                    >
+                      {tagLabel}
+                    </GlassCard>
+                    {/* Frosted glass "Xem chi tiết" hover overlay */}
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/70 backdrop-blur-md text-neutral-800 text-[0.62rem] font-bold uppercase tracking-[0.2em] px-4 py-2 shadow-xs rounded-full border border-white/40">
+                        Phóng to ↗
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </GlassCard>
-            );
-          })}
-        </div>
-
-        {/* Load More Button - GlassButton */}
-        {visibleCount < filteredImages.length && (
-          <div className="mt-16 text-center">
-            <GlassButton
-              onClick={loadMore}
-              variant="dark"
-              className="w-full sm:w-auto !py-3 !px-10 text-[0.68rem] tracking-[0.22em]"
-            >
-              Xem thêm mẫu đồ ({filteredImages.length - visibleCount})
-            </GlassButton>
+                </GlassCard>
+              );
+            })}
           </div>
-        )}
-      </div>
 
-      {/* Lightbox Modal */}
-      {activeIdx !== null && (
+          {/* Load More Button - GlassButton */}
+          {visibleCount < filteredImages.length && (
+            <div className="mt-16 text-center">
+              <GlassButton
+                onClick={loadMore}
+                variant="dark"
+                className="w-full sm:w-auto !py-3 !px-10 text-[0.68rem] tracking-[0.22em]"
+              >
+                Xem thêm mẫu đồ ({filteredImages.length - visibleCount})
+              </GlassButton>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal rendered via Portal directly to body */}
+      {mounted && activeIdx !== null && createPortal(
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* Top Bar */}
-          <div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/60 to-transparent">
+          <div className="absolute top-0 left-0 right-0 z-20 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/80 via-black/40 to-transparent">
             <span className="font-sans text-[0.62rem] font-bold tracking-[0.24em] uppercase text-white/70">
               Mẫu {activeIdx + 1} &mdash; {filteredImages.length}
             </span>
@@ -315,8 +323,9 @@ export function MauDoGallery({ items }: MauDoGalleryProps) {
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-white/50 text-[0.62rem] tracking-[0.24em] uppercase pointer-events-none">
             {isZoomed ? "Kéo để xem chi tiết" : "Vuốt ngang để chuyển mẫu"}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </section>
+    </>
   );
 }

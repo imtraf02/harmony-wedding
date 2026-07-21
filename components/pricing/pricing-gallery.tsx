@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
@@ -836,7 +837,12 @@ export function PricingGallery({ images }: { images: PricingImage[] }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const closeLightbox = useCallback(() => {
     setActiveIdx(null);
@@ -907,161 +913,163 @@ export function PricingGallery({ images }: { images: PricingImage[] }) {
   };
 
   return (
-    <section className="bg-transparent py-14 lg:py-24 relative z-10">
-      <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
-        <p className="mb-6 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
-          Catalogue & Bảng Giá
-          <span className="h-px w-16 bg-neutral-300" />
-        </p>
-        <h2 className="mb-14 font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1] text-black tracking-tight">
-          Bảng Giá Dịch Vụ Cưới Chi Tiết
-        </h2>
+    <>
+      <section className="bg-transparent py-14 lg:py-24 relative z-10">
+        <div className="mx-auto max-w-[1500px] px-5 md:px-10 lg:px-16">
+          <p className="mb-6 flex items-center gap-5 text-[0.68rem] font-bold uppercase tracking-[0.3em] text-neutral-500">
+            Catalogue & Bảng Giá
+            <span className="h-px w-16 bg-neutral-300" />
+          </p>
+          <h2 className="mb-14 font-serif text-[clamp(2.6rem,7vw,4.8rem)] leading-[1] text-black tracking-tight">
+            Bảng Giá Dịch Vụ Cưới Chi Tiết
+          </h2>
 
-        {/* Thumbnail Grid - Upgraded to Liquid Glass p-1 cards */}
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {pricingImages.map((img, idx) => (
-            <GlassCard
-              key={img.src}
-              variant="light"
-              intensity="low"
-              borderStrength="low"
-              hoverable
-              className="group relative cursor-pointer border border-white/40 shadow-xs p-1 rounded-2xl"
-              onClick={() => setActiveIdx(idx)}
-            >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-                  loading="lazy"
-                  quality={90}
-                />
-                <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5" />
-              </div>
-              <div className="flex items-center justify-between p-4 bg-white/40 border-t border-white/20">
-                <span className="font-serif text-base font-semibold text-neutral-800">{img.title}</span>
-                <span className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-neutral-400 group-hover:text-black transition-colors">
-                  Phóng to ➔
-                </span>
-              </div>
-            </GlassCard>
-          ))}
-        </div>
-
-        {/* Text-based Pricing Directory for SEO and UI */}
-        <div className="mt-24 border-t border-black/[0.05] pt-20" id="pricing-details">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <h3 className="font-serif text-[2.2rem] leading-tight text-neutral-900 mb-4 tracking-tight">
-              Chi Tiết Các Gói Dịch Vụ Cưới
-            </h3>
-            <p className="text-[0.92rem] leading-relaxed text-neutral-500 font-light">
-              Harmony Wedding cam kết bảng giá công khai, hợp đồng minh bạch và hoàn toàn không phát sinh chi phí ẩn suốt quá trình thực hiện.
-            </p>
-          </div>
-
-          {/* Navigation Tabs - Glass pills */}
-          <div className="flex overflow-x-auto scrollbar-none gap-3 mb-14 bg-neutral-100/50 backdrop-blur-xs p-1.5 rounded-full border border-black/[0.03] max-w-fit">
-            {pricingCategories.map((cat, idx) => (
-              <button
-                key={cat.title}
-                onClick={() => setActiveTab(idx)}
-                className={`whitespace-nowrap py-3 px-6 text-[0.64rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer ${
-                  activeTab === idx
-                    ? "bg-black text-white shadow-xs"
-                    : "text-neutral-500 hover:text-black"
-                }`}
-                type="button"
+          {/* Thumbnail Grid - Upgraded to Liquid Glass p-1 cards */}
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {pricingImages.map((img, idx) => (
+              <GlassCard
+                key={img.src}
+                variant="light"
+                intensity="low"
+                borderStrength="low"
+                hoverable
+                className="group relative cursor-pointer border border-white/40 shadow-xs p-1 rounded-2xl"
+                onClick={() => setActiveIdx(idx)}
               >
-                {cat.title}
-              </button>
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-neutral-100">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                    loading="lazy"
+                    quality={90}
+                  />
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5" />
+                </div>
+                <div className="flex items-center justify-between p-4 bg-white/40 border-t border-white/20">
+                  <span className="font-serif text-base font-semibold text-neutral-800">{img.title}</span>
+                  <span className="text-[0.62rem] font-bold uppercase tracking-[0.2em] text-neutral-400 group-hover:text-black transition-colors">
+                    Phóng to ➔
+                  </span>
+                </div>
+              </GlassCard>
             ))}
           </div>
 
-          {/* Active Tab Content */}
-          <div className="space-y-16">
-            <div>
-              <p className="text-[0.6rem] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">
-                Danh mục hiện tại
-              </p>
-              <h4 className="font-serif text-2xl md:text-3xl text-neutral-900 tracking-tight">{pricingCategories[activeTab].title}</h4>
-              <p className="text-sm leading-relaxed text-neutral-500 mt-3 font-light max-w-2xl">
-                {pricingCategories[activeTab].description}
+          {/* Text-based Pricing Directory for SEO and UI */}
+          <div className="mt-24 border-t border-black/[0.05] pt-20" id="pricing-details">
+            <div className="max-w-2xl mx-auto text-center mb-16">
+              <h3 className="font-serif text-[2.2rem] leading-tight text-neutral-900 mb-4 tracking-tight">
+                Chi Tiết Các Gói Dịch Vụ Cưới
+              </h3>
+              <p className="text-[0.92rem] leading-relaxed text-neutral-500 font-light">
+                Harmony Wedding cam kết bảng giá công khai, hợp đồng minh bạch và hoàn toàn không phát sinh chi phí ẩn suốt quá trình thực hiện.
               </p>
             </div>
 
-            {/* Loop through subsections inside current tab */}
-            {pricingCategories[activeTab].sections.map((sect) => (
-              <div key={sect.subTitle} className="border-t border-black/[0.04] pt-10 first:border-0 first:pt-0">
-                <h5 className="font-sans text-[0.78rem] font-bold tracking-[0.16em] uppercase text-neutral-800 mb-8 border-l-2 border-amber-600/30 pl-4">
-                  {sect.subTitle}
-                </h5>
+            {/* Navigation Tabs - Glass pills */}
+            <div className="flex overflow-x-auto scrollbar-none gap-3 mb-14 bg-neutral-100/50 backdrop-blur-xs p-1.5 rounded-full border border-black/[0.03] max-w-fit">
+              {pricingCategories.map((cat, idx) => (
+                <button
+                  key={cat.title}
+                  onClick={() => setActiveTab(idx)}
+                  className={`whitespace-nowrap py-3 px-6 text-[0.64rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-full cursor-pointer ${
+                    activeTab === idx
+                      ? "bg-black text-white shadow-xs"
+                      : "text-neutral-500 hover:text-black"
+                  }`}
+                  type="button"
+                >
+                  {cat.title}
+                </button>
+              ))}
+            </div>
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                  {sect.packages.map((pkg) => (
-                    <GlassCard
-                      key={pkg.name}
-                      variant="light"
-                      intensity="low"
-                      borderStrength="low"
-                      hoverable
-                      className="flex flex-col border border-white/40 shadow-xs rounded-3xl p-8 min-h-[400px]"
-                    >
-                      <div className="mb-6 flex justify-between items-start gap-4">
-                        <h6 className="font-serif text-[1.12rem] font-bold text-neutral-900 leading-snug">
-                          {pkg.name}
-                        </h6>
-                        <GlassCard
-                          variant="light"
-                          intensity="high"
-                          borderStrength="medium"
-                          className="font-serif text-[0.95rem] font-bold text-amber-950 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full shrink-0 shadow-xs"
-                        >
-                          {pkg.price}
-                        </GlassCard>
-                      </div>
-                      
-                      <div className="h-px bg-black/[0.04] w-full mb-6" />
-                      
-                      <ul className="space-y-4 flex-1 mb-8">
-                        {pkg.details.map((detail) => (
-                          <li key={detail} className="flex items-start gap-3 text-[0.82rem] text-neutral-600 leading-relaxed font-light">
-                            <span className="grid size-4.5 place-items-center rounded-full bg-neutral-100/60 border border-white/30 text-neutral-500 text-[0.55rem] shrink-0 mt-0.5 font-bold">✓</span>
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="mt-auto pt-6 border-t border-black/[0.03]">
-                        <GlassButton
-                          href="https://zalo.me/0357256845"
-                          onClick={() => window.open("https://zalo.me/0357256845", "_blank")}
-                          variant="dark"
-                          className="w-full !py-3 rounded-xl text-center flex items-center justify-center"
-                        >
-                          Nhận tư vấn & Đặt lịch ➔
-                        </GlassButton>
-                      </div>
-                    </GlassCard>
-                  ))}
-                </div>
+            {/* Active Tab Content */}
+            <div className="space-y-16">
+              <div>
+                <p className="text-[0.6rem] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">
+                  Danh mục hiện tại
+                </p>
+                <h4 className="font-serif text-2xl md:text-3xl text-neutral-900 tracking-tight">{pricingCategories[activeTab].title}</h4>
+                <p className="text-sm leading-relaxed text-neutral-500 mt-3 font-light max-w-2xl">
+                  {pricingCategories[activeTab].description}
+                </p>
               </div>
-            ))}
+
+              {/* Loop through subsections inside current tab */}
+              {pricingCategories[activeTab].sections.map((sect) => (
+                <div key={sect.subTitle} className="border-t border-black/[0.04] pt-10 first:border-0 first:pt-0">
+                  <h5 className="font-sans text-[0.78rem] font-bold tracking-[0.16em] uppercase text-neutral-800 mb-8 border-l-2 border-amber-600/30 pl-4">
+                    {sect.subTitle}
+                  </h5>
+
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {sect.packages.map((pkg) => (
+                      <GlassCard
+                        key={pkg.name}
+                        variant="light"
+                        intensity="low"
+                        borderStrength="low"
+                        hoverable
+                        className="flex flex-col border border-white/40 shadow-xs rounded-3xl p-8 min-h-[400px]"
+                      >
+                        <div className="mb-6 flex justify-between items-start gap-4">
+                          <h6 className="font-serif text-[1.12rem] font-bold text-neutral-900 leading-snug">
+                            {pkg.name}
+                          </h6>
+                          <GlassCard
+                            variant="light"
+                            intensity="high"
+                            borderStrength="medium"
+                            className="font-serif text-[0.95rem] font-bold text-amber-950 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full shrink-0 shadow-xs"
+                          >
+                            {pkg.price}
+                          </GlassCard>
+                        </div>
+                        
+                        <div className="h-px bg-black/[0.04] w-full mb-6" />
+                        
+                        <ul className="space-y-4 flex-1 mb-8">
+                          {pkg.details.map((detail) => (
+                            <li key={detail} className="flex items-start gap-3 text-[0.82rem] text-neutral-600 leading-relaxed font-light">
+                              <span className="grid size-4.5 place-items-center rounded-full bg-neutral-100/60 border border-white/30 text-neutral-500 text-[0.55rem] shrink-0 mt-0.5 font-bold">✓</span>
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="mt-auto pt-6 border-t border-black/[0.03]">
+                          <GlassButton
+                            href="https://zalo.me/0357256845"
+                            onClick={() => window.open("https://zalo.me/0357256845", "_blank")}
+                            variant="dark"
+                            className="w-full !py-3 rounded-xl text-center flex items-center justify-center"
+                          >
+                            Nhận tư vấn & Đặt lịch ➔
+                          </GlassButton>
+                        </div>
+                      </GlassCard>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Full-screen Lightbox Modal */}
-      {activeIdx !== null && (
+      {/* Full-screen Lightbox Modal rendered via Portal directly to body */}
+      {mounted && activeIdx !== null && createPortal(
         <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-md transition-opacity duration-300"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {/* Top bar controls */}
-          <div className="absolute top-0 left-0 right-0 z-10 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/60 to-transparent">
+          <div className="absolute top-0 left-0 right-0 z-20 flex h-20 items-center justify-between px-6 text-white bg-gradient-to-b from-black/80 via-black/40 to-transparent">
             <span className="font-sans text-[0.62rem] font-bold tracking-[0.24em] uppercase text-white/70">
               {pricingImages[activeIdx].title} &mdash; {String(pricingImages.length).padStart(2, "0")}
             </span>
@@ -1155,8 +1163,9 @@ export function PricingGallery({ images }: { images: PricingImage[] }) {
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-white/50 text-[0.62rem] tracking-[0.24em] uppercase pointer-events-none">
             {isZoomed ? "Kéo để xem chi tiết" : "Vuốt ngang để chuyển trang"}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </section>
+    </>
   );
 }
